@@ -10,7 +10,6 @@ import Footer from 'src/components/Footer';
 const App = () => (
   <MuiThemeProvider theme={theme}>
     <div id="app">
-      App React
       <Footer />
     </div>
   </MuiThemeProvider>

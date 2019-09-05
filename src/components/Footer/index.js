@@ -1,9 +1,13 @@
 import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import Avatar from '@material-ui/core/Avatar';
+import {
+  Grid,
+  Avatar,
+  Button,
+  Typography,
+  Toolbar,
+  AppBar,
+} from '@material-ui/core';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
@@ -13,16 +17,24 @@ export default function Footer() {
     <div>
       <AppBar position="static">
         <Toolbar>
-          <Avatar alt="Avatar Otrak" src="/static/images/avatar/1.jpg" />
-          <Typography variant="h6">
-            Track all your favorites shows
-          </Typography>
-          <Button color="inherit">REGISTER NOW !</Button>
-          <Button color="inherit">TEAM</Button>
-          <Button color="inherit">LEGAL</Button>
-          <Button color="inherit">CONTACT</Button>
-          <FontAwesomeIcon icon={faGithub} />
-
+          <Grid container>
+            <Grid item lg={3}>
+              <Avatar alt="Avatar Otrak" src="" />
+              <Typography variant="h6">
+                Track all your favorites shows
+              </Typography>
+            </Grid>
+            <Grid item lg={4}>
+              <Button color="inherit">REGISTER NOW !</Button>
+              <Button color="inherit">TEAM</Button>
+              <Button color="inherit">LEGAL</Button>
+              <Button color="inherit">CONTACT</Button>
+            </Grid>
+            <Typography> Made with &hearts; by The DreamTeam &copy; 2019</Typography>
+            <Grid item lg={3}>
+              <FontAwesomeIcon icon={faGithub} />
+            </Grid>
+          </Grid>
         </Toolbar>
       </AppBar>
     </div>
