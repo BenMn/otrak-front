@@ -1,12 +1,16 @@
 import React from 'react';
 import {
   Grid,
-  Avatar,
-  Button,
   Typography,
   Toolbar,
-  AppBar,
 } from '@material-ui/core';
+
+import {
+  FooterAppBar,
+  FooterAvatar,
+  FooterButton,
+  FooterIcon,
+} from 'src/styles/materialUi/materialUiStyles/footer';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
@@ -15,28 +19,30 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
 export default function Footer() {
   return (
     <div>
-      <AppBar position="static">
+      <FooterAppBar position="static">
         <Toolbar>
           <Grid container>
-            <Grid item lg={3}>
-              <Avatar alt="Avatar Otrak" src="" />
+            <Grid item xs>
+              <FooterAvatar src="src/styles/assets/images/logo-V2.png" alt="O’Track logo" />
               <Typography variant="h6">
                 Track all your favorites shows
               </Typography>
+              <Typography color="textSecondary"> Made with &hearts; by The DreamTeam &copy; 2019</Typography>
             </Grid>
-            <Grid item lg={4}>
-              <Button color="inherit">REGISTER NOW !</Button>
-              <Button color="inherit">TEAM</Button>
-              <Button color="inherit">LEGAL</Button>
-              <Button color="inherit">CONTACT</Button>
+            <Grid item xs={6}>
+              <FooterButton variant="outlined" color="inherit">REGISTER NOW !</FooterButton>
+              <FooterButton color="inherit">TEAM</FooterButton>
+              <FooterButton color="inherit">LEGAL</FooterButton>
+              <FooterButton color="inherit">CONTACT</FooterButton>
             </Grid>
-            <Typography> Made with &hearts; by The DreamTeam &copy; 2019</Typography>
-            <Grid item lg={3}>
-              <FontAwesomeIcon icon={faGithub} />
+            <Grid item xs>
+              <FooterIcon>
+                <FontAwesomeIcon icon={faGithub} size="lg" />
+              </FooterIcon>
             </Grid>
           </Grid>
         </Toolbar>
-      </AppBar>
+      </FooterAppBar>
     </div>
   );
 }
