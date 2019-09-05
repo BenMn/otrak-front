@@ -16,6 +16,24 @@ const theme = createMuiTheme({
       dark: '#801313',
       contrastText: '#fff',
     },
+
+    status: {
+      danger: '#FB8A01',
+      success: '#44AF69',
+      info: '#2D7DD2',
+    },
+
+    common: {
+      black: '#000',
+      white: '#fff',
+    },
+
+    text: {
+      primary: 'rgba(0, 0, 0, 0.87)',
+      secondary: 'rgba(0, 0, 0, 0.54)',
+      disabled: 'rgba(0, 0, 0, 0.38)',
+      hint: 'rgba(0, 0, 0, 0.38)',
+    },
   },
 });
 
