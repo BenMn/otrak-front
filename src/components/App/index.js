@@ -2,7 +2,6 @@
 import React from 'react';
 
 // == Import : local
-import './app.scss';
 import theme from 'src/styles/materialUi/materialUiTheme/theme';
 import { MuiThemeProvider } from '@material-ui/core';
 

@@ -1,15 +1,37 @@
 /* eslint-disable import/prefer-default-export */
 import { styled } from '@material-ui/styles';
-import Button from '@material-ui/core/Button';
+import { Button, InputBase, Paper } from '@material-ui/core';
+import { fade } from '@material-ui/core/styles';
+import theme from 'src/styles/materialUi/materialUiTheme/theme';
+import SearchIcon from '@material-ui/icons/Search';
 
-export const MyButton = styled(Button)({
-  background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
-  border: 0,
-  borderRadius: 3,
-  boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-  color: 'white',
-  height: 48,
-  padding: '0 30px',
-  width: 400,
-  fontWeight: 'bold',
+export const NavbarSearch = styled(Paper)({
+  position: 'relative',
+  borderRadius: theme.shape.borderRadius,
+  backgroundColor: fade(theme.palette.common.white, 0.15),
+  '&:hover': {
+    backgroundColor: fade(theme.palette.common.white, 0.25),
+  },
+  display: 'flex',
+  justifyContent: 'end',
+  width: '100%',
+});
+
+
+export const NavbarSearchIcon = styled(SearchIcon)({
+  width: 25,
+  color: theme.palette.common.white,
+  display: 'flex',
+  alignSelf: 'center',
+  margin: 5,
+});
+
+export const NavbarSearchInput = styled(InputBase)({
+  width: '100%',
+  color: theme.palette.common.white,
+});
+
+export const NavbarLogButton = styled(Button)({
+  float: 'right',
+  marginRight: 10,
 });
