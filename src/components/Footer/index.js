@@ -15,9 +15,10 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
+import './Footer.scss';
 
 const Footer = () => (
-  <div>
+  <div id="Footer">
     <FooterAppBar position="static">
       <Toolbar>
         <Grid container>
@@ -29,7 +30,9 @@ const Footer = () => (
             <Typography variant="h6">
               All your favorites shows
             </Typography>
-            <Typography color="textSecondary" variant="subtitle2"> Made with &hearts; by The DreamTeam &copy; 2019</Typography>
+            <Typography variant="subtitle2" color="secondary">
+              Made with &hearts; by The DreamTeam &copy; 2019
+            </Typography>
 
           </Grid>
           <Grid item xs={5}>
