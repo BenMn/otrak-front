@@ -17,7 +17,6 @@ export const NavbarSearch = styled(Paper)({
   width: '100%',
 });
 
-
 export const NavbarSearchIcon = styled(SearchIcon)({
   width: 25,
   color: theme.palette.common.white,

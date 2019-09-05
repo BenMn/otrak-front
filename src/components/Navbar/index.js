@@ -10,8 +10,7 @@ import {
   NavbarSearchInput,
   NavbarSearchIcon,
   NavbarLogButton,
-} from 'src/styles/materialUi/materialUiStyles/styles';
-
+} from 'src/styles/materialUi/materialUiStyles/Navbar';
 
 import './Navbar.scss';
 
@@ -32,6 +31,7 @@ const Navbar = () => (
             <NavbarSearch>
               <NavbarSearchIcon />
               <NavbarSearchInput
+                color="textPrimary"
                 placeholder="Start looking for a show..."
                 inputProps={{ 'aria-label': 'search' }}
               />
