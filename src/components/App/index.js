@@ -6,12 +6,14 @@ import { MuiThemeProvider } from '@material-ui/core';
 // == Import : local
 import Navbar from 'src/components/Navbar';
 import Footer from 'src/components/Footer';
+import LandingPage from 'src/components/LandingPage';
 
 // == Composant
 const App = () => (
   <MuiThemeProvider theme={theme}>
     <div id="app">
       <Navbar />
+      <LandingPage />
       <Footer />
     </div>
   </MuiThemeProvider>
