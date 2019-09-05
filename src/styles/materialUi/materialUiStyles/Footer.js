@@ -19,7 +19,6 @@ export const FooterAppBar = styled(AppBar)({
 });
 
 export const FooterAvatar = styled(Avatar)({
-  position: 'absolute',
   display: 'block',
   height: 75,
   width: 75,
