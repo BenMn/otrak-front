@@ -1,7 +1,11 @@
 /* eslint-disable import/prefer-default-export */
 import { styled } from '@material-ui/styles';
-import theme from 'src/styles/materialUi/materialUiTheme/theme';
-import { Button, AppBar, Avatar, Icon } from '@material-ui/core';
+import {
+  Button,
+  AppBar,
+  Avatar,
+  Icon,
+} from '@material-ui/core';
 
 export const FooterButton = styled(Button)({
   marginTop: 10,

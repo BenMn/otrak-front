@@ -4,11 +4,6 @@ import theme from 'src/styles/materialUi/materialUiTheme/theme';
 import { MuiThemeProvider } from '@material-ui/core';
 
 // == Import : local
-import './app.scss';
-
-import theme from 'src/styles/materialUi/materialUiTheme/theme';
-import { MuiThemeProvider } from '@material-ui/core';
-
 import Navbar from 'src/components/Navbar';
 import Footer from 'src/components/Footer';
 
@@ -16,7 +11,7 @@ import Footer from 'src/components/Footer';
 const App = () => (
   <MuiThemeProvider theme={theme}>
     <div id="app">
-       <Navbar />
+      <Navbar />
       <Footer />
     </div>
   </MuiThemeProvider>
