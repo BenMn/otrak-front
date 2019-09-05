@@ -1,14 +1,19 @@
 // == Import : npm
 import React from 'react';
+import theme from 'src/styles/materialUi/materialUiTheme/theme';
+import { MuiThemeProvider } from '@material-ui/core';
 
 // == Import : local
 import './app.scss';
-
+import Footer from 'src/components/Footer';
 // == Composant
 const App = () => (
-  <div id="app">
-    App React
-  </div>
+  <MuiThemeProvider theme={theme}>
+    <div id="app">
+      App React
+      <Footer />
+    </div>
+  </MuiThemeProvider>
 );
 
 // == Export
