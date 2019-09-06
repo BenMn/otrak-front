@@ -1,12 +1,11 @@
-/* eslint-disable import/no-unresolved */
 // == Import : npm
 import { connect } from 'react-redux';
 
 // == Import : local
-import Example from 'src/components/Example';
+import Navbar from 'src/components/Navbar';
 
 // Action Creators
-import { doSomething } from 'src/store/reducer';
+import { doSomething, openModal } from 'src/store/reducer';
 
 /* === State (données) ===
  * - mapStateToProps retroune un objet de props pour le composant de présentation
@@ -16,7 +15,9 @@ import { doSomething } from 'src/store/reducer';
  * Pas de data à transmettre ? const mapStateToProps = null;
  */
 const mapStateToProps = (state) => ({
-  message: state.message,
+  setOpen: state.setOpen,
+  open: state.open,
+  view: state.view,
 });
 
 /* === Actions ===
@@ -27,23 +28,26 @@ const mapStateToProps = (state) => ({
  * Pas de disptach à transmettre ? const mapDispatchToProps = {};
  */
 const mapDispatchToProps = (dispatch) => ({
+  handleOpen: (view) => {
+    dispatch(openModal(view));
+  },
   doSomething: () => {
     dispatch(doSomething('Coucou'));
   },
 });
 
 // Container
-const ExampleContainer = connect(
+const NavbarContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Example);
+)(Navbar);
 
 // == Export
-export default ExampleContainer;
+export default NavbarContainer;
 
 /* = export à la volée
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Example);
+)(Navbar);
 */

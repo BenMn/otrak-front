@@ -1,12 +1,11 @@
-/* eslint-disable import/no-unresolved */
 // == Import : npm
 import { connect } from 'react-redux';
 
 // == Import : local
-import Example from 'src/components/Example';
+import LogForms from 'src/components/LogForms';
 
 // Action Creators
-import { doSomething } from 'src/store/reducer';
+import { closeModal } from 'src/store/reducer';
 
 /* === State (données) ===
  * - mapStateToProps retroune un objet de props pour le composant de présentation
@@ -16,7 +15,8 @@ import { doSomething } from 'src/store/reducer';
  * Pas de data à transmettre ? const mapStateToProps = null;
  */
 const mapStateToProps = (state) => ({
-  message: state.message,
+  setOpen: state.setOpen,
+  open: state.open,
 });
 
 /* === Actions ===
@@ -27,23 +27,23 @@ const mapStateToProps = (state) => ({
  * Pas de disptach à transmettre ? const mapDispatchToProps = {};
  */
 const mapDispatchToProps = (dispatch) => ({
-  doSomething: () => {
-    dispatch(doSomething('Coucou'));
+  handleClose: () => {
+    dispatch(closeModal());
   },
 });
 
 // Container
-const ExampleContainer = connect(
+const LogFormsContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Example);
+)(LogForms);
 
 // == Export
-export default ExampleContainer;
+export default LogFormsContainer;
 
 /* = export à la volée
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Example);
+)(LogForms);
 */

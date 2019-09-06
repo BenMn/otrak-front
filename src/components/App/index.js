@@ -4,7 +4,7 @@ import theme from 'src/styles/materialUi/materialUiTheme/theme';
 import { MuiThemeProvider } from '@material-ui/core';
 
 // == Import : local
-import Navbar from 'src/components/Navbar';
+import Navbar from 'src/containers/Navbar';
 import Footer from 'src/components/Footer';
 import SpringModal from 'src/components/LogForms';
 
