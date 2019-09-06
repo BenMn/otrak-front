@@ -26,11 +26,12 @@ const theme = createMuiTheme({
     common: {
       black: '#000',
       white: '#fff',
+      grey: '#EEE',
     },
 
     text: {
-      primary: 'rgba(255, 255, 255, 0.87)',
-      secondary: 'rgba(255, 255, 255, 0.54)',
+      primary: 'rgba(0, 0, 0, 0.87)',
+      secondary: 'rgba(0, 0, 0, 0.57)',
       disabled: 'rgba(0, 0, 0, 0.38)',
       hint: 'rgba(0, 0, 0, 0.38)',
     },

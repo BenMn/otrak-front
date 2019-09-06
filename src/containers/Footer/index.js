@@ -1,28 +1,32 @@
-/* eslint-disable import/no-unresolved */
 // == Import : npm
 import { connect } from 'react-redux';
 
 // == Import : local
-import Example from 'src/components/Example';
+import Footer from 'src/components/Footer';
 
 // Action Creators
-import { doSomething } from 'src/store/reducer';
+import { doSomething, openModal } from 'src/store/reducer';
 
 const mapStateToProps = (state) => ({
-  message: state.message,
+  setOpen: state.setOpen,
+  open: state.open,
+  view: state.view,
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  handleOpen: (view) => {
+    dispatch(openModal(view));
+  },
   doSomething: () => {
     dispatch(doSomething('Coucou'));
   },
 });
 
 // Container
-const ExampleContainer = connect(
+const FooterContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Example);
+)(Footer);
 
 // == Export
-export default ExampleContainer;
+export default FooterContainer;
