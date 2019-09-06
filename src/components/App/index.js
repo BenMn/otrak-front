@@ -5,15 +5,15 @@ import { MuiThemeProvider } from '@material-ui/core';
 
 // == Import : local
 import Navbar from 'src/containers/Navbar';
-import Footer from 'src/components/Footer';
-import SpringModal from 'src/components/LogForms';
+import Footer from 'src/containers/Footer';
+import LogFormModal from 'src/components/LogForms';
 
 // == Composant
 const App = () => (
   <MuiThemeProvider theme={theme}>
     <div id="app">
       <Navbar />
-      <SpringModal />
+      <LogFormModal />
       <Footer />
     </div>
   </MuiThemeProvider>
