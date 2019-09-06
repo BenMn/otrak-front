@@ -4,12 +4,12 @@ import {
 } from '@material-ui/core';
 
 import {
-  LandingPageAvatar,
-  LandingPageSlogan,
-  LandingPageSignInButton,
-  LandingPageSignUpButton,
-  LandingPageSearchIcon,
-  LandingPageSearchInput,
+  HeadScreenAvatar,
+  HeadScreenSlogan,
+  HeadScreenSignInButton,
+  HeadScreenSignUpButton,
+  HeadScreenSearchIcon,
+  HeadScreenSearchInput,
 } from 'src/styles/materialUi/materialUiStyles/LandingPage';
 
 import './LandingPage.scss';
@@ -29,23 +29,23 @@ class HeadScreen extends React.Component {
       <div id="landing-page">
         <div className="screen-landing-page">
           <div className="div-input-icon-search" onMouseOver={this.handleInput}>
-            <LandingPageSearchIcon fontSize="large" color="action" />
-            <LandingPageSearchInput placeholder="Search…" id="fullSearchBar" />
+            <HeadScreenSearchIcon fontSize="large" color="action" />
+            <HeadScreenSearchInput placeholder="Search…" id="fullSearchBar" />
           </div>
           <span>
-            <LandingPageSignInButton variant="text" color="default">
+            <HeadScreenSignInButton variant="text" color="default">
               Sign in
-            </LandingPageSignInButton>
+            </HeadScreenSignInButton>
           </span>
           <div>
-            <LandingPageSignUpButton variant="outlined" color="default">
+            <HeadScreenSignUpButton variant="outlined" color="default">
               Sign up
-            </LandingPageSignUpButton>
+            </HeadScreenSignUpButton>
           </div>
-          <LandingPageAvatar src="src/styles/assets/images/logo-V2.png" alt="O’Track logo" />
-          <LandingPageSlogan color="textPrimary">
+          <HeadScreenAvatar src="src/styles/assets/images/logo-V2.png" alt="O’Track logo" />
+          <HeadScreenSlogan color="textPrimary">
             All your favorites shows
-          </LandingPageSlogan>
+          </HeadScreenSlogan>
         </div>
       </div>
     );

@@ -6,10 +6,14 @@ import {
 import './LandingPage.scss';
 
 import HeadScreen from './HeadScreen';
+import ApiInfos from './ApiInfos';
+import ManageShows from './ManageShows';
 
 const LandingPage = () => (
   <>
     <HeadScreen />
+    <ApiInfos />
+    <ManageShows />
   </>
 );
 
