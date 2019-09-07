@@ -133,6 +133,11 @@ export const TrendingSubtitle = styled(Typography)({
 
 export const TrendingGridSeries = styled(Grid)({
   paddingBottom: 100,
+  paddingLeft: 75,
+});
+
+export const TrendingGridAnime = styled(Grid)({
+  paddingLeft: 75,
 });
 
 export const TrendingIcon = styled(TrendingUpIcon)({
