@@ -10,6 +10,7 @@ import HeadScreen from './HeadScreen';
 import ApiInfos from './ApiInfos';
 import ManageShows from './ManageShows';
 import Trending from './Trending';
+import StartToday from './StartToday';
 
 class LandingPage extends React.Component {
   componentDidMount() {
@@ -23,6 +24,7 @@ class LandingPage extends React.Component {
         <ApiInfos />
         <ManageShows />
         <Trending />
+        <StartToday />
       </>
     );
   }

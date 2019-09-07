@@ -7,6 +7,8 @@ import LocalMoviesOutlinedIcon from '@material-ui/icons/LocalMoviesOutlined';
 import TrendingUpIcon from '@material-ui/icons/TrendingUp';
 import TuneIcon from '@material-ui/icons/Tune';
 import Star from '@material-ui/icons/Star';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+
 
 // Components MaterialUI vanilla
 import {
@@ -142,4 +144,21 @@ export const TrendingGridAnime = styled(Grid)({
 
 export const TrendingIcon = styled(TrendingUpIcon)({
   fontSize: '1.3em',
+});
+
+// ------------------- End styles of Trending.js ------------------------//
+
+
+// ------------------- Styles of StartNow.js ------------------------//
+
+export const StartNowGrid = styled(Grid)({
+  paddingBottom: 100,
+});
+
+export const StartNowIcon = styled(AccountCircleIcon)({
+  fontSize: '4.5em',
+});
+
+export const StartNowTitle = styled(Typography)({
+  paddingBottom: 40,
 });
