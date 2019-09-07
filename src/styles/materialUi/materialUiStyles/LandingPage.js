@@ -4,9 +4,8 @@ import SearchIcon from '@material-ui/icons/Search';
 
 // Icons
 import LocalMoviesOutlinedIcon from '@material-ui/icons/LocalMoviesOutlined';
-
+import TrendingUpIcon from '@material-ui/icons/TrendingUp';
 import TuneIcon from '@material-ui/icons/Tune';
-
 import Star from '@material-ui/icons/Star';
 
 // Components MaterialUI vanilla
@@ -16,6 +15,9 @@ import {
   Button,
   InputBase,
   Container,
+  Card,
+  CardMedia,
+  Grid,
 } from '@material-ui/core';
 
 
@@ -98,4 +100,41 @@ export const ManageShowsIconSettings = styled(TuneIcon)({
 
 export const ManageShowsIconStar = styled(Star)({
   color: '#FB8A01',
+});
+
+// ------------------- End styles of ManageShows.js ------------------------//
+
+
+// ------------------- Styles of Trending.js ------------------------//
+
+export const TrendingCard = styled(Card)({
+  maxWidth: 210,
+  boxShadow: '6px 15px 20px 0px rgba(30, 30, 30, 0.95)',
+  borderRadius: 10,
+  '&:hover': {
+    boxShadow: '10px 19px 24px 0px rgba(50, 50, 50, 0.95)',
+    transform: 'scale(1.1)',
+    cursor: 'pointer',
+  },
+});
+
+export const TrendingCardMedia = styled(CardMedia)({
+  height: 295,
+
+});
+
+export const TrendingTitleTranding = styled(Typography)({
+  paddingTop: 130,
+});
+
+export const TrendingSubtitle = styled(Typography)({
+  padding: '55px 0px 15px 0px',
+});
+
+export const TrendingGridSeries = styled(Grid)({
+  paddingBottom: 100,
+});
+
+export const TrendingIcon = styled(TrendingUpIcon)({
+  fontSize: '1.3em',
 });
