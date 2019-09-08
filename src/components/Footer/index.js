@@ -9,7 +9,6 @@ import {
 
 import {
   FooterAppBar,
-  FooterAvatar,
   FooterButton,
   FooterIcon,
 } from 'src/styles/materialUi/materialUiStyles/Footer';
@@ -39,7 +38,7 @@ class Footer extends React.Component {
             <Grid container>
               <Grid item lg={1} md={1} xs={1}>
                 {/* Logo */}
-                <FooterAvatar src="src/styles/assets/images/logo-V2.png" alt="O’Track logo" />
+                <img src="src/styles/assets/images/logos/logo-owl.png" alt="O’Track logo" id="FooterLogo" />
               </Grid>
 
               <Grid item lg={4} md={3} xs={3}>
@@ -79,12 +78,13 @@ class Footer extends React.Component {
 
 Footer.propTypes = {
   open: PropTypes.bool,
-  handleOpen: PropTypes.func.isRequired,
+  handleOpen: PropTypes.func,
   view: PropTypes.string,
 };
 
 Footer.defaultProps = {
   open: false,
+  handleOpen: () => {},
   view: '',
 };
 

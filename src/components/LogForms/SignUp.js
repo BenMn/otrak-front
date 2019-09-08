@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   LogFormModalPaper,
-  LogFormModalAvatar,
   LogFormModalButton,
   LogFormModalSubtitle,
 } from 'src/styles/materialUi/materialUiStyles/LogForms';
@@ -14,6 +13,8 @@ import {
   Container,
 } from '@material-ui/core';
 
+import './LogForms.scss';
+
 const SignUp = () => (
   <LogFormModalPaper>
     <Container component="main" maxWidth="xs">
@@ -25,10 +26,10 @@ const SignUp = () => (
         spacing={2}
       >
         <Grid item>
-          <LogFormModalAvatar src="src/styles/assets/images/logo-V2.png" alt="O'Track Logo" />
+          <img src="src/styles/assets/images/logos/logo-owl.png" alt="O'Track Logo" id="LogFormModalLogo" />
         </Grid>
         <Grid item>
-          <Typography component="h1" variant="h5">
+          <Typography component="h1" variant="h5" color="primary">
             Sign up
           </Typography>
         </Grid>

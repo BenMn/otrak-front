@@ -3,7 +3,6 @@ import { styled } from '@material-ui/styles';
 import {
   Modal,
   Paper,
-  Avatar,
   Button,
   Typography,
 } from '@material-ui/core';
@@ -23,11 +22,6 @@ export const LogFormModalPaper = styled(Paper)({
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-});
-
-export const LogFormModalAvatar = styled(Avatar)({
-  height: 80,
-  width: 80,
 });
 
 export const LogFormModalButton = styled(Button)({

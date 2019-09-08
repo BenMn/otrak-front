@@ -16,7 +16,7 @@ import { } from 'src/store/reducer';
  */
 const mapStateToProps = (state) => ({
   message: state.message,
-  view: state.view,
+  viewLanding: state.viewLanding,
 });
 
 /* === Actions ===
@@ -26,9 +26,7 @@ const mapStateToProps = (state) => ({
  *  - ownProps : les props passées au container
  * Pas de disptach à transmettre ? const mapDispatchToProps = {};
  */
-const mapDispatchToProps = (dispatch) => ({
-
-});
+const mapDispatchToProps = () => ({});
 
 // Container
 const AppContainer = connect(

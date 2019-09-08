@@ -31,10 +31,10 @@ class HeadScreen extends React.Component {
               <HeadScreenSearchInput placeholder="Search…" id="fullSearchBar" />
             </Grid>
             <Grid item>
-              <HeadScreenSignInButton variant="text" color="default">
+              <HeadScreenSignInButton variant="text" color="textSecondary">
                 Sign in
               </HeadScreenSignInButton>
-              <HeadScreenSignUpButton variant="outlined" color="default">
+              <HeadScreenSignUpButton variant="outlined" color="textSecondary">
                 Sign up
               </HeadScreenSignUpButton>
             </Grid>

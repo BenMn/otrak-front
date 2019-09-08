@@ -1,7 +1,8 @@
 // == Initial State
 const initialState = {
   trendingList: {},
-  view: 'landing',
+  viewLanding: 'landing',
+  view: '',
   inputValue: '',
   storeInputResult: {},
   setOpen: false,
