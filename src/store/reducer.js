@@ -1,23 +1,43 @@
 // == Initial State
 const initialState = {
-  message: 'Hello',
+  trendingList: {},
+  view: 'landing',
+  inputValue: '',
+  storeInputResult: {},
   setOpen: false,
   open: false,
-  view: '',
 };
 
 // == Types
-const DO_SOMETHING = 'DO_SOMETHING';
+const UPDATE_INPUT = 'UPDATE_INPUT';
+export const FETCH_INPUT_RESULT = 'FETCH_INPUT_RESULT';
+export const STORE_INPUT_RESULT = 'STORE_INPUT_RESULT';
+
+const STORE_TRENDING = 'STORE_TRENDING';
+export const FETCH_TRENDING = 'FETCH_TRENDING';
+
 const OPEN_MODAL = 'OPEN_MODAL';
 const CLOSE_MODAL = 'CLOSE_MODAL';
 
 // == Reducer
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case DO_SOMETHING:
+    case UPDATE_INPUT:
       return {
         ...state,
-        message: action.message,
+        inputValue: action.inputValue,
+      };
+
+    case STORE_TRENDING:
+      return {
+        ...state,
+        trendingList: action.data,
+      };
+
+    case STORE_INPUT_RESULT:
+      return {
+        ...state,
+        storeInputResult: action.storeInputResult,
       };
 
     case OPEN_MODAL:
@@ -42,9 +62,28 @@ const reducer = (state = initialState, action = {}) => {
 };
 
 // == Action Creators
-export const doSomething = (message) => ({
-  type: DO_SOMETHING,
-  message,
+export const updateInput = (inputValue) => ({
+  type: UPDATE_INPUT,
+  inputValue,
+});
+
+export const fetchTrending = () => ({
+  type: FETCH_TRENDING,
+});
+
+export const storeTrending = (data) => ({
+  type: STORE_TRENDING,
+  data,
+});
+
+export const fetchInputResult = (inputValue) => ({
+  type: FETCH_INPUT_RESULT,
+  inputValue,
+});
+
+export const storeInputResult = (data) => ({
+  type: STORE_INPUT_RESULT,
+  data,
 });
 
 export const openModal = (view) => ({

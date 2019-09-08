@@ -82,4 +82,5 @@ Navbar.defaultProps = {
   view: '',
 };
 
+
 export default Navbar;

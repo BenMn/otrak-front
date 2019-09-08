@@ -3,6 +3,10 @@ import { createMuiTheme } from '@material-ui/core/styles';
 const theme = createMuiTheme({
   palette: {
 
+    spacing: {
+      mui: true,
+    },
+
     primary: {
       light: '#4d4d4d',
       main: '#212121',
@@ -30,8 +34,8 @@ const theme = createMuiTheme({
     },
 
     text: {
-      primary: 'rgba(0, 0, 0, 0.87)',
-      secondary: 'rgba(0, 0, 0, 0.57)',
+      primary: 'rgba(255, 255, 255, 0.87)',
+      secondary: 'rgba(0, 0, 0, 0.87)',
       disabled: 'rgba(0, 0, 0, 0.38)',
       hint: 'rgba(0, 0, 0, 0.38)',
     },
