@@ -7,6 +7,7 @@ import { MuiThemeProvider } from '@material-ui/core';
 import Navbar from 'src/components/Navbar';
 import Footer from 'src/components/Footer';
 import LandingPage from 'src/containers/LandingPage';
+import LogFormModal from 'src/components/LogForms';
 
 // == Composant
 const App = ({ view }) => {
@@ -14,6 +15,7 @@ const App = ({ view }) => {
     <MuiThemeProvider theme={theme}>
       <div id="app">
         {view !== 'landing' && <Navbar />}
+         <LogFormModal />
         <LandingPage />
         <Footer />
       </div>

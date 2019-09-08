@@ -1,10 +1,11 @@
 // == Initial State
 const initialState = {
-  message: 'Hello',
   trendingList: {},
   view: 'landing',
   inputValue: '',
   storeInputResult: {},
+  setOpen: false,
+  open: false,
 };
 
 // == Types
@@ -14,6 +15,9 @@ export const STORE_INPUT_RESULT = 'STORE_INPUT_RESULT';
 
 const STORE_TRENDING = 'STORE_TRENDING';
 export const FETCH_TRENDING = 'FETCH_TRENDING';
+
+const OPEN_MODAL = 'OPEN_MODAL';
+const CLOSE_MODAL = 'CLOSE_MODAL';
 
 // == Reducer
 const reducer = (state = initialState, action = {}) => {
@@ -34,6 +38,22 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         storeInputResult: action.storeInputResult,
+      };
+
+    case OPEN_MODAL:
+      return {
+        ...state,
+        setOpen: true,
+        open: true,
+        view: action.view,
+      };
+
+    case CLOSE_MODAL:
+      return {
+        ...state,
+        setOpen: false,
+        open: false,
+        view: action.view,
       };
 
     default:
@@ -64,6 +84,20 @@ export const fetchInputResult = (inputValue) => ({
 export const storeInputResult = (data) => ({
   type: STORE_INPUT_RESULT,
   data,
+});
+
+export const openModal = (view) => ({
+  type: OPEN_MODAL,
+  setOpen: true,
+  open: true,
+  view,
+});
+
+export const closeModal = (view) => ({
+  type: CLOSE_MODAL,
+  setOpen: false,
+  open: false,
+  view,
 });
 
 // == Selectors
