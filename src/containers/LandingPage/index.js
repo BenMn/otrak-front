@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import LandingPage from 'src/components/LandingPage';
 
 // Action Creators
-import { doSomething } from 'src/store/reducer';
+import { doSomething, fetchTrending } from 'src/store/reducer';
 
 /* === State (données) ===
  * - mapStateToProps retroune un objet de props pour le composant de présentation
@@ -16,6 +16,7 @@ import { doSomething } from 'src/store/reducer';
  */
 const mapStateToProps = (state) => ({
   message: state.message,
+  trendingList: state.trendingList,
 });
 
 /* === Actions ===
@@ -26,8 +27,9 @@ const mapStateToProps = (state) => ({
  * Pas de disptach à transmettre ? const mapDispatchToProps = {};
  */
 const mapDispatchToProps = (dispatch) => ({
-  getTranding: () => {
-    console.log('hello');
+  getTrending: () => {
+    console.log('hello !!');
+    dispatch(fetchTrending());
   },
 
   doSomething: () => {

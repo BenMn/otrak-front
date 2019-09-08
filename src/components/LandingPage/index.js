@@ -14,24 +14,26 @@ import StartToday from './StartToday';
 
 class LandingPage extends React.Component {
   componentDidMount() {
-
+    this.props.getTrending();
   }
 
   render() {
+    const { trendingList } = this.props;
     return (
       <>
         <HeadScreen />
         <ApiInfos />
         <ManageShows />
-        <Trending />
+        <Trending trendingList={trendingList} />
         <StartToday />
       </>
     );
   }
 }
 
-LandingPage.propsTypes = {
+LandingPage.propTypes = {
   getTrending: PropTypes.func.isRequired,
+  trendingList: PropTypes.object.isRequired,
 };
 
 export default LandingPage;
