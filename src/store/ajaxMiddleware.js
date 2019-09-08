@@ -1,5 +1,10 @@
 import axios from 'axios';
-import { FETCH_TRENDING, storeTrending } from 'src/store/reducer';
+import {
+  FETCH_TRENDING,
+  FETCH_INPUT_RESULT,
+  storeTrending,
+  storeInputResult,
+} from 'src/store/reducer';
 
 
 const ajaxMiddleware = (store) => (next) => (action) => {
@@ -15,6 +20,16 @@ const ajaxMiddleware = (store) => (next) => (action) => {
         })
         .catch();
       break;
+
+    case FETCH_INPUT_RESULT:
+      axios.get(`https://swapi.co/api/planets/${action.inputValue}/`)
+        .then((response) => {
+          const { data } = response;
+          store.dispatch(storeInputResult(data));
+        })
+        .catch();
+      break;
+
     default:
       next(action);
   }

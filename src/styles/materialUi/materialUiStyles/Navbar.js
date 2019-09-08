@@ -5,6 +5,13 @@ import { fade } from '@material-ui/core/styles';
 import theme from 'src/styles/materialUi/materialUiTheme/theme';
 import SearchIcon from '@material-ui/icons/Search';
 
+export const NavbarLogButton = styled(Button)({
+  float: 'right',
+  marginRight: 10,
+});
+
+// White SearchBar
+
 export const NavbarSearch = styled(Paper)({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
@@ -28,9 +35,4 @@ export const NavbarSearchIcon = styled(SearchIcon)({
 export const NavbarSearchInput = styled(InputBase)({
   width: '100%',
   color: theme.palette.common.white,
-});
-
-export const NavbarLogButton = styled(Button)({
-  float: 'right',
-  marginRight: 10,
 });

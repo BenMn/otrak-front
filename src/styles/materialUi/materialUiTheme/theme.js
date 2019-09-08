@@ -3,6 +3,10 @@ import { createMuiTheme } from '@material-ui/core/styles';
 const theme = createMuiTheme({
   palette: {
 
+    spacing: {
+      mui: true,
+    },
+
     primary: {
       light: '#4d4d4d',
       main: '#212121',

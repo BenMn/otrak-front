@@ -23,7 +23,7 @@ const Footer = () => (
         <Grid container>
           <Grid item xs={1}>
             {/* Logo */}
-            <FooterAvatar src="src/styles/assets/images/logo-V2.png" alt="O’Track logo" />
+            <FooterAvatar src="src/styles/assets/images/logos/logo-V2.png" alt="O’Track logo" />
           </Grid>
           <Grid item xs={4}>
             <Typography variant="h6">

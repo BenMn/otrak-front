@@ -14,15 +14,25 @@ import StartToday from './StartToday';
 
 class LandingPage extends React.Component {
   componentDidMount() {
-    this.props.getTrending();
+    const { getTrending } = this.props;
+    getTrending();
   }
 
   render() {
-    const { trendingList } = this.props;
+    const {
+      trendingList,
+      inputValue,
+      handleInput,
+      handleInputSubmit,
+    } = this.props;
     return (
       <>
         <HeadScreen />
-        <ApiInfos />
+        <ApiInfos
+          inputValue={inputValue}
+          handleInput={handleInput}
+          handleInputSubmit={handleInputSubmit}
+        />
         <ManageShows />
         <Trending trendingList={trendingList} />
         <StartToday />
@@ -34,6 +44,9 @@ class LandingPage extends React.Component {
 LandingPage.propTypes = {
   getTrending: PropTypes.func.isRequired,
   trendingList: PropTypes.object.isRequired,
+  inputValue: PropTypes.string.isRequired,
+  handleInput: PropTypes.func.isRequired,
+  handleInputSubmit: PropTypes.func.isRequired,
 };
 
 export default LandingPage;

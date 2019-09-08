@@ -23,7 +23,7 @@ const Navbar = () => (
 
           {/* Logo */}
           <Grid item lg={3} md={3} xs={3}>
-            <img src="src/styles/assets/images/logo-V2.png" alt="O'Track logo" />
+            <img src="src/styles/assets/images/logos/logo-V2.png" alt="O'Track logo" />
           </Grid>
 
           {/* SearchBar */}

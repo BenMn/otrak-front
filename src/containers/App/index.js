@@ -2,10 +2,10 @@
 import { connect } from 'react-redux';
 
 // == Import : local
-import LandingPage from 'src/components/LandingPage';
+import App from 'src/components/App';
 
-// Action Creators
-import { updateInput, fetchTrending, fetchInputResult } from 'src/store/reducer';
+// Import Action Creators
+import { } from 'src/store/reducer';
 
 /* === State (données) ===
  * - mapStateToProps retroune un objet de props pour le composant de présentation
@@ -16,8 +16,7 @@ import { updateInput, fetchTrending, fetchInputResult } from 'src/store/reducer'
  */
 const mapStateToProps = (state) => ({
   message: state.message,
-  trendingList: state.trendingList,
-  inputValue: state.inputValue,
+  view: state.view,
 });
 
 /* === Actions ===
@@ -28,28 +27,17 @@ const mapStateToProps = (state) => ({
  * Pas de disptach à transmettre ? const mapDispatchToProps = {};
  */
 const mapDispatchToProps = (dispatch) => ({
-  getTrending: () => {
-    dispatch(fetchTrending());
-  },
 
-  handleInput: (newValue) => {
-    dispatch(updateInput(newValue));
-  },
-
-  handleInputSubmit: (event, inputValue) => {
-    event.preventDefault();
-    dispatch(fetchInputResult(inputValue));
-  },
 });
 
 // Container
-const LandingPageContainer = connect(
+const AppContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(LandingPage);
+)(App);
 
 // == Export
-export default LandingPageContainer;
+export default AppContainer;
 
 /* = export à la volée
 export default connect(

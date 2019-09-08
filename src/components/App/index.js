@@ -9,15 +9,17 @@ import Footer from 'src/components/Footer';
 import LandingPage from 'src/containers/LandingPage';
 
 // == Composant
-const App = () => (
-  <MuiThemeProvider theme={theme}>
-    <div id="app">
-      <Navbar />
-      <LandingPage />
-      <Footer />
-    </div>
-  </MuiThemeProvider>
-);
+const App = ({ view }) => {
+  return (
+    <MuiThemeProvider theme={theme}>
+      <div id="app">
+        {view !== 'landing' && <Navbar />}
+        <LandingPage />
+        <Footer />
+      </div>
+    </MuiThemeProvider>
+  );
+};
 
 // == Export
 export default App;

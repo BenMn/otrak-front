@@ -22,7 +22,7 @@ const StartToday = () => (
     >
       <StartNowIcon />
       <StartNowTitle variant="h3">Start Today</StartNowTitle>
-      <Button variant="contained" color="secondary">
+      <Button variant="contained" color="primary">
         Create an account
       </Button>
       <Typography>Don't be afraid, it's free !</Typography>
