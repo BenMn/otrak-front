@@ -24,16 +24,13 @@ class HeadScreen extends React.Component {
     document.getElementsByClassName('div-input-icon-search').removeEventListener('mouseover', this.handleInput, true);
   }
 
-  handleButtonClick = (event) => {
-    event.persist();
-    const viewName = event.target.innerHTML;
-    const { handleOpen, showForm } = this.props;
-    handleOpen(viewName);
-    showForm(event);
-  }
-
   render() {
-    const { open, viewModal, formName } = this.props;
+    const {
+      open,
+      viewModal,
+      formName,
+      handleOpen,
+    } = this.props;
     return (
       <div id="landing-page">
         <div className="screen-landing-page">
@@ -43,13 +40,14 @@ class HeadScreen extends React.Component {
               <HeadScreenSearchInput placeholder="Search…" id="fullSearchBar" />
             </Grid>
             <Grid item>
-              <HeadScreenSignInButton variant="text" onClick={this.handleButtonClick}>
+              <HeadScreenSignInButton variant="text" onClick={(event) => handleOpen(event)}>
                 Sign in
               </HeadScreenSignInButton>
-              <HeadScreenSignUpButton variant="outlined" onClick={this.handleButtonClick}>
+              <HeadScreenSignUpButton variant="outlined" onClick={(event) => handleOpen(event)}>
                 Sign up
               </HeadScreenSignUpButton>
-              {open === true && <LogFormsModal viewModal={viewModal} formName={formName} />}
+              {/* eslint-disable-next-line max-len */}
+              {open === true && <LogFormsModal viewModal={viewModal} formName={formName} handleOpen={handleOpen} />}
             </Grid>
           </Grid>
         </div>
@@ -61,7 +59,6 @@ class HeadScreen extends React.Component {
 HeadScreen.propTypes = {
   open: PropTypes.bool,
   handleOpen: PropTypes.func.isRequired,
-  showForm: PropTypes.func.isRequired,
   viewModal: PropTypes.string,
   formName: PropTypes.string,
 };

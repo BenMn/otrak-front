@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import {
   LogFormModalPaper,
   LogFormModalButton,
@@ -15,7 +17,7 @@ import {
 
 import './LogForms.scss';
 
-const SignUp = () => (
+const SignUp = ({ handleOpen }) => (
   <LogFormModalPaper id="SignUp">
     <Container component="main" maxWidth="xs">
       <Grid
@@ -100,13 +102,14 @@ const SignUp = () => (
 
           <Grid container direction="row" spacing={3}>
             <Grid item xs>
-              <Link href="#" variant="body2">
+              {console.log(handleOpen)}
+              <Link onClick={(event) => handleOpen(event)} variant="body2" color="secondary">
                 Forgot password?
               </Link>
             </Grid>
             <Grid item>
-              <Link href="#" variant="body2">
-                {'Already registred ? Sign In'}
+              <Link onClick={(event) => handleOpen(event)} variant="body2" color="secondary">
+                Already registred ? Sign in
               </Link>
             </Grid>
           </Grid>
@@ -117,5 +120,9 @@ const SignUp = () => (
     </Container>
   </LogFormModalPaper>
 );
+
+SignUp.propTypes = {
+  handleOpen: PropTypes.func.isRequired,
+};
 
 export default SignUp;

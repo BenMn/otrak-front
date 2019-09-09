@@ -21,8 +21,6 @@ export const FETCH_TRENDING = 'FETCH_TRENDING';
 const OPEN_MODAL = 'OPEN_MODAL';
 const CLOSE_MODAL = 'CLOSE_MODAL';
 
-const SHOW_FORM_LOG_LINKS = 'SHOW_FORM_LOG_LINKS';
-
 // == Reducer
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
@@ -50,6 +48,7 @@ const reducer = (state = initialState, action = {}) => {
         setOpen: true,
         open: true,
         viewModal: action.viewModal,
+        formName: action.formName,
       };
 
     case CLOSE_MODAL:
@@ -58,11 +57,6 @@ const reducer = (state = initialState, action = {}) => {
         setOpen: false,
         open: false,
         viewModal: action.viewModal,
-      };
-
-    case SHOW_FORM_LOG_LINKS:
-      return {
-        ...state,
         formName: action.formName,
       };
 
@@ -96,24 +90,22 @@ export const storeInputResult = (data) => ({
   data,
 });
 
-export const openModal = (viewModal) => ({
+export const openModal = (viewModal, formName) => ({
   type: OPEN_MODAL,
   setOpen: true,
   open: true,
   viewModal,
+  formName,
 });
 
-export const closeModal = (viewModal) => ({
+export const closeModal = (viewModal, formName) => ({
   type: CLOSE_MODAL,
   setOpen: false,
   open: false,
   viewModal,
-});
-
-export const showFormLogLinks = (formName) => ({
-  type: SHOW_FORM_LOG_LINKS,
   formName,
 });
+
 
 // == Selectors
 

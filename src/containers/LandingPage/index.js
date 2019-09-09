@@ -10,7 +10,6 @@ import {
   fetchTrending,
   fetchInputResult,
   openModal,
-  showFormLogLinks,
 } from 'src/store/reducer';
 
 /* === State (données) ===
@@ -51,27 +50,27 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(fetchInputResult(inputValue));
   },
 
-  handleOpen: (viewModalName) => {
-    dispatch(openModal(viewModalName));
-  },
+  handleOpen: (event) => {
+    event.persist();
 
-  showForm: (event) => {
+    const viewModalName = event.target.innerHTML;
+
     // Forgot Password Link
-    if (event.target.innerHTML.match(/password/g)) {
-      const formName = event.target.innerHTML.match(/password/g).toString();
-      dispatch(showFormLogLinks(formName));
+    if (viewModalName.match(/password/g)) {
+      const formName = viewModalName.match(/password/g).toString();
+      dispatch(openModal(viewModalName, formName));
     }
 
     // Sign Up Link
-    if (event.target.innerHTML.match(/up/g)) {
-      const formName = event.target.innerHTML.match(/up/g).toString();
-      dispatch(showFormLogLinks(formName));
+    if (viewModalName.match(/up/g)) {
+      const formName = viewModalName.match(/up/g).toString();
+      dispatch(openModal(viewModalName, formName));
     }
 
     // Sign In Link
-    if (event.target.innerHTML.match(/in/g)) {
-      const formName = event.target.innerHTML.match(/up/g).toString();
-      dispatch(showFormLogLinks(formName));
+    if (viewModalName.match(/in/g)) {
+      const formName = viewModalName.match(/in/g).toString();
+      dispatch(openModal(viewModalName, formName));
     }
   },
 });

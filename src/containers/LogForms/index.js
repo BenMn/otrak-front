@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import LogForms from 'src/components/LogForms';
 
 // Action Creators
-import { closeModal, showFormLogLinks } from 'src/store/reducer';
+import { closeModal, openModal } from 'src/store/reducer';
 
 const mapStateToProps = (state) => ({
   setOpen: state.setOpen,
@@ -18,24 +18,27 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(closeModal());
   },
 
-  showForm: (event) => {
+  handleOpen: (event) => {
+    event.persist();
+
+    const viewModalName = event.target.innerHTML;
+
     // Forgot Password Link
-    if (event.target.innerHTML.match(/password/g)) {
-      const formName = event.target.innerHTML.match(/password/g).toString();
-      dispatch(showFormLogLinks(formName));
+    if (viewModalName.match(/password/g)) {
+      const formName = viewModalName.match(/password/g).toString();
+      dispatch(openModal(viewModalName, formName));
     }
 
     // Sign Up Link
-    if (event.target.innerHTML.match(/up/g)) {
-      const formName = event.target.innerHTML.match(/up/g).toString();
-      dispatch(showFormLogLinks(formName));
+    if (viewModalName.match(/up/g)) {
+      const formName = viewModalName.match(/up/g).toString();
+      dispatch(openModal(viewModalName, formName));
     }
 
     // Sign In Link
-    if (event.target.innerHTML.match(/in/g)) {
-      console.log(event.target.innerHTML);
-      const formName = event.target.innerHTML.match(/up/g).toString();
-      dispatch(showFormLogLinks(formName));
+    if (viewModalName.match(/in/g)) {
+      const formName = viewModalName.match(/in/g).toString();
+      dispatch(openModal(viewModalName, formName));
     }
   },
 });
