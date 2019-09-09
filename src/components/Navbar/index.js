@@ -21,7 +21,6 @@ import LogFormsModal from 'src/containers/LogForms';
 const Navbar = ({
   open,
   viewModal,
-  handleOpen,
   handleInput,
   handleInputSubmit,
   inputValue,
@@ -54,10 +53,10 @@ const Navbar = ({
 
           {/* Buttons */}
           <Grid item lg={3} md={3} xs={5}>
-            <NavbarLogButton variant="outlined" color="inherit" onClick={(event) => handleOpen(event)}>
+            <NavbarLogButton variant="outlined" color="inherit" onClick="Je suis dans le Sign Up de la Navbar">
               Sign up
             </NavbarLogButton>
-            <NavbarLogButton variant="text" color="inherit" onClick={(event) => handleOpen(event)}>
+            <NavbarLogButton variant="text" color="inherit" onClick="Je suis dans le Sign In de la Navbar">
               Sign in
             </NavbarLogButton>
             {open === true && <LogFormsModal viewModal={viewModal} />}
@@ -71,7 +70,6 @@ const Navbar = ({
 
 Navbar.propTypes = {
   open: PropTypes.bool,
-  handleOpen: PropTypes.func.isRequired,
   handleInput: PropTypes.func.isRequired,
   handleInputSubmit: PropTypes.func.isRequired,
   viewModal: PropTypes.string,

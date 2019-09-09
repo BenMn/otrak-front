@@ -13,13 +13,12 @@ import LandingPage from 'src/containers/LandingPage';
 // == Composant
 const App = ({
   view,
-  handleOpen,
   handleInput,
   handleInputSubmit,
 }) => (
   <MuiThemeProvider theme={theme}>
     <div id="app">
-      {view !== 'landing' && <Navbar handleOpen={handleOpen} handleInput={handleInput} handleInputSubmit={handleInputSubmit} />}
+      {view !== 'landing' && <Navbar handleInput={handleInput} handleInputSubmit={handleInputSubmit} />}
       <LandingPage />
       <Footer />
     </div>
@@ -28,13 +27,11 @@ const App = ({
 
 App.propTypes = {
   view: PropTypes.string.isRequired,
-  handleOpen: PropTypes.func,
   handleInput: PropTypes.func,
   handleInputSubmit: PropTypes.func,
 };
 
 App.defaultProps = {
-  handleOpen: () => { },
   handleInput: () => { },
   handleInputSubmit: () => { },
 };

@@ -1,8 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-
-} from '@material-ui/core';
 
 import './LandingPage.scss';
 
@@ -36,7 +33,7 @@ class LandingPage extends React.Component {
         />
         <ManageShows />
         <Trending trendingList={trendingList} />
-        <StartToday handleOpen={handleOpen} />
+        <StartToday />
       </>
     );
   }

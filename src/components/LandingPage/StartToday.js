@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -14,7 +15,7 @@ import {
 
 import LogFormsModal from 'src/containers/LogForms';
 
-const StartToday = ({ open, viewModal, handleOpen }) => (
+const StartToday = ({ open, viewModal }) => (
   <>
     <StartNowGrid
       container
@@ -24,7 +25,7 @@ const StartToday = ({ open, viewModal, handleOpen }) => (
     >
       <StartNowIcon />
       <StartNowTitle variant="h3">Start Today</StartNowTitle>
-      <Button variant="contained" color="primary" onClick={(event) => handleOpen(event)}>
+      <Button variant="contained" color="primary" onClick={console.log('Je suis dans le Sign Up de StartToday')}>
         Keep up to date my favorite shows
       </Button>
       {open === true && <LogFormsModal viewModal={viewModal} />}
@@ -35,7 +36,6 @@ const StartToday = ({ open, viewModal, handleOpen }) => (
 
 StartToday.propTypes = {
   open: PropTypes.bool,
-  handleOpen: PropTypes.func.isRequired,
   viewModal: PropTypes.string,
 };
 
