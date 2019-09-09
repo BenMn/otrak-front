@@ -24,10 +24,11 @@ class LandingPage extends React.Component {
       inputValue,
       handleInput,
       handleInputSubmit,
+      handleOpen,
     } = this.props;
     return (
       <>
-        <HeadScreen />
+        <HeadScreen handleOpen={handleOpen} />
         <ApiInfos
           inputValue={inputValue}
           handleInput={handleInput}
@@ -35,7 +36,7 @@ class LandingPage extends React.Component {
         />
         <ManageShows />
         <Trending trendingList={trendingList} />
-        <StartToday />
+        <StartToday handleOpen={handleOpen} />
       </>
     );
   }
@@ -47,6 +48,7 @@ LandingPage.propTypes = {
   inputValue: PropTypes.string.isRequired,
   handleInput: PropTypes.func.isRequired,
   handleInputSubmit: PropTypes.func.isRequired,
+  handleOpen: PropTypes.func.isRequired,
 };
 
 export default LandingPage;

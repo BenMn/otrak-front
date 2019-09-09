@@ -1,8 +1,8 @@
 // == Initial State
 const initialState = {
   trendingList: {},
-  viewLanding: 'landing',
-  view: '',
+  view: 'landing',
+  viewModal: '',
   inputValue: '',
   storeInputResult: {},
   setOpen: false,
@@ -46,7 +46,7 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         setOpen: true,
         open: true,
-        view: action.view,
+        viewModal: action.viewModal,
       };
 
     case CLOSE_MODAL:
@@ -54,7 +54,7 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         setOpen: false,
         open: false,
-        view: action.view,
+        viewModal: action.viewModal,
       };
 
     default:
@@ -87,18 +87,18 @@ export const storeInputResult = (data) => ({
   data,
 });
 
-export const openModal = (view) => ({
+export const openModal = (viewModal) => ({
   type: OPEN_MODAL,
   setOpen: true,
   open: true,
-  view,
+  viewModal,
 });
 
-export const closeModal = (view) => ({
+export const closeModal = (viewModal) => ({
   type: CLOSE_MODAL,
   setOpen: false,
   open: false,
-  view,
+  viewModal,
 });
 
 // == Selectors

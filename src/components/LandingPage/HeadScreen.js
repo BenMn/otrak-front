@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { Grid } from '@material-ui/core';
 
@@ -11,6 +12,8 @@ import {
 
 import './LandingPage.scss';
 
+import LogFormsModal from 'src/containers/LogForms';
+
 class HeadScreen extends React.Component {
   handleInput = () => {
     const fullSearchBar = document.getElementById('fullSearchBar').parentElement;
@@ -21,7 +24,15 @@ class HeadScreen extends React.Component {
     document.getElementsByClassName('div-input-icon-search').removeEventListener('mouseover', this.handleInput, true);
   }
 
+  handleButtonClick = (event) => {
+    event.persist();
+    const viewName = event.target.innerHTML;
+    const { handleOpen } = this.props;
+    handleOpen(viewName);
+  }
+
   render() {
+    const { open, viewModal } = this.props;
     return (
       <div id="landing-page">
         <div className="screen-landing-page">
@@ -31,20 +42,30 @@ class HeadScreen extends React.Component {
               <HeadScreenSearchInput placeholder="Search…" id="fullSearchBar" />
             </Grid>
             <Grid item>
-              <HeadScreenSignInButton variant="text" color="textSecondary">
+              <HeadScreenSignInButton variant="text" onClick={this.handleButtonClick}>
                 Sign in
               </HeadScreenSignInButton>
-              <HeadScreenSignUpButton variant="outlined" color="textSecondary">
+              <HeadScreenSignUpButton variant="outlined" onClick={this.handleButtonClick}>
                 Sign up
               </HeadScreenSignUpButton>
+              {open === true && <LogFormsModal viewModal={viewModal} />}
             </Grid>
           </Grid>
-          <img src="src/styles/assets/images/logos/logo-ban.png" alt="O’Track logo" id="logo-ban" />
         </div>
       </div>
     );
   }
 }
 
+HeadScreen.propTypes = {
+  open: PropTypes.bool,
+  handleOpen: PropTypes.func.isRequired,
+  viewModal: PropTypes.string,
+};
+
+HeadScreen.defaultProps = {
+  open: false,
+  viewModal: '',
+};
 
 export default HeadScreen;

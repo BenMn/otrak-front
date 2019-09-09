@@ -5,7 +5,12 @@ import { connect } from 'react-redux';
 import LandingPage from 'src/components/LandingPage';
 
 // Action Creators
-import { updateInput, fetchTrending, fetchInputResult } from 'src/store/reducer';
+import {
+  updateInput,
+  fetchTrending,
+  fetchInputResult,
+  openModal,
+} from 'src/store/reducer';
 
 /* === State (données) ===
  * - mapStateToProps retroune un objet de props pour le composant de présentation
@@ -18,6 +23,9 @@ const mapStateToProps = (state) => ({
   message: state.message,
   trendingList: state.trendingList,
   inputValue: state.inputValue,
+  setOpen: state.setOpen,
+  open: state.open,
+  viewModal: state.viewModal,
 });
 
 /* === Actions ===
@@ -39,6 +47,10 @@ const mapDispatchToProps = (dispatch) => ({
   handleInputSubmit: (event, inputValue) => {
     event.preventDefault();
     dispatch(fetchInputResult(inputValue));
+  },
+
+  handleOpen: (viewModalName) => {
+    dispatch(openModal(viewModalName));
   },
 });
 

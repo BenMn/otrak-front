@@ -27,7 +27,7 @@ class Navbar extends React.Component {
   }
 
   render() {
-    const { open, view } = this.props;
+    const { open, viewModal } = this.props;
     return (
       <div id="Navbar">
 
@@ -60,7 +60,7 @@ class Navbar extends React.Component {
                 <NavbarLogButton variant="text" color="inherit" onClick={this.handleButtonClick}>
                     Sign in
                 </NavbarLogButton>
-                {open === true && <LogFormsModal view={view} />}
+                {open === true && <LogFormsModal viewModal={viewModal} />}
               </Grid>
 
             </Grid>
@@ -74,12 +74,12 @@ class Navbar extends React.Component {
 Navbar.propTypes = {
   open: PropTypes.bool,
   handleOpen: PropTypes.func.isRequired,
-  view: PropTypes.string,
+  viewModal: PropTypes.string,
 };
 
 Navbar.defaultProps = {
   open: false,
-  view: '',
+  viewModal: '',
 };
 
 

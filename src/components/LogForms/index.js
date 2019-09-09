@@ -9,7 +9,7 @@ import Fade from './ModalFade';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 
-const LogFormsModal = ({ open, handleClose, view }) => (
+const LogFormsModal = ({ open, handleClose, viewModal }) => (
   <div>
     <Modal
       aria-labelledby="spring-modal-title"
@@ -23,8 +23,8 @@ const LogFormsModal = ({ open, handleClose, view }) => (
       }}
     >
       <Fade in={open}>
-        {view === 'Sign in' && <SignIn />}
-        {view === 'Sign up' && <SignUp />}
+        {viewModal === 'Sign in' && <SignIn />}
+        {viewModal === 'Sign up' && <SignUp />}
       </Fade>
     </Modal>
   </div>
@@ -34,13 +34,13 @@ const LogFormsModal = ({ open, handleClose, view }) => (
 LogFormsModal.propTypes = {
   open: PropTypes.bool,
   handleClose: PropTypes.func,
-  view: PropTypes.string,
+  viewModal: PropTypes.string,
 };
 
 LogFormsModal.defaultProps = {
   open: false,
   handleClose: () => { },
-  view: '',
+  viewModal: '',
 };
 
 export default LogFormsModal;
