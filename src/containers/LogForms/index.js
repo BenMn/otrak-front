@@ -5,12 +5,13 @@ import { connect } from 'react-redux';
 import LogForms from 'src/components/LogForms';
 
 // Action Creators
-import { closeModal, openModal } from 'src/store/reducer';
+import { closeModal, openModal, updateAuthInput } from 'src/store/reducer';
 
 const mapStateToProps = (state) => ({
   setOpen: state.setOpen,
   open: state.open,
   formName: state.formName,
+  username: state.userAuthInfos.username,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -19,28 +20,31 @@ const mapDispatchToProps = (dispatch) => ({
   },
 
   handleOpen: (event) => {
-    event.persist();
+    event.preventDefault();
 
     const viewModalName = event.target.innerHTML;
-
+    let formName = '';
     // Forgot Password Link
     if (viewModalName.match(/password/g)) {
-      const formName = viewModalName.match(/password/g).toString();
-      dispatch(openModal(viewModalName, formName));
+      formName = viewModalName.match(/password/g).toString();
     }
-
-    // Sign Up Link
-    if (viewModalName.match(/up/g)) {
-      const formName = viewModalName.match(/up/g).toString();
-      dispatch(openModal(viewModalName, formName));
+    else if (viewModalName.match(/up/g)) {
+      formName = viewModalName.match(/up/g).toString();
     }
-
-    // Sign In Link
-    if (viewModalName.match(/in/g)) {
-      const formName = viewModalName.match(/in/g).toString();
-      dispatch(openModal(viewModalName, formName));
+    else if (viewModalName.match(/in/g)) {
+      formName = viewModalName.match(/in/g).toString();
     }
+    dispatch(openModal(viewModalName, formName));
   },
+
+  handleAuthInput: (newValue) => {
+    dispatch(updateAuthInput(newValue));
+  },
+
+  handleUserAuthInfos: (event) => {
+    event.preventDefault();
+  },
+
 });
 
 // Container

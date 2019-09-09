@@ -15,6 +15,8 @@ const LogFormsModal = ({
   handleClose,
   formName,
   handleOpen,
+  handleUserAuthInfos,
+  handleAuthInput,
 }) => (
   <div>
     <Modal
@@ -29,9 +31,9 @@ const LogFormsModal = ({
       }}
     >
       <Fade in={open}>
-        {formName === 'in' && <SignIn formName={formName} handleOpen={handleOpen} />}
-        {formName === 'up' && <SignUp formName={formName} handleOpen={handleOpen} />}
-        {formName === 'password' && <ForgotPassword formName={formName} handleOpen={handleOpen} />}
+        {formName === 'in' && <SignIn handleOpen={handleOpen} handleUserAuthInfos={handleUserAuthInfos} handleAuthInput={handleAuthInput} />}
+        {formName === 'up' && <SignUp handleOpen={handleOpen} handleUserAuthInfos={handleUserAuthInfos} handleAuthInput={handleAuthInput} />}
+        {formName === 'password' && <ForgotPassword handleOpen={handleOpen} handleUserAuthInfos={handleUserAuthInfos} handleAuthInput={handleAuthInput} />}
       </Fade>
     </Modal>
   </div>
@@ -42,6 +44,7 @@ LogFormsModal.propTypes = {
   open: PropTypes.bool,
   handleClose: PropTypes.func,
   handleOpen: PropTypes.func,
+  handleAuthInput: PropTypes.func,
   formName: PropTypes.string,
 };
 
@@ -49,6 +52,7 @@ LogFormsModal.defaultProps = {
   open: false,
   handleClose: () => { },
   handleOpen: () => { },
+  handleAuthInput: () => { },
   formName: '',
 };
 

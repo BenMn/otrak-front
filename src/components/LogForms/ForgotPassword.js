@@ -50,7 +50,7 @@ const ForgotPassword = ({ handleOpen }) => (
               margin="normal"
               required
               fullWidth
-              id="email"
+              id="email-forgotPassword"
               label="Email Address"
               name="email"
               autoComplete="email"
@@ -85,7 +85,6 @@ const ForgotPassword = ({ handleOpen }) => (
         </form>
 
       </Grid>
-
 
     </Container>
   </LogFormModalPaper>

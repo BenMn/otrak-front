@@ -21,8 +21,6 @@ class HeadScreen extends React.Component {
     fullSearchBar.classList.add('slide-in-left');
     fullSearchBar.style.display = 'block';
     fullSearchBar.style.borderBottom = `1px solid ${theme.palette.common.white}`;
-
-    document.getElementsByClassName('div-input-icon-search').removeEventListener('mouseover', this.handleInput, true);
   }
 
   render() {
@@ -48,7 +46,7 @@ class HeadScreen extends React.Component {
                 Sign up
               </HeadScreenSignUpButton>
               {/* eslint-disable-next-line max-len */}
-              {open === true && <LogFormsModal viewModal={viewModal} formName={formName} handleOpen={handleOpen} />}
+              {open === true && <LogFormsModal viewModal={viewModal} formName={formName} />}
             </Grid>
           </Grid>
         </div>

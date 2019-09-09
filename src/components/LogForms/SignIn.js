@@ -49,9 +49,9 @@ const SignIn = ({ handleOpen }) => (
               margin="normal"
               required
               fullWidth
-              id="email"
+              id="email-signIn"
               label="Email Address"
-              name="email"
+              name="email-signIn"
               autoComplete="email"
               autoFocus
             />
@@ -60,10 +60,10 @@ const SignIn = ({ handleOpen }) => (
               margin="normal"
               required
               fullWidth
-              name="password"
+              name="password-signIn"
               label="Password"
               type="password"
-              id="password"
+              id="password-signIn"
               autoComplete="current-password"
             />
           </Grid>

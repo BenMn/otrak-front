@@ -17,7 +17,12 @@ import {
 
 import './LogForms.scss';
 
-const SignUp = ({ handleOpen }) => (
+const SignUp = ({
+  handleOpen,
+  handleUserAuthInfos,
+  handleAuthInput,
+  username,
+}) => (
   <LogFormModalPaper id="SignUp">
     <Container component="main" maxWidth="xs">
       <Grid
@@ -41,50 +46,62 @@ const SignUp = ({ handleOpen }) => (
           </LogFormModalSubtitle>
         </Grid>
 
-        <form noValidate>
-
+        <form onSubmit={(event) => handleUserAuthInfos(event)}>
+          {console.log('BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')}
+          {console.log(username)}
+          {console.log('BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')}
           <Grid item>
             <TextField
+              onChange={(event) => {
+                handleAuthInput(event.target.value);
+              }}
+              value={username}
               variant="outlined"
               margin="normal"
               required
               fullWidth
-              id="username"
+              id="username-signUp"
               label="Username"
-              name="username"
+              name="username-signUp"
               autoComplete="username"
               autoFocus
             />
             <TextField
+              onChange={(event) => handleAuthInput(event.target.value)}
+              value="yoyo"
               variant="outlined"
               margin="normal"
               required
               fullWidth
-              id="email"
+              id="email-signUp"
               label="Email Address"
-              name="email"
+              name="email-signUp"
               autoComplete="email"
             />
             <TextField
+              onChange={(event) => handleAuthInput(event.target.value)}
+              value="yoyo"
               variant="outlined"
               margin="normal"
               required
               fullWidth
-              name="password"
+              name="password-signUp"
               label="Password"
               type="password"
-              id="password"
+              id="password-signUp"
               autoComplete="current-password"
             />
             <TextField
+              onChange={(event) => handleAuthInput(event.target.value)}
+              value="yoyo"
               variant="outlined"
               margin="normal"
               required
               fullWidth
-              name="confirm-password"
+              name="confirm-password-signUp"
               label="Confirm Password"
               type="password"
-              id="confirm-password"
+              id="confirm-password-signUp"
               autoComplete="current-password"
             />
           </Grid>
@@ -98,22 +115,19 @@ const SignUp = ({ handleOpen }) => (
               Create your account
             </LogFormModalButton>
           </Grid>
-
-          <Grid container direction="row" spacing={3}>
-            <Grid item xs>
-              <Link onClick={(event) => handleOpen(event)} variant="body2" color="secondary">
-                Forgot password?
-              </Link>
-            </Grid>
-            <Grid item>
-              <Link onClick={(event) => handleOpen(event)} variant="body2" color="secondary">
-                Already registred ? Sign in
-              </Link>
-            </Grid>
-          </Grid>
-
         </form>
-
+        <Grid container direction="row" spacing={3}>
+          <Grid item xs>
+            <Link onClick={(event) => handleOpen(event)} variant="body2" color="secondary">
+              Forgot password?
+            </Link>
+          </Grid>
+          <Grid item>
+            <Link onClick={(event) => handleOpen(event)} variant="body2" color="secondary">
+              Already registred ? Sign in
+            </Link>
+          </Grid>
+        </Grid>
       </Grid>
     </Container>
   </LogFormModalPaper>
@@ -121,6 +135,13 @@ const SignUp = ({ handleOpen }) => (
 
 SignUp.propTypes = {
   handleOpen: PropTypes.func.isRequired,
+  handleUserAuthInfos: PropTypes.func.isRequired,
+  handleAuthInput: PropTypes.func.isRequired,
+  username: PropTypes.string,
+};
+
+SignUp.defaultProps = {
+  username: '',
 };
 
 export default SignUp;

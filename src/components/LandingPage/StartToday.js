@@ -13,7 +13,6 @@ import {
 } from 'src/styles/materialUi/materialUiStyles/LandingPage';
 
 import LogFormsModal from 'src/containers/LogForms';
-// import './LandingPage.scss';
 
 const StartToday = ({ open, viewModal, handleOpen }) => (
   <>

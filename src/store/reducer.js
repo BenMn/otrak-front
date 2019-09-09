@@ -9,7 +9,7 @@ const initialState = {
   open: false,
   formName: '',
   userAuthInfos: {
-    username: '',
+    username: 'prout',
     email: '',
     password: '',
     passwordConfirm: '',
@@ -18,6 +18,7 @@ const initialState = {
 
 // == Types
 const UPDATE_INPUT = 'UPDATE_INPUT';
+const UPDATE_AUTH_INPUT = 'UPDATE_AUTH_INPUT';
 export const FETCH_INPUT_RESULT = 'FETCH_INPUT_RESULT';
 export const STORE_INPUT_RESULT = 'STORE_INPUT_RESULT';
 
@@ -34,6 +35,14 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         inputValue: action.inputValue,
+      };
+
+    case UPDATE_AUTH_INPUT:
+      return {
+        ...state,
+        userAuthInfos: {
+          username: action.userAuthInfos.username,
+        },
       };
 
     case STORE_TRENDING:
@@ -75,6 +84,13 @@ const reducer = (state = initialState, action = {}) => {
 export const updateInput = (inputValue) => ({
   type: UPDATE_INPUT,
   inputValue,
+});
+
+export const updateAuthInput = (username) => ({
+  type: UPDATE_AUTH_INPUT,
+  userAuthInfos: {
+    username,
+  },
 });
 
 export const fetchTrending = () => ({

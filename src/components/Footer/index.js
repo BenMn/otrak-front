@@ -22,7 +22,7 @@ import './Footer.scss';
 
 class Footer extends React.Component {
   handleButtonClick = (event) => {
-    event.persist();
+    event.preventDefault();
     const viewName = 'Sign up';
     const { handleOpen } = this.props;
     handleOpen(viewName);
