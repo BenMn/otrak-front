@@ -16,7 +16,7 @@ import {
 import './LogForms.scss';
 
 const SignUp = () => (
-  <LogFormModalPaper>
+  <LogFormModalPaper id="SignUp">
     <Container component="main" maxWidth="xs">
       <Grid
         container
