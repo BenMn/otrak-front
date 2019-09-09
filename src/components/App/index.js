@@ -11,10 +11,15 @@ import LandingPage from 'src/containers/LandingPage';
 import LogFormModal from 'src/containers/LogForms';
 
 // == Composant
-const App = ({ view, handleOpen }) => (
+const App = ({
+  view,
+  handleOpen,
+  handleInput,
+  handleInputSubmit,
+}) => (
   <MuiThemeProvider theme={theme}>
     <div id="app">
-      {view !== 'landing' && <Navbar handleOpen={handleOpen} />}
+      {view !== 'landing' && <Navbar handleOpen={handleOpen} handleInput={handleInput} handleInputSubmit={handleInputSubmit} />}
       <LogFormModal />
       <LandingPage />
       <Footer />
@@ -24,7 +29,15 @@ const App = ({ view, handleOpen }) => (
 
 App.propTypes = {
   view: PropTypes.string.isRequired,
-  handleOpen: PropTypes.func.isRequired,
+  handleOpen: PropTypes.func,
+  handleInput: PropTypes.func,
+  handleInputSubmit: PropTypes.func,
+};
+
+App.defaultProps = {
+  handleOpen: () => { },
+  handleInput: () => { },
+  handleInputSubmit: () => { },
 };
 
 // == Export

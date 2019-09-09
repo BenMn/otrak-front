@@ -18,9 +18,15 @@ import './Navbar.scss';
 
 import LogFormsModal from 'src/containers/LogForms';
 
-const Navbar = ({ open, viewModal, handleOpen }) => (
+const Navbar = ({
+  open,
+  viewModal,
+  handleOpen,
+  handleInput,
+  handleInputSubmit,
+  inputValue,
+}) => (
   <div id="Navbar">
-
     <AppBar position="static">
       <Toolbar>
         <Grid container spacing={2} justify="center">
@@ -34,11 +40,15 @@ const Navbar = ({ open, viewModal, handleOpen }) => (
           <Grid item lg={6} md={6} xs={4}>
             <NavbarSearch>
               <NavbarSearchIcon />
-              <NavbarSearchInput
-                color="textPrimary"
-                placeholder="Start looking for a show..."
-                inputProps={{ 'aria-label': 'search' }}
-              />
+              <form onSubmit={(event) => handleInputSubmit(event, inputValue)} id="form-submit">
+                <NavbarSearchInput
+                  color="textPrimary"
+                  placeholder="Start looking for a show..."
+                  inputProps={{ 'aria-label': 'search' }}
+                  value={inputValue}
+                  onChange={(event) => handleInput(event.target.value)}
+                />
+              </form>
             </NavbarSearch>
           </Grid>
 
@@ -62,7 +72,10 @@ const Navbar = ({ open, viewModal, handleOpen }) => (
 Navbar.propTypes = {
   open: PropTypes.bool,
   handleOpen: PropTypes.func.isRequired,
+  handleInput: PropTypes.func.isRequired,
+  handleInputSubmit: PropTypes.func.isRequired,
   viewModal: PropTypes.string,
+  inputValue: PropTypes.string.isRequired,
 };
 
 Navbar.defaultProps = {

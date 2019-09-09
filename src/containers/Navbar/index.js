@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import Navbar from 'src/components/Navbar';
 
 // Action Creators
-import { openModal } from 'src/store/reducer';
+import { openModal, updateInput, fetchInputResult } from 'src/store/reducer';
 
 /* === State (données) ===
  * - mapStateToProps retroune un objet de props pour le composant de présentation
@@ -18,6 +18,7 @@ const mapStateToProps = (state) => ({
   setOpen: state.setOpen,
   open: state.open,
   viewModal: state.viewModal,
+  inputValue: state.inputValue,
 });
 
 /* === Actions ===
@@ -28,6 +29,15 @@ const mapStateToProps = (state) => ({
  * Pas de disptach à transmettre ? const mapDispatchToProps = {};
  */
 const mapDispatchToProps = (dispatch) => ({
+  handleInput: (newValue) => {
+    dispatch(updateInput(newValue));
+  },
+
+  handleInputSubmit: (event, inputValue) => {
+    event.preventDefault();
+    dispatch(fetchInputResult(inputValue));
+  },
+
   handleOpen: (event) => {
     event.persist();
 

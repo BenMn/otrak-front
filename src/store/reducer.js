@@ -8,6 +8,12 @@ const initialState = {
   setOpen: false,
   open: false,
   formName: '',
+  userAuthInfos: {
+    username: '',
+    email: '',
+    password: '',
+    passwordConfirm: '',
+  },
 };
 
 // == Types
