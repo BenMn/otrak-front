@@ -27,12 +27,13 @@ class HeadScreen extends React.Component {
   handleButtonClick = (event) => {
     event.persist();
     const viewName = event.target.innerHTML;
-    const { handleOpen } = this.props;
+    const { handleOpen, showForm } = this.props;
     handleOpen(viewName);
+    showForm(event);
   }
 
   render() {
-    const { open, viewModal } = this.props;
+    const { open, viewModal, formName } = this.props;
     return (
       <div id="landing-page">
         <div className="screen-landing-page">
@@ -48,7 +49,7 @@ class HeadScreen extends React.Component {
               <HeadScreenSignUpButton variant="outlined" onClick={this.handleButtonClick}>
                 Sign up
               </HeadScreenSignUpButton>
-              {open === true && <LogFormsModal viewModal={viewModal} />}
+              {open === true && <LogFormsModal viewModal={viewModal} formName={formName} />}
             </Grid>
           </Grid>
         </div>
@@ -60,12 +61,15 @@ class HeadScreen extends React.Component {
 HeadScreen.propTypes = {
   open: PropTypes.bool,
   handleOpen: PropTypes.func.isRequired,
+  showForm: PropTypes.func.isRequired,
   viewModal: PropTypes.string,
+  formName: PropTypes.string,
 };
 
 HeadScreen.defaultProps = {
   open: false,
   viewModal: '',
+  formName: '',
 };
 
 export default HeadScreen;

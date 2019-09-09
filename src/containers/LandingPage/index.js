@@ -10,6 +10,7 @@ import {
   fetchTrending,
   fetchInputResult,
   openModal,
+  showFormLogLinks,
 } from 'src/store/reducer';
 
 /* === State (données) ===
@@ -26,6 +27,7 @@ const mapStateToProps = (state) => ({
   setOpen: state.setOpen,
   open: state.open,
   viewModal: state.viewModal,
+  formName: state.formName,
 });
 
 /* === Actions ===
@@ -51,6 +53,26 @@ const mapDispatchToProps = (dispatch) => ({
 
   handleOpen: (viewModalName) => {
     dispatch(openModal(viewModalName));
+  },
+
+  showForm: (event) => {
+    // Forgot Password Link
+    if (event.target.innerHTML.match(/password/g)) {
+      const formName = event.target.innerHTML.match(/password/g).toString();
+      dispatch(showFormLogLinks(formName));
+    }
+
+    // Sign Up Link
+    if (event.target.innerHTML.match(/up/g)) {
+      const formName = event.target.innerHTML.match(/up/g).toString();
+      dispatch(showFormLogLinks(formName));
+    }
+
+    // Sign In Link
+    if (event.target.innerHTML.match(/in/g)) {
+      const formName = event.target.innerHTML.match(/up/g).toString();
+      dispatch(showFormLogLinks(formName));
+    }
   },
 });
 
