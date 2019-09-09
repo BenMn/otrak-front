@@ -1,12 +1,13 @@
 // == Initial State
 const initialState = {
   trendingList: {},
-  viewLanding: 'landing',
+  viewLanding: '',
   view: '',
   inputValue: '',
   storeInputResult: {},
   setOpen: false,
   open: false,
+  drawerOpen: true,
 };
 
 // == Types

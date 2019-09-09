@@ -34,10 +34,10 @@ const theme = createMuiTheme({
     },
 
     text: {
-      primary: 'rgba(255, 255, 255, 0.97)',
-      secondary: 'rgba(0, 0, 0, 0.87)',
-      disabled: 'rgba(0, 0, 0, 0.38)',
-      hint: 'rgba(0, 0, 0, 0.38)',
+      primary: 'rgba(0, 0, 0, 0.97)',
+      secondary: 'rgba(0, 0, 0, 0.57)',
+      disabled: 'rgba(0, 0, 0, 0.37)',
+      hint: 'rgba(0, 0, 0, 0.37)',
     },
   },
 });

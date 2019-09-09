@@ -9,6 +9,7 @@ import Navbar from 'src/containers/Navbar';
 import Footer from 'src/containers/Footer';
 import LandingPage from 'src/containers/LandingPage';
 import LogFormModal from 'src/containers/LogForms';
+import Homepage from 'src/containers/Homepage';
 
 // == Composant
 const App = ({ viewLanding }) => (
@@ -16,7 +17,8 @@ const App = ({ viewLanding }) => (
     <div id="app">
       {viewLanding !== 'landing' && <Navbar />}
       <LogFormModal />
-      <LandingPage />
+      {/* <LandingPage /> */}
+      <Homepage />
       <Footer />
     </div>
   </MuiThemeProvider>
