@@ -54,6 +54,7 @@ const mapDispatchToProps = (dispatch) => ({
     event.persist();
 
     const viewModalName = event.target.innerHTML;
+    console.log(viewModalName);
 
     // Forgot Password Link
     if (viewModalName.match(/password/g)) {

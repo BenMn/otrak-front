@@ -15,36 +15,24 @@ import {
 import LogFormsModal from 'src/containers/LogForms';
 // import './LandingPage.scss';
 
-class StartToday extends React.Component {
-  handleButtonClick = (event) => {
-    event.persist();
-    const viewName = 'Sign up';
-    const { handleOpen } = this.props;
-    handleOpen(viewName);
-  }
-
-  render() {
-    const { open, viewModal } = this.props;
-    return (
-      <>
-        <StartNowGrid
-          container
-          direction="column"
-          justify="center"
-          alignItems="center"
-        >
-          <StartNowIcon />
-          <StartNowTitle variant="h3">Start Today</StartNowTitle>
-          <Button variant="contained" color="primary" onClick={this.handleButtonClick}>
-            Create an account
-          </Button>
-          {open === true && <LogFormsModal viewModal={viewModal} />}
-          <Typography>Don't be afraid, it's free !</Typography>
-        </StartNowGrid>
-      </>
-    );
-  }
-}
+const StartToday = ({ open, viewModal, handleOpen }) => (
+  <>
+    <StartNowGrid
+      container
+      direction="column"
+      justify="center"
+      alignItems="center"
+    >
+      <StartNowIcon />
+      <StartNowTitle variant="h3">Start Today</StartNowTitle>
+      <Button variant="contained" color="primary" onClick={(event) => handleOpen(event)}>
+        Keep up to date my favorite shows
+      </Button>
+      {open === true && <LogFormsModal viewModal={viewModal} />}
+      <Typography>Don't be afraid, it's free !</Typography>
+    </StartNowGrid>
+  </>
+);
 
 StartToday.propTypes = {
   open: PropTypes.bool,

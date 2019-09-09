@@ -64,7 +64,6 @@ const SignUp = ({ handleOpen }) => (
               label="Email Address"
               name="email"
               autoComplete="email"
-              autoFocus
             />
             <TextField
               variant="outlined"
@@ -102,7 +101,6 @@ const SignUp = ({ handleOpen }) => (
 
           <Grid container direction="row" spacing={3}>
             <Grid item xs>
-              {console.log(handleOpen)}
               <Link onClick={(event) => handleOpen(event)} variant="body2" color="secondary">
                 Forgot password?
               </Link>

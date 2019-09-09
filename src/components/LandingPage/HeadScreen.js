@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import theme from 'src/styles/materialUi/materialUiTheme/theme';
 
 import { Grid } from '@material-ui/core';
 
@@ -19,7 +20,7 @@ class HeadScreen extends React.Component {
     const fullSearchBar = document.getElementById('fullSearchBar').parentElement;
     fullSearchBar.classList.add('slide-in-left');
     fullSearchBar.style.display = 'block';
-    fullSearchBar.style.borderBottom = '1px solid #fff';
+    fullSearchBar.style.borderBottom = `1px solid ${theme.palette.common.white}`;
 
     document.getElementsByClassName('div-input-icon-search').removeEventListener('mouseover', this.handleInput, true);
   }
