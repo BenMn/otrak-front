@@ -16,11 +16,10 @@ import {
 
 import './Navbar.scss';
 
-import LogFormsModal from 'src/containers/LogForms';
+import LogFormsModal from 'src/Modal';
 
 const Navbar = ({
   open,
-  viewModal,
   handleOpen,
   handleInput,
   handleInputSubmit,
@@ -60,7 +59,7 @@ const Navbar = ({
             <NavbarLogButton variant="text" color="inherit" onClick={(event) => handleOpen(event)}>
               Sign in
             </NavbarLogButton>
-            {open === true && <LogFormsModal viewModal={viewModal} />}
+            {open === true && <LogFormsModal />}
           </Grid>
 
         </Grid>
@@ -74,13 +73,11 @@ Navbar.propTypes = {
   handleOpen: PropTypes.func.isRequired,
   handleInput: PropTypes.func.isRequired,
   handleInputSubmit: PropTypes.func.isRequired,
-  viewModal: PropTypes.string,
   inputValue: PropTypes.string.isRequired,
 };
 
 Navbar.defaultProps = {
-  open: false,
-  viewModal: '',
+  open: null,
 };
 
 

@@ -8,7 +8,6 @@ import LogForms from 'src/components/LogForms';
 import { closeModal, openModal, updateAuthInput } from 'src/store/reducer';
 
 const mapStateToProps = (state) => ({
-  setOpen: state.setOpen,
   open: state.open,
   formName: state.formName,
   username: state.userAuthInfos.username,
@@ -34,7 +33,7 @@ const mapDispatchToProps = (dispatch) => ({
     else if (viewModalName.match(/in/g)) {
       formName = viewModalName.match(/in/g).toString();
     }
-    dispatch(openModal(viewModalName, formName));
+    dispatch(openModal(formName));
   },
 
   handleAuthInput: (newValue) => {

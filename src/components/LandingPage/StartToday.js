@@ -12,9 +12,9 @@ import {
   StartNowTitle,
 } from 'src/styles/materialUi/materialUiStyles/LandingPage';
 
-import LogFormsModal from 'src/containers/LogForms';
+import LogFormsModal from 'src/Modal';
 
-const StartToday = ({ open, viewModal, handleOpen }) => (
+const StartToday = ({ open, handleOpen }) => (
   <>
     <StartNowGrid
       container
@@ -27,7 +27,7 @@ const StartToday = ({ open, viewModal, handleOpen }) => (
       <Button variant="contained" color="primary" onClick={(event) => handleOpen(event)}>
         Keep up to date my favorite shows
       </Button>
-      {open === true && <LogFormsModal viewModal={viewModal} />}
+      {open === true && <LogFormsModal />}
       <Typography>Don't be afraid, it's free !</Typography>
     </StartNowGrid>
   </>
@@ -36,12 +36,10 @@ const StartToday = ({ open, viewModal, handleOpen }) => (
 StartToday.propTypes = {
   open: PropTypes.bool,
   handleOpen: PropTypes.func.isRequired,
-  viewModal: PropTypes.string,
 };
 
 StartToday.defaultProps = {
   open: false,
-  viewModal: '',
 };
 
 export default StartToday;

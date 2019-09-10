@@ -8,15 +8,13 @@ import Footer from 'src/components/Footer';
 import { openModal } from 'src/store/reducer';
 
 const mapStateToProps = (state) => ({
-  setOpen: state.setOpen,
   open: state.open,
-  viewModal: state.viewModal,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   handleOpen: (viewModalName) => {
     const formName = viewModalName.match(/up/g).toString();
-    dispatch(openModal(viewModalName, formName));
+    dispatch(openModal(formName));
   },
 });
 

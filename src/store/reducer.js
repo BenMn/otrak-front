@@ -2,11 +2,9 @@
 const initialState = {
   trendingList: {},
   view: 'landing',
-  viewModal: '',
   inputValue: '',
   storeInputResult: {},
-  setOpen: false,
-  open: false,
+  open: null,
   formName: '',
   userAuthInfos: {
     username: 'prout',
@@ -60,18 +58,14 @@ const reducer = (state = initialState, action = {}) => {
     case OPEN_MODAL:
       return {
         ...state,
-        setOpen: true,
         open: true,
-        viewModal: action.viewModal,
         formName: action.formName,
       };
 
     case CLOSE_MODAL:
       return {
         ...state,
-        setOpen: false,
-        open: false,
-        viewModal: action.viewModal,
+        open: null,
         formName: action.formName,
       };
 
@@ -112,19 +106,15 @@ export const storeInputResult = (data) => ({
   data,
 });
 
-export const openModal = (viewModal, formName) => ({
+export const openModal = (formName) => ({
   type: OPEN_MODAL,
-  setOpen: true,
   open: true,
-  viewModal,
   formName,
 });
 
-export const closeModal = (viewModal, formName) => ({
+export const closeModal = (formName) => ({
   type: CLOSE_MODAL,
-  setOpen: false,
-  open: false,
-  viewModal,
+  open: null,
   formName,
 });
 

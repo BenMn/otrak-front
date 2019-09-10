@@ -78,6 +78,7 @@ export const HeadScreenSearchInput = styled(InputBase)({
   position: 'absolute',
   display: 'none',
   left: 95,
+  color: theme.palette.common.white,
 });
 
 // ------------------- End styles of HeadScreen.js ------------------------//

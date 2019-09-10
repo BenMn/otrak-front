@@ -8,7 +8,6 @@ import { MuiThemeProvider } from '@material-ui/core';
 import Navbar from 'src/containers/Navbar';
 import Footer from 'src/containers/Footer';
 import LandingPage from 'src/containers/LandingPage';
-// import LogFormModal from 'src/containers/LogForms';
 
 // == Composant
 const App = ({
@@ -34,9 +33,9 @@ App.propTypes = {
 };
 
 App.defaultProps = {
-  handleOpen: () => { },
-  handleInput: () => { },
-  handleInputSubmit: () => { },
+  handleOpen: () => {},
+  handleInput: () => {},
+  handleInputSubmit: () => {},
 };
 
 // == Export

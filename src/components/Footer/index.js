@@ -16,7 +16,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
-import LogFormsModal from 'src/containers/LogForms';
+import LogFormsModal from 'src/Modal';
 
 import './Footer.scss';
 
@@ -29,7 +29,7 @@ class Footer extends React.Component {
   }
 
   render() {
-    const { open, viewModal } = this.props;
+    const { open } = this.props;
     return (
       <div id="Footer">
         <FooterAppBar position="static">
@@ -50,12 +50,13 @@ class Footer extends React.Component {
                 </Typography>
               </Grid>
 
+              {open === true && <LogFormsModal />}
+
               <Grid item lg={5} md={7} xs={7}>
                 {/* Central buttons */}
                 <FooterButton variant="outlined" color="inherit" onClick={this.handleButtonClick}>
                   REGISTER NOW !
                 </FooterButton>
-                {open === true && <LogFormsModal viewModal={viewModal} />}
 
                 <FooterButton color="inherit">TEAM</FooterButton>
                 <FooterButton color="inherit">LEGAL</FooterButton>
@@ -79,13 +80,11 @@ class Footer extends React.Component {
 Footer.propTypes = {
   open: PropTypes.bool,
   handleOpen: PropTypes.func,
-  viewModal: PropTypes.string,
 };
 
 Footer.defaultProps = {
   open: false,
   handleOpen: () => {},
-  viewModal: '',
 };
 
 export default Footer;

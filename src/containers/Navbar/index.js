@@ -8,9 +8,7 @@ import Navbar from 'src/components/Navbar';
 import { openModal, updateInput, fetchInputResult } from 'src/store/reducer';
 
 const mapStateToProps = (state) => ({
-  setOpen: state.setOpen,
   open: state.open,
-  viewModal: state.viewModal,
   inputValue: state.inputValue,
 });
 
@@ -39,7 +37,7 @@ const mapDispatchToProps = (dispatch) => ({
     else if (viewModalName.match(/in/g)) {
       formName = viewModalName.match(/in/g).toString();
     }
-    dispatch(openModal(viewModalName, formName));
+    dispatch(openModal(formName));
   },
 });
 

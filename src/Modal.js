@@ -4,17 +4,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { LogFormsModal as Modal } from 'src/styles/materialUi/materialUiStyles/LogForms';
-import SignIn from './SignIn';
-import SignUp from './SignUp';
-import ForgotPassword from './ForgotPassword';
+// import SignIn from 'src/components/LogForms/SignIn';
+// import SignUp from 'src/components/LogForms/SignUp';
+// import ForgotPassword from 'src/components/LogForms/ForgotPassword';
 
 const LogFormsModal = ({
   open,
   handleClose,
   formName,
-  handleOpen,
-  handleUserAuthInfos,
-  handleAuthInput,
+  // handleOpen,
+  // handleUserAuthInfos,
+  // handleAuthInput,
 }) => (
   <div>
     {formName === 'in' && (
@@ -23,11 +23,7 @@ const LogFormsModal = ({
         onClose={handleClose}
         closeAfterTransition
       >
-        <SignIn
-          handleOpen={handleOpen}
-          handleUserAuthInfos={handleUserAuthInfos}
-          handleAuthInput={handleAuthInput}
-        />
+        YO C'EST LE SIGN IN
       </Modal>
     )}
 
@@ -37,11 +33,7 @@ const LogFormsModal = ({
         onClose={handleClose}
         closeAfterTransition
       >
-        <SignUp
-          handleOpen={handleOpen}
-          handleUserAuthInfos={handleUserAuthInfos}
-          handleAuthInput={handleAuthInput}
-        />
+        YO C'EST LE SIGN UP
       </Modal>
     )}
 
@@ -51,11 +43,7 @@ const LogFormsModal = ({
         onClose={handleClose}
         closeAfterTransition
       >
-        <ForgotPassword
-          handleOpen={handleOpen}
-          handleUserAuthInfos={handleUserAuthInfos}
-          handleAuthInput={handleAuthInput}
-        />
+        YO C'EST LE PASSWORD
       </Modal>
     )}
   </div>
@@ -65,17 +53,35 @@ const LogFormsModal = ({
 LogFormsModal.propTypes = {
   open: PropTypes.bool,
   handleClose: PropTypes.func,
-  handleOpen: PropTypes.func,
-  handleAuthInput: PropTypes.func,
+  // handleOpen: PropTypes.func,
+  // handleAuthInput: PropTypes.func,
   formName: PropTypes.string,
 };
 
 LogFormsModal.defaultProps = {
   open: false,
-  handleClose: () => {},
-  handleOpen: () => {},
-  handleAuthInput: () => {},
+  handleClose: () => { },
+  // handleOpen: () => { },
+  // handleAuthInput: () => { },
   formName: '',
 };
 
 export default LogFormsModal;
+
+{ /* <SignIn
+handleOpen={handleOpen}
+handleUserAuthInfos={handleUserAuthInfos}
+handleAuthInput={handleAuthInput}
+/> */ }
+
+{ /* <SignUp
+handleOpen={handleOpen}
+handleUserAuthInfos={handleUserAuthInfos}
+handleAuthInput={handleAuthInput}
+/> */ }
+
+{ /* <ForgotPassword
+handleOpen={handleOpen}
+handleUserAuthInfos={handleUserAuthInfos}
+handleAuthInput={handleAuthInput}
+/> */ }

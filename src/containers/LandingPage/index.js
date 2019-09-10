@@ -16,9 +16,7 @@ const mapStateToProps = (state) => ({
   message: state.message,
   trendingList: state.trendingList,
   inputValue: state.inputValue,
-  setOpen: state.setOpen,
   open: state.open,
-  viewModal: state.viewModal,
   formName: state.formName,
 });
 
@@ -51,7 +49,7 @@ const mapDispatchToProps = (dispatch) => ({
     else if (viewModalName.match(/in/g)) {
       formName = viewModalName.match(/in/g).toString();
     }
-    dispatch(openModal(viewModalName, formName));
+    dispatch(openModal(formName));
   },
 });
 

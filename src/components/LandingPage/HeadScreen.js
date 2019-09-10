@@ -13,7 +13,7 @@ import {
 
 import './LandingPage.scss';
 
-import LogFormsModal from 'src/containers/LogForms';
+import LogFormsModal from 'src/Modal';
 
 class HeadScreen extends React.Component {
   handleInput = () => {
@@ -26,7 +26,6 @@ class HeadScreen extends React.Component {
   render() {
     const {
       open,
-      viewModal,
       formName,
       handleOpen,
     } = this.props;
@@ -35,18 +34,25 @@ class HeadScreen extends React.Component {
         <div className="screen-landing-page">
           <Grid container justify="space-between" className="header-transparent-navbar">
             <Grid item className="div-input-icon-search">
-              <HeadScreenSearchIcon fontSize="large" color="action" onMouseOver={this.handleInput} />
+              <HeadScreenSearchIcon fontSize="large" onMouseOver={this.handleInput} />
               <HeadScreenSearchInput placeholder="Search…" id="fullSearchBar" />
             </Grid>
             <Grid item>
-              <HeadScreenSignInButton variant="text" onClick={(event) => handleOpen(event)}>
+
+              <HeadScreenSignInButton
+                variant="text"
+                onClick={(event) => {
+                  (handleOpen(event));
+                }}
+              >
                 Sign in
               </HeadScreenSignInButton>
+
               <HeadScreenSignUpButton variant="outlined" onClick={(event) => handleOpen(event)}>
                 Sign up
               </HeadScreenSignUpButton>
               {/* eslint-disable-next-line max-len */}
-              {open === true && <LogFormsModal viewModal={viewModal} formName={formName} />}
+              {open === true && <LogFormsModal formName={formName} />}
             </Grid>
           </Grid>
         </div>
@@ -58,13 +64,11 @@ class HeadScreen extends React.Component {
 HeadScreen.propTypes = {
   open: PropTypes.bool,
   handleOpen: PropTypes.func.isRequired,
-  viewModal: PropTypes.string,
   formName: PropTypes.string,
 };
 
 HeadScreen.defaultProps = {
   open: false,
-  viewModal: '',
   formName: '',
 };
 
