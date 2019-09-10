@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import theme from 'src/styles/materialUi/materialUiTheme/theme';
 
 import { Grid } from '@material-ui/core';
@@ -13,8 +12,6 @@ import {
 
 import './LandingPage.scss';
 
-import LogFormsModal from 'src/Modal';
-
 class HeadScreen extends React.Component {
   handleInput = () => {
     const fullSearchBar = document.getElementById('fullSearchBar').parentElement;
@@ -24,11 +21,6 @@ class HeadScreen extends React.Component {
   }
 
   render() {
-    const {
-      open,
-      formName,
-      handleOpen,
-    } = this.props;
     return (
       <div id="landing-page">
         <div className="screen-landing-page">
@@ -39,20 +31,13 @@ class HeadScreen extends React.Component {
             </Grid>
             <Grid item>
 
-              <HeadScreenSignInButton
-                variant="text"
-                onClick={(event) => {
-                  (handleOpen(event));
-                }}
-              >
+              <HeadScreenSignInButton variant="text">
                 Sign in
               </HeadScreenSignInButton>
 
-              <HeadScreenSignUpButton variant="outlined" onClick={(event) => handleOpen(event)}>
+              <HeadScreenSignUpButton variant="outlined">
                 Sign up
               </HeadScreenSignUpButton>
-              {/* eslint-disable-next-line max-len */}
-              {open === true && <LogFormsModal formName={formName} />}
             </Grid>
           </Grid>
         </div>
@@ -60,16 +45,5 @@ class HeadScreen extends React.Component {
     );
   }
 }
-
-HeadScreen.propTypes = {
-  open: PropTypes.bool,
-  handleOpen: PropTypes.func.isRequired,
-  formName: PropTypes.string,
-};
-
-HeadScreen.defaultProps = {
-  open: false,
-  formName: '',
-};
 
 export default HeadScreen;

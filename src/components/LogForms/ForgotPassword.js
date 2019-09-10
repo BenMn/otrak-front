@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import {
   LogFormModalButton,
@@ -17,8 +16,7 @@ import {
 
 import './LogForms.scss';
 
-
-const ForgotPassword = ({ handleOpen }) => (
+const ForgotPassword = () => (
   <LogFormModalPaper id="Password">
     <Container component="main" maxWidth="xs">
       <Grid
@@ -71,12 +69,12 @@ const ForgotPassword = ({ handleOpen }) => (
 
           <Grid container direction="row" spacing={3}>
             <Grid item xs>
-              <Link onClick={(event) => handleOpen(event)} variant="body2" color="secondary">
+              <Link variant="body2" color="secondary">
                 Already registred ? Sign in
               </Link>
             </Grid>
             <Grid item>
-              <Link onClick={(event) => handleOpen(event)} variant="body2" color="secondary">
+              <Link variant="body2" color="secondary">
                 Don't have an account? Sign up
               </Link>
             </Grid>
@@ -89,9 +87,5 @@ const ForgotPassword = ({ handleOpen }) => (
     </Container>
   </LogFormModalPaper>
 );
-
-ForgotPassword.propTypes = {
-  handleOpen: PropTypes.func.isRequired,
-};
 
 export default ForgotPassword;

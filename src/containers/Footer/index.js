@@ -5,18 +5,10 @@ import { connect } from 'react-redux';
 import Footer from 'src/components/Footer';
 
 // Action Creators
-import { openModal } from 'src/store/reducer';
 
-const mapStateToProps = (state) => ({
-  open: state.open,
-});
+const mapStateToProps = null;
 
-const mapDispatchToProps = (dispatch) => ({
-  handleOpen: (viewModalName) => {
-    const formName = viewModalName.match(/up/g).toString();
-    dispatch(openModal(formName));
-  },
-});
+const mapDispatchToProps = () => ({});
 
 // Container
 const FooterContainer = connect(

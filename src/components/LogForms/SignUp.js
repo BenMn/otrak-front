@@ -18,7 +18,6 @@ import {
 import './LogForms.scss';
 
 const SignUp = ({
-  handleOpen,
   handleUserAuthInfos,
   handleAuthInput,
   username,
@@ -47,9 +46,6 @@ const SignUp = ({
         </Grid>
 
         <form onSubmit={(event) => handleUserAuthInfos(event)}>
-          {console.log('BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')}
-          {console.log(username)}
-          {console.log('BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')}
           <Grid item>
             <TextField
               onChange={(event) => {
@@ -118,12 +114,12 @@ const SignUp = ({
         </form>
         <Grid container direction="row" spacing={3}>
           <Grid item xs>
-            <Link onClick={(event) => handleOpen(event)} variant="body2" color="secondary">
+            <Link variant="body2" color="secondary">
               Forgot password?
             </Link>
           </Grid>
           <Grid item>
-            <Link onClick={(event) => handleOpen(event)} variant="body2" color="secondary">
+            <Link variant="body2" color="secondary">
               Already registred ? Sign in
             </Link>
           </Grid>
@@ -134,7 +130,6 @@ const SignUp = ({
 );
 
 SignUp.propTypes = {
-  handleOpen: PropTypes.func.isRequired,
   handleUserAuthInfos: PropTypes.func.isRequired,
   handleAuthInput: PropTypes.func.isRequired,
   username: PropTypes.string,

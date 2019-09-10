@@ -16,11 +16,8 @@ import {
 
 import './Navbar.scss';
 
-import LogFormsModal from 'src/Modal';
 
 const Navbar = ({
-  open,
-  handleOpen,
   handleInput,
   handleInputSubmit,
   inputValue,
@@ -53,13 +50,12 @@ const Navbar = ({
 
           {/* Buttons */}
           <Grid item lg={3} md={3} xs={5}>
-            <NavbarLogButton variant="outlined" color="inherit" onClick={(event) => handleOpen(event)}>
+            <NavbarLogButton variant="outlined" color="inherit">
               Sign up
             </NavbarLogButton>
-            <NavbarLogButton variant="text" color="inherit" onClick={(event) => handleOpen(event)}>
+            <NavbarLogButton variant="text" color="inherit">
               Sign in
             </NavbarLogButton>
-            {open === true && <LogFormsModal />}
           </Grid>
 
         </Grid>
@@ -69,16 +65,9 @@ const Navbar = ({
 );
 
 Navbar.propTypes = {
-  open: PropTypes.bool,
-  handleOpen: PropTypes.func.isRequired,
   handleInput: PropTypes.func.isRequired,
   handleInputSubmit: PropTypes.func.isRequired,
   inputValue: PropTypes.string.isRequired,
 };
-
-Navbar.defaultProps = {
-  open: null,
-};
-
 
 export default Navbar;

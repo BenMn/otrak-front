@@ -4,8 +4,6 @@ const initialState = {
   view: 'landing',
   inputValue: '',
   storeInputResult: {},
-  open: null,
-  formName: '',
   userAuthInfos: {
     username: 'prout',
     email: '',
@@ -22,9 +20,6 @@ export const STORE_INPUT_RESULT = 'STORE_INPUT_RESULT';
 
 const STORE_TRENDING = 'STORE_TRENDING';
 export const FETCH_TRENDING = 'FETCH_TRENDING';
-
-const OPEN_MODAL = 'OPEN_MODAL';
-const CLOSE_MODAL = 'CLOSE_MODAL';
 
 // == Reducer
 const reducer = (state = initialState, action = {}) => {
@@ -53,20 +48,6 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         storeInputResult: action.storeInputResult,
-      };
-
-    case OPEN_MODAL:
-      return {
-        ...state,
-        open: true,
-        formName: action.formName,
-      };
-
-    case CLOSE_MODAL:
-      return {
-        ...state,
-        open: null,
-        formName: action.formName,
       };
 
     default:
@@ -105,19 +86,6 @@ export const storeInputResult = (data) => ({
   type: STORE_INPUT_RESULT,
   data,
 });
-
-export const openModal = (formName) => ({
-  type: OPEN_MODAL,
-  open: true,
-  formName,
-});
-
-export const closeModal = (formName) => ({
-  type: CLOSE_MODAL,
-  open: null,
-  formName,
-});
-
 
 // == Selectors
 

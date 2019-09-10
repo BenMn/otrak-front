@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import {
   Typography,
@@ -12,9 +11,7 @@ import {
   StartNowTitle,
 } from 'src/styles/materialUi/materialUiStyles/LandingPage';
 
-import LogFormsModal from 'src/Modal';
-
-const StartToday = ({ open, handleOpen }) => (
+const StartToday = () => (
   <>
     <StartNowGrid
       container
@@ -24,22 +21,12 @@ const StartToday = ({ open, handleOpen }) => (
     >
       <StartNowIcon />
       <StartNowTitle variant="h3">Start Today</StartNowTitle>
-      <Button variant="contained" color="primary" onClick={(event) => handleOpen(event)}>
+      <Button variant="contained" color="primary">
         Keep up to date my favorite shows
       </Button>
-      {open === true && <LogFormsModal />}
       <Typography>Don't be afraid, it's free !</Typography>
     </StartNowGrid>
   </>
 );
-
-StartToday.propTypes = {
-  open: PropTypes.bool,
-  handleOpen: PropTypes.func.isRequired,
-};
-
-StartToday.defaultProps = {
-  open: false,
-};
 
 export default StartToday;

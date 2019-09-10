@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import {
   LogFormModalPaper,
@@ -17,7 +16,7 @@ import {
 
 import './LogForms.scss';
 
-const SignIn = ({ handleOpen }) => (
+const SignIn = () => (
   <LogFormModalPaper id="SignIn">
     <Container component="main" maxWidth="xs">
       <Grid
@@ -80,12 +79,12 @@ const SignIn = ({ handleOpen }) => (
 
           <Grid container direction="row" spacing={3}>
             <Grid item xs>
-              <Link onClick={(event) => handleOpen(event)} variant="body2" color="secondary">
+              <Link variant="body2" color="secondary">
                 Forgot password?
               </Link>
             </Grid>
             <Grid item>
-              <Link onClick={(event) => handleOpen(event)} variant="body2" color="secondary">
+              <Link variant="body2" color="secondary">
                 Don't have an account? Sign up
               </Link>
             </Grid>
@@ -98,9 +97,5 @@ const SignIn = ({ handleOpen }) => (
     </Container>
   </LogFormModalPaper>
 );
-
-SignIn.propTypes = {
-  handleOpen: PropTypes.func.isRequired,
-};
 
 export default SignIn;
