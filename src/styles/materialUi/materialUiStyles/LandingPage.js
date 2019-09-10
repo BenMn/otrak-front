@@ -13,7 +13,6 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 // Components MaterialUI vanilla
 import {
-  Avatar,
   Typography,
   Button,
   InputBase,
@@ -34,20 +33,14 @@ export const LandingPageContainer = styled(Container)({
 
 // ------------------- Styles of HeadScreen.js ------------------------//
 
-export const HeadScreenAvatar = styled(Avatar)({
-  position: 'relative',
-  top: '65%',
-  left: '5%',
-  width: '10vw',
-  height: '10vw',
-});
-
 export const HeadScreenSlogan = styled(Typography)({
   position: 'relative',
-  top: '55vh',
-  left: '16%',
+  top: '50vh',
+  left: '3%',
   fontSize: '2em',
   display: 'inline',
+  zIndex: '2',
+  width: 'fit-content',
 });
 
 export const HeadScreenSignInButton = styled(Button)({

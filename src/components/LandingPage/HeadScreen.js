@@ -9,6 +9,7 @@ import {
   HeadScreenSignUpButton,
   HeadScreenSearchIcon,
   HeadScreenSearchInput,
+  HeadScreenSlogan,
 } from 'src/styles/materialUi/materialUiStyles/LandingPage';
 
 import './LandingPage.scss';
@@ -76,6 +77,9 @@ class HeadScreen extends React.Component {
               )}
             </Grid>
           </Grid>
+          <HeadScreenSlogan>
+            <img src="src/styles/assets/images/logos/logo-ban-2.png" alt="O'Trak logo-ban" id="logo-ban" />
+          </HeadScreenSlogan>
         </div>
       </div>
     );
