@@ -19,7 +19,14 @@ const App = ({
 }) => (
   <MuiThemeProvider theme={theme}>
     <div id="app">
-      {view !== 'landing' && <Navbar handleOpen={handleOpen} handleInput={handleInput} handleInputSubmit={handleInputSubmit} />}
+      {view !== 'landing'
+        && (
+        <Navbar
+          handleOpen={handleOpen}
+          handleInput={handleInput}
+          handleInputSubmit={handleInputSubmit}
+        />
+        )}
       <LogFormModal />
       <LandingPage />
       <Footer />

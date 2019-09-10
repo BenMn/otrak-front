@@ -20,7 +20,7 @@ class HeadScreen extends React.Component {
     const fullSearchBar = document.getElementById('fullSearchBar').parentElement;
     fullSearchBar.classList.add('slide-in-left');
     fullSearchBar.style.display = 'block';
-    fullSearchBar.style.borderBottom = `1px solid ${theme.palette.common.white}`;
+    fullSearchBar.style.borderBottom = `1px solid ${theme.palette.secondary.main}`;
 
     document.getElementsByClassName('div-input-icon-search').removeEventListener('mouseover', this.handleInput, true);
   }
@@ -31,6 +31,9 @@ class HeadScreen extends React.Component {
       viewModal,
       formName,
       handleOpen,
+      inputValue,
+      handleInput,
+      handleInputSubmit,
     } = this.props;
     return (
       <div id="landing-page">
@@ -38,17 +41,39 @@ class HeadScreen extends React.Component {
           <Grid container justify="space-between" className="header-transparent-navbar">
             <Grid item className="div-input-icon-search">
               <HeadScreenSearchIcon fontSize="large" color="action" onMouseOver={this.handleInput} />
-              <HeadScreenSearchInput placeholder="Search…" id="fullSearchBar" />
+
+              <form onSubmit={(event) => handleInputSubmit(event, inputValue)} id="form-submit">
+                <HeadScreenSearchInput
+                  placeholder="Try Game Of Thrones, Naruto..."
+                  id="fullSearchBar"
+                  value={inputValue}
+                  onChange={(event) => handleInput(event.target.value)}
+                />
+              </form>
+
             </Grid>
             <Grid item>
-              <HeadScreenSignInButton variant="text" onClick={(event) => handleOpen(event)}>
+              <HeadScreenSignInButton
+                variant="text"
+                onClick={(event) => handleOpen(event)}
+              >
                 Sign in
               </HeadScreenSignInButton>
-              <HeadScreenSignUpButton variant="outlined" onClick={(event) => handleOpen(event)}>
+
+              <HeadScreenSignUpButton
+                variant="outlined"
+                onClick={(event) => handleOpen(event)}
+              >
                 Sign up
               </HeadScreenSignUpButton>
               {/* eslint-disable-next-line max-len */}
-              {open === true && <LogFormsModal viewModal={viewModal} formName={formName} handleOpen={handleOpen} />}
+              {open === true && (
+                <LogFormsModal
+                  viewModal={viewModal}
+                  formName={formName}
+                  handleOpen={handleOpen}
+                />
+              )}
             </Grid>
           </Grid>
         </div>
@@ -62,6 +87,9 @@ HeadScreen.propTypes = {
   handleOpen: PropTypes.func.isRequired,
   viewModal: PropTypes.string,
   formName: PropTypes.string,
+  inputValue: PropTypes.string.isRequired,
+  handleInput: PropTypes.func.isRequired,
+  handleInputSubmit: PropTypes.func.isRequired,
 };
 
 HeadScreen.defaultProps = {

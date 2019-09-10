@@ -28,7 +28,12 @@ class LandingPage extends React.Component {
     } = this.props;
     return (
       <>
-        <HeadScreen handleOpen={handleOpen} />
+        <HeadScreen
+          handleOpen={handleOpen}
+          inputValue={inputValue}
+          handleInput={handleInput}
+          handleInputSubmit={handleInputSubmit}
+        />
         <ApiInfos
           inputValue={inputValue}
           handleInput={handleInput}

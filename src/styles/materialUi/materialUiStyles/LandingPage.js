@@ -67,17 +67,27 @@ export const HeadScreenSignUpButton = styled(Button)({
 
 export const HeadScreenSearchIcon = styled(SearchIcon)({
   position: 'relative',
-  color: theme.palette.common.white,
+  color: theme.palette.secondary.main,
   left: 50,
   display: 'flex',
   alignSelf: 'center',
   marginRight: 10,
+  border: `1px solid ${theme.palette.secondary.main}`,
+  borderRadius: '50%',
+  padding: '3px',
+  boxShadow: '3px 4px 7px 0px rgba(30, 30, 30, 0.55)',
 });
 
 export const HeadScreenSearchInput = styled(InputBase)({
   position: 'absolute',
   display: 'none',
   left: 95,
+  color: theme.palette.common.white,
+  backgroundColor: '#00000020',
+  borderRadius: 15,
+  paddingLeft: 15,
+  width: 350,
+  boxShadow: '3px 4px 7px 0px rgba(30, 30, 30, 0.55)',
 });
 
 // ------------------- End styles of HeadScreen.js ------------------------//
@@ -161,7 +171,7 @@ export const TrendingCardMedia = styled(CardMedia)({
 });
 
 export const TrendingTitleTranding = styled(Typography)({
-  paddingTop: 130,
+  padding: '130px 0 40px 0',
 });
 
 export const TrendingSubtitle = styled(Typography)({
