@@ -9,6 +9,7 @@ import {
   updateInput,
   fetchTrending,
   fetchInputResult,
+  changeView,
 } from 'src/store/reducer';
 
 const mapStateToProps = (state) => ({
@@ -28,6 +29,10 @@ const mapDispatchToProps = (dispatch) => ({
   handleInputSubmit: (event, inputValue) => {
     event.preventDefault();
     dispatch(fetchInputResult(inputValue));
+  },
+
+  changeView: (newView) => {
+    dispatch(changeView(newView));
   },
 });
 

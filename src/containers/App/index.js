@@ -6,7 +6,6 @@ import App from 'src/components/App';
 
 
 const mapStateToProps = (state) => ({
-  message: state.message,
   view: state.view,
 });
 

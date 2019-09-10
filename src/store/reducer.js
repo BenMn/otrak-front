@@ -1,9 +1,9 @@
 // == Initial State
 const initialState = {
   trendingList: {},
-  view: 'landing',
   inputValue: '',
   storeInputResult: {},
+  view: '',
   userAuthInfos: {
     username: 'prout',
     email: '',
@@ -13,6 +13,8 @@ const initialState = {
 };
 
 // == Types
+const CHANGE_VIEW = 'CHANGE_VIEW';
+
 const UPDATE_INPUT = 'UPDATE_INPUT';
 const UPDATE_AUTH_INPUT = 'UPDATE_AUTH_INPUT';
 export const FETCH_INPUT_RESULT = 'FETCH_INPUT_RESULT';
@@ -24,6 +26,12 @@ export const FETCH_TRENDING = 'FETCH_TRENDING';
 // == Reducer
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
+    case CHANGE_VIEW:
+      return {
+        ...state,
+        view: action.view,
+      };
+
     case UPDATE_INPUT:
       return {
         ...state,
@@ -56,6 +64,12 @@ const reducer = (state = initialState, action = {}) => {
 };
 
 // == Action Creators
+
+export const changeView = (view) => ({
+  type: CHANGE_VIEW,
+  view,
+});
+
 export const updateInput = (inputValue) => ({
   type: UPDATE_INPUT,
   inputValue,

@@ -1,8 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-
-} from '@material-ui/core';
 
 import './LandingPage.scss';
 
@@ -24,10 +21,11 @@ class LandingPage extends React.Component {
       inputValue,
       handleInput,
       handleInputSubmit,
+      changeView,
     } = this.props;
     return (
       <>
-        <HeadScreen />
+        <HeadScreen changeView={changeView} />
         <ApiInfos
           inputValue={inputValue}
           handleInput={handleInput}
@@ -47,6 +45,7 @@ LandingPage.propTypes = {
   inputValue: PropTypes.string.isRequired,
   handleInput: PropTypes.func.isRequired,
   handleInputSubmit: PropTypes.func.isRequired,
+  changeView: PropTypes.func.isRequired,
 };
 
 export default LandingPage;

@@ -1,5 +1,7 @@
 import React from 'react';
 import theme from 'src/styles/materialUi/materialUiTheme/theme';
+import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 
 import { Grid } from '@material-ui/core';
 
@@ -21,6 +23,7 @@ class HeadScreen extends React.Component {
   }
 
   render() {
+    const { changeView } = this.props;
     return (
       <div id="landing-page">
         <div className="screen-landing-page">
@@ -31,13 +34,17 @@ class HeadScreen extends React.Component {
             </Grid>
             <Grid item>
 
-              <HeadScreenSignInButton variant="text">
-                Sign in
-              </HeadScreenSignInButton>
+              <NavLink to="/login" onClick={() => changeView('login')}>
+                <HeadScreenSignInButton variant="text">
+                  Log in
+                </HeadScreenSignInButton>
+              </NavLink>
 
-              <HeadScreenSignUpButton variant="outlined">
-                Sign up
-              </HeadScreenSignUpButton>
+              <NavLink to="/register" onClick={() => changeView('register')}>
+                <HeadScreenSignUpButton variant="outlined">
+                  Sign up
+                </HeadScreenSignUpButton>
+              </NavLink>
             </Grid>
           </Grid>
         </div>
@@ -45,5 +52,9 @@ class HeadScreen extends React.Component {
     );
   }
 }
+
+HeadScreen.propTypes = {
+  changeView: PropTypes.func.isRequired,
+};
 
 export default HeadScreen;
