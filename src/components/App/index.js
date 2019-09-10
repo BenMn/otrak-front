@@ -14,8 +14,8 @@ import LogFormModal from 'src/containers/LogForms';
 const App = ({
   view,
   handleOpen,
-  handleInput,
-  handleInputSubmit,
+  handleSearchInput,
+  handleSearchInputSubmit,
 }) => (
   <MuiThemeProvider theme={theme}>
     <div id="app">
@@ -23,8 +23,8 @@ const App = ({
         && (
         <Navbar
           handleOpen={handleOpen}
-          handleInput={handleInput}
-          handleInputSubmit={handleInputSubmit}
+          handleSearchInput={handleSearchInput}
+          handleSearchInputSubmit={handleSearchInputSubmit}
         />
         )}
       <LogFormModal />
@@ -37,14 +37,14 @@ const App = ({
 App.propTypes = {
   view: PropTypes.string.isRequired,
   handleOpen: PropTypes.func,
-  handleInput: PropTypes.func,
-  handleInputSubmit: PropTypes.func,
+  handleSearchInput: PropTypes.func,
+  handleSearchInputSubmit: PropTypes.func,
 };
 
 App.defaultProps = {
   handleOpen: () => { },
-  handleInput: () => { },
-  handleInputSubmit: () => { },
+  handleSearchInput: () => { },
+  handleSearchInputSubmit: () => { },
 };
 
 // == Export

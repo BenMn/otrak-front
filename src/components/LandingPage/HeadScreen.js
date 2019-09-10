@@ -17,13 +17,13 @@ import './LandingPage.scss';
 import LogFormsModal from 'src/containers/LogForms';
 
 class HeadScreen extends React.Component {
-  handleInput = () => {
+  handleSearchInput = () => {
     const fullSearchBar = document.getElementById('fullSearchBar').parentElement;
     fullSearchBar.classList.add('slide-in-left');
     fullSearchBar.style.display = 'block';
     fullSearchBar.style.borderBottom = `1px solid ${theme.palette.secondary.main}`;
 
-    document.getElementsByClassName('div-input-icon-search').removeEventListener('mouseover', this.handleInput, true);
+    document.getElementsByClassName('div-input-icon-search').removeEventListener('mouseover', this.handleSearchInput, true);
   }
 
   render() {
@@ -32,23 +32,23 @@ class HeadScreen extends React.Component {
       viewModal,
       formName,
       handleOpen,
-      inputValue,
-      handleInput,
-      handleInputSubmit,
+      searchInputValue,
+      handleSearchInput,
+      handleSearchInputSubmit,
     } = this.props;
     return (
       <div id="landing-page">
         <div className="screen-landing-page">
           <Grid container justify="space-between" className="header-transparent-navbar">
             <Grid item className="div-input-icon-search">
-              <HeadScreenSearchIcon fontSize="large" color="action" onMouseOver={this.handleInput} />
+              <HeadScreenSearchIcon fontSize="large" color="action" onMouseOver={this.handleSearchInput} />
 
-              <form onSubmit={(event) => handleInputSubmit(event, inputValue)} id="form-submit">
+              <form onSubmit={(event) => handleSearchInputSubmit(event, searchInputValue)} id="form-submit">
                 <HeadScreenSearchInput
                   placeholder="Try Game Of Thrones, Naruto..."
                   id="fullSearchBar"
-                  value={inputValue}
-                  onChange={(event) => handleInput(event.target.value)}
+                  value={searchInputValue}
+                  onChange={(event) => handleSearchInput(event.target.value)}
                 />
               </form>
 
@@ -91,9 +91,9 @@ HeadScreen.propTypes = {
   handleOpen: PropTypes.func.isRequired,
   viewModal: PropTypes.string,
   formName: PropTypes.string,
-  inputValue: PropTypes.string.isRequired,
-  handleInput: PropTypes.func.isRequired,
-  handleInputSubmit: PropTypes.func.isRequired,
+  searchInputValue: PropTypes.string.isRequired,
+  handleSearchInput: PropTypes.func.isRequired,
+  handleSearchInputSubmit: PropTypes.func.isRequired,
 };
 
 HeadScreen.defaultProps = {

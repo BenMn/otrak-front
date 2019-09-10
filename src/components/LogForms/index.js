@@ -15,6 +15,10 @@ const LogFormsModal = ({
   handleClose,
   formName,
   handleOpen,
+  authInputValue,
+  handleAuthInput,
+  handleAuthInputSubmit,
+  userAuthInfos,
 }) => (
   <div>
     <Modal
@@ -29,9 +33,36 @@ const LogFormsModal = ({
       }}
     >
       <Fade in={open}>
-        {formName === 'in' && <SignIn formName={formName} handleOpen={handleOpen} />}
-        {formName === 'up' && <SignUp formName={formName} handleOpen={handleOpen} />}
-        {formName === 'password' && <ForgotPassword formName={formName} handleOpen={handleOpen} />}
+        {formName === 'in' && (
+          <SignIn
+            formName={formName}
+            handleOpen={handleOpen}
+            authInputValue={authInputValue}
+            handleAuthInput={handleAuthInput}
+            handleAuthInputSubmit={handleAuthInputSubmit}
+            userAuthInfos={userAuthInfos}
+          />
+        )}
+        {formName === 'up' && (
+          <SignUp
+            formName={formName}
+            handleOpen={handleOpen}
+            authInputValue={authInputValue}
+            handleAuthInput={handleAuthInput}
+            handleAuthInputSubmit={handleAuthInputSubmit}
+            userAuthInfos={userAuthInfos}
+          />
+        )}
+        {formName === 'password' && (
+          <ForgotPassword
+            formName={formName}
+            handleOpen={handleOpen}
+            authInputValue={authInputValue}
+            handleAuthInput={handleAuthInput}
+            handleAuthInputSubmit={handleAuthInputSubmit}
+            userAuthInfos={userAuthInfos}
+          />
+        )}
       </Fade>
     </Modal>
   </div>
@@ -43,6 +74,9 @@ LogFormsModal.propTypes = {
   handleClose: PropTypes.func,
   handleOpen: PropTypes.func,
   formName: PropTypes.string,
+  authInputValue: PropTypes.string.isRequired,
+  handleAuthInput: PropTypes.func.isRequired,
+  handleAuthInputSubmit: PropTypes.func.isRequired,
 };
 
 LogFormsModal.defaultProps = {

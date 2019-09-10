@@ -2,9 +2,9 @@
 import axios from 'axios';
 import {
   FETCH_TRENDING,
-  FETCH_INPUT_RESULT,
+  FETCH_SEARCH_INPUT_RESULT,
   storeTrending,
-  storeInputResult,
+  storeSearchInputResult,
 } from 'src/store/reducer';
 
 
@@ -21,11 +21,11 @@ const ajaxMiddleware = (store) => (next) => (action) => {
         .catch();
       break;
 
-    case FETCH_INPUT_RESULT:
-      axios.get(`https://swapi.co/api/planets/${action.inputValue}/`)
+    case FETCH_SEARCH_INPUT_RESULT:
+      axios.get(`https://swapi.co/api/planets/${action.searchInputValue}/`)
         .then((response) => {
           const { data } = response;
-          store.dispatch(storeInputResult(data));
+          store.dispatch(storeSearchInputResult(data));
         })
         .catch();
       break;

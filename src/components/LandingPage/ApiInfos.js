@@ -13,7 +13,7 @@ import {
   ApiInfosSearchDarkIcon,
 } from 'src/styles/materialUi/materialUiStyles/LandingPage';
 
-const ApiInfos = ({ inputValue, handleInput, handleInputSubmit }) => (
+const ApiInfos = ({ searchInputValue, handleSearchInput, handleSearchInputSubmit }) => (
   <Grid container alignItems="center" justify="flex-end">
 
     <Grid item lg={5}>
@@ -33,13 +33,13 @@ const ApiInfos = ({ inputValue, handleInput, handleInputSubmit }) => (
 
         <ApiInfosSearchDark align="right">
           <ApiInfosSearchDarkIcon />
-          <form onSubmit={(event) => handleInputSubmit(event, inputValue)} id="form-submit">
+          <form onSubmit={(event) => handleSearchInputSubmit(event, searchInputValue)} id="form-submit">
             <ApiInfosSearchDarkInput
               color="textPrimary"
               placeholder="Start looking for a show..."
               inputProps={{ 'aria-label': 'search' }}
-              value={inputValue}
-              onChange={(event) => handleInput(event.target.value)}
+              value={searchInputValue}
+              onChange={(event) => handleSearchInput(event.target.value)}
             />
           </form>
         </ApiInfosSearchDark>
@@ -51,9 +51,9 @@ const ApiInfos = ({ inputValue, handleInput, handleInputSubmit }) => (
 );
 
 ApiInfos.propTypes = {
-  inputValue: PropTypes.string.isRequired,
-  handleInput: PropTypes.func.isRequired,
-  handleInputSubmit: PropTypes.func.isRequired,
+  searchInputValue: PropTypes.string.isRequired,
+  handleSearchInput: PropTypes.func.isRequired,
+  handleSearchInputSubmit: PropTypes.func.isRequired,
 };
 
 export default ApiInfos;

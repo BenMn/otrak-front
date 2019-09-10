@@ -22,9 +22,9 @@ const Navbar = ({
   open,
   viewModal,
   handleOpen,
-  handleInput,
-  handleInputSubmit,
-  inputValue,
+  handleSearchInput,
+  handleSearchInputSubmit,
+  searchInputValue,
 }) => (
   <div id="Navbar">
     <AppBar position="static">
@@ -40,13 +40,13 @@ const Navbar = ({
           <Grid item lg={6} md={6} xs={4}>
             <NavbarSearch>
               <NavbarSearchIcon />
-              <form onSubmit={(event) => handleInputSubmit(event, inputValue)} id="form-submit">
+              <form onSubmit={(event) => handleSearchInputSubmit(event, searchInputValue)} id="form-submit">
                 <NavbarSearchInput
                   color="textPrimary"
                   placeholder="Start looking for a show..."
                   inputProps={{ 'aria-label': 'search' }}
-                  value={inputValue}
-                  onChange={(event) => handleInput(event.target.value)}
+                  value={searchInputValue}
+                  onChange={(event) => handleSearchInput(event.target.value)}
                 />
               </form>
             </NavbarSearch>
@@ -72,10 +72,10 @@ const Navbar = ({
 Navbar.propTypes = {
   open: PropTypes.bool,
   handleOpen: PropTypes.func.isRequired,
-  handleInput: PropTypes.func.isRequired,
-  handleInputSubmit: PropTypes.func.isRequired,
+  handleSearchInput: PropTypes.func.isRequired,
+  handleSearchInputSubmit: PropTypes.func.isRequired,
   viewModal: PropTypes.string,
-  inputValue: PropTypes.string.isRequired,
+  searchInputValue: PropTypes.string.isRequired,
 };
 
 Navbar.defaultProps = {

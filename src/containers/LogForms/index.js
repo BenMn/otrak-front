@@ -5,13 +5,22 @@ import { connect } from 'react-redux';
 import LogForms from 'src/components/LogForms';
 
 // Action Creators
-import { closeModal, openModal } from 'src/store/reducer';
+import {
+  closeModal,
+  openModal,
+  updateAuthInput,
+} from 'src/store/reducer';
 
-const mapStateToProps = (state) => ({
-  setOpen: state.setOpen,
-  open: state.open,
-  formName: state.formName,
-});
+const mapStateToProps = (state) => {
+  console.log(state);
+  return ({
+    setOpen: state.setOpen,
+    open: state.open,
+    formName: state.formName,
+    authInputValue: state.authInputValue,
+    userAuthInfos: state.userAuthInfos,
+  });
+};
 
 const mapDispatchToProps = (dispatch) => ({
   handleClose: () => {
@@ -40,6 +49,15 @@ const mapDispatchToProps = (dispatch) => ({
       const formName = viewModalName.match(/in/g).toString();
       dispatch(openModal(viewModalName, formName));
     }
+  },
+
+  handleAuthInput: (event, index) => {
+    const { value, name } = event.target;
+    dispatch(updateAuthInput(value, name, index));
+  },
+
+  handleAuthInputSubmit: (event) => {
+    event.preventDefault();
   },
 });
 

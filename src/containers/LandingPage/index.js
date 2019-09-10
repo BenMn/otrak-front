@@ -6,9 +6,9 @@ import LandingPage from 'src/components/LandingPage';
 
 // Action Creators
 import {
-  updateInput,
   fetchTrending,
-  fetchInputResult,
+  updateSearchInput,
+  fetchSearchInputResult,
   openModal,
 } from 'src/store/reducer';
 
@@ -22,7 +22,7 @@ import {
 const mapStateToProps = (state) => ({
   message: state.message,
   trendingList: state.trendingList,
-  inputValue: state.inputValue,
+  searchInputValue: state.searchInputValue,
   setOpen: state.setOpen,
   open: state.open,
   viewModal: state.viewModal,
@@ -41,13 +41,13 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(fetchTrending());
   },
 
-  handleInput: (newValue) => {
-    dispatch(updateInput(newValue));
+  handleSearchInput: (newValue) => {
+    dispatch(updateSearchInput(newValue));
   },
 
-  handleInputSubmit: (event, inputValue) => {
+  handleSearchInputSubmit: (event, searchInputValue) => {
     event.preventDefault();
-    dispatch(fetchInputResult(inputValue));
+    dispatch(fetchSearchInputResult(searchInputValue));
   },
 
   handleOpen: (event) => {

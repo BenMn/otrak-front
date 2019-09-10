@@ -3,23 +3,57 @@ const initialState = {
   trendingList: {},
   view: 'landing',
   viewModal: '',
-  inputValue: '',
-  storeInputResult: {},
+  searchInputValue: '',
+  storeSearchInputResult: {},
+  storeAuthInputResult: {},
   setOpen: false,
   open: false,
   formName: '',
-  userAuthInfos: {
-    username: '',
-    email: '',
-    password: '',
-    passwordConfirm: '',
-  },
+  userAuthInfos: [
+    {
+      index: 0,
+      username: '',
+      name: 'username',
+      id: 'username',
+      label: 'Username',
+      autoComplete: 'username',
+    },
+    {
+      index: 1,
+      email: '',
+      name: 'email',
+      id: 'email',
+      label: 'Email',
+      autoComplete: 'email',
+    },
+    {
+      index: 2,
+      password: '',
+      name: 'password',
+      id: 'password',
+      label: 'Password',
+      autoComplete: 'password',
+      type: 'password',
+    },
+    {
+      index: 3,
+      passwordConfirm: '',
+      name: 'passwordConfirm',
+      id: 'passwordConfirm',
+      label: 'Password Confirmation',
+      autoComplete: 'passwordConfirm',
+      type: 'password',
+    },
+  ],
 };
 
 // == Types
-const UPDATE_INPUT = 'UPDATE_INPUT';
-export const FETCH_INPUT_RESULT = 'FETCH_INPUT_RESULT';
-export const STORE_INPUT_RESULT = 'STORE_INPUT_RESULT';
+const UPDATE_SEARCH_INPUT = 'UPDATE_SEARCH_INPUT';
+export const FETCH_SEARCH_INPUT_RESULT = 'FETCH_SEARCH_INPUT_RESULT';
+export const STORE_SEARCH_INPUT_RESULT = 'STORE_SEARCH_INPUT_RESULT';
+
+const UPDATE_AUTH_INPUT = 'UPDATE_AUTH_INPUT';
+export const STORE_AUTH_INPUT_RESULT = 'STORE_AUTH_INPUT_RESULT';
 
 const STORE_TRENDING = 'STORE_TRENDING';
 export const FETCH_TRENDING = 'FETCH_TRENDING';
@@ -30,22 +64,35 @@ const CLOSE_MODAL = 'CLOSE_MODAL';
 // == Reducer
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case UPDATE_INPUT:
-      return {
-        ...state,
-        inputValue: action.inputValue,
-      };
-
     case STORE_TRENDING:
       return {
         ...state,
         trendingList: action.data,
       };
 
-    case STORE_INPUT_RESULT:
+    case UPDATE_SEARCH_INPUT:
       return {
         ...state,
-        storeInputResult: action.storeInputResult,
+        searchInputValue: action.searchInputValue,
+      };
+
+    case STORE_SEARCH_INPUT_RESULT:
+      return {
+        ...state,
+        storeSearchInputResult: action.storeSearchInputResult,
+      };
+
+    case UPDATE_AUTH_INPUT:
+      return {
+        ...state,
+        [action.name]: action.value,
+
+      };
+
+    case STORE_AUTH_INPUT_RESULT:
+      return {
+        ...state,
+        storeAuthInputResult: action.storeAuthInputResult,
       };
 
     case OPEN_MODAL:
@@ -72,9 +119,16 @@ const reducer = (state = initialState, action = {}) => {
 };
 
 // == Action Creators
-export const updateInput = (inputValue) => ({
-  type: UPDATE_INPUT,
-  inputValue,
+export const updateSearchInput = (searchInputValue) => ({
+  type: UPDATE_SEARCH_INPUT,
+  searchInputValue,
+});
+
+export const updateAuthInput = (value, name, index) => ({
+  type: UPDATE_AUTH_INPUT,
+  value,
+  name,
+  index,
 });
 
 export const fetchTrending = () => ({
@@ -86,13 +140,13 @@ export const storeTrending = (data) => ({
   data,
 });
 
-export const fetchInputResult = (inputValue) => ({
-  type: FETCH_INPUT_RESULT,
-  inputValue,
+export const fetchSearchInputResult = (searchInputValue) => ({
+  type: FETCH_SEARCH_INPUT_RESULT,
+  searchInputValue,
 });
 
-export const storeInputResult = (data) => ({
-  type: STORE_INPUT_RESULT,
+export const storeSearchInputResult = (data) => ({
+  type: STORE_SEARCH_INPUT_RESULT,
   data,
 });
 
