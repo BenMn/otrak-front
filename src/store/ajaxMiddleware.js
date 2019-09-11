@@ -9,7 +9,7 @@ import {
 
 
 const ajaxMiddleware = (store) => (next) => (action) => {
-  console.log('Je suis le middleware, et je laisse passer cette action: ', action);
+  // console.log('Je suis le middleware, et je laisse passer cette action: ', action);
 
   switch (action.type) {
     case FETCH_TRENDING:

@@ -11,16 +11,13 @@ import {
   updateAuthInput,
 } from 'src/store/reducer';
 
-const mapStateToProps = (state) => {
-  console.log(state);
-  return ({
-    setOpen: state.setOpen,
-    open: state.open,
-    formName: state.formName,
-    authInputValue: state.authInputValue,
-    userAuthInfos: state.userAuthInfos,
-  });
-};
+const mapStateToProps = (state) => ({
+  setOpen: state.setOpen,
+  open: state.open,
+  formName: state.formName,
+  authInputValue: state.authInputValue,
+  userAuthInfos: state.userAuthInfos,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   handleClose: () => {
