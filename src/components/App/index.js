@@ -12,6 +12,7 @@ import LogFormModal from 'src/containers/LogForms';
 import Homepage from 'src/containers/Homepage';
 
 // == Composant
+// == Composant
 const App = ({
   view,
   handleOpen,
