@@ -28,6 +28,7 @@ const SignIn = ({
   const allowed = [1, 2];
 
   const userAuthInfosFiltred = Object.keys(userAuthInfos)
+    // eslint-disable-next-line react/prop-types
     .filter((fieldName) => allowed.includes(userAuthInfos[fieldName].index))
     .reduce((newObject, key) => {
       newObject[key] = userAuthInfos[key];
