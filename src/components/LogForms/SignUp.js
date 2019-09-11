@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import {
   LogFormModalPaper,
   LogFormModalButton,
@@ -6,7 +8,6 @@ import {
 } from 'src/styles/materialUi/materialUiStyles/LogForms';
 
 import {
-  TextField,
   Link,
   Grid,
   Typography,
@@ -15,8 +16,16 @@ import {
 
 import './LogForms.scss';
 
-const SignUp = () => (
-  <LogFormModalPaper>
+import Field from './Field';
+
+const SignUp = ({
+  handleOpen,
+  handleAuthInput,
+  handleAuthInputSubmit,
+  // eslint-disable-next-line react/prop-types
+  userAuthInfos,
+}) => (
+  <LogFormModalPaper id="SignUp">
     <Container component="main" maxWidth="xs">
       <Grid
         container
@@ -39,53 +48,19 @@ const SignUp = () => (
           </LogFormModalSubtitle>
         </Grid>
 
-        <form noValidate>
+        <form onSubmit={(event) => handleAuthInputSubmit(event)} id="form-signUp">
 
           <Grid item>
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="username"
-              label="Username"
-              name="username"
-              autoComplete="username"
-              autoFocus
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="confirm-password"
-              label="Confirm Password"
-              type="password"
-              id="confirm-password"
-              autoComplete="current-password"
-            />
+            {Object.values(userAuthInfos).map((field) => (
+              <Field
+                key={field.name}
+                // eslint-disable-next-line react/jsx-props-no-spreading
+                {...field}
+                handleAuthInput={handleAuthInput}
+                value={field[field.name]}
+                id={`${field.name}-sign-up`}
+              />
+            ))}
           </Grid>
           <Grid item>
             <LogFormModalButton
@@ -100,13 +75,13 @@ const SignUp = () => (
 
           <Grid container direction="row" spacing={3}>
             <Grid item xs>
-              <Link href="#" variant="body2">
+              <Link onClick={(event) => handleOpen(event)} variant="body2" color="secondary">
                 Forgot password?
               </Link>
             </Grid>
             <Grid item>
-              <Link href="#" variant="body2">
-                {'Already registred ? Sign In'}
+              <Link onClick={(event) => handleOpen(event)} variant="body2" color="secondary">
+                Already registred ? Sign in
               </Link>
             </Grid>
           </Grid>
@@ -117,5 +92,11 @@ const SignUp = () => (
     </Container>
   </LogFormModalPaper>
 );
+
+SignUp.propTypes = {
+  handleOpen: PropTypes.func.isRequired,
+  handleAuthInput: PropTypes.func.isRequired,
+  handleAuthInputSubmit: PropTypes.func.isRequired,
+};
 
 export default SignUp;

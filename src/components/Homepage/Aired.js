@@ -1,3 +1,5 @@
+/* eslint-disable no-plusplus */
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import Swiper from 'react-id-swiper';
 
@@ -42,7 +44,6 @@ import StarIcon from '@material-ui/icons/Star';
 
 class Aired extends React.Component {
   displayCardActionButtons = (event) => {
-    console.log('displayCardActionButtons');
     event.persist();
     const parentIconElement = event.target.parentElement.parentElement;
     const hiddenIcons = parentIconElement.getElementsByClassName('hiddenCardIcon');

@@ -5,7 +5,12 @@ import { connect } from 'react-redux';
 import LandingPage from 'src/components/LandingPage';
 
 // Action Creators
-import { updateInput, fetchTrending, fetchInputResult } from 'src/store/reducer';
+import {
+  fetchTrending,
+  updateSearchInput,
+  fetchSearchInputResult,
+  openModal,
+} from 'src/store/reducer';
 
 /* === State (données) ===
  * - mapStateToProps retroune un objet de props pour le composant de présentation
@@ -17,7 +22,11 @@ import { updateInput, fetchTrending, fetchInputResult } from 'src/store/reducer'
 const mapStateToProps = (state) => ({
   message: state.message,
   trendingList: state.trendingList,
-  inputValue: state.inputValue,
+  searchInputValue: state.searchInputValue,
+  setOpen: state.setOpen,
+  open: state.open,
+  viewModal: state.viewModal,
+  formName: state.formName,
 });
 
 /* === Actions ===
@@ -32,13 +41,37 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(fetchTrending());
   },
 
-  handleInput: (newValue) => {
-    dispatch(updateInput(newValue));
+  handleSearchInput: (newValue) => {
+    dispatch(updateSearchInput(newValue));
   },
 
-  handleInputSubmit: (event, inputValue) => {
+  handleSearchInputSubmit: (event, searchInputValue) => {
     event.preventDefault();
-    dispatch(fetchInputResult(inputValue));
+    dispatch(fetchSearchInputResult(searchInputValue));
+  },
+
+  handleOpen: (event) => {
+    event.persist();
+
+    const viewModalName = event.target.innerHTML;
+
+    // Forgot Password Link
+    if (viewModalName.match(/password/g)) {
+      const formName = viewModalName.match(/password/g).toString();
+      dispatch(openModal(viewModalName, formName));
+    }
+
+    // Sign Up Link
+    if (viewModalName.match(/up/g)) {
+      const formName = viewModalName.match(/up/g).toString();
+      dispatch(openModal(viewModalName, formName));
+    }
+
+    // Sign In Link
+    if (viewModalName.match(/in/g)) {
+      const formName = viewModalName.match(/in/g).toString();
+      dispatch(openModal(viewModalName, formName));
+    }
   },
 });
 

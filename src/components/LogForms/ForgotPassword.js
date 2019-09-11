@@ -2,29 +2,29 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import {
-  LogFormModalPaper,
   LogFormModalButton,
   LogFormModalSubtitle,
+  LogFormModalPaper,
 } from 'src/styles/materialUi/materialUiStyles/LogForms';
 
 import {
   Grid,
-  Link,
   Typography,
   Container,
+  Link,
 } from '@material-ui/core';
 
 import './LogForms.scss';
 import Field from './Field';
 
-const SignIn = ({
+const ForgotPassword = ({
   handleOpen,
   handleAuthInput,
   handleAuthInputSubmit,
   // eslint-disable-next-line react/prop-types
   userAuthInfos,
 }) => {
-  const allowed = [1, 2];
+  const allowed = [1];
 
   const userAuthInfosFiltred = Object.keys(userAuthInfos)
     // eslint-disable-next-line react/prop-types
@@ -35,7 +35,7 @@ const SignIn = ({
     }, {});
 
   return (
-    <LogFormModalPaper id="SignIn">
+    <LogFormModalPaper id="Password">
       <Container component="main" maxWidth="xs">
         <Grid
           container
@@ -49,16 +49,16 @@ const SignIn = ({
           </Grid>
           <Grid item>
             <Typography component="h1" variant="h5" color="primary">
-              Sign in
+              Reset your password
             </Typography>
           </Grid>
           <Grid item>
             <LogFormModalSubtitle component="h2" variant="subtitle1" color="secondary">
-              Welcome back mate !
+              Find your account by email address
             </LogFormModalSubtitle>
           </Grid>
 
-          <form onSubmit={(event) => handleAuthInputSubmit(event)} id="form-signIn">
+          <form onSubmit={(event) => handleAuthInputSubmit(event)} id="form-forgotPassword">
 
             <Grid item>
               {Object.values(userAuthInfosFiltred).map((field) => (
@@ -68,7 +68,7 @@ const SignIn = ({
                   {...field}
                   handleAuthInput={handleAuthInput}
                   value={field[field.name]}
-                  id={`${field.name}-sign-in`}
+                  id={`${field.name}-forgot-password`}
                 />
               ))}
             </Grid>
@@ -77,16 +77,17 @@ const SignIn = ({
                 type="submit"
                 fullWidth
                 variant="contained"
-                color="primary"
+                color="secondary"
               >
-                Sign in
+                Reset password
               </LogFormModalButton>
             </Grid>
+
 
             <Grid container direction="row" spacing={3}>
               <Grid item xs>
                 <Link onClick={(event) => handleOpen(event)} variant="body2" color="secondary">
-                  Forgot password?
+                  Already registred ? Sign in
                 </Link>
               </Grid>
               <Grid item>
@@ -100,15 +101,16 @@ const SignIn = ({
 
         </Grid>
 
+
       </Container>
     </LogFormModalPaper>
   );
 };
 
-SignIn.propTypes = {
+ForgotPassword.propTypes = {
   handleOpen: PropTypes.func.isRequired,
   handleAuthInput: PropTypes.func.isRequired,
   handleAuthInputSubmit: PropTypes.func.isRequired,
 };
 
-export default SignIn;
+export default ForgotPassword;

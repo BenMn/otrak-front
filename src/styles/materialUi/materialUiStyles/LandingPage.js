@@ -13,7 +13,6 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 // Components MaterialUI vanilla
 import {
-  Avatar,
   Typography,
   Button,
   InputBase,
@@ -34,48 +33,54 @@ export const LandingPageContainer = styled(Container)({
 
 // ------------------- Styles of HeadScreen.js ------------------------//
 
-export const HeadScreenAvatar = styled(Avatar)({
-  position: 'relative',
-  top: '65%',
-  left: '5%',
-  width: '10vw',
-  height: '10vw',
-});
-
 export const HeadScreenSlogan = styled(Typography)({
   position: 'relative',
-  top: '55vh',
-  left: '16%',
+  top: '50vh',
+  left: '3%',
   fontSize: '2em',
   display: 'inline',
+  zIndex: '2',
+  width: 'fit-content',
 });
 
 export const HeadScreenSignInButton = styled(Button)({
   position: 'inherit',
   float: 'right',
   margin: '0 60px 0 50px',
-  borderColor: '#fff',
+  borderColor: theme.palette.common.white,
+  color: theme.palette.common.white,
 });
 
 export const HeadScreenSignUpButton = styled(Button)({
   position: 'inherit',
   float: 'right',
-  borderColor: '#fff',
+  borderColor: theme.palette.common.white,
+  color: theme.palette.common.white,
 });
 
 export const HeadScreenSearchIcon = styled(SearchIcon)({
   position: 'relative',
-  color: '#fff',
+  color: theme.palette.secondary.main,
   left: 50,
   display: 'flex',
   alignSelf: 'center',
   marginRight: 10,
+  border: `1px solid ${theme.palette.secondary.main}`,
+  borderRadius: '50%',
+  padding: '3px',
+  boxShadow: '3px 4px 7px 0px rgba(30, 30, 30, 0.55)',
 });
 
 export const HeadScreenSearchInput = styled(InputBase)({
   position: 'absolute',
   display: 'none',
   left: 95,
+  color: theme.palette.common.white,
+  backgroundColor: '#00000020',
+  borderRadius: 15,
+  paddingLeft: 15,
+  width: 350,
+  boxShadow: '3px 4px 7px 0px rgba(30, 30, 30, 0.55)',
 });
 
 // ------------------- End styles of HeadScreen.js ------------------------//
@@ -159,7 +164,7 @@ export const TrendingCardMedia = styled(CardMedia)({
 });
 
 export const TrendingTitleTranding = styled(Typography)({
-  paddingTop: 130,
+  padding: '130px 0 40px 0',
 });
 
 export const TrendingSubtitle = styled(Typography)({

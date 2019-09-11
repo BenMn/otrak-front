@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import Navbar from 'src/components/Navbar';
 
 // Action Creators
-import { openModal } from 'src/store/reducer';
+import { openModal, updateSearchInput, fetchSearchInputResult } from 'src/store/reducer';
 
 /* === State (données) ===
  * - mapStateToProps retroune un objet de props pour le composant de présentation
@@ -17,7 +17,8 @@ import { openModal } from 'src/store/reducer';
 const mapStateToProps = (state) => ({
   setOpen: state.setOpen,
   open: state.open,
-  view: state.view,
+  viewModal: state.viewModal,
+  searchInputValue: state.searchInputValue,
 });
 
 /* === Actions ===
@@ -28,8 +29,37 @@ const mapStateToProps = (state) => ({
  * Pas de disptach à transmettre ? const mapDispatchToProps = {};
  */
 const mapDispatchToProps = (dispatch) => ({
-  handleOpen: (view) => {
-    dispatch(openModal(view));
+  handleSearchInput: (newValue) => {
+    dispatch(updateSearchInput(newValue));
+  },
+
+  handleSearchInputSubmit: (event, searchInputValue) => {
+    event.preventDefault();
+    dispatch(fetchSearchInputResult(searchInputValue));
+  },
+
+  handleOpen: (event) => {
+    event.persist();
+
+    const viewModalName = event.target.innerHTML;
+
+    // Forgot Password Link
+    if (viewModalName.match(/password/g)) {
+      const formName = viewModalName.match(/password/g).toString();
+      dispatch(openModal(viewModalName, formName));
+    }
+
+    // Sign Up Link
+    if (viewModalName.match(/up/g)) {
+      const formName = viewModalName.match(/up/g).toString();
+      dispatch(openModal(viewModalName, formName));
+    }
+
+    // Sign In Link
+    if (viewModalName.match(/in/g)) {
+      const formName = viewModalName.match(/in/g).toString();
+      dispatch(openModal(viewModalName, formName));
+    }
   },
 });
 

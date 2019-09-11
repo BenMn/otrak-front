@@ -21,11 +21,14 @@ class Homepage extends React.Component {
   }
 
   render() {
-    const { storeInputResult, inputValue, trendingList } = this.props;
+    const { storeSearchInputResult, searchInputValue, trendingList } = this.props;
     return (
       <>
         <Filter />
-        <SearchResult storeInputResult={storeInputResult} inputValue={inputValue} />
+        <SearchResult
+          storeSearchInputResult={storeSearchInputResult}
+          searchInputValue={searchInputValue}
+        />
         <Aired trendingList={trendingList} />
         <Next />
       </>
@@ -34,8 +37,8 @@ class Homepage extends React.Component {
 }
 
 Homepage.propTypes = {
-  storeInputResult: PropTypes.array.isRequired,
-  inputValue: PropTypes.string.isRequired,
+  storeSearchInputResult: PropTypes.array.isRequired,
+  searchInputValue: PropTypes.string.isRequired,
   trendingList: PropTypes.array.isRequired,
   getTrending: PropTypes.func.isRequired,
 };

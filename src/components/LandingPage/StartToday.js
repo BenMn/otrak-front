@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import {
   Typography,
   Button,
@@ -10,9 +12,10 @@ import {
   StartNowTitle,
 } from 'src/styles/materialUi/materialUiStyles/LandingPage';
 
+import LogFormsModal from 'src/containers/LogForms';
 // import './LandingPage.scss';
 
-const StartToday = () => (
+const StartToday = ({ open, viewModal, handleOpen }) => (
   <>
     <StartNowGrid
       container
@@ -22,13 +25,24 @@ const StartToday = () => (
     >
       <StartNowIcon />
       <StartNowTitle variant="h3">Start Today</StartNowTitle>
-      <Button variant="contained" color="primary">
-        Create an account
+      <Button variant="contained" color="primary" onClick={(event) => handleOpen(event)}>
+        Keep up to date my favorite shows
       </Button>
+      {open === true && <LogFormsModal viewModal={viewModal} />}
       <Typography>Don't be afraid, it's free !</Typography>
     </StartNowGrid>
   </>
 );
 
+StartToday.propTypes = {
+  open: PropTypes.bool,
+  handleOpen: PropTypes.func.isRequired,
+  viewModal: PropTypes.string,
+};
+
+StartToday.defaultProps = {
+  open: false,
+  viewModal: '',
+};
 
 export default StartToday;

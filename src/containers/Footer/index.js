@@ -10,12 +10,13 @@ import { openModal } from 'src/store/reducer';
 const mapStateToProps = (state) => ({
   setOpen: state.setOpen,
   open: state.open,
-  view: state.view,
+  viewModal: state.viewModal,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  handleOpen: (view) => {
-    dispatch(openModal(view));
+  handleOpen: (viewModalName) => {
+    const formName = viewModalName.match(/up/g).toString();
+    dispatch(openModal(viewModalName, formName));
   },
 });
 

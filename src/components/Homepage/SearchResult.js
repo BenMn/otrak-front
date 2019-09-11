@@ -1,3 +1,5 @@
+/* eslint-disable no-plusplus */
+/* eslint-disable react/jsx-props-no-spreading */
 
 import React from 'react';
 import Swiper from 'react-id-swiper';
@@ -29,7 +31,6 @@ import StarIcon from '@material-ui/icons/Star';
 
 class SearchResult extends React.Component {
   displayCardActionButtons = (event) => {
-    console.log('displayCardActionButtons');
     event.persist();
     const parentIconElement = event.target.parentElement.parentElement;
     const hiddenIcons = parentIconElement.getElementsByClassName('hiddenCardIcon');
@@ -39,7 +40,7 @@ class SearchResult extends React.Component {
   }
 
   render() {
-    const { inputValue, storeInputResult } = this.props;
+    const { searchInputValue, storeSearchInputResult } = this.props;
     const params = {
       lazy: true,
       grabCursor: true,
@@ -83,7 +84,7 @@ class SearchResult extends React.Component {
           alignItems="center"
         >
           <Typography variant="h3" component="p" className="title-icon-next-aired">
-            <SearchResultIconTitle />{`Search for ${inputValue}` }
+            <SearchResultIconTitle />{`Search for ${searchInputValue}` }
           </Typography>
           <Typography variant="h6"><a href="." className="see-all-next-aired"> See all<AiredSeeAllIcon /></a></Typography>
         </AiredBlockTitleSeeAll>
@@ -95,9 +96,8 @@ class SearchResult extends React.Component {
             justify="center"
             alignItems="center"
           >
-            
             <Swiper {...params}>
-              {storeInputResult.map((currentShow) => (
+              {storeSearchInputResult.map((currentShow) => (
                 <Grid item key={currentShow.id_tvmaze}>
                   <HomePageCard key={currentShow.id_tvmaze}>
                     <CardActionArea>
@@ -147,8 +147,8 @@ class SearchResult extends React.Component {
 }
 
 SearchResult.propTypes = {
-  inputValue: PropTypes.string.isRequired,
-  storeInputResult: PropTypes.array.isRequired,
+  searchInputValue: PropTypes.string.isRequired,
+  storeSearchInputResult: PropTypes.array.isRequired,
 };
 
 export default SearchResult;
