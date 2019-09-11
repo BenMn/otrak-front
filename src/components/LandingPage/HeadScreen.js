@@ -22,8 +22,6 @@ class HeadScreen extends React.Component {
     fullSearchBar.classList.add('slide-in-left');
     fullSearchBar.style.display = 'block';
     fullSearchBar.style.borderBottom = `1px solid ${theme.palette.secondary.main}`;
-
-    document.getElementsByClassName('div-input-icon-search').removeEventListener('mouseover', this.handleSearchInput, true);
   }
 
   render() {

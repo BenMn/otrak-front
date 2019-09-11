@@ -52,14 +52,13 @@ const SignUp = ({
         <form onSubmit={(event) => handleAuthInputSubmit(event, authInputValue)}>
 
           <Grid item>
-            {/* eslint-disable-next-line react/prop-types */}
-            {userAuthInfos.map((field) => (
+            {Object.values(userAuthInfos).map((field) => (
               <Field
                 key={field.name}
                 // eslint-disable-next-line react/jsx-props-no-spreading
                 {...field}
                 handleAuthInput={handleAuthInput}
-                value={userAuthInfos[field.index][`${field.name}`]}
+                value={field[field.name]}
               />
             ))}
           </Grid>

@@ -9,8 +9,8 @@ const initialState = {
   setOpen: false,
   open: false,
   formName: '',
-  userAuthInfos: [
-    {
+  userAuthInfos: {
+    username: {
       index: 0,
       username: '',
       name: 'username',
@@ -18,7 +18,7 @@ const initialState = {
       label: 'Username',
       autoComplete: 'username',
     },
-    {
+    email: {
       index: 1,
       email: '',
       name: 'email',
@@ -26,7 +26,7 @@ const initialState = {
       label: 'Email',
       autoComplete: 'email',
     },
-    {
+    password: {
       index: 2,
       password: '',
       name: 'password',
@@ -35,7 +35,7 @@ const initialState = {
       autoComplete: 'password',
       type: 'password',
     },
-    {
+    passwordConfirm: {
       index: 3,
       passwordConfirm: '',
       name: 'passwordConfirm',
@@ -44,7 +44,7 @@ const initialState = {
       autoComplete: 'passwordConfirm',
       type: 'password',
     },
-  ],
+  },
 };
 
 // == Types
@@ -85,8 +85,13 @@ const reducer = (state = initialState, action = {}) => {
     case UPDATE_AUTH_INPUT:
       return {
         ...state,
-        [action.name]: action.value,
-
+        userAuthInfos: {
+          ...state.userAuthInfos,
+          [action.name]: {
+            ...state.userAuthInfos[`${action.name}`],
+            [action.name]: action.value,
+          },
+        },
       };
 
     case STORE_AUTH_INPUT_RESULT:
