@@ -1,4 +1,4 @@
-/* eslint-disable react/prefer-stateless-function */
+
 import React from 'react';
 import Swiper from 'react-id-swiper';
 import PropTypes from 'prop-types';
@@ -20,11 +20,29 @@ import {
   HomePageCardIcon,
 } from 'src/styles/materialUi/materialUiStyles/HomePage';
 
+import AddCircleIcon from '@material-ui/icons/AddCircle';
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import CreateIcon from '@material-ui/icons/Create';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import StarIcon from '@material-ui/icons/Star';
+
+
 class SearchResult extends React.Component {
+  displayCardActionButtons = (event) => {
+    console.log('displayCardActionButtons');
+    event.persist();
+    const parentIconElement = event.target.parentElement.parentElement;
+    const hiddenIcons = parentIconElement.getElementsByClassName('hiddenCardIcon');
+    for (let i = 0; i < hiddenIcons.length; i++) {
+      hiddenIcons[i].style.display = 'block';
+    }
+  }
+
   render() {
     const { inputValue, storeInputResult } = this.props;
     const params = {
       lazy: true,
+      grabCursor: true,
       slidesPerView: 4,
       spaceBetween: 10,
       mousewheel: true,
@@ -91,9 +109,25 @@ class SearchResult extends React.Component {
                           container
                           justify="flex-end"
                         >
-                          <HomePageIconContainer>
-                            <HomePageCardIcon />
+                          <HomePageIconContainer className="hiddenCardIcon">
+                            <AddCircleIcon />
                           </HomePageIconContainer>
+                          <HomePageIconContainer className="hiddenCardIcon">
+                            <VisibilityIcon />
+                          </HomePageIconContainer>
+                          <HomePageIconContainer className="hiddenCardIcon">
+                            <CreateIcon />
+                          </HomePageIconContainer>
+                          <HomePageIconContainer className="hiddenCardIcon">
+                            <StarIcon />
+                          </HomePageIconContainer>
+                          <HomePageIconContainer className="hiddenCardIcon">
+                            <DeleteForeverIcon />
+                          </HomePageIconContainer>
+                          <HomePageIconContainer onClick={this.displayCardActionButtons}>
+                            <HomePageCardIcon onClick={this.displayCardActionButtons} />
+                          </HomePageIconContainer>
+
                         </Grid>
 
                         <HomePageCardTitle variant="h5" component="h2">

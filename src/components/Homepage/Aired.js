@@ -34,89 +34,124 @@ import {
   AiredTitleCardAndSubtitle,
 } from 'src/styles/materialUi/materialUiStyles/HomePage';
 
-const Aired = ({ trendingList } = this.props) => {
+import AddCircleIcon from '@material-ui/icons/AddCircle';
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import CreateIcon from '@material-ui/icons/Create';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import StarIcon from '@material-ui/icons/Star';
 
-  const params = {
-    lazy: true,
-    slidesPerView: 4,
-    spaceBetween: 10,
-    mousewheel: true,
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'progressbar',
-    },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    breakpoints: {
-      1050: {
-        slidesPerView: 2,
-        spaceBetween: 20,
+class Aired extends React.Component {
+  displayCardActionButtons = (event) => {
+    console.log('displayCardActionButtons');
+    event.persist();
+    const parentIconElement = event.target.parentElement.parentElement;
+    const hiddenIcons = parentIconElement.getElementsByClassName('hiddenCardIcon');
+    for (let i = 0; i < hiddenIcons.length; i++) {
+      hiddenIcons[i].style.display = 'block';
+    }
+  }
+
+  render() {
+    const { trendingList } = this.props;
+    const params = {
+      lazy: true,
+      grabCursor: true,
+      slidesPerView: 4,
+      spaceBetween: 10,
+      mousewheel: true,
+      pagination: {
+        el: '.swiper-pagination',
+        type: 'progressbar',
       },
-      768: {
-        slidesPerView: 2,
-        spaceBetween: 20,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
       },
-      690: {
-        slidesPerView: 1,
-        spaceBetween: 20,
+      breakpoints: {
+        1050: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        690: {
+          slidesPerView: 1,
+          spaceBetween: 20,
+        },
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 10,
+        },
       },
-      320: {
-        slidesPerView: 1,
-        spaceBetween: 10,
-      },
-    },
-  };
-  return (
-    <>
-      <AiredBlockTitleSeeAll
-        container
-        direction="row"
-        justify="space-around"
-        alignItems="center"
-      >
-        <Typography variant="h3" component="p" className="title-icon-next-aired"><AiredIconTitle /> Just Aired</Typography>
-        <Typography variant="h6"><a href="." className="see-all-next-aired"> See all<AiredSeeAllIcon /></a></Typography>
-      </AiredBlockTitleSeeAll>
-      <Container>
-        <Swiper {...params}>
-          {trendingList.map((currentShow) => (
-            <Grid item key={currentShow.id_tvmaze}>
-              <HomePageCard>
-                <CardActionArea>
-                  <HomePageCardMedia
-                    image={currentShow.poster}
-                    title={currentShow.name}
-                  >
-                    <Grid
-                      container
-                      justify="flex-end"
+    };
+
+    return (
+      <>
+        <AiredBlockTitleSeeAll
+          container
+          direction="row"
+          justify="space-around"
+          alignItems="center"
+        >
+          <Typography variant="h3" component="p" className="title-icon-next-aired"><AiredIconTitle /> Just Aired</Typography>
+          <Typography variant="h6"><a href="." className="see-all-next-aired"> See all<AiredSeeAllIcon /></a></Typography>
+        </AiredBlockTitleSeeAll>
+        <Container>
+          <Swiper {...params}>
+            {trendingList.map((currentShow) => (
+              <Grid item key={currentShow.id_tvmaze}>
+                <HomePageCard>
+                  <CardActionArea>
+                    <HomePageCardMedia
+                      image={currentShow.poster}
+                      title={currentShow.name}
                     >
-                      <HomePageIconContainer>
-                        <HomePageCardIcon />
-                      </HomePageIconContainer>
-                    </Grid>
-                    <AiredTitleCardAndSubtitle
-                      container
-                      direction="row"
-                      justify="flex-end"
-                    >
-                      <HomePageCardTitle variant="h5" component="h2">
-                        {currentShow.name}
-                      </HomePageCardTitle>
-                      <AiredSubtitleSeasonEpisode>EXX SXX</AiredSubtitleSeasonEpisode>
-                    </AiredTitleCardAndSubtitle>
-                  </HomePageCardMedia>
-                </CardActionArea>
-              </HomePageCard>
-            </Grid>
-          ))}
-        </Swiper>
-      </Container>
-    </>
-  );
-};
+                      <Grid
+                        container
+                        justify="flex-end"
+                      >
+                        <HomePageIconContainer className="hiddenCardIcon">
+                          <AddCircleIcon />
+                        </HomePageIconContainer>
+                        <HomePageIconContainer className="hiddenCardIcon">
+                          <VisibilityIcon />
+                        </HomePageIconContainer>
+                        <HomePageIconContainer className="hiddenCardIcon">
+                          <CreateIcon />
+                        </HomePageIconContainer>
+                        <HomePageIconContainer className="hiddenCardIcon">
+                          <StarIcon />
+                        </HomePageIconContainer>
+                        <HomePageIconContainer className="hiddenCardIcon">
+                          <DeleteForeverIcon />
+                        </HomePageIconContainer>
+                        <HomePageIconContainer onClick={this.displayCardActionButtons}>
+                          <HomePageCardIcon onClick={this.displayCardActionButtons} />
+                        </HomePageIconContainer>
+                      </Grid>
+                      <AiredTitleCardAndSubtitle
+                        container
+                        direction="row"
+                        justify="flex-end"
+                      >
+                        <HomePageCardTitle variant="h5" component="h2">
+                          {currentShow.name}
+                        </HomePageCardTitle>
+                        <AiredSubtitleSeasonEpisode>EXX SXX</AiredSubtitleSeasonEpisode>
+                      </AiredTitleCardAndSubtitle>
+                    </HomePageCardMedia>
+                  </CardActionArea>
+                </HomePageCard>
+              </Grid>
+            ))}
+          </Swiper>
+        </Container>
+      </>
+    );
+  }
+}
 
 Aired.propTypes = {
   trendingList: PropTypes.array.isRequired,

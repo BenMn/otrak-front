@@ -56,18 +56,19 @@ export const HomePageCardTitle = styled(Typography)({
 });
 
 export const HomePageIconContainer = styled(Paper)({
-  padding: theme.spacing(1),
-  margin: theme.spacing(1),
-  backgroundColor: '#ffffff00',
+  margin: 4,
   color: theme.palette.common.white,
   width: 'fit-content',
   borderRadius: '50%',
-  boxShadow: 'inset 0px 0px 5px 0px rgba(100,100,100,1), 0px 0px 27px 0px rgba(200,200,200,1)',
+  boxShadow: 'inset 0px 0px 5px 0px rgba(100,100,100,1)',
   backgroundColor: theme.palette.primary.main,
+  cursor: 'pointer',
 });
 
 export const HomePageCardIcon = styled(TuneIcon)({
   borderRadius: '50%',
+  margin: '5px 6px',
+  cursor: 'pointer',
 });
 
 // ------------------- Styles of SearchResult.js ------------------------//
@@ -94,13 +95,14 @@ export const AiredSeeAllIcon = styled(ArrowForwardIcon)({
 });
 
 export const AiredSubtitleSeasonEpisode = styled(Typography)({
-  color: theme.palette.common.white,
+  color: theme.palette.secondary.main,
   width: '100%',
-  padding: theme.spacing(1),
+  padding: '0 8px 8px 8px',
+  marginTop: -12,
   fontSize: 12,
   fontWeight: 'bold',
   display: 'flex',
-  justifyContent: 'flex-end',
+  justifyContent: 'center',
 });
 
 export const AiredTitleCardAndSubtitle = styled(Grid)({
