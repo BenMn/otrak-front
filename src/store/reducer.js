@@ -14,7 +14,6 @@ const initialState = {
       index: 0,
       username: '',
       name: 'username',
-      id: 'username',
       label: 'Username',
       autoComplete: 'username',
     },
@@ -22,7 +21,6 @@ const initialState = {
       index: 1,
       email: '',
       name: 'email',
-      id: 'email',
       label: 'Email',
       autoComplete: 'email',
     },
@@ -30,7 +28,6 @@ const initialState = {
       index: 2,
       password: '',
       name: 'password',
-      id: 'password',
       label: 'Password',
       autoComplete: 'password',
       type: 'password',
@@ -39,7 +36,6 @@ const initialState = {
       index: 3,
       passwordConfirm: '',
       name: 'passwordConfirm',
-      id: 'passwordConfirm',
       label: 'Password Confirmation',
       autoComplete: 'passwordConfirm',
       type: 'password',
@@ -54,6 +50,8 @@ export const STORE_SEARCH_INPUT_RESULT = 'STORE_SEARCH_INPUT_RESULT';
 
 const UPDATE_AUTH_INPUT = 'UPDATE_AUTH_INPUT';
 export const STORE_AUTH_INPUT_RESULT = 'STORE_AUTH_INPUT_RESULT';
+export const FETCH_LOGIN_AUTH_INFOS = 'FETCH_LOGIN_AUTH_INFOS';
+export const FETCH_REGISTER_AUTH_INFOS = 'FETCH_REGISTER_AUTH_INFOS';
 
 const STORE_TRENDING = 'STORE_TRENDING';
 export const FETCH_TRENDING = 'FETCH_TRENDING';
@@ -134,6 +132,20 @@ export const updateAuthInput = (value, name, index) => ({
   value,
   name,
   index,
+});
+
+export const fetchLoginAuthInfos = (email, password) => ({
+  type: FETCH_LOGIN_AUTH_INFOS,
+  email,
+  password,
+});
+
+export const fetchRegisterAuthInfos = (username, email, password, passwordConfirm) => ({
+  type: FETCH_REGISTER_AUTH_INFOS,
+  username,
+  email,
+  password,
+  passwordConfirm,
 });
 
 export const fetchTrending = () => ({

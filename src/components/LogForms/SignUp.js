@@ -20,7 +20,6 @@ import Field from './Field';
 
 const SignUp = ({
   handleOpen,
-  authInputValue,
   handleAuthInput,
   handleAuthInputSubmit,
   // eslint-disable-next-line react/prop-types
@@ -49,7 +48,7 @@ const SignUp = ({
           </LogFormModalSubtitle>
         </Grid>
 
-        <form onSubmit={(event) => handleAuthInputSubmit(event, authInputValue)}>
+        <form onSubmit={(event) => handleAuthInputSubmit(event)} id="form-signUp">
 
           <Grid item>
             {Object.values(userAuthInfos).map((field) => (
@@ -59,6 +58,7 @@ const SignUp = ({
                 {...field}
                 handleAuthInput={handleAuthInput}
                 value={field[field.name]}
+                id={`${field.name}-sign-up`}
               />
             ))}
           </Grid>
@@ -95,7 +95,6 @@ const SignUp = ({
 
 SignUp.propTypes = {
   handleOpen: PropTypes.func.isRequired,
-  authInputValue: PropTypes.string.isRequired,
   handleAuthInput: PropTypes.func.isRequired,
   handleAuthInputSubmit: PropTypes.func.isRequired,
 };

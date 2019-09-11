@@ -15,7 +15,6 @@ const LogFormsModal = ({
   handleClose,
   formName,
   handleOpen,
-  authInputValue,
   handleAuthInput,
   handleAuthInputSubmit,
   userAuthInfos,
@@ -37,7 +36,6 @@ const LogFormsModal = ({
           <SignIn
             formName={formName}
             handleOpen={handleOpen}
-            authInputValue={authInputValue}
             handleAuthInput={handleAuthInput}
             handleAuthInputSubmit={handleAuthInputSubmit}
             userAuthInfos={userAuthInfos}
@@ -47,7 +45,6 @@ const LogFormsModal = ({
           <SignUp
             formName={formName}
             handleOpen={handleOpen}
-            authInputValue={authInputValue}
             handleAuthInput={handleAuthInput}
             handleAuthInputSubmit={handleAuthInputSubmit}
             userAuthInfos={userAuthInfos}
@@ -57,7 +54,6 @@ const LogFormsModal = ({
           <ForgotPassword
             formName={formName}
             handleOpen={handleOpen}
-            authInputValue={authInputValue}
             handleAuthInput={handleAuthInput}
             handleAuthInputSubmit={handleAuthInputSubmit}
             userAuthInfos={userAuthInfos}
@@ -74,7 +70,6 @@ LogFormsModal.propTypes = {
   handleClose: PropTypes.func,
   handleOpen: PropTypes.func,
   formName: PropTypes.string,
-  authInputValue: PropTypes.string.isRequired,
   handleAuthInput: PropTypes.func.isRequired,
   handleAuthInputSubmit: PropTypes.func.isRequired,
 };

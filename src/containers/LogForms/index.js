@@ -9,6 +9,8 @@ import {
   closeModal,
   openModal,
   updateAuthInput,
+  fetchLoginAuthInfos,
+  fetchRegisterAuthInfos,
 } from 'src/store/reducer';
 
 const mapStateToProps = (state) => ({
@@ -54,8 +56,23 @@ const mapDispatchToProps = (dispatch) => ({
   },
 
   handleAuthInputSubmit: (event) => {
+    event.persist();
+    if (event.target.length === 9) {
+      const username = event.target[0].value;
+      const email = event.target[2].value;
+      const password = event.target[4].value;
+      const passwordConfirm = event.target[6].value;
+      dispatch(fetchRegisterAuthInfos(username, email, password, passwordConfirm));
+    }
+    if (event.target.length === 5) {
+      const email = event.target[0].value;
+      const password = event.target[2].value;
+      dispatch(fetchLoginAuthInfos(email, password));
+    }
     event.preventDefault();
   },
+
+
 });
 
 // Container

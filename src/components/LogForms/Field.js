@@ -5,7 +5,6 @@ import { TextField } from '@material-ui/core';
 
 const Field = ({
   name,
-  id,
   label,
   autoComplete,
   type,
@@ -15,10 +14,9 @@ const Field = ({
 }) => (
   <TextField
     name={name}
-    id={id}
     label={label}
     autoComplete={autoComplete}
-    authInputValue={value}
+    authinputvalue={value}
     type={type}
     index={index}
     onChange={(event) => handleAuthInput(event, index)}
@@ -32,7 +30,6 @@ const Field = ({
 Field.propTypes = {
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
   autoComplete: PropTypes.string.isRequired,
   value: PropTypes.string,
   type: PropTypes.string,

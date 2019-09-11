@@ -19,7 +19,6 @@ import Field from './Field';
 
 const ForgotPassword = ({
   handleOpen,
-  authInputValue,
   handleAuthInput,
   handleAuthInputSubmit,
   // eslint-disable-next-line react/prop-types
@@ -59,7 +58,7 @@ const ForgotPassword = ({
             </LogFormModalSubtitle>
           </Grid>
 
-          <form onSubmit={(event) => handleAuthInputSubmit(event, authInputValue)}>
+          <form onSubmit={(event) => handleAuthInputSubmit(event)} id="form-forgotPassword">
 
             <Grid item>
               {Object.values(userAuthInfosFiltred).map((field) => (
@@ -69,6 +68,7 @@ const ForgotPassword = ({
                   {...field}
                   handleAuthInput={handleAuthInput}
                   value={field[field.name]}
+                  id={`${field.name}-forgot-password`}
                 />
               ))}
             </Grid>
@@ -109,7 +109,6 @@ const ForgotPassword = ({
 
 ForgotPassword.propTypes = {
   handleOpen: PropTypes.func.isRequired,
-  authInputValue: PropTypes.string.isRequired,
   handleAuthInput: PropTypes.func.isRequired,
   handleAuthInputSubmit: PropTypes.func.isRequired,
 };
