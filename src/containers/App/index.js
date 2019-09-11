@@ -16,7 +16,7 @@ import { } from 'src/store/reducer';
  */
 const mapStateToProps = (state) => ({
   message: state.message,
-  viewLanding: state.viewLanding,
+  view: state.view,
 });
 
 /* === Actions ===

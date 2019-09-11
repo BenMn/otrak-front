@@ -9,8 +9,8 @@ const Fade = React.forwardRef((props, ref) => {
     in: open, children, onEnter, onExited, ...other
   } = props;
   const style = useSpring({
-    from: { opacity: 0 },
-    to: { opacity: open ? 1 : 0 },
+    from: { opacity: 0, outline: 'none' },
+    to: { opacity: open ? 1 : 0, outline: 'none' },
     onStart: () => {
       if (open && onEnter) {
         onEnter();

@@ -21,21 +21,27 @@ class LandingPage extends React.Component {
   render() {
     const {
       trendingList,
-      inputValue,
-      handleInput,
-      handleInputSubmit,
+      searchInputValue,
+      handleSearchInput,
+      handleSearchInputSubmit,
+      handleOpen,
     } = this.props;
     return (
       <>
-        <HeadScreen />
+        <HeadScreen
+          handleOpen={handleOpen}
+          searchInputValue={searchInputValue}
+          handleSearchInput={handleSearchInput}
+          handleSearchInputSubmit={handleSearchInputSubmit}
+        />
         <ApiInfos
-          inputValue={inputValue}
-          handleInput={handleInput}
-          handleInputSubmit={handleInputSubmit}
+          searchInputValue={searchInputValue}
+          handleSearchInput={handleSearchInput}
+          handleSearchInputSubmit={handleSearchInputSubmit}
         />
         <ManageShows />
         <Trending trendingList={trendingList} />
-        <StartToday />
+        <StartToday handleOpen={handleOpen} />
       </>
     );
   }
@@ -44,9 +50,10 @@ class LandingPage extends React.Component {
 LandingPage.propTypes = {
   getTrending: PropTypes.func.isRequired,
   trendingList: PropTypes.object.isRequired,
-  inputValue: PropTypes.string.isRequired,
-  handleInput: PropTypes.func.isRequired,
-  handleInputSubmit: PropTypes.func.isRequired,
+  searchInputValue: PropTypes.string.isRequired,
+  handleSearchInput: PropTypes.func.isRequired,
+  handleSearchInputSubmit: PropTypes.func.isRequired,
+  handleOpen: PropTypes.func.isRequired,
 };
 
 export default LandingPage;

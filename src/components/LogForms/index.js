@@ -8,8 +8,17 @@ import Backdrop from '@material-ui/core/Backdrop';
 import Fade from './ModalFade';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
+import ForgotPassword from './ForgotPassword';
 
-const LogFormsModal = ({ open, handleClose, view }) => (
+const LogFormsModal = ({
+  open,
+  handleClose,
+  formName,
+  handleOpen,
+  handleAuthInput,
+  handleAuthInputSubmit,
+  userAuthInfos,
+}) => (
   <div>
     <Modal
       aria-labelledby="spring-modal-title"
@@ -23,8 +32,33 @@ const LogFormsModal = ({ open, handleClose, view }) => (
       }}
     >
       <Fade in={open}>
-        {view === 'Sign in' && <SignIn />}
-        {view === 'Sign up' && <SignUp />}
+        {formName === 'in' && (
+          <SignIn
+            formName={formName}
+            handleOpen={handleOpen}
+            handleAuthInput={handleAuthInput}
+            handleAuthInputSubmit={handleAuthInputSubmit}
+            userAuthInfos={userAuthInfos}
+          />
+        )}
+        {formName === 'up' && (
+          <SignUp
+            formName={formName}
+            handleOpen={handleOpen}
+            handleAuthInput={handleAuthInput}
+            handleAuthInputSubmit={handleAuthInputSubmit}
+            userAuthInfos={userAuthInfos}
+          />
+        )}
+        {formName === 'password' && (
+          <ForgotPassword
+            formName={formName}
+            handleOpen={handleOpen}
+            handleAuthInput={handleAuthInput}
+            handleAuthInputSubmit={handleAuthInputSubmit}
+            userAuthInfos={userAuthInfos}
+          />
+        )}
       </Fade>
     </Modal>
   </div>
@@ -34,13 +68,17 @@ const LogFormsModal = ({ open, handleClose, view }) => (
 LogFormsModal.propTypes = {
   open: PropTypes.bool,
   handleClose: PropTypes.func,
-  view: PropTypes.string,
+  handleOpen: PropTypes.func,
+  formName: PropTypes.string,
+  handleAuthInput: PropTypes.func.isRequired,
+  handleAuthInputSubmit: PropTypes.func.isRequired,
 };
 
 LogFormsModal.defaultProps = {
   open: false,
   handleClose: () => { },
-  view: '',
+  handleOpen: () => { },
+  formName: '',
 };
 
 export default LogFormsModal;

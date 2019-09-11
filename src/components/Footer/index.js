@@ -29,7 +29,7 @@ class Footer extends React.Component {
   }
 
   render() {
-    const { open, view } = this.props;
+    const { open, viewModal } = this.props;
     return (
       <div id="Footer">
         <FooterAppBar position="static">
@@ -55,7 +55,7 @@ class Footer extends React.Component {
                 <FooterButton variant="outlined" color="inherit" onClick={this.handleButtonClick}>
                   REGISTER NOW !
                 </FooterButton>
-                {open === true && <LogFormsModal view={view} />}
+                {open === true && <LogFormsModal viewModal={viewModal} />}
 
                 <FooterButton color="inherit">TEAM</FooterButton>
                 <FooterButton color="inherit">LEGAL</FooterButton>
@@ -79,13 +79,13 @@ class Footer extends React.Component {
 Footer.propTypes = {
   open: PropTypes.bool,
   handleOpen: PropTypes.func,
-  view: PropTypes.string,
+  viewModal: PropTypes.string,
 };
 
 Footer.defaultProps = {
   open: false,
   handleOpen: () => {},
-  view: '',
+  viewModal: '',
 };
 
 export default Footer;
