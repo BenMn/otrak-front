@@ -27,7 +27,7 @@ const drawerWidth = 240;
 
 const Toolbar = withStyles({
   root: {
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: theme.palette.secondary.dark,
     color: '#fff',
     height: 50,
   },
@@ -63,8 +63,8 @@ const useStyles = makeStyles(() => ({
     flexShrink: 0,
   },
   drawerPaper: {
-    backgroundColor: theme.palette.secondary.main,
-    color: '#000',
+    backgroundColor: theme.palette.secondary.dark,
+    color: '#FFF',
     top: 'auto',
     width: drawerWidth,
   },
@@ -114,17 +114,6 @@ export default function Filter() {
     setOpen(false);
   }
 
-  function handleOpen() {
-    setOpen2(true);
-  }
-
-  function handleChange(event) {
-    setAge(event.target.value);
-  }
-
-  function handleClose() {
-    setOpen2(false);
-  }
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -145,7 +134,7 @@ export default function Filter() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Filtrer
+            Filter
           </Typography>
         </Toolbar>
       </AppBar>
@@ -165,36 +154,12 @@ export default function Filter() {
         </div>
         <Divider />
         <List>
-          {['Titre', 'Date de sortie', 'Popularité', 'Favoris'].map((text) => (
+          {['Title', 'Release date', 'Rating', 'Language'].map((text) => (
             <ListItem button key={text}>
               <ListItemText primary={text} />
             </ListItem>
           ))}
         </List>
-        <Divider />
-        <form autoComplete="off">
-          <FormControl className={classes.formControl}>
-            <InputLabel htmlFor="open-select">Choisir Catégorie</InputLabel>
-            <Select
-              open={open2}
-              onClose={handleClose}
-              onOpen={handleOpen}
-              value={age}
-              onChange={handleChange}
-              inputProps={{
-                name: 'age',
-                id: 'demo-controlled-open-select',
-              }}
-              color={theme.palette.text.hint}
-            >
-              <MenuItem value="" />
-
-              <MenuItem value={10} color={theme.palette.text.secondary}>Shonen</MenuItem>
-              <MenuItem value={20}>Seinen</MenuItem>
-              <MenuItem value={30}>Shôjo</MenuItem>
-            </Select>
-          </FormControl>
-        </form>
       </Drawer>
     </div>
   );

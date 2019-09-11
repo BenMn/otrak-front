@@ -18,7 +18,7 @@ const Trending = () => (
   <div id="footer-landing-page">
     <div id="footer-screen-landing-page">
       {/* ------------------ Anime Cards ----------------  */}
-      <TrendingTitleTranding variant="h3" align="center" className="title-icon"><TrendingIcon /> Trending Now</TrendingTitleTranding>
+      <TrendingTitleTranding variant="h3" align="center" className="title-icon"><TrendingIcon />Just Aired</TrendingTitleTranding>
       <TrendingGridAnime
         container
         direction="row"

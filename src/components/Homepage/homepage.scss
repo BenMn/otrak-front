@@ -24,3 +24,18 @@
   align-items: center;
   justify-content: flex-start;
 }
+
+
+.see-all-next-aired{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  &:hover{
+    text-decoration: underline;
+    font-style: italic;
+  }
+}
+
+// '&:hover': {
+//   textDecoration: 'underline',
+// },

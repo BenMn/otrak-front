@@ -6,70 +6,60 @@ import 'react-id-swiper/lib/styles/scss/swiper.scss';
 // css
 import 'react-id-swiper/lib/styles/css/swiper.css';
 
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+
 import {
   Typography,
   Grid,
   CardActionArea,
-  CardContent,
+  Container,
 } from '@material-ui/core';
 
 // Icons
 
-
-// ComponentIconButtons
-import IconButtons from 'src/components/IconButtons';
-
 // Data provisoire
-import shows from 'src/data/shows';
+// import shows from 'src/data/shows';
 
 
 import {
   AiredIconTitle,
   HomePageCard,
   HomePageCardMedia,
-  HomePageCardDescription,
-  HomePageCardButton,
+  HomePageIconContainer,
+  HomePageCardTitle,
+  AiredBlockTitleSeeAll,
+  HomePageCardIcon,
+  AiredSeeAllIcon,
+  AiredSubtitleSeasonEpisode,
+  AiredTitleCardAndSubtitle,
 } from 'src/styles/materialUi/materialUiStyles/HomePage';
 
-const Aired = () => {
-
-  const shuffleArray = (array) => {
-    let i = array.length - 1;
-    // eslint-disable-next-line no-plusplus
-    for (; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      const temp = array[i];
-      array[i] = array[j];
-      array[j] = temp;
-    }
-    return array;
-  };
+const Aired = ({ trendingList } = this.props) => {
 
   const params = {
     lazy: true,
-    slidesPerView: 5,
-    spaceBetween: 50,
+    slidesPerView: 4,
+    spaceBetween: 10,
+    mousewheel: true,
     pagination: {
       el: '.swiper-pagination',
       type: 'progressbar',
-      // clickable: true,
     },
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
     },
     breakpoints: {
-      1024: {
-        slidesPerView: 3,
-        spaceBetween: 40,
+      1050: {
+        slidesPerView: 2,
+        spaceBetween: 20,
       },
       768: {
         slidesPerView: 2,
-        spaceBetween: 30,
+        spaceBetween: 20,
       },
-      640: {
-        slidesPerView: 2,
+      690: {
+        slidesPerView: 1,
         spaceBetween: 20,
       },
       320: {
@@ -80,51 +70,56 @@ const Aired = () => {
   };
   return (
     <>
-      <Grid
+      <AiredBlockTitleSeeAll
         container
         direction="row"
         justify="space-around"
         alignItems="center"
       >
         <Typography variant="h3" component="p" className="title-icon-next-aired"><AiredIconTitle /> Just Aired</Typography>
-        <Typography><a href="."> See all... </a></Typography>
-      </Grid>
-
-      <Swiper {...params}>
-        {shuffleArray(shows).map((show) => (
-          <Grid itemxs={3} key={show.title}>
-            <HomePageCard key={show.title}>
-              <Typography align="center">{show.release}</Typography>
-              <CardActionArea>
-                <HomePageCardMedia
-                  image={show.image}
-                  title={show.title}
-                  className="swiper-lazy"
-                />
-                <div className="swiper-lazy-preloader swiper-lazy-preloader-white" />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="h2">
-                    {show.title}
-                  </Typography>
-                  <HomePageCardDescription variant="body2" color="textPrimary" component="p">
-                    {show.description}
-                  </HomePageCardDescription>
-                </CardContent>
-              </CardActionArea>
-              <HomePageCardButton>
-
-                <IconButtons />
-
-              </HomePageCardButton>
-            </HomePageCard>
-          </Grid>
-        ))}
-      </Swiper>
+        <Typography variant="h6"><a href="." className="see-all-next-aired"> See all<AiredSeeAllIcon /></a></Typography>
+      </AiredBlockTitleSeeAll>
+      <Container>
+        <Swiper {...params}>
+          {trendingList.map((currentShow) => (
+            <Grid item key={currentShow.id_tvmaze}>
+              <HomePageCard>
+                <CardActionArea>
+                  <HomePageCardMedia
+                    image={currentShow.poster}
+                    title={currentShow.name}
+                  >
+                    <Grid
+                      container
+                      justify="flex-end"
+                    >
+                      <HomePageIconContainer>
+                        <HomePageCardIcon />
+                      </HomePageIconContainer>
+                    </Grid>
+                    <AiredTitleCardAndSubtitle
+                      container
+                      direction="row"
+                      justify="flex-end"
+                    >
+                      <HomePageCardTitle variant="h5" component="h2">
+                        {currentShow.name}
+                      </HomePageCardTitle>
+                      <AiredSubtitleSeasonEpisode>EXX SXX</AiredSubtitleSeasonEpisode>
+                    </AiredTitleCardAndSubtitle>
+                  </HomePageCardMedia>
+                </CardActionArea>
+              </HomePageCard>
+            </Grid>
+          ))}
+        </Swiper>
+      </Container>
     </>
   );
 };
 
 Aired.propTypes = {
+  trendingList: PropTypes.array.isRequired,
 
 };
 

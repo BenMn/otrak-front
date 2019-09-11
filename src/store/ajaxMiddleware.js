@@ -9,11 +9,10 @@ import {
 
 const ajaxMiddleware = (store) => (next) => (action) => {
   console.log('Je suis le middleware, et je laisse passer cette action: ', action);
-  next(action);
 
   switch (action.type) {
     case FETCH_TRENDING:
-      axios.get('url')
+      axios.get('http://localhost:8000/api/shows/aired')
         .then((response) => {
           const { data } = response;
           store.dispatch(storeTrending(data));

@@ -6,16 +6,21 @@ import { connect } from 'react-redux';
 import Homepage from 'src/components/Homepage';
 
 // Action Creators
-import { doSomething } from 'src/store/reducer';
+import { doSomething, fetchTrending } from 'src/store/reducer';
 
 const mapStateToProps = (state) => ({
   message: state.message,
-  drawerOpen: state.drawerOpen,
+  storeInputResult: state.storeInputResult,
+  inputValue: state.inputValue,
+  trendingList: state.trendingList,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   doSomething: () => {
     dispatch(doSomething('Coucou'));
+  },
+  getTrending: () => {
+    dispatch(fetchTrending());
   },
 });
 

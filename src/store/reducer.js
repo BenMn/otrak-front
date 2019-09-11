@@ -1,13 +1,14 @@
+import dataApi from 'src/data/dataApi.json';
+
 // == Initial State
 const initialState = {
-  trendingList: {},
+  trendingList: dataApi,
   viewLanding: '',
   view: '',
   inputValue: '',
-  storeInputResult: {},
+  storeInputResult: dataApi,
   setOpen: false,
   open: false,
-  drawerOpen: true,
 };
 
 // == Types
