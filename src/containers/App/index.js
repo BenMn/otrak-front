@@ -15,8 +15,8 @@ import { } from 'src/store/reducer';
  * Pas de data à transmettre ? const mapStateToProps = null;
  */
 const mapStateToProps = (state) => ({
-  message: state.message,
   view: state.view,
+  storeSearchInputResult: state.storeSearchInputResult,
 });
 
 /* === Actions ===

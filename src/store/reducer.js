@@ -4,7 +4,7 @@ import dataApi from 'src/data/dataApi.json';
 const initialState = {
   trendingList: dataApi,
   searchInputValue: '',
-  storeSearchInputResult: dataApi,
+  storeSearchInputResult: [],
   view: 'landing',
   viewModal: '',
   storeAuthInputResult: {},
