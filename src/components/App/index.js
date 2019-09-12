@@ -3,6 +3,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import theme from 'src/styles/materialUi/materialUiTheme/theme';
 import { MuiThemeProvider } from '@material-ui/core';
+import { Route, Redirect } from 'react-router-dom';
+
 
 // == Import : local
 import Navbar from 'src/containers/Navbar';
@@ -13,14 +15,14 @@ import Homepage from 'src/containers/Homepage';
 
 // == Composant
 const App = ({
-  view,
   handleOpen,
   handleSearchInput,
   handleSearchInputSubmit,
+  storeSearchInputResult,
 }) => (
   <MuiThemeProvider theme={theme}>
     <div id="app">
-      {view !== 'landing'
+      {window.location.pathname !== '/'
         && (
           <Navbar
             handleOpen={handleOpen}
@@ -29,29 +31,39 @@ const App = ({
           />
         )}
       <LogFormModal />
-      <Navbar
-        handleOpen={handleOpen}
-        handleSearchInput={handleSearchInput}
-        handleSearchInputSubmit={handleSearchInputSubmit}
+
+      <Route
+        exact
+        path="/"
+        render={() => (
+          storeSearchInputResult.length > 0 ? (
+            <Redirect to="/search" />
+          ) : (
+            <LandingPage />
+          )
+        )}
       />
-      <LandingPage />
-      <Homepage />
+
+      <Route exact path="/search" component={Homepage} />
+
       <Footer />
     </div>
   </MuiThemeProvider>
 );
 
+
 App.propTypes = {
-  view: PropTypes.string.isRequired,
   handleOpen: PropTypes.func,
   handleSearchInput: PropTypes.func,
   handleSearchInputSubmit: PropTypes.func,
+  storeSearchInputResult: PropTypes.array,
 };
 
 App.defaultProps = {
   handleOpen: () => { },
   handleSearchInput: () => { },
   handleSearchInputSubmit: () => { },
+  storeSearchInputResult: [],
 };
 
 // == Export
