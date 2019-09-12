@@ -10,9 +10,12 @@ import theme from 'src/styles/materialUi/materialUiTheme/theme';
 
 
 export const IndexScreenPicture = styled(CardMedia)({
-  height: '200vh',
+  height: '180vh',
   width: '100vw',
-  paddingTop: '15%',
+  // backgroundSize: 'cover',
+  // backgroundRepeat: 'no-repeat',
+  // backgroundPosition: 'center',
+  // background: 'linear-gradient(to bottom, rgba(255, 255, 255, 0) 30%,rgb(255, 255, 255) 100%)',
 
 });
 
@@ -20,6 +23,7 @@ export const IndexContainer = styled(Container)({
   backgroundColor: '#212121d7',
   padding: 40,
   borderRadius: 15,
+  boxShadow: '6px 6px 10px 1px rgba(80, 80, 80, .5)',
 });
 
 // -----------------------------Resume HeadScreen.js--------------------------//

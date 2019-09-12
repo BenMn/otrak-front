@@ -27,12 +27,14 @@ class Show extends React.Component {
     } = this.props;
     return (
       <>
-        <IndexScreenPicture className="headscreen-img" title="Head-Screen" image={showDetail.poster}>
-          <IndexContainer maxWidth="md">
-            <HeadScreen showDetail={showDetail} />
-            <ResumeShow showDetail={showDetail} />
-            <Casting showDetail={showDetail} />
-          </IndexContainer>
+        <IndexScreenPicture title="Head-Screen" image={showDetail.poster}>
+          <div className="fond-img">
+            <IndexContainer maxWidth="md">
+              <HeadScreen showDetail={showDetail} />
+              <ResumeShow showDetail={showDetail} />
+              <Casting showDetail={showDetail} />
+            </IndexContainer>
+          </div>
         </IndexScreenPicture>
       </>
     );
