@@ -12,6 +12,7 @@ import Footer from 'src/containers/Footer';
 import LandingPage from 'src/containers/LandingPage';
 import LogFormModal from 'src/containers/LogForms';
 import Homepage from 'src/containers/Homepage';
+import Dashboard from 'src/components/Dashboard';
 
 // == Composant
 const App = ({
@@ -45,6 +46,8 @@ const App = ({
       />
 
       <Route exact path="/search" component={Homepage} />
+
+      <Route exact path="/dashboard" component={Dashboard} />
 
       <Footer />
     </div>
