@@ -14,8 +14,8 @@ import ConfigButtons from './ConfigButtons';
 
 import '../Dashboard.scss';
 
-const Dashboard = () => (
-  <div id="Dashboard">
+const Header = () => (
+  <div id="Header">
 
     <DashboardHeaderConainer>
 
@@ -40,4 +40,4 @@ const Dashboard = () => (
   </div>
 );
 
-export default Dashboard;
+export default Header;

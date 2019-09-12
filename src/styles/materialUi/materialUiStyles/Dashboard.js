@@ -7,13 +7,14 @@ import {
   Avatar,
   Typography,
   Button,
+  Tab,
 } from '@material-ui/core';
 
 import CreateIcon from '@material-ui/icons/Create';
 import HistoryIcon from '@material-ui/icons/History';
 import SettingsInputCompositeIcon from '@material-ui/icons/SettingsInputComposite';
 
-// ................Header................
+// .........................Header.........................
 
 export const DashboardProgressBar = styled(LinearProgress)({
   height: 15,
@@ -70,4 +71,12 @@ export const DashboardHeaderButtonsSettingsIcon = styled(SettingsInputCompositeI
   float: 'left',
   color: theme.palette.common.white,
   marginLeft: '-35%',
+});
+
+
+// .........................Tabs.........................
+
+export const DashboardTab = styled(Tab)({
+  fontSize: '1em',
+  padding: theme.spacing(1, 11),
 });

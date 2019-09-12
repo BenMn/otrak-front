@@ -1,10 +1,12 @@
 import React from 'react';
 
-import Hearder from './Header';
+import Header from './Header';
+import Tabs from './Tabs';
 
 const Dashboard = () => (
   <div id="Dashboard">
-    <Hearder />
+    <Header />
+    <Tabs />
   </div>
 );
 
