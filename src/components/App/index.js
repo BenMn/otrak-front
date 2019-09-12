@@ -12,7 +12,6 @@ import LogFormModal from 'src/containers/LogForms';
 import Homepage from 'src/containers/Homepage';
 
 // == Composant
-// == Composant
 const App = ({
   view,
   handleOpen,
@@ -23,14 +22,19 @@ const App = ({
     <div id="app">
       {view !== 'landing'
         && (
-        <Navbar
-          handleOpen={handleOpen}
-          handleSearchInput={handleSearchInput}
-          handleSearchInputSubmit={handleSearchInputSubmit}
-        />
+          <Navbar
+            handleOpen={handleOpen}
+            handleSearchInput={handleSearchInput}
+            handleSearchInputSubmit={handleSearchInputSubmit}
+          />
         )}
       <LogFormModal />
-      {/* <LandingPage /> */}
+      <Navbar
+        handleOpen={handleOpen}
+        handleSearchInput={handleSearchInput}
+        handleSearchInputSubmit={handleSearchInputSubmit}
+      />
+      <LandingPage />
       <Homepage />
       <Footer />
     </div>

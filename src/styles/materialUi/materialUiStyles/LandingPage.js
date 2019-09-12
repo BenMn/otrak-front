@@ -45,15 +45,13 @@ export const HeadScreenSlogan = styled(Typography)({
 
 export const HeadScreenSignInButton = styled(Button)({
   position: 'inherit',
-  float: 'right',
-  margin: '0 60px 0 50px',
   borderColor: theme.palette.common.white,
   color: theme.palette.common.white,
 });
 
 export const HeadScreenSignUpButton = styled(Button)({
+  margin: '0 60px 0 50px',
   position: 'inherit',
-  float: 'right',
   borderColor: theme.palette.common.white,
   color: theme.palette.common.white,
 });

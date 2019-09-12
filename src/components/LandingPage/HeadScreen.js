@@ -52,6 +52,7 @@ class HeadScreen extends React.Component {
 
             </Grid>
             <Grid item>
+
               <HeadScreenSignInButton
                 variant="text"
                 onClick={(event) => handleOpen(event)}
@@ -65,6 +66,7 @@ class HeadScreen extends React.Component {
               >
                 Sign up
               </HeadScreenSignUpButton>
+
               {/* eslint-disable-next-line max-len */}
               {open === true && (
                 <LogFormsModal
