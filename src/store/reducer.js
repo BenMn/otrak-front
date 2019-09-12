@@ -1,11 +1,13 @@
 import dataApi from 'src/data/dataApi.json';
 
+import ShowComplet from 'src/data/showComplet.json';
 // == Initial State
 const initialState = {
-  trendingList: dataApi,
+  trendingList: [],
+  showDetail: ShowComplet,
   searchInputValue: '',
   storeSearchInputResult: dataApi,
-  view: 'landing',
+  view: '',
   viewModal: '',
   storeAuthInputResult: {},
   setOpen: false,

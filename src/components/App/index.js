@@ -10,6 +10,7 @@ import Footer from 'src/containers/Footer';
 import LandingPage from 'src/containers/LandingPage';
 import LogFormModal from 'src/containers/LogForms';
 import Homepage from 'src/containers/Homepage';
+import Show from 'src/containers/Show';
 
 // == Composant
 const App = ({
@@ -29,13 +30,9 @@ const App = ({
           />
         )}
       <LogFormModal />
-      <Navbar
-        handleOpen={handleOpen}
-        handleSearchInput={handleSearchInput}
-        handleSearchInputSubmit={handleSearchInputSubmit}
-      />
-      <LandingPage />
-      <Homepage />
+      {/* <LandingPage /> */}
+      {/* <Homepage /> */}
+      <Show />
       <Footer />
     </div>
   </MuiThemeProvider>

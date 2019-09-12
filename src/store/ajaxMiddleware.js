@@ -15,7 +15,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
 
   switch (action.type) {
     case FETCH_TRENDING:
-      axios.get('http://localhost:8000/api/shows/aired')
+      axios.get('http://localhost:8001/api/shows/aired')
         .then((response) => {
           const { data } = response;
           store.dispatch(storeTrending(data));
@@ -24,7 +24,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       break;
 
     case FETCH_SEARCH_INPUT_RESULT:
-      axios.get(`http://localhost:8000/api/shows/search/${action.searchInputValue}`)
+      axios.get(`http://localhost:8001/api/shows/search/${action.searchInputValue}`)
         .then((response) => {
           const { data } = response;
           store.dispatch(storeSearchInputResult(data));
@@ -33,7 +33,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       break;
 
     case FETCH_LOGIN_AUTH_INFOS:
-      axios.post('http://localhost:8000/api/auth_check', {
+      axios.post('http://localhost:8001/api/auth_check', {
         email: action.email,
         password: action.password,
       })
@@ -46,7 +46,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       break;
 
     case FETCH_REGISTER_AUTH_INFOS:
-      axios.post('http://localhost:8000/api/users/new', {
+      axios.post('http://localhost:8001/api/users/new', {
         username: action.username,
         email: action.email,
         password: action.password,
