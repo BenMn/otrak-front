@@ -1,8 +1,12 @@
+// Import NPM
 import React from 'react';
+
+// Import material UI components
 import {
   Grid,
 } from '@material-ui/core';
 
+// Import material UI custom components
 import {
   TrendingCard,
   TrendingCardMedia,

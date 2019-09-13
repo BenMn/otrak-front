@@ -1,22 +1,24 @@
+// import npm
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// Import material UI components
 import {
   Grid,
 } from '@material-ui/core';
 
+// Import material UI custom components
 import {
   ResumeShowResumeText,
   ResumeShowTitle,
 } from 'src/styles/materialUi/materialUiStyles/Show';
 
-// import './LandingPage.scss';
-
-const ResumeShow = ({ showDetail } = this.props) => {
+const ResumeShow = ({ showDetail }) => {
+  // Summary Regex cleaning function
   const dirtySummary = showDetail.summary;
   const regex = /<[^>]*>/g;
 
-  const Cleansummary = dirtySummary.replace(regex, '');
+  const CleanSummary = dirtySummary.replace(regex, '');
 
   return (
     <>
@@ -27,7 +29,7 @@ const ResumeShow = ({ showDetail } = this.props) => {
         alignItems="center"
       >
         <ResumeShowTitle variant="h4" gutterBottom> Synopsis </ResumeShowTitle>
-        <ResumeShowResumeText gutterBottom> {Cleansummary} </ResumeShowResumeText>
+        <ResumeShowResumeText gutterBottom> {CleanSummary} </ResumeShowResumeText>
       </Grid>
     </>
   );

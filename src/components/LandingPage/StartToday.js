@@ -1,19 +1,22 @@
+// Import NPM
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// MAterial UI Componenets
 import {
   Typography,
   Button,
 } from '@material-ui/core';
 
+// MAterial UI custom Componenets
 import {
   StartNowGrid,
   StartNowIcon,
   StartNowTitle,
 } from 'src/styles/materialUi/materialUiStyles/LandingPage';
 
+// Authentification modals
 import LogFormsModal from 'src/containers/LogForms';
-// import './LandingPage.scss';
 
 const StartToday = ({ open, viewModal, handleOpen }) => (
   <>
@@ -25,6 +28,7 @@ const StartToday = ({ open, viewModal, handleOpen }) => (
     >
       <StartNowIcon />
       <StartNowTitle variant="h3">Start Today</StartNowTitle>
+      {/* REGISTER */}
       <Button variant="contained" color="primary" onClick={(event) => handleOpen(event)}>
         Keep up to date my favorite shows
       </Button>

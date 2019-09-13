@@ -6,15 +6,12 @@ import { connect } from 'react-redux';
 import Show from 'src/components/Show';
 
 // Action Creators
-import { fetchTrending } from 'src/store/reducer';
 
 const mapStateToProps = (state) => ({
   showDetail: state.showDetail,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-
-});
+const mapDispatchToProps = () => ({});
 
 // Container
 const ShowContainer = connect(

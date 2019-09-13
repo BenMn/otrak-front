@@ -1,52 +1,19 @@
 #Homepage{
   display: flex,
 }
-.MuiPaper-root.MuiMenu-paper.MuiPaper-elevation8.MuiPopover-paper.MuiPaper-rounded{
-  background-color: #B71C1C;
-  opacity: 1;
-    transform: none;
-    min-width: 239px;
-    transition: opacity 284ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, transform 189ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-    top: 242px;
-    left: 16px;
-    transform-origin: -16px 128px 0px;
-}
-.label.MuiFormLabel-root.MuiInputLabel-root.MuiInputLabel-formControl.MuiInputLabel-animated.MuiInputLabel-shrink.MuiFormLabel-filled{
-  color: black;
-}
 
-.swiper-pagination-progressbar-fill{
-  background-color: red !important;
-}
-
-.title-icon-next-aired{
+.title-icon-next-aired, .see-all-next-aired {
   display: flex;
   align-items: center;
   justify-content: flex-start;
 }
 
-
-.see-all-next-aired{
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
+.see-all-next-aired {
   &:hover{
     text-decoration: underline;
     font-style: italic;
   }
 }
-
-// .swiper-slide {
-//   flex-shrink: 0;
-//   width: 30% !important;
-//   height: 100%;
-//   position: relative;
-//   transition-property: transform;
-// }
-
-// '&:hover': {
-//   textDecoration: 'underline',
-// },
 
 .hiddenCardIcon {
   display: none;

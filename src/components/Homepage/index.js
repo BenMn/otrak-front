@@ -1,17 +1,14 @@
 /* eslint-disable react/prefer-stateless-function */
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-
-} from '@material-ui/core';
 
 import './homepage.scss';
 
-
-import Filter from './Filter';
-import SearchResult from './SearchResult';
-import Aired from './Aired';
-import Next from './Next';
+// Imports locaux
+import Filter from 'src/components/Homepage/Filter';
+import SearchResult from 'src/components/Homepage/SearchResult';
+import Aired from 'src/components/Homepage/Aired';
+import Next from 'src/components/Homepage/Next';
 
 
 class Homepage extends React.Component {
@@ -20,30 +17,25 @@ class Homepage extends React.Component {
     getTrending();
   }
 
-  componentDidUpdate() {
-    const { showSwiper } = this.props;
-    showSwiper();
-  }
-
   render() {
     const {
       storeSearchInputResult,
       searchInputValue,
       trendingList,
       getDetailShow,
-      showSwiper,
     } = this.props;
     return (
       <>
         <Filter />
+        {(storeSearchInputResult.length > 0) === true && (
         <SearchResult
           storeSearchInputResult={storeSearchInputResult}
           searchInputValue={searchInputValue}
         />
+        )}
         <Aired
           trendingList={trendingList}
           getDetailShow={getDetailShow}
-          showSwiper={showSwiper}
         />
         <Next />
       </>
@@ -57,7 +49,6 @@ Homepage.propTypes = {
   trendingList: PropTypes.array.isRequired,
   getTrending: PropTypes.func.isRequired,
   getDetailShow: PropTypes.func.isRequired,
-  showSwiper: PropTypes.func.isRequired,
 };
 
 Homepage.defaultProps = {

@@ -1,12 +1,15 @@
 /* eslint-disable no-console */
 import axios from 'axios';
 import {
-  FETCH_TRENDING,
-  FETCH_SEARCH_INPUT_RESULT,
   FETCH_LOGIN_AUTH_INFOS,
   FETCH_REGISTER_AUTH_INFOS,
+
+  FETCH_TRENDING,
   storeTrending,
+
+  FETCH_SEARCH_INPUT_RESULT,
   storeSearchInputResult,
+
   FETCH_DETAIL_SHOW,
   storeDetailShow,
 } from 'src/store/reducer';

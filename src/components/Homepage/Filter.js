@@ -1,29 +1,32 @@
 import React from 'react';
 import clsx from 'clsx';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import AppBar from '@material-ui/core/AppBar';
-import MuiToolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
 
+import { makeStyles, withStyles } from '@material-ui/core/styles';
+
+import {
+  Drawer,
+  CssBaseline,
+  AppBar,
+  List,
+  Typography,
+  Divider,
+  IconButton,
+  ListItem,
+  ListItemText,
+} from '@material-ui/core';
+
+import MuiToolbar from '@material-ui/core/Toolbar';
+
+// icons
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import MenuIcon from '@material-ui/icons/Menu';
 
 import theme from 'src/styles/materialUi/materialUiTheme/theme';
 
-const drawerWidth = 240;
 
+// Style of all components in the file
+const drawerWidth = 240;
 
 const Toolbar = withStyles({
   root: {
@@ -103,8 +106,6 @@ const useStyles = makeStyles(() => ({
 export default function Filter() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-  const [age, setAge] = React.useState('');
-  const [open2, setOpen2] = React.useState(false);
 
   function handleDrawerOpen() {
     setOpen(true);

@@ -2,19 +2,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// Import material UI components
 import {
   Button,
   Grid,
   ListItemText,
 } from '@material-ui/core';
 
+// Import material UI custom components
 import {
   ShowHeadPoster,
   ShowHeadTitle,
   DetailShowGroupList,
 } from 'src/styles/materialUi/materialUiStyles/Show';
 
-// import './LandingPage.scss';
 
 const HeadScreen = ({ showDetail }) => (
   <>
@@ -25,10 +26,12 @@ const HeadScreen = ({ showDetail }) => (
       direction="row"
       justify="space-evenly"
     >
+      {/* Left Side (poster) */}
       <Grid item>
         <ShowHeadPoster className="poster-img" title="poster" image={showDetail.poster} />
       </Grid>
 
+      {/* Right Side (title + details) */}
       <Grid item>
         <Grid
           container
@@ -43,7 +46,6 @@ const HeadScreen = ({ showDetail }) => (
           <Grid item>
             <Button variant="contained" color="secondary">ADD TO MY WATCH LIST</Button>
           </Grid>
-
           <Grid item>
             <DetailShowGroupList component="nav" aria-label="secondary mailbox folders">
               <ListItemText primary="Genres: " />

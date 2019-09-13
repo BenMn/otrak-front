@@ -1,21 +1,17 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-plusplus */
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useEffect, useState } from 'react';
-
-
-import Slider from 'react-slick';
-
-// scss
-import 'react-id-swiper/lib/styles/scss/swiper.scss';
-// css
-import 'react-id-swiper/lib/styles/css/swiper.css';
-
-import 'slick-carousel/slick/slick.css';
-
-import 'slick-carousel/slick/slick-theme.css';
-
+import React from 'react';
 import PropTypes from 'prop-types';
 
+// Slider library
+import Slider from 'react-slick';
+
+// Slider css style
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
+// import Material UI components
 import {
   Typography,
   Grid,
@@ -23,12 +19,7 @@ import {
   Container,
 } from '@material-ui/core';
 
-// Icons
-
-// Data provisoire
-// import shows from 'src/data/shows';
-
-
+// import Material UI custom components
 import {
   AiredIconTitle,
   HomePageCard,
@@ -42,13 +33,14 @@ import {
   AiredTitleCardAndSubtitle,
 } from 'src/styles/materialUi/materialUiStyles/HomePage';
 
+// import Material UI Icons
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import CreateIcon from '@material-ui/icons/Create';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import StarIcon from '@material-ui/icons/Star';
 
-
+// Micro component managing arrow's style
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
   return (
@@ -64,7 +56,7 @@ function SampleNextArrow(props) {
     />
   );
 }
-
+// Micro component managing arrow's style
 function SamplePrevArrow(props) {
   const { className, style, onClick } = props;
   return (
@@ -82,7 +74,7 @@ function SamplePrevArrow(props) {
 }
 
 class Aired extends React.Component {
-
+  // Opens card icons menu
   displayCardActionButtons = (event) => {
     event.persist();
     const parentIconElement = event.target.parentElement.parentElement;
@@ -93,8 +85,9 @@ class Aired extends React.Component {
   };
 
   render() {
-    const { trendingList, getDetailShow, domReady } = this.props;
+    const { trendingList, getDetailShow } = this.props;
 
+    // Setting of Slider component
     const settings = {
       dots: true,
       infinite: true,

@@ -6,14 +6,12 @@ import { connect } from 'react-redux';
 import Homepage from 'src/components/Homepage';
 
 // Action Creators
-import { fetchTrending, fetchDetailShow, toogleDomReady } from 'src/store/reducer';
+import { fetchTrending, fetchDetailShow } from 'src/store/reducer';
 
 const mapStateToProps = (state) => ({
-  message: state.message,
   storeSearchInputResult: state.storeSearchInputResult,
   searchInputValue: state.searchInputValue,
   trendingList: state.trendingList,
-  domReady: state.domReady,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -22,9 +20,6 @@ const mapDispatchToProps = (dispatch) => ({
   },
   getDetailShow: (IdShow) => {
     dispatch(fetchDetailShow(IdShow));
-  },
-  showSwiper: () => {
-    dispatch(toogleDomReady());
   },
 });
 

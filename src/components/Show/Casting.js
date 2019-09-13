@@ -1,12 +1,18 @@
+/* eslint-disable react/jsx-props-no-spreading */
+// Import NPM
 import React from 'react';
 import PropTypes from 'prop-types';
+
+// Swiper library
 import Swiper from 'react-id-swiper';
 
+// Import material UI components
 import {
   Grid,
   CardActionArea,
 } from '@material-ui/core';
 
+//  Material UI custom Components
 import {
   HomePageCard,
   HomePageCardMedia,
@@ -19,9 +25,9 @@ import {
   CastingTitleCasting,
 } from 'src/styles/materialUi/materialUiStyles/Show';
 
-// import './LandingPage.scss';
 
-const Casting = ({ showDetail } = this.props) => {
+const Casting = ({ showDetail }) => {
+  // Params of slider
   const params = {
     lazy: true,
     grabCursor: true,
@@ -61,10 +67,13 @@ const Casting = ({ showDetail } = this.props) => {
     <>
       <CastingTitleCasting variant="h4" align="center" gutterBottom>Casting</CastingTitleCasting>
       <Swiper {...params}>
+
         {showDetail.cast.map((currentActor) => (
+
           <Grid item key={currentActor.person.name}>
             <HomePageCard>
               <CardActionArea>
+
                 <HomePageCardMedia
                   image={currentActor.person.image.original}
                   title={currentActor.person.name}
@@ -72,7 +81,7 @@ const Casting = ({ showDetail } = this.props) => {
                   <Grid
                     container
                     justify="flex-end"
-                   />
+                  />
                   <AiredTitleCardAndSubtitle
                     container
                     direction="row"
@@ -81,9 +90,14 @@ const Casting = ({ showDetail } = this.props) => {
                     <HomePageCardTitle variant="h5" component="h2">
                       {currentActor.person.name}
                     </HomePageCardTitle>
-                    <AiredSubtitleSeasonEpisode>{currentActor.character.name}</AiredSubtitleSeasonEpisode>
+
+                    <AiredSubtitleSeasonEpisode>
+                      {currentActor.character.name}
+                    </AiredSubtitleSeasonEpisode>
                   </AiredTitleCardAndSubtitle>
+
                 </HomePageCardMedia>
+
               </CardActionArea>
             </HomePageCard>
           </Grid>

@@ -1,18 +1,18 @@
+// NPM install
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
 
-} from '@material-ui/core';
+// Local Imports
+import HeadScreen from 'src/components/LandingPage/HeadScreen';
+import ApiInfos from 'src/components/LandingPage/ApiInfos';
+import ManageShows from 'src/components/LandingPage/ManageShows';
+import Trending from 'src/components/LandingPage/Trending';
+import StartToday from 'src/components/LandingPage/StartToday';
 
 import './LandingPage.scss';
 
-import HeadScreen from './HeadScreen';
-import ApiInfos from './ApiInfos';
-import ManageShows from './ManageShows';
-import Trending from './Trending';
-import StartToday from './StartToday';
-
 class LandingPage extends React.Component {
+  // Fetch all the trendings shows when page load
   componentDidMount() {
     const { getTrending } = this.props;
     getTrending();

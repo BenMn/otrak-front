@@ -1,8 +1,11 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-plusplus */
 /* eslint-disable react/jsx-props-no-spreading */
 
 import React from 'react';
 import PropTypes from 'prop-types';
+
+// import Material UI components
 import {
   Grid,
   CardActionArea,
@@ -10,9 +13,14 @@ import {
   Container,
 } from '@material-ui/core';
 
+// Slider library
 import Slider from 'react-slick';
 
+// Slider css styles
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
+// import Material UI custom components
 import {
   HomePageCard,
   HomePageCardMedia,
@@ -24,10 +32,8 @@ import {
   HomePageCardIcon,
 } from 'src/styles/materialUi/materialUiStyles/HomePage';
 
-import 'slick-carousel/slick/slick.css';
 
-import 'slick-carousel/slick/slick-theme.css';
-
+// Icons
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import CreateIcon from '@material-ui/icons/Create';
@@ -80,6 +86,7 @@ class SearchResult extends React.Component {
   render() {
     const { searchInputValue, storeSearchInputResult } = this.props;
 
+    // Setting of Slider component
     const settings = {
       dots: true,
       infinite: true,
@@ -94,6 +101,7 @@ class SearchResult extends React.Component {
     return (
       <>
 
+        {/* Title */}
         <AiredBlockTitleSeeAll
           container
           direction="row"
@@ -107,6 +115,7 @@ class SearchResult extends React.Component {
         </AiredBlockTitleSeeAll>
 
         <Container>
+          {/* Slider */}
           <Slider {...settings}>
             {storeSearchInputResult.map((currentShow) => (
               <Grid item key={currentShow.id_tvmaze}>
@@ -120,6 +129,7 @@ class SearchResult extends React.Component {
                         container
                         justify="flex-end"
                       >
+                        {/* Icons */}
                         <HomePageIconContainer className="hiddenCardIcon">
                           <AddCircleIcon />
                         </HomePageIconContainer>
@@ -140,7 +150,7 @@ class SearchResult extends React.Component {
                         </HomePageIconContainer>
 
                       </Grid>
-
+                      {/* Show Title */}
                       <HomePageCardTitle variant="h5" component="h2">
                         {currentShow.name}
                       </HomePageCardTitle>

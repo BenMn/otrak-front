@@ -2,12 +2,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 
-// scss
-import 'react-id-swiper/lib/styles/scss/swiper.scss';
-// css
-import 'react-id-swiper/lib/styles/css/swiper.css';
-
-// import PropTypes from 'prop-types';
 import {
   Typography,
   Grid,
@@ -15,14 +9,10 @@ import {
   Container,
 } from '@material-ui/core';
 
-// Icons
-
-
-// ComponentIconButtons
-
 // Data provisoire
 import shows from 'src/data/shows';
 
+// import Material UI custom components
 import {
   NextIconTitle,
   HomePageCard,
@@ -37,6 +27,7 @@ import {
   NextGridCurrentCard,
 } from 'src/styles/materialUi/materialUiStyles/HomePage';
 
+// Icons
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import CreateIcon from '@material-ui/icons/Create';
@@ -45,6 +36,7 @@ import StarIcon from '@material-ui/icons/Star';
 
 
 class Next extends React.Component {
+  // Opens card icons menu
   displayCardActionButtons = (event) => {
     event.persist();
     const parentIconElement = event.target.parentElement.parentElement;
@@ -57,6 +49,7 @@ class Next extends React.Component {
   render() {
     return (
       <>
+        {/* Title */}
         <NextBlockTitleSeeAll
           container
           direction="row"
@@ -74,6 +67,7 @@ class Next extends React.Component {
             justify="center"
             alignItems="flex-start"
           >
+            {/* Single Card Show */}
             {shows.map((show) => (
               <NextGridCurrentCard item key={show.title}>
                 <HomePageCard key={show.title}>
@@ -82,6 +76,7 @@ class Next extends React.Component {
                       image={show.image}
                       title={show.title}
                     >
+                      {/* Card icons */}
                       <Grid
                         container
                         direction="row"
@@ -107,6 +102,7 @@ class Next extends React.Component {
                         </HomePageIconContainer>
                       </Grid>
 
+                      {/* Show title */}
                       <AiredTitleCardAndSubtitle
                         container
                         direction="row"
@@ -115,6 +111,7 @@ class Next extends React.Component {
                         <HomePageCardTitle variant="h5" component="h2">
                           {show.title}
                         </HomePageCardTitle>
+                        {/* Season + Episode */}
                         <AiredSubtitleSeasonEpisode>EXX SXX</AiredSubtitleSeasonEpisode>
                       </AiredTitleCardAndSubtitle>
                     </HomePageCardMedia>
@@ -128,8 +125,5 @@ class Next extends React.Component {
     );
   }
 }
-Next.propTypes = {
-
-};
 
 export default Next;
