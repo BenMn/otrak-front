@@ -17,7 +17,6 @@ import { openModal, updateSearchInput, fetchSearchInputResult } from 'src/store/
 const mapStateToProps = (state) => ({
   setOpen: state.setOpen,
   open: state.open,
-  viewModal: state.viewModal,
   searchInputValue: state.searchInputValue,
 });
 
@@ -38,28 +37,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(fetchSearchInputResult(searchInputValue));
   },
 
-  handleOpen: (event) => {
-    event.persist();
-
-    const viewModalName = event.target.innerHTML;
-
-    // Forgot Password Link
-    if (viewModalName.match(/password/g)) {
-      const modalName = viewModalName.match(/password/g).toString();
-      dispatch(openModal(viewModalName, modalName));
-    }
-
-    // Sign Up Link
-    if (viewModalName.match(/up/g)) {
-      const modalName = viewModalName.match(/up/g).toString();
-      dispatch(openModal(viewModalName, modalName));
-    }
-
-    // Sign In Link
-    if (viewModalName.match(/in/g)) {
-      const modalName = viewModalName.match(/in/g).toString();
-      dispatch(openModal(viewModalName, modalName));
-    }
+  handleOpen: (modalName) => {
+    dispatch(openModal(modalName));
   },
 });
 

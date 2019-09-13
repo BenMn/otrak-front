@@ -15,7 +15,6 @@ import LogFormsModal from 'src/containers/LogForms';
 
 const ConfigButtons = ({
   open,
-  viewModal,
   modalName,
   handleOpen,
 }) => (
@@ -24,7 +23,7 @@ const ConfigButtons = ({
       <DashboardHeaderButtons
         variant="contained"
         color="secondary"
-        onClick={(event) => handleOpen(event, 'history')}
+        onClick={() => handleOpen('history')}
       >
         <DashboardHeaderButtonsHistoryIcon />
         History
@@ -35,7 +34,7 @@ const ConfigButtons = ({
       <DashboardHeaderButtons
         variant="contained"
         color="primary"
-        onClick={(event) => handleOpen(event)}
+        onClick={() => handleOpen('account')}
       >
         <DashboardHeaderButtonsSettingsIcon />
         Account settings
@@ -45,7 +44,6 @@ const ConfigButtons = ({
     {/* eslint-disable-next-line max-len */}
     {open === true && (
       <LogFormsModal
-        viewModal={viewModal}
         modalName={modalName}
         handleOpen={handleOpen}
       />
@@ -56,13 +54,11 @@ const ConfigButtons = ({
 ConfigButtons.propTypes = {
   open: PropTypes.bool,
   handleOpen: PropTypes.func.isRequired,
-  viewModal: PropTypes.string,
   modalName: PropTypes.string,
 };
 
 ConfigButtons.defaultProps = {
   open: false,
-  viewModal: '',
   modalName: '',
 };
 

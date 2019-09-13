@@ -27,7 +27,6 @@ class HeadScreen extends React.Component {
   render() {
     const {
       open,
-      viewModal,
       modalName,
       handleOpen,
       searchInputValue,
@@ -55,14 +54,14 @@ class HeadScreen extends React.Component {
 
               <HeadScreenSignInButton
                 variant="text"
-                onClick={(event) => handleOpen(event)}
+                onClick={() => handleOpen('in')}
               >
                 Sign in
               </HeadScreenSignInButton>
 
               <HeadScreenSignUpButton
                 variant="outlined"
-                onClick={(event) => handleOpen(event)}
+                onClick={() => handleOpen('up')}
               >
                 Sign up
               </HeadScreenSignUpButton>
@@ -70,7 +69,6 @@ class HeadScreen extends React.Component {
               {/* eslint-disable-next-line max-len */}
               {open === true && (
                 <LogFormsModal
-                  viewModal={viewModal}
                   modalName={modalName}
                   handleOpen={handleOpen}
                 />
@@ -89,7 +87,6 @@ class HeadScreen extends React.Component {
 HeadScreen.propTypes = {
   open: PropTypes.bool,
   handleOpen: PropTypes.func.isRequired,
-  viewModal: PropTypes.string,
   modalName: PropTypes.string,
   searchInputValue: PropTypes.string.isRequired,
   handleSearchInput: PropTypes.func.isRequired,
@@ -98,7 +95,6 @@ HeadScreen.propTypes = {
 
 HeadScreen.defaultProps = {
   open: false,
-  viewModal: '',
   modalName: '',
 };
 

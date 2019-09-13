@@ -15,7 +15,6 @@ import ForgotPassword from './ForgotPassword';
 
 import Fade from './ModalFade';
 
-
 const LogFormsModal = ({
   open,
   handleClose,

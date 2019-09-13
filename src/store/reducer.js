@@ -6,7 +6,6 @@ const initialState = {
   searchInputValue: '',
   storeSearchInputResult: [],
   view: 'landing',
-  viewModal: '',
   storeAuthInputResult: {},
   setOpen: false,
   open: false,
@@ -109,7 +108,6 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         setOpen: true,
         open: true,
-        viewModal: action.viewModal,
         modalName: action.modalName,
       };
 
@@ -118,7 +116,6 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         setOpen: false,
         open: false,
-        viewModal: action.viewModal,
         modalName: action.modalName,
       };
 
@@ -191,19 +188,17 @@ export const storeSearchInputResult = (data) => ({
   data,
 });
 
-export const openModal = (viewModal, modalName) => ({
+export const openModal = (modalName) => ({
   type: OPEN_MODAL,
   setOpen: true,
   open: true,
-  viewModal,
   modalName,
 });
 
-export const closeModal = (viewModal, modalName) => ({
+export const closeModal = (modalName) => ({
   type: CLOSE_MODAL,
   setOpen: false,
   open: false,
-  viewModal,
   modalName,
 });
 

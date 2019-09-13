@@ -75,12 +75,12 @@ const SignUp = ({
 
           <Grid container direction="row" spacing={3}>
             <Grid item xs>
-              <Link onClick={(event) => handleOpen(event)} variant="body2" color="secondary">
+              <Link onClick={() => handleOpen('password')} variant="body2" color="secondary">
                 Forgot password?
               </Link>
             </Grid>
             <Grid item>
-              <Link onClick={(event) => handleOpen(event)} variant="body2" color="secondary">
+              <Link onClick={() => handleOpen('in')} variant="body2" color="secondary">
                 Already registred ? Sign in
               </Link>
             </Grid>

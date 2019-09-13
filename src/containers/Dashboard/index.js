@@ -19,7 +19,6 @@ const mapStateToProps = (state) => ({
   userAuthInfos: state.userAuthInfos,
   setOpen: state.setOpen,
   open: state.open,
-  viewModal: state.viewModal,
   modalName: state.modalName,
 });
 
@@ -61,23 +60,8 @@ const mapDispatchToProps = (dispatch) => ({
     event.preventDefault();
   },
 
-  handleOpen: (event) => {
-    event.persist();
-
-    const viewModalName = event.target.innerHTML;
-    console.log(viewModalName);
-
-    // History
-    if (viewModalName.match(/history/g)) {
-      const modalName = viewModalName.match(/history/g).toString();
-      dispatch(openModal(viewModalName, modalName));
-    }
-
-    // Account Setting
-    if (viewModalName.match(/account/g)) {
-      const modalName = viewModalName.match(/account/g).toString();
-      dispatch(openModal(viewModalName, modalName));
-    }
+  handleOpen: (modalName) => {
+    dispatch(openModal(modalName));
   },
 
 });
