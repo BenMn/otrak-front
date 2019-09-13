@@ -50,6 +50,8 @@ const App = ({
         )}
       />
 
+      <Route exact path="/show/:name" component={Show} />
+
       <Route exact path="/search" component={Homepage} />
 
       <Footer />
