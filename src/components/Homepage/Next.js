@@ -1,7 +1,6 @@
 /* eslint-disable no-plusplus */
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import Swiper from 'react-id-swiper';
 
 // scss
 import 'react-id-swiper/lib/styles/scss/swiper.scss';
@@ -35,6 +34,7 @@ import {
   HomePageCardTitle,
   AiredSubtitleSeasonEpisode,
   AiredTitleCardAndSubtitle,
+  NextGridCurrentCard,
 } from 'src/styles/materialUi/materialUiStyles/HomePage';
 
 import AddCircleIcon from '@material-ui/icons/AddCircle';
@@ -55,39 +55,6 @@ class Next extends React.Component {
   }
 
   render() {
-    const params = {
-      lazy: true,
-      grabCursor: true,
-      slidesPerView: 4,
-      spaceBetween: 10,
-      mousewheel: true,
-      pagination: {
-        el: '.swiper-pagination',
-        type: 'progressbar',
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      breakpoints: {
-        1050: {
-          slidesPerView: 2,
-          spaceBetween: 20,
-        },
-        768: {
-          slidesPerView: 2,
-          spaceBetween: 20,
-        },
-        690: {
-          slidesPerView: 1,
-          spaceBetween: 20,
-        },
-        320: {
-          slidesPerView: 1,
-          spaceBetween: 10,
-        },
-      },
-    };
     return (
       <>
         <NextBlockTitleSeeAll
@@ -101,9 +68,14 @@ class Next extends React.Component {
         </NextBlockTitleSeeAll>
 
         <Container>
-          <Swiper {...params}>
+          <Grid
+            container
+            direction="row"
+            justify="center"
+            alignItems="flex-start"
+          >
             {shows.map((show) => (
-              <Grid item key={show.title}>
+              <NextGridCurrentCard item key={show.title}>
                 <HomePageCard key={show.title}>
                   <CardActionArea>
                     <HomePageCardMedia
@@ -112,6 +84,7 @@ class Next extends React.Component {
                     >
                       <Grid
                         container
+                        direction="row"
                         justify="flex-end"
                       >
                         <HomePageIconContainer className="hiddenCardIcon">
@@ -147,9 +120,9 @@ class Next extends React.Component {
                     </HomePageCardMedia>
                   </CardActionArea>
                 </HomePageCard>
-              </Grid>
+              </NextGridCurrentCard>
             ))}
-          </Swiper>
+          </Grid>
         </Container>
       </>
     );

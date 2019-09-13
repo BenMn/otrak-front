@@ -123,3 +123,7 @@ export const NextBlockTitleSeeAll = styled(Grid)({
 export const NextSeeAllIcon = styled(ArrowForwardIcon)({
   fontSize: '1.5em',
 });
+
+export const NextGridCurrentCard = styled(Grid)({
+  minWidth: '320px',
+});

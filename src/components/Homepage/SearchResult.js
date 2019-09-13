@@ -2,7 +2,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
 import React from 'react';
-import Swiper from 'react-id-swiper';
 import PropTypes from 'prop-types';
 import {
   Grid,
@@ -10,6 +9,9 @@ import {
   Typography,
   Container,
 } from '@material-ui/core';
+
+import Slider from 'react-slick';
+
 
 import {
   HomePageCard,
@@ -22,12 +24,48 @@ import {
   HomePageCardIcon,
 } from 'src/styles/materialUi/materialUiStyles/HomePage';
 
+import 'slick-carousel/slick/slick.css';
+
+import 'slick-carousel/slick/slick-theme.css';
+
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import CreateIcon from '@material-ui/icons/Create';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import StarIcon from '@material-ui/icons/Star';
 
+
+function SampleNextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{
+        ...style,
+        display: 'block',
+        background: '#212121',
+        borderRadius: 25,
+      }}
+      onClick={onClick}
+    />
+  );
+}
+
+function SamplePrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{
+        ...style,
+        display: 'block',
+        background: '#212121',
+        borderRadius: 25,
+      }}
+      onClick={onClick}
+    />
+  );
+}
 
 class SearchResult extends React.Component {
   displayCardActionButtons = (event) => {
@@ -41,39 +79,17 @@ class SearchResult extends React.Component {
 
   render() {
     const { searchInputValue, storeSearchInputResult } = this.props;
-    const params = {
-      lazy: true,
-      grabCursor: true,
-      slidesPerView: 4,
-      centeredSlides: true,
-      spaceBetween: 10,
-      mousewheel: true,
-      pagination: {
-        el: '.swiper-pagination',
-        type: 'progressbar',
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      breakpoints: {
-        1050: {
-          slidesPerView: 2,
-          spaceBetween: 20,
-        },
-        768: {
-          slidesPerView: 2,
-          spaceBetween: 20,
-        },
-        690: {
-          slidesPerView: 1,
-          spaceBetween: 20,
-        },
-        320: {
-          slidesPerView: 1,
-          spaceBetween: 10,
-        },
-      },
+
+    const settings = {
+      dots: true,
+      infinite: true,
+      arrows: true,
+      lazyLoad: true,
+      speed: 500,
+      slidesToShow: 4,
+      slidesToScroll: 2,
+      nextArrow: <SampleNextArrow />,
+      prevArrow: <SamplePrevArrow />,
     };
     return (
       <>
@@ -91,57 +107,49 @@ class SearchResult extends React.Component {
         </AiredBlockTitleSeeAll>
 
         <Container>
-          <Grid
-            container
-            direction="row"
-            justify="center"
-            alignItems="center"
-          >
-            {console.log(storeSearchInputResult)}
-            <Swiper {...params}>
-              {storeSearchInputResult.map((currentShow) => (
-                <Grid item key={currentShow.id_tvmaze}>
-                  <HomePageCard key={currentShow.id_tvmaze}>
-                    <CardActionArea>
-                      <HomePageCardMedia
-                        image={currentShow.poster}
-                        title={currentShow.name}
+          <Slider {...settings}>
+            {storeSearchInputResult.map((currentShow) => (
+              <Grid item key={currentShow.id_tvmaze}>
+                <HomePageCard key={currentShow.id_tvmaze}>
+                  <CardActionArea>
+                    <HomePageCardMedia
+                      image={currentShow.poster}
+                      title={currentShow.name}
+                    >
+                      <Grid
+                        container
+                        justify="flex-end"
                       >
-                        <Grid
-                          container
-                          justify="flex-end"
-                        >
-                          <HomePageIconContainer className="hiddenCardIcon">
-                            <AddCircleIcon />
-                          </HomePageIconContainer>
-                          <HomePageIconContainer className="hiddenCardIcon">
-                            <VisibilityIcon />
-                          </HomePageIconContainer>
-                          <HomePageIconContainer className="hiddenCardIcon">
-                            <CreateIcon />
-                          </HomePageIconContainer>
-                          <HomePageIconContainer className="hiddenCardIcon">
-                            <StarIcon />
-                          </HomePageIconContainer>
-                          <HomePageIconContainer className="hiddenCardIcon">
-                            <DeleteForeverIcon />
-                          </HomePageIconContainer>
-                          <HomePageIconContainer onClick={this.displayCardActionButtons}>
-                            <HomePageCardIcon onClick={this.displayCardActionButtons} />
-                          </HomePageIconContainer>
+                        <HomePageIconContainer className="hiddenCardIcon">
+                          <AddCircleIcon />
+                        </HomePageIconContainer>
+                        <HomePageIconContainer className="hiddenCardIcon">
+                          <VisibilityIcon />
+                        </HomePageIconContainer>
+                        <HomePageIconContainer className="hiddenCardIcon">
+                          <CreateIcon />
+                        </HomePageIconContainer>
+                        <HomePageIconContainer className="hiddenCardIcon">
+                          <StarIcon />
+                        </HomePageIconContainer>
+                        <HomePageIconContainer className="hiddenCardIcon">
+                          <DeleteForeverIcon />
+                        </HomePageIconContainer>
+                        <HomePageIconContainer onClick={this.displayCardActionButtons}>
+                          <HomePageCardIcon onClick={this.displayCardActionButtons} />
+                        </HomePageIconContainer>
 
-                        </Grid>
+                      </Grid>
 
-                        <HomePageCardTitle variant="h5" component="h2">
-                          {currentShow.name}
-                        </HomePageCardTitle>
-                      </HomePageCardMedia>
-                    </CardActionArea>
-                  </HomePageCard>
-                </Grid>
-              ))}
-            </Swiper>
-          </Grid>
+                      <HomePageCardTitle variant="h5" component="h2">
+                        {currentShow.name}
+                      </HomePageCardTitle>
+                    </HomePageCardMedia>
+                  </CardActionArea>
+                </HomePageCard>
+              </Grid>
+            ))}
+          </Slider>
         </Container>
       </>
     );

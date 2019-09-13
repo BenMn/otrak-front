@@ -1,12 +1,18 @@
 /* eslint-disable no-plusplus */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect, useState } from 'react';
-import Swiper from 'react-id-swiper';
+
+
+import Slider from 'react-slick';
 
 // scss
 import 'react-id-swiper/lib/styles/scss/swiper.scss';
 // css
 import 'react-id-swiper/lib/styles/css/swiper.css';
+
+import 'slick-carousel/slick/slick.css';
+
+import 'slick-carousel/slick/slick-theme.css';
 
 import PropTypes from 'prop-types';
 
@@ -42,8 +48,40 @@ import CreateIcon from '@material-ui/icons/Create';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import StarIcon from '@material-ui/icons/Star';
 
-class Aired extends React.Component {
 
+function SampleNextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{
+        ...style,
+        display: 'block',
+        background: '#212121',
+        borderRadius: 25,
+      }}
+      onClick={onClick}
+    />
+  );
+}
+
+function SamplePrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{
+        ...style,
+        display: 'block',
+        background: '#212121',
+        borderRadius: 25,
+      }}
+      onClick={onClick}
+    />
+  );
+}
+
+class Aired extends React.Component {
 
   displayCardActionButtons = (event) => {
     event.persist();
@@ -56,43 +94,18 @@ class Aired extends React.Component {
 
   render() {
     const { trendingList, getDetailShow, domReady } = this.props;
-    const params = {
-      lazy: true,
-      grabCursor: true,
-      slidesPerView: 4,
-      slidesPerGroup: 3,
-      spaceBetween: 10,
-      mousewheel: true,
-      loop: true,
-      loopFillGroupWithBlank: true,
-      pagination: {
-        el: '.swiper-pagination',
-        type: 'progressbar',
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      breakpoints: {
-        1050: {
-          slidesPerView: 2,
-          spaceBetween: 20,
-        },
-        768: {
-          slidesPerView: 2,
-          spaceBetween: 20,
-        },
-        690: {
-          slidesPerView: 1,
-          spaceBetween: 20,
-        },
-        320: {
-          slidesPerView: 1,
-          spaceBetween: 10,
-        },
-      },
-    };
 
+    const settings = {
+      dots: true,
+      infinite: true,
+      arrows: true,
+      lazyLoad: true,
+      speed: 500,
+      slidesToShow: 4,
+      slidesToScroll: 2,
+      nextArrow: <SampleNextArrow />,
+      prevArrow: <SamplePrevArrow />,
+    };
 
     return (
       <>
@@ -105,9 +118,8 @@ class Aired extends React.Component {
           <Typography variant="h3" component="p" className="title-icon-next-aired"><AiredIconTitle /> Just Aired</Typography>
           <Typography variant="h6"><a href="." className="see-all-next-aired"> See all<AiredSeeAllIcon /></a></Typography>
         </AiredBlockTitleSeeAll>
-        {domReady !== true && (
         <Container>
-          <Swiper {...params}>
+          <Slider {...settings}>
             {trendingList.map((currentShow) => (
               <Grid item key={currentShow.id_tvmaze}>
                 <HomePageCard>
@@ -154,9 +166,8 @@ class Aired extends React.Component {
                 </HomePageCard>
               </Grid>
             ))}
-          </Swiper>
+          </Slider>
         </Container>
-        )}
       </>
     );
   }
