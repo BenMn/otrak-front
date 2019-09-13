@@ -1,16 +1,24 @@
-import dataApi from 'src/data/dataApi.json';
+// Local data for testing
+// import dataApi from 'src/data/dataApi.json';
+// import ShowComplet from 'src/data/showComplet.json';
 
 // == Initial State
 const initialState = {
-  trendingList: dataApi,
+  // Get trending infos
+  trendingList: [],
+  // Single show details
+  showDetail: {},
+  // Search
   searchInputValue: '',
   storeSearchInputResult: [],
-  view: 'landing',
+  // Views & Modals
+  view: '',
   viewModal: '',
-  storeAuthInputResult: {},
-  setOpen: false,
   open: false,
-  formName: '',
+  setOpen: false,
+  modalName: '',
+  // Authentification
+  storeAuthInputResult: {},
   userAuthInfos: {
     username: {
       index: 0,
@@ -45,7 +53,7 @@ const initialState = {
   },
 };
 
-// == Types
+// ==  Action Types
 const UPDATE_SEARCH_INPUT = 'UPDATE_SEARCH_INPUT';
 export const FETCH_SEARCH_INPUT_RESULT = 'FETCH_SEARCH_INPUT_RESULT';
 export const STORE_SEARCH_INPUT_RESULT = 'STORE_SEARCH_INPUT_RESULT';
@@ -60,6 +68,10 @@ export const FETCH_TRENDING = 'FETCH_TRENDING';
 
 const OPEN_MODAL = 'OPEN_MODAL';
 const CLOSE_MODAL = 'CLOSE_MODAL';
+
+export const FETCH_DETAIL_SHOW = 'FETCH_DETAIL_SHOW';
+const STORE_DETAIL_SHOW = 'STORE_DETAIL_SHOW';
+
 
 // == Reducer
 const reducer = (state = initialState, action = {}) => {
@@ -79,7 +91,7 @@ const reducer = (state = initialState, action = {}) => {
     case STORE_SEARCH_INPUT_RESULT:
       return {
         ...state,
-        storeSearchInputResult: action.storeSearchInputResult,
+        storeSearchInputResult: action.data,
       };
 
     case UPDATE_AUTH_INPUT:
@@ -106,7 +118,7 @@ const reducer = (state = initialState, action = {}) => {
         setOpen: true,
         open: true,
         viewModal: action.viewModal,
-        formName: action.formName,
+        modalName: action.modalName,
       };
 
     case CLOSE_MODAL:
@@ -115,7 +127,13 @@ const reducer = (state = initialState, action = {}) => {
         setOpen: false,
         open: false,
         viewModal: action.viewModal,
-        formName: action.formName,
+        modalName: action.modalName,
+      };
+
+    case STORE_DETAIL_SHOW:
+      return {
+        ...state,
+        showDetail: action.data,
       };
 
     default:
@@ -169,20 +187,30 @@ export const storeSearchInputResult = (data) => ({
   data,
 });
 
-export const openModal = (viewModal, formName) => ({
+export const openModal = (viewModal, modalName) => ({
   type: OPEN_MODAL,
   setOpen: true,
   open: true,
   viewModal,
-  formName,
+  modalName,
 });
 
-export const closeModal = (viewModal, formName) => ({
+export const closeModal = (viewModal, modalName) => ({
   type: CLOSE_MODAL,
   setOpen: false,
   open: false,
   viewModal,
-  formName,
+  modalName,
+});
+
+export const fetchDetailShow = (idShow) => ({
+  type: FETCH_DETAIL_SHOW,
+  idShow,
+});
+
+export const storeDetailShow = (data) => ({
+  type: STORE_DETAIL_SHOW,
+  data,
 });
 
 

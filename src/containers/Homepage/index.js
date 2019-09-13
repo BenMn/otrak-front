@@ -6,10 +6,9 @@ import { connect } from 'react-redux';
 import Homepage from 'src/components/Homepage';
 
 // Action Creators
-import { fetchTrending } from 'src/store/reducer';
+import { fetchTrending, fetchDetailShow } from 'src/store/reducer';
 
 const mapStateToProps = (state) => ({
-  message: state.message,
   storeSearchInputResult: state.storeSearchInputResult,
   searchInputValue: state.searchInputValue,
   trendingList: state.trendingList,
@@ -18,6 +17,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   getTrending: () => {
     dispatch(fetchTrending());
+  },
+  getDetailShow: (IdShow) => {
+    dispatch(fetchDetailShow(IdShow));
   },
 });
 

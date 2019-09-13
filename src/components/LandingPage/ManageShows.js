@@ -1,9 +1,11 @@
+// Import NPM
 import React from 'react';
 import {
   Typography,
   Grid,
 } from '@material-ui/core';
 
+// Material UI custom Componenets
 import {
   LandingPageContainer,
   ManageShowsIconSettings,
@@ -16,6 +18,7 @@ const ManageShows = () => (
 
       <LandingPageContainer>
 
+        {/* Title  */}
         <span className="title-icon--left">
           <ManageShowsIconSettings />
           <Typography variant="h3" component="h3" align="left">Manage easley your shows</Typography>
@@ -34,8 +37,9 @@ const ManageShows = () => (
       </LandingPageContainer>
     </Grid>
 
+    {/* Screenshot */}
     <Grid item lg={5}>
-      <img src="src/styles/assets/images/screenshot.png" alt="ballekkkkk" className="ScreenDemo--right" />
+      <img src="src/styles/assets/images/screenshot.png" alt="ballekkkkk" className="ScreenDemo ScreenDemo--right" />
     </Grid>
 
   </Grid>

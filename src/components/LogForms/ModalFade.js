@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 
 import React from 'react';
+
+// Import the spring library (fade in modal entry effect)
 import { useSpring, animated } from 'react-spring';
 
 

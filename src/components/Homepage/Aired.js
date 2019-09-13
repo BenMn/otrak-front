@@ -1,15 +1,17 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-plusplus */
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import Swiper from 'react-id-swiper';
-
-// scss
-import 'react-id-swiper/lib/styles/scss/swiper.scss';
-// css
-import 'react-id-swiper/lib/styles/css/swiper.css';
-
 import PropTypes from 'prop-types';
 
+// Slider library
+import Slider from 'react-slick';
+
+// Slider css style
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
+// import Material UI components
 import {
   Typography,
   Grid,
@@ -17,12 +19,7 @@ import {
   Container,
 } from '@material-ui/core';
 
-// Icons
-
-// Data provisoire
-// import shows from 'src/data/shows';
-
-
+// import Material UI custom components
 import {
   AiredIconTitle,
   HomePageCard,
@@ -36,13 +33,48 @@ import {
   AiredTitleCardAndSubtitle,
 } from 'src/styles/materialUi/materialUiStyles/HomePage';
 
+// import Material UI Icons
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import CreateIcon from '@material-ui/icons/Create';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import StarIcon from '@material-ui/icons/Star';
 
+// Micro component managing arrow's style
+function SampleNextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{
+        ...style,
+        display: 'block',
+        background: '#212121',
+        borderRadius: 25,
+      }}
+      onClick={onClick}
+    />
+  );
+}
+// Micro component managing arrow's style
+function SamplePrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{
+        ...style,
+        display: 'block',
+        background: '#212121',
+        borderRadius: 25,
+      }}
+      onClick={onClick}
+    />
+  );
+}
+
 class Aired extends React.Component {
+  // Opens card icons menu
   displayCardActionButtons = (event) => {
     event.persist();
     const parentIconElement = event.target.parentElement.parentElement;
@@ -50,42 +82,22 @@ class Aired extends React.Component {
     for (let i = 0; i < hiddenIcons.length; i++) {
       hiddenIcons[i].style.display = 'block';
     }
-  }
+  };
 
   render() {
-    const { trendingList } = this.props;
-    const params = {
-      lazy: true,
-      grabCursor: true,
-      slidesPerView: 4,
-      spaceBetween: 10,
-      mousewheel: true,
-      pagination: {
-        el: '.swiper-pagination',
-        type: 'progressbar',
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      breakpoints: {
-        1050: {
-          slidesPerView: 2,
-          spaceBetween: 20,
-        },
-        768: {
-          slidesPerView: 2,
-          spaceBetween: 20,
-        },
-        690: {
-          slidesPerView: 1,
-          spaceBetween: 20,
-        },
-        320: {
-          slidesPerView: 1,
-          spaceBetween: 10,
-        },
-      },
+    const { trendingList, getDetailShow } = this.props;
+
+    // Setting of Slider component
+    const settings = {
+      dots: true,
+      infinite: true,
+      arrows: true,
+      lazyLoad: true,
+      speed: 500,
+      slidesToShow: 4,
+      slidesToScroll: 2,
+      nextArrow: <SampleNextArrow />,
+      prevArrow: <SamplePrevArrow />,
     };
 
     return (
@@ -100,14 +112,14 @@ class Aired extends React.Component {
           <Typography variant="h6"><a href="." className="see-all-next-aired"> See all<AiredSeeAllIcon /></a></Typography>
         </AiredBlockTitleSeeAll>
         <Container>
-          <Swiper {...params}>
+          <Slider {...settings}>
             {trendingList.map((currentShow) => (
               <Grid item key={currentShow.id_tvmaze}>
                 <HomePageCard>
-                  <CardActionArea>
+                  <CardActionArea onClick={() => getDetailShow(currentShow.show_id_tvmaze)}>
                     <HomePageCardMedia
                       image={currentShow.poster}
-                      title={currentShow.name}
+                      title={currentShow.show_name}
                     >
                       <Grid
                         container
@@ -138,16 +150,16 @@ class Aired extends React.Component {
                         justify="flex-end"
                       >
                         <HomePageCardTitle variant="h5" component="h2">
-                          {currentShow.name}
+                          {currentShow.show_name}
                         </HomePageCardTitle>
-                        <AiredSubtitleSeasonEpisode>EXX SXX</AiredSubtitleSeasonEpisode>
+                        <AiredSubtitleSeasonEpisode> S{currentShow.season} E{currentShow.number}</AiredSubtitleSeasonEpisode>
                       </AiredTitleCardAndSubtitle>
                     </HomePageCardMedia>
                   </CardActionArea>
                 </HomePageCard>
               </Grid>
             ))}
-          </Swiper>
+          </Slider>
         </Container>
       </>
     );
@@ -156,6 +168,7 @@ class Aired extends React.Component {
 
 Aired.propTypes = {
   trendingList: PropTypes.array.isRequired,
+  getDetailShow: PropTypes.func.isRequired,
 
 };
 

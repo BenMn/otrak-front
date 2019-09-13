@@ -1,19 +1,24 @@
 /* eslint-disable react/prop-types */
-
+// Import NPM
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { LogFormsModal as Modal } from 'src/styles/materialUi/materialUiStyles/LogForms';
+//  Material UI Components
 import Backdrop from '@material-ui/core/Backdrop';
-import Fade from './ModalFade';
-import SignIn from './SignIn';
-import SignUp from './SignUp';
-import ForgotPassword from './ForgotPassword';
+
+//  Material UI custom Components
+import { LogFormsModal as Modal } from 'src/styles/materialUi/materialUiStyles/LogForms';
+
+// Import locaux
+import Fade from 'src/components/LogForms/ModalFade';
+import SignIn from 'src/components/LogForms/SignIn';
+import SignUp from 'src/components/LogForms/SignUp';
+import ForgotPassword from 'src/components/LogForms/ForgotPassword';
 
 const LogFormsModal = ({
   open,
   handleClose,
-  formName,
+  modalName,
   handleOpen,
   handleAuthInput,
   handleAuthInputSubmit,
@@ -32,27 +37,27 @@ const LogFormsModal = ({
       }}
     >
       <Fade in={open}>
-        {formName === 'in' && (
+        {modalName === 'in' && (
           <SignIn
-            formName={formName}
+            modalName={modalName}
             handleOpen={handleOpen}
             handleAuthInput={handleAuthInput}
             handleAuthInputSubmit={handleAuthInputSubmit}
             userAuthInfos={userAuthInfos}
           />
         )}
-        {formName === 'up' && (
+        {modalName === 'up' && (
           <SignUp
-            formName={formName}
+            modalName={modalName}
             handleOpen={handleOpen}
             handleAuthInput={handleAuthInput}
             handleAuthInputSubmit={handleAuthInputSubmit}
             userAuthInfos={userAuthInfos}
           />
         )}
-        {formName === 'password' && (
+        {modalName === 'password' && (
           <ForgotPassword
-            formName={formName}
+            modalName={modalName}
             handleOpen={handleOpen}
             handleAuthInput={handleAuthInput}
             handleAuthInputSubmit={handleAuthInputSubmit}
@@ -64,12 +69,11 @@ const LogFormsModal = ({
   </div>
 );
 
-
 LogFormsModal.propTypes = {
   open: PropTypes.bool,
   handleClose: PropTypes.func,
   handleOpen: PropTypes.func,
-  formName: PropTypes.string,
+  modalName: PropTypes.string,
   handleAuthInput: PropTypes.func.isRequired,
   handleAuthInputSubmit: PropTypes.func.isRequired,
 };
@@ -78,7 +82,7 @@ LogFormsModal.defaultProps = {
   open: false,
   handleClose: () => { },
   handleOpen: () => { },
-  formName: '',
+  modalName: '',
 };
 
 export default LogFormsModal;

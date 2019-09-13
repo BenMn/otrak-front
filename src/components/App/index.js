@@ -1,17 +1,24 @@
 // == Import : npm
 import React from 'react';
 import PropTypes from 'prop-types';
-import theme from 'src/styles/materialUi/materialUiTheme/theme';
+
+// Material UI style provider
 import { MuiThemeProvider } from '@material-ui/core';
 import { Route, Redirect } from 'react-router-dom';
 
 
 // == Import : local
+
+// Custom theme
+import theme from 'src/styles/materialUi/materialUiTheme/theme';
+
 import Navbar from 'src/containers/Navbar';
 import Footer from 'src/containers/Footer';
 import LandingPage from 'src/containers/LandingPage';
 import LogFormModal from 'src/containers/LogForms';
 import Homepage from 'src/containers/Homepage';
+import Show from 'src/containers/Show';
+
 
 // == Composant
 const App = ({
@@ -31,7 +38,6 @@ const App = ({
           />
         )}
       <LogFormModal />
-
       <Route
         exact
         path="/"

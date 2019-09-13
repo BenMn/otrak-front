@@ -1,12 +1,8 @@
+// Import NPM
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {
-  LogFormModalButton,
-  LogFormModalSubtitle,
-  LogFormModalPaper,
-} from 'src/styles/materialUi/materialUiStyles/LogForms';
-
+//  Material UI Components
 import {
   Grid,
   Typography,
@@ -14,8 +10,16 @@ import {
   Link,
 } from '@material-ui/core';
 
+//  Material UI custom Components
+import {
+  LogFormModalButton,
+  LogFormModalSubtitle,
+  LogFormModalPaper,
+} from 'src/styles/materialUi/materialUiStyles/LogForms';
+
+import Field from 'src/components/LogForms/Field';
+
 import './LogForms.scss';
-import Field from './Field';
 
 const ForgotPassword = ({
   handleOpen,
@@ -24,8 +28,10 @@ const ForgotPassword = ({
   // eslint-disable-next-line react/prop-types
   userAuthInfos,
 }) => {
+  // Filter for second object of userAuthInfos = Email field
   const allowed = [1];
 
+  // Returns the email filed only
   const userAuthInfosFiltred = Object.keys(userAuthInfos)
     // eslint-disable-next-line react/prop-types
     .filter((fieldName) => allowed.includes(userAuthInfos[fieldName].index))
@@ -44,20 +50,24 @@ const ForgotPassword = ({
           alignItems="center"
           spacing={2}
         >
+          {/* Logo */}
           <Grid item>
             <img src="src/styles/assets/images/logos/logo-owl.png" alt="O'Track Logo" id="LogFormModalLogo" />
           </Grid>
+          {/* Title */}
           <Grid item>
             <Typography component="h1" variant="h5" color="primary">
               Reset your password
             </Typography>
           </Grid>
+          {/* Subtitle */}
           <Grid item>
             <LogFormModalSubtitle component="h2" variant="subtitle1" color="secondary">
               Find your account by email address
             </LogFormModalSubtitle>
           </Grid>
 
+          {/* Forgot password Submit form */}
           <form onSubmit={(event) => handleAuthInputSubmit(event)} id="form-forgotPassword">
 
             <Grid item>
@@ -73,6 +83,7 @@ const ForgotPassword = ({
               ))}
             </Grid>
             <Grid item>
+              {/* Button */}
               <LogFormModalButton
                 type="submit"
                 fullWidth
@@ -83,7 +94,7 @@ const ForgotPassword = ({
               </LogFormModalButton>
             </Grid>
 
-
+            {/* Other modal links */}
             <Grid container direction="row" spacing={3}>
               <Grid item xs>
                 <Link onClick={(event) => handleOpen(event)} variant="body2" color="secondary">
@@ -100,7 +111,6 @@ const ForgotPassword = ({
           </form>
 
         </Grid>
-
 
       </Container>
     </LogFormModalPaper>
