@@ -23,7 +23,6 @@ const HeadScreen = ({ showDetail }) => (
 
     <Grid
       container
-      direction="row"
       justify="space-evenly"
     >
       {/* Left Side (poster) */}

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import {
 } from '@material-ui/core';
 
-//  Material UI custom Components
+// Material UI custom Components
 import {
   IndexScreenPicture,
   IndexContainer,
@@ -20,6 +20,7 @@ import './show.scss';
 
 const Show = ({ showDetail }) => (
   <>
+    {console.log(showDetail)}
     <IndexScreenPicture title="Head-Screen" image={showDetail.poster}>
       <div className="fond-img">
         <IndexContainer maxWidth="md">

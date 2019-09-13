@@ -27,83 +27,88 @@ import {
 
 
 const Casting = ({ showDetail }) => {
-  // Params of slider
-  const params = {
-    lazy: true,
-    grabCursor: true,
-    slidesPerView: 3,
-    spaceBetween: 10,
-    mousewheel: true,
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'progressbar',
-    },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    breakpoints: {
-      1050: {
-        slidesPerView: 2,
-        spaceBetween: 20,
+  if (Object.keys(showDetail).length > 0) {
+    // Params of slider
+    const params = {
+      lazy: true,
+      grabCursor: true,
+      slidesPerView: 3,
+      spaceBetween: 10,
+      mousewheel: true,
+      pagination: {
+        el: '.swiper-pagination',
+        type: 'progressbar',
       },
-      768: {
-        slidesPerView: 2,
-        spaceBetween: 20,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
       },
-      690: {
-        slidesPerView: 1,
-        spaceBetween: 20,
+      breakpoints: {
+        1050: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        690: {
+          slidesPerView: 1,
+          spaceBetween: 20,
+        },
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 10,
+        },
       },
-      320: {
-        slidesPerView: 1,
-        spaceBetween: 10,
-      },
-    },
-  };
+    };
 
 
-  return (
-    <>
-      <CastingTitleCasting variant="h4" align="center" gutterBottom>Casting</CastingTitleCasting>
-      <Swiper {...params}>
+    return (
+      <>
+        <CastingTitleCasting variant="h4" align="center" gutterBottom>Casting</CastingTitleCasting>
+        <Swiper {...params}>
 
-        {showDetail.cast.map((currentActor) => (
+          {showDetail.cast.map((currentActor) => (
 
-          <Grid item key={currentActor.person.name}>
-            <HomePageCard>
-              <CardActionArea>
+            <Grid item key={currentActor.person.name}>
+              <HomePageCard>
+                <CardActionArea>
 
-                <HomePageCardMedia
-                  image={currentActor.person.image.original}
-                  title={currentActor.person.name}
-                >
-                  <Grid
-                    container
-                    justify="flex-end"
-                  />
-                  <AiredTitleCardAndSubtitle
-                    container
-                    direction="row"
-                    justify="flex-end"
+                  <HomePageCardMedia
+                    image={currentActor.person.image.original}
+                    title={currentActor.person.name}
                   >
-                    <HomePageCardTitle variant="h5" component="h2">
-                      {currentActor.person.name}
-                    </HomePageCardTitle>
+                    <Grid
+                      container
+                      justify="flex-end"
+                    />
+                    <AiredTitleCardAndSubtitle
+                      container
+                      direction="row"
+                      justify="flex-end"
+                    >
+                      <HomePageCardTitle variant="h5" component="h2">
+                        {currentActor.person.name}
+                      </HomePageCardTitle>
 
-                    <AiredSubtitleSeasonEpisode>
-                      {currentActor.character.name}
-                    </AiredSubtitleSeasonEpisode>
-                  </AiredTitleCardAndSubtitle>
+                      <AiredSubtitleSeasonEpisode>
+                        {currentActor.character.name}
+                      </AiredSubtitleSeasonEpisode>
+                    </AiredTitleCardAndSubtitle>
 
-                </HomePageCardMedia>
+                  </HomePageCardMedia>
 
-              </CardActionArea>
-            </HomePageCard>
-          </Grid>
-        ))}
-      </Swiper>
-    </>
+                </CardActionArea>
+              </HomePageCard>
+            </Grid>
+          ))}
+        </Swiper>
+      </>
+    );
+  }
+  return (
+    <div>Loading</div>
   );
 };
 
