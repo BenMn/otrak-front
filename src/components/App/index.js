@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 
 // Material UI style provider
 import { MuiThemeProvider } from '@material-ui/core';
+import { Route, Redirect } from 'react-router-dom';
+
 
 // == Import : local
 
@@ -20,14 +22,14 @@ import Show from 'src/containers/Show';
 
 // == Composant
 const App = ({
-  view,
   handleOpen,
   handleSearchInput,
   handleSearchInputSubmit,
+  storeSearchInputResult,
 }) => (
   <MuiThemeProvider theme={theme}>
     <div id="app">
-      {view !== 'landing'
+      {window.location.pathname !== '/'
         && (
           <Navbar
             handleOpen={handleOpen}
@@ -36,25 +38,38 @@ const App = ({
           />
         )}
       <LogFormModal />
-      <LandingPage />
-      {/* <Homepage /> */}
-      {/* <Show /> */}
+      <Route
+        exact
+        path="/"
+        render={() => (
+          storeSearchInputResult.length > 0 ? (
+            <Redirect to="/search" />
+          ) : (
+            <LandingPage />
+          )
+        )}
+      />
+
+      <Route exact path="/search" component={Homepage} />
+
       <Footer />
     </div>
   </MuiThemeProvider>
 );
 
+
 App.propTypes = {
-  view: PropTypes.string.isRequired,
   handleOpen: PropTypes.func,
   handleSearchInput: PropTypes.func,
   handleSearchInputSubmit: PropTypes.func,
+  storeSearchInputResult: PropTypes.array,
 };
 
 App.defaultProps = {
   handleOpen: () => { },
   handleSearchInput: () => { },
   handleSearchInputSubmit: () => { },
+  storeSearchInputResult: [],
 };
 
 // == Export
