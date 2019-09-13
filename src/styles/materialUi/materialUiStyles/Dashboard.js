@@ -14,6 +14,7 @@ import {
 import CreateIcon from '@material-ui/icons/Create';
 import HistoryIcon from '@material-ui/icons/History';
 import SettingsInputCompositeIcon from '@material-ui/icons/SettingsInputComposite';
+import AccountCircle from '@material-ui/icons/AccountCircle';
 
 // .........................Header.........................
 
@@ -49,6 +50,7 @@ export const DashboardHeaderAvatarIcon = styled(CreateIcon)({
   marginTop: 6,
   color: theme.palette.secondary.light,
   fontSize: '1.2em',
+  cursor: 'pointer',
 });
 
 export const DashboardHeaderUsername = styled(Typography)({
@@ -76,6 +78,10 @@ export const DashboardHeaderButtonsSettingsIcon = styled(SettingsInputCompositeI
   float: 'left',
   color: theme.palette.common.white,
   marginLeft: '-35%',
+});
+
+export const DashboardUsernameIcon = styled(AccountCircle)({
+  fontSize: '1.4em',
 });
 
 

@@ -71,8 +71,6 @@ const mapDispatchToProps = (dispatch) => ({
     }
     event.preventDefault();
   },
-
-
 });
 
 // Container

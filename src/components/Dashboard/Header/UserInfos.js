@@ -1,5 +1,7 @@
+/* eslint-disable react/prop-types */
+
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import {
   Grid,
@@ -8,48 +10,80 @@ import {
 
 import {
   DashboardHeaderAvatar,
-  DashboardHeaderAvatarIcon,
   DashboardHeaderUsername,
 } from 'src/styles/materialUi/materialUiStyles/Dashboard';
 
+import DashboardField from './DashboardField';
 
 // const UserInfos = ({ avatarUploadHandler, userAvatar }) => (
-const UserInfos = () => (
-  <Grid
-    container
-    justify="center"
-    align="center"
-    direction="column"
-  >
+// eslint-disable-next-line react/prop-types
+const UserInfos = ({
+  userAuthInfos,
+  handleAuthInput,
+  handleAuthInputSubmit,
+  handleNewUsername,
+}) => {
+  const allowed = [0];
 
-    <Grid item>
-      <DashboardHeaderAvatar alt="User Avatar" id="user-avatar">
-        <Box component="div" id="user-avatar-gradient" />
-      </DashboardHeaderAvatar>
-    </Grid>
+  const userAuthInfosFiltred = Object.keys(userAuthInfos)
+    // eslint-disable-next-line react/prop-types
+    .filter((fieldName) => allowed.includes(userAuthInfos[fieldName].index))
+    .reduce((newObject, key) => {
+      newObject[key] = userAuthInfos[key];
+      return newObject;
+    }, {});
 
-    {/* <input type="file" onChange={(event) => avatarUploadHandler(event)} /> */}
+  return (
+    <Grid
+      container
+      justify="center"
+      align="center"
+      direction="column"
+    >
 
-    <Grid item>
-      <Box component="div" mt={2}>
-        <Grid container justify="center" align="center" spacing={1}>
-          <Grid item>
-            <DashboardHeaderUsername variant="h5">
-              jackiMimiiidu56
-            </DashboardHeaderUsername>
+      <Grid item>
+        <DashboardHeaderAvatar alt="User Avatar" id="user-avatar">
+          <Box component="div" id="user-avatar-gradient" />
+        </DashboardHeaderAvatar>
+      </Grid>
+
+      {/* <input type="file" onChange={(event) => avatarUploadHandler(event)} /> */}
+
+      <Grid item>
+        <Box component="div" mb={3}>
+          <Grid container justify="center" align="center" spacing={1}>
+            <Grid item>
+              <DashboardHeaderUsername variant="h5">
+
+                <form onSubmit={(event) => handleAuthInputSubmit(event)} id="form-username">
+                  {Object.values(userAuthInfosFiltred).map((field) => (
+                    <DashboardField
+                      key={field.name}
+                      // eslint-disable-next-line react/jsx-props-no-spreading
+                      {...field}
+                      handleAuthInput={handleAuthInput}
+                      value={field[field.name]}
+                      id={`${field.name}-forgot-password`}
+                      handleNewUsername={handleNewUsername}
+                    />
+                  ))}
+                </form>
+
+              </DashboardHeaderUsername>
+            </Grid>
           </Grid>
-          <Grid item>
-            <DashboardHeaderAvatarIcon />
-          </Grid>
-        </Grid>
-      </Box>
+        </Box>
+      </Grid>
+
     </Grid>
+  );
+};
 
-  </Grid>
-);
-
-// UserInfos.propTypes = {
-//   avatarUploadHandler: PropTypes.func.isRequired,
-// };
+UserInfos.propTypes = {
+  handleAuthInput: PropTypes.func.isRequired,
+  handleAuthInputSubmit: PropTypes.func.isRequired,
+  handleNewUsername: PropTypes.func.isRequired,
+  // avatarUploadHandler: PropTypes.func.isRequired,
+};
 
 export default UserInfos;

@@ -14,7 +14,7 @@ const initialState = {
   userAuthInfos: {
     username: {
       index: 0,
-      username: '',
+      username: 'jackiMimiiidu56',
       name: 'username',
       label: 'Username',
       autoComplete: 'username',
@@ -63,6 +63,7 @@ const OPEN_MODAL = 'OPEN_MODAL';
 const CLOSE_MODAL = 'CLOSE_MODAL';
 
 export const AVATAR_UPLOAD_HANDLER = 'AVATAR_UPLOAD_HANDLER';
+const STORE_NEW_USERNAME = 'STORE_NEW_USERNAME';
 
 // == Reducer
 const reducer = (state = initialState, action = {}) => {
@@ -125,6 +126,18 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         userAvatar: action.newAvatar,
+      };
+
+    case STORE_NEW_USERNAME:
+      return {
+        ...state,
+        userAuthInfos: {
+          ...state.userAuthInfos,
+          [action.name]: {
+            ...state.userAuthInfos[`${action.name}`],
+            [action.name]: action.newUsername,
+          },
+        },
       };
 
     default:
@@ -197,6 +210,12 @@ export const closeModal = (viewModal, formName) => ({
 export const avatarUploadHandler = (newAvatar) => ({
   type: AVATAR_UPLOAD_HANDLER,
   newAvatar,
+});
+
+export const storeNewUsername = (newUsername, name) => ({
+  type: STORE_NEW_USERNAME,
+  newUsername,
+  name,
 });
 
 // == Selectors
