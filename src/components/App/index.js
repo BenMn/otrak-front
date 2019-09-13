@@ -31,8 +31,8 @@ const App = ({
         )}
       <LogFormModal />
       {/* <LandingPage /> */}
-      {/* <Homepage /> */}
-      <Show />
+      <Homepage />
+      {/* <Show /> */}
       <Footer />
     </div>
   </MuiThemeProvider>

@@ -7,6 +7,8 @@ import {
   FETCH_REGISTER_AUTH_INFOS,
   storeTrending,
   storeSearchInputResult,
+  FETCH_DETAIL_SHOW,
+  storeDetailShow,
 } from 'src/store/reducer';
 
 
@@ -33,7 +35,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       break;
 
     case FETCH_LOGIN_AUTH_INFOS:
-      axios.post('http://localhost:8001/api/auth_check', {
+      axios.post('http://localhost:8001/api/login_check', {
         email: action.email,
         password: action.password,
       })
@@ -54,6 +56,18 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       })
         .then((response) => {
           console.log(response);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+      break;
+
+    case FETCH_DETAIL_SHOW:
+      axios.get(`http://localhost:8001/api/shows/${action.idShow}`)
+        .then((response) => {
+          console.log(response);
+          const { data } = response;
+          store.dispatch(storeDetailShow(data));
         })
         .catch((error) => {
           console.error(error);

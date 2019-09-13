@@ -45,6 +45,7 @@ class SearchResult extends React.Component {
       lazy: true,
       grabCursor: true,
       slidesPerView: 4,
+      centeredSlides: true,
       spaceBetween: 10,
       mousewheel: true,
       pagination: {
@@ -96,6 +97,7 @@ class SearchResult extends React.Component {
             justify="center"
             alignItems="center"
           >
+            {console.log(storeSearchInputResult)}
             <Swiper {...params}>
               {storeSearchInputResult.map((currentShow) => (
                 <Grid item key={currentShow.id_tvmaze}>

@@ -1,6 +1,6 @@
 /* eslint-disable no-plusplus */
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Swiper from 'react-id-swiper';
 
 // scss
@@ -43,6 +43,8 @@ import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import StarIcon from '@material-ui/icons/Star';
 
 class Aired extends React.Component {
+
+
   displayCardActionButtons = (event) => {
     event.persist();
     const parentIconElement = event.target.parentElement.parentElement;
@@ -50,16 +52,19 @@ class Aired extends React.Component {
     for (let i = 0; i < hiddenIcons.length; i++) {
       hiddenIcons[i].style.display = 'block';
     }
-  }
+  };
 
   render() {
-    const { trendingList } = this.props;
+    const { trendingList, getDetailShow, domReady } = this.props;
     const params = {
       lazy: true,
       grabCursor: true,
       slidesPerView: 4,
+      slidesPerGroup: 3,
       spaceBetween: 10,
       mousewheel: true,
+      loop: true,
+      loopFillGroupWithBlank: true,
       pagination: {
         el: '.swiper-pagination',
         type: 'progressbar',
@@ -88,6 +93,7 @@ class Aired extends React.Component {
       },
     };
 
+
     return (
       <>
         <AiredBlockTitleSeeAll
@@ -99,15 +105,16 @@ class Aired extends React.Component {
           <Typography variant="h3" component="p" className="title-icon-next-aired"><AiredIconTitle /> Just Aired</Typography>
           <Typography variant="h6"><a href="." className="see-all-next-aired"> See all<AiredSeeAllIcon /></a></Typography>
         </AiredBlockTitleSeeAll>
+        {domReady !== true && (
         <Container>
           <Swiper {...params}>
             {trendingList.map((currentShow) => (
               <Grid item key={currentShow.id_tvmaze}>
                 <HomePageCard>
-                  <CardActionArea>
+                  <CardActionArea onClick={() => getDetailShow(currentShow.show_id_tvmaze)}>
                     <HomePageCardMedia
                       image={currentShow.poster}
-                      title={currentShow.name}
+                      title={currentShow.show_name}
                     >
                       <Grid
                         container
@@ -138,9 +145,9 @@ class Aired extends React.Component {
                         justify="flex-end"
                       >
                         <HomePageCardTitle variant="h5" component="h2">
-                          {currentShow.name}
+                          {currentShow.show_name}
                         </HomePageCardTitle>
-                        <AiredSubtitleSeasonEpisode>EXX SXX</AiredSubtitleSeasonEpisode>
+                        <AiredSubtitleSeasonEpisode> S{currentShow.season} E{currentShow.number}</AiredSubtitleSeasonEpisode>
                       </AiredTitleCardAndSubtitle>
                     </HomePageCardMedia>
                   </CardActionArea>
@@ -149,6 +156,7 @@ class Aired extends React.Component {
             ))}
           </Swiper>
         </Container>
+        )}
       </>
     );
   }
@@ -156,6 +164,7 @@ class Aired extends React.Component {
 
 Aired.propTypes = {
   trendingList: PropTypes.array.isRequired,
+  getDetailShow: PropTypes.func.isRequired,
 
 };
 

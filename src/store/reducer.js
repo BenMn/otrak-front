@@ -4,12 +4,13 @@ import ShowComplet from 'src/data/showComplet.json';
 // == Initial State
 const initialState = {
   trendingList: [],
-  showDetail: ShowComplet,
+  showDetail: {},
   searchInputValue: '',
-  storeSearchInputResult: dataApi,
+  storeSearchInputResult: [],
   view: '',
   viewModal: '',
   storeAuthInputResult: {},
+  domReady: false,
   setOpen: false,
   open: false,
   formName: '',
@@ -63,6 +64,12 @@ export const FETCH_TRENDING = 'FETCH_TRENDING';
 const OPEN_MODAL = 'OPEN_MODAL';
 const CLOSE_MODAL = 'CLOSE_MODAL';
 
+export const FETCH_DETAIL_SHOW = 'FETCH_DETAIL_SHOW';
+const STORE_DETAIL_SHOW = 'STORE_DETAIL_SHOW';
+
+const TOOGLE_DOM_READY = 'TOOGLE_DOM_READY';
+
+
 // == Reducer
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
@@ -81,7 +88,7 @@ const reducer = (state = initialState, action = {}) => {
     case STORE_SEARCH_INPUT_RESULT:
       return {
         ...state,
-        storeSearchInputResult: action.storeSearchInputResult,
+        storeSearchInputResult: action.data,
       };
 
     case UPDATE_AUTH_INPUT:
@@ -119,6 +126,19 @@ const reducer = (state = initialState, action = {}) => {
         viewModal: action.viewModal,
         formName: action.formName,
       };
+
+    case STORE_DETAIL_SHOW:
+      return {
+        ...state,
+        showDetail: action.data,
+      };
+
+    case TOOGLE_DOM_READY:
+      return {
+        ...state,
+        domReady: true,
+      };
+
 
     default:
       return state;
@@ -185,6 +205,20 @@ export const closeModal = (viewModal, formName) => ({
   open: false,
   viewModal,
   formName,
+});
+
+export const fetchDetailShow = (idShow) => ({
+  type: FETCH_DETAIL_SHOW,
+  idShow,
+});
+
+export const storeDetailShow = (data) => ({
+  type: STORE_DETAIL_SHOW,
+  data,
+});
+
+export const toogleDomReady = () => ({
+  type: TOOGLE_DOM_READY,
 });
 
 

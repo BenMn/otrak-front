@@ -20,8 +20,19 @@ class Homepage extends React.Component {
     getTrending();
   }
 
+  componentDidUpdate() {
+    const { showSwiper } = this.props;
+    showSwiper();
+  }
+
   render() {
-    const { storeSearchInputResult, searchInputValue, trendingList } = this.props;
+    const {
+      storeSearchInputResult,
+      searchInputValue,
+      trendingList,
+      getDetailShow,
+      showSwiper,
+    } = this.props;
     return (
       <>
         <Filter />
@@ -29,7 +40,11 @@ class Homepage extends React.Component {
           storeSearchInputResult={storeSearchInputResult}
           searchInputValue={searchInputValue}
         />
-        <Aired trendingList={trendingList} />
+        <Aired
+          trendingList={trendingList}
+          getDetailShow={getDetailShow}
+          showSwiper={showSwiper}
+        />
         <Next />
       </>
     );
@@ -37,10 +52,15 @@ class Homepage extends React.Component {
 }
 
 Homepage.propTypes = {
-  storeSearchInputResult: PropTypes.array.isRequired,
+  storeSearchInputResult: PropTypes.array,
   searchInputValue: PropTypes.string.isRequired,
   trendingList: PropTypes.array.isRequired,
   getTrending: PropTypes.func.isRequired,
+  getDetailShow: PropTypes.func.isRequired,
+  showSwiper: PropTypes.func.isRequired,
 };
 
+Homepage.defaultProps = {
+  storeSearchInputResult: [],
+};
 export default Homepage;
