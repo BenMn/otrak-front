@@ -12,7 +12,7 @@ import {
 const UserParams = () => (
   <>
     <Box componenent="div" disabled mt={3}>
-      <Typography>Stat perso marrant</Typography>
+      <Typography color="textSecondary">Stat perso marrant</Typography>
       <DashboardProgressBar
         variant="determinate"
         color="secondary"
@@ -20,7 +20,7 @@ const UserParams = () => (
       />
     </Box>
     <Box componenent="div" disabled mt={3}>
-      <Typography>Stat perso marrant</Typography>
+      <Typography color="textSecondary">Stat perso marrant</Typography>
       <DashboardProgressBar
         variant="determinate"
         color="secondary"
@@ -28,7 +28,7 @@ const UserParams = () => (
       />
     </Box>
     <Box componenent="div" variant="caption" mt={3}>
-      <Typography>Stat perso marrant</Typography>
+      <Typography color="textSecondary">Stat perso marrant</Typography>
       <DashboardProgressBar
         variant="determinate"
         color="secondary"

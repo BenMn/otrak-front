@@ -1,95 +1,112 @@
+/* eslint-disable no-plusplus */
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
 
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
+// scss
+import 'react-id-swiper/lib/styles/scss/swiper.scss';
+// css
+import 'react-id-swiper/lib/styles/css/swiper.css';
 
-import IconButtons from 'src/components/IconButtons';
-import './Tabs.scss';
+// import PropTypes from 'prop-types';
+import {
+  Grid,
+  CardActionArea,
+} from '@material-ui/core';
+
+// Icons
+
+
+// ComponentIconButtons
+
+// Data provisoire
 import shows from 'src/data/shows';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.common.dark,
-    color: theme.palette.common.dark,
-  },
-  card: {
-    maxWidth: 340,
-    margin: theme.spacing(2),
-  },
-  media: {
-    height: 300,
-  },
-  Button: {
-    justifyContent: 'center',
-    height: 50,
-  },
-  Span: {
-    borderBottom: '10px solid white',
-  },
-  p: {
-    textAlign: 'center',
-    padding: 3,
-    fontStyle: 'italic',
-  },
-  IconButtons: {
-    alignItem: 'flex-end',
-  },
-  description: {
-    height: 150,
-  },
-}));
+import {
+  HomePageCard,
+  HomePageCardMedia,
+  HomePageIconContainer,
+  HomePageCardIcon,
+  HomePageCardTitle,
+  AiredSubtitleSeasonEpisode,
+  AiredTitleCardAndSubtitle,
+} from 'src/styles/materialUi/materialUiStyles/HomePage';
 
-const shuffleArray = (array) => {
-  let i = array.length - 1;
-  // eslint-disable-next-line no-plusplus
-  for (; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    const temp = array[i];
-    array[i] = array[j];
-    array[j] = temp;
+import AddCircleIcon from '@material-ui/icons/AddCircle';
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import CreateIcon from '@material-ui/icons/Create';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import StarIcon from '@material-ui/icons/Star';
+
+
+class Next extends React.Component {
+  displayCardActionButtons = (event) => {
+    event.persist();
+    const parentIconElement = event.target.parentElement.parentElement;
+    const hiddenIcons = parentIconElement.getElementsByClassName('hiddenCardIcon');
+    for (let i = 0; i < hiddenIcons.length; i++) {
+      hiddenIcons[i].style.display = 'block';
+    }
   }
-  return array;
+
+  render() {
+    return (
+      <Grid
+        container
+        justify="center"
+      >
+        {shows.map((show) => (
+          <Grid item key={show.title} xl={2} lg={3} md={4} xs={6}>
+            <HomePageCard key={show.title}>
+              <CardActionArea>
+                <HomePageCardMedia
+                  image={show.image}
+                  title={show.title}
+                >
+                  <Grid
+                    container
+                    justify="flex-end"
+                  >
+                    <HomePageIconContainer className="hiddenCardIcon">
+                      <AddCircleIcon />
+                    </HomePageIconContainer>
+                    <HomePageIconContainer className="hiddenCardIcon">
+                      <VisibilityIcon />
+                    </HomePageIconContainer>
+                    <HomePageIconContainer className="hiddenCardIcon">
+                      <CreateIcon />
+                    </HomePageIconContainer>
+                    <HomePageIconContainer className="hiddenCardIcon">
+                      <StarIcon />
+                    </HomePageIconContainer>
+                    <HomePageIconContainer className="hiddenCardIcon">
+                      <DeleteForeverIcon />
+                    </HomePageIconContainer>
+                    <HomePageIconContainer onClick={this.displayCardActionButtons}>
+                      <HomePageCardIcon onClick={this.displayCardActionButtons} />
+                    </HomePageIconContainer>
+                  </Grid>
+
+                  <AiredTitleCardAndSubtitle
+                    container
+                    direction="row"
+                    justify="flex-end"
+                  >
+                    <HomePageCardTitle variant="h5" component="h2">
+                      {show.title}
+                    </HomePageCardTitle>
+                    <AiredSubtitleSeasonEpisode>EXX SXX</AiredSubtitleSeasonEpisode>
+                  </AiredTitleCardAndSubtitle>
+                </HomePageCardMedia>
+              </CardActionArea>
+            </HomePageCard>
+          </Grid>
+        ))}
+      </Grid>
+    );
+  }
+}
+Next.propTypes = {
+
 };
 
-export default function Tab() {
-  const classes = useStyles();
-
-
-  return (
-    <>
-      {shuffleArray(shows).map((show) => (
-        <Card key={show.title} className={classes.card}>
-          <p className={classes.p}>{show.release}</p>
-          <CardActionArea>
-            <CardMedia
-              className={classes.media}
-              image={show.image}
-              title={show.title}
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="h2">
-                {show.title}
-              </Typography>
-              <Typography variant="body2" color="textSecondary" component="p" className={classes.description}>
-                {show.description}
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-          <CardActions className={classes.Button}>
-
-            <IconButtons className={classes.IconButtons} />
-
-          </CardActions>
-        </Card>
-      ))}
-
-    </>
-  );
-}
+export default Next;

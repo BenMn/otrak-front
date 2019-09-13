@@ -6,11 +6,11 @@ import {
   AppBar,
   Tabs,
   Typography,
-  Box,
 } from '@material-ui/core';
 
 import {
   DashboardTab,
+  DashboardBoxOfCards,
 } from 'src/styles/materialUi/materialUiStyles/Dashboard';
 
 import './Tabs.scss';
@@ -33,7 +33,7 @@ function TabPanel(props) {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      <Box p={3}>{children}</Box>
+      <DashboardBoxOfCards p={3}>{children}</DashboardBoxOfCards>
     </Typography>
   );
 }

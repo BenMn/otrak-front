@@ -8,6 +8,7 @@ import {
   Typography,
   Button,
   Tab,
+  Box,
 } from '@material-ui/core';
 
 import CreateIcon from '@material-ui/icons/Create';
@@ -24,8 +25,11 @@ export const DashboardProgressBar = styled(LinearProgress)({
 
 export const DashboardHeaderConainer = styled(Container)({
   minHeight: 300,
+  maxWidth: 3000,
   display: 'flex',
   alignItems: 'center',
+  backgroundColor: theme.palette.primary.light,
+  background: 'linear-gradient(0deg, rgba(33,33,33,1) 0%, rgba(51,51,51,1) 50%, rgba(33,33,33,1) 100%)',
 });
 
 export const DashboardHeaderAvatar = styled(Avatar)({
@@ -49,6 +53,7 @@ export const DashboardHeaderAvatarIcon = styled(CreateIcon)({
 
 export const DashboardHeaderUsername = styled(Typography)({
   marginLeft: theme.spacing(2),
+  color: theme.palette.common.white,
 });
 
 export const DashboardHeaderButtons = styled(Button)({
@@ -79,4 +84,9 @@ export const DashboardHeaderButtonsSettingsIcon = styled(SettingsInputCompositeI
 export const DashboardTab = styled(Tab)({
   fontSize: '1em',
   padding: theme.spacing(1, 11),
+});
+
+export const DashboardBoxOfCards = styled(Box)({
+  backgroundColor: theme.palette.secondary.light,
+  background: `linear-gradient(0deg, ${theme.palette.secondary.dark} 0%, ${theme.palette.secondary.main} 50%, ${theme.palette.secondary.dark} 100%)`,
 });
