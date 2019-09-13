@@ -26,7 +26,7 @@ const mapStateToProps = (state) => ({
   setOpen: state.setOpen,
   open: state.open,
   viewModal: state.viewModal,
-  formName: state.formName,
+  modalName: state.modalName,
 });
 
 /* === Actions ===
@@ -57,20 +57,20 @@ const mapDispatchToProps = (dispatch) => ({
 
     // Forgot Password Link
     if (viewModalName.match(/password/g)) {
-      const formName = viewModalName.match(/password/g).toString();
-      dispatch(openModal(viewModalName, formName));
+      const modalName = viewModalName.match(/password/g).toString();
+      dispatch(openModal(viewModalName, modalName));
     }
 
     // Sign Up Link
     if (viewModalName.match(/up/g)) {
-      const formName = viewModalName.match(/up/g).toString();
-      dispatch(openModal(viewModalName, formName));
+      const modalName = viewModalName.match(/up/g).toString();
+      dispatch(openModal(viewModalName, modalName));
     }
 
     // Sign In Link
     if (viewModalName.match(/in/g)) {
-      const formName = viewModalName.match(/in/g).toString();
-      dispatch(openModal(viewModalName, formName));
+      const modalName = viewModalName.match(/in/g).toString();
+      dispatch(openModal(viewModalName, modalName));
     }
   },
 });

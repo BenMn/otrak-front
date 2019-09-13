@@ -28,7 +28,7 @@ class HeadScreen extends React.Component {
     const {
       open,
       viewModal,
-      formName,
+      modalName,
       handleOpen,
       searchInputValue,
       handleSearchInput,
@@ -71,7 +71,7 @@ class HeadScreen extends React.Component {
               {open === true && (
                 <LogFormsModal
                   viewModal={viewModal}
-                  formName={formName}
+                  modalName={modalName}
                   handleOpen={handleOpen}
                 />
               )}
@@ -90,7 +90,7 @@ HeadScreen.propTypes = {
   open: PropTypes.bool,
   handleOpen: PropTypes.func.isRequired,
   viewModal: PropTypes.string,
-  formName: PropTypes.string,
+  modalName: PropTypes.string,
   searchInputValue: PropTypes.string.isRequired,
   handleSearchInput: PropTypes.func.isRequired,
   handleSearchInputSubmit: PropTypes.func.isRequired,
@@ -99,7 +99,7 @@ HeadScreen.propTypes = {
 HeadScreen.defaultProps = {
   open: false,
   viewModal: '',
-  formName: '',
+  modalName: '',
 };
 
 export default HeadScreen;

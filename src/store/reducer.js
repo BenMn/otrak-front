@@ -10,7 +10,7 @@ const initialState = {
   storeAuthInputResult: {},
   setOpen: false,
   open: false,
-  formName: '',
+  modalName: '',
   userAuthInfos: {
     username: {
       index: 0,
@@ -110,7 +110,7 @@ const reducer = (state = initialState, action = {}) => {
         setOpen: true,
         open: true,
         viewModal: action.viewModal,
-        formName: action.formName,
+        modalName: action.modalName,
       };
 
     case CLOSE_MODAL:
@@ -119,7 +119,7 @@ const reducer = (state = initialState, action = {}) => {
         setOpen: false,
         open: false,
         viewModal: action.viewModal,
-        formName: action.formName,
+        modalName: action.modalName,
       };
 
     case AVATAR_UPLOAD_HANDLER:
@@ -191,20 +191,20 @@ export const storeSearchInputResult = (data) => ({
   data,
 });
 
-export const openModal = (viewModal, formName) => ({
+export const openModal = (viewModal, modalName) => ({
   type: OPEN_MODAL,
   setOpen: true,
   open: true,
   viewModal,
-  formName,
+  modalName,
 });
 
-export const closeModal = (viewModal, formName) => ({
+export const closeModal = (viewModal, modalName) => ({
   type: CLOSE_MODAL,
   setOpen: false,
   open: false,
   viewModal,
-  formName,
+  modalName,
 });
 
 export const avatarUploadHandler = (newAvatar) => ({

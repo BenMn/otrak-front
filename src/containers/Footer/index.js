@@ -15,8 +15,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   handleOpen: (viewModalName) => {
-    const formName = viewModalName.match(/up/g).toString();
-    dispatch(openModal(viewModalName, formName));
+    const modalName = viewModalName.match(/up/g).toString();
+    dispatch(openModal(viewModalName, modalName));
   },
 });
 

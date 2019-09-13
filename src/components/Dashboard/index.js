@@ -14,6 +14,7 @@ const Dashboard = ({
   handleAuthInputSubmit,
   userAuthInfos,
   handleNewUsername,
+  handleOpen,
 }) => (
   <div id="Dashboard">
     <Header
@@ -22,6 +23,7 @@ const Dashboard = ({
       handleAuthInputSubmit={handleAuthInputSubmit}
       userAuthInfos={userAuthInfos}
       handleNewUsername={handleNewUsername}
+      handleOpen={handleOpen}
     />
     <Tabs />
   </div>
@@ -32,6 +34,7 @@ Dashboard.propTypes = {
   handleAuthInput: PropTypes.func.isRequired,
   handleAuthInputSubmit: PropTypes.func.isRequired,
   handleNewUsername: PropTypes.func.isRequired,
+  handleOpen: PropTypes.func.isRequired,
 };
 
 export default Dashboard;

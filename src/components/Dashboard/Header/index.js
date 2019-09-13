@@ -23,6 +23,7 @@ const Header = ({
   handleAuthInputSubmit,
   userAuthInfos,
   handleNewUsername,
+  handleOpen,
 }) => (
   <div id="Header">
 
@@ -45,7 +46,7 @@ const Header = ({
         </Grid>
 
         <Grid item lg={4} md={4} xs={12} align="end">
-          <ConfigButtons />
+          <ConfigButtons handleOpen={handleOpen} />
         </Grid>
 
       </Grid>
@@ -60,6 +61,7 @@ Header.propTypes = {
   handleAuthInput: PropTypes.func.isRequired,
   handleAuthInputSubmit: PropTypes.func.isRequired,
   handleNewUsername: PropTypes.func.isRequired,
+  handleOpen: PropTypes.func.isRequired,
 };
 
 export default Header;
