@@ -1,4 +1,5 @@
 import React from 'react';
+// import PropTypes from 'prop-types';
 
 import {
   Grid,
@@ -12,6 +13,7 @@ import {
 } from 'src/styles/materialUi/materialUiStyles/Dashboard';
 
 
+// const UserInfos = ({ avatarUploadHandler, userAvatar }) => (
 const UserInfos = () => (
   <Grid
     container
@@ -25,6 +27,8 @@ const UserInfos = () => (
         <Box component="div" id="user-avatar-gradient" />
       </DashboardHeaderAvatar>
     </Grid>
+
+    {/* <input type="file" onChange={(event) => avatarUploadHandler(event)} /> */}
 
     <Grid item>
       <Box component="div" mt={2}>
@@ -43,5 +47,9 @@ const UserInfos = () => (
 
   </Grid>
 );
+
+// UserInfos.propTypes = {
+//   avatarUploadHandler: PropTypes.func.isRequired,
+// };
 
 export default UserInfos;

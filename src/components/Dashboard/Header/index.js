@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import {
   Grid,
@@ -14,7 +15,7 @@ import ConfigButtons from './ConfigButtons';
 
 import '../Dashboard.scss';
 
-const Header = () => (
+const Header = ({ avatarUploadHandler }) => (
   <div id="Header">
 
     <DashboardHeaderConainer>
@@ -26,7 +27,7 @@ const Header = () => (
         </Grid>
 
         <Grid item lg={4} md={4} xs={12}>
-          <UserInfos />
+          <UserInfos avatarUploadHandler={avatarUploadHandler} />
         </Grid>
 
         <Grid item lg={4} md={4} xs={12} align="end">
@@ -39,5 +40,9 @@ const Header = () => (
 
   </div>
 );
+
+Header.propTypes = {
+  avatarUploadHandler: PropTypes.func.isRequired,
+};
 
 export default Header;

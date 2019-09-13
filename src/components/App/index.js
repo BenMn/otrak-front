@@ -12,7 +12,7 @@ import Footer from 'src/containers/Footer';
 import LandingPage from 'src/containers/LandingPage';
 import LogFormModal from 'src/containers/LogForms';
 import Homepage from 'src/containers/Homepage';
-import Dashboard from 'src/components/Dashboard';
+import Dashboard from 'src/containers/Dashboard';
 
 // == Composant
 const App = ({

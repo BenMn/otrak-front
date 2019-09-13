@@ -43,6 +43,7 @@ const initialState = {
       type: 'password',
     },
   },
+  userAvatar: null,
 };
 
 // == Types
@@ -60,6 +61,8 @@ export const FETCH_TRENDING = 'FETCH_TRENDING';
 
 const OPEN_MODAL = 'OPEN_MODAL';
 const CLOSE_MODAL = 'CLOSE_MODAL';
+
+export const AVATAR_UPLOAD_HANDLER = 'AVATAR_UPLOAD_HANDLER';
 
 // == Reducer
 const reducer = (state = initialState, action = {}) => {
@@ -116,6 +119,12 @@ const reducer = (state = initialState, action = {}) => {
         open: false,
         viewModal: action.viewModal,
         formName: action.formName,
+      };
+
+    case AVATAR_UPLOAD_HANDLER:
+      return {
+        ...state,
+        userAvatar: action.newAvatar,
       };
 
     default:
@@ -185,6 +194,10 @@ export const closeModal = (viewModal, formName) => ({
   formName,
 });
 
+export const avatarUploadHandler = (newAvatar) => ({
+  type: AVATAR_UPLOAD_HANDLER,
+  newAvatar,
+});
 
 // == Selectors
 

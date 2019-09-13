@@ -5,6 +5,7 @@ import {
   FETCH_SEARCH_INPUT_RESULT,
   FETCH_LOGIN_AUTH_INFOS,
   FETCH_REGISTER_AUTH_INFOS,
+  // AVATAR_UPLOAD_HANDLER,
   storeTrending,
   storeSearchInputResult,
 } from 'src/store/reducer';
@@ -59,6 +60,18 @@ const ajaxMiddleware = (store) => (next) => (action) => {
           console.error(error);
         });
       break;
+
+      // case AVATAR_UPLOAD_HANDLER:
+      //   const formData = new FormData();
+      //   formData.append('image', action.newAvatar, action.newAvatar.name);
+      //   axios.post('http://localhost:8000/api/users/avatar', formData)
+      //     .then((response) => {
+      //       console.log(response);
+      //     })
+      //     .catch((error) => {
+      //       console.error(error);
+      //     });
+      //   break;
 
     default:
       next(action);
