@@ -14,6 +14,8 @@ import LogFormModal from 'src/containers/LogForms';
 import Homepage from 'src/containers/Homepage';
 import Dashboard from 'src/containers/Dashboard';
 
+import './App.scss';
+
 // == Composant
 const App = ({
   handleOpen,

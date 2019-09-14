@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Grid, TextField } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 
 import {
   DashboardUsernameIcon,
+  DashboardUsernameInput,
 } from 'src/styles/materialUi/materialUiStyles/Dashboard';
 
 const Field = ({
@@ -21,10 +22,10 @@ const Field = ({
       <DashboardUsernameIcon />
     </Grid>
     <Grid item>
-      <TextField
+      <DashboardUsernameInput
         id="input-with-icon-grid"
         defaultValue={value}
-        margin="normal"
+        margin="dense"
         inputProps={{ 'aria-label': 'bare' }}
         onChange={(event) => handleAuthInput(event, index)}
         name={name}

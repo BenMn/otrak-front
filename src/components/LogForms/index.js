@@ -75,7 +75,12 @@ const LogFormsModal = ({
           />
         )}
         {modalName === 'account' && (
-          <AccountSettings />
+          <AccountSettings
+            handleOpen={handleOpen}
+            handleAuthInput={handleAuthInput}
+            handleAuthInputSubmit={handleAuthInputSubmit}
+            userAuthInfos={userAuthInfos}
+          />
         )}
       </Fade>
     </Modal>

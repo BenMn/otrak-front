@@ -2,17 +2,17 @@ import React from 'react';
 
 import {
   Box,
-  Typography,
 } from '@material-ui/core';
 
 import {
   DashboardProgressBar,
+  DashboardTitleProgressBar,
 } from 'src/styles/materialUi/materialUiStyles/Dashboard';
 
 const UserParams = () => (
   <>
     <Box componenent="div" mt={3}>
-      <Typography color="textPrimary">Stat perso marrant</Typography>
+      <DashboardTitleProgressBar>Stat perso marrant</DashboardTitleProgressBar>
       <DashboardProgressBar
         variant="determinate"
         color="secondary"
@@ -20,7 +20,7 @@ const UserParams = () => (
       />
     </Box>
     <Box componenent="div" mt={3}>
-      <Typography color="textPrimary">Stat perso marrant</Typography>
+      <DashboardTitleProgressBar>Stat perso marrant</DashboardTitleProgressBar>
       <DashboardProgressBar
         variant="determinate"
         color="secondary"
@@ -28,7 +28,7 @@ const UserParams = () => (
       />
     </Box>
     <Box componenent="div" mt={3}>
-      <Typography color="textPrimary">Stat perso marrant</Typography>
+      <DashboardTitleProgressBar>Stat perso marrant</DashboardTitleProgressBar>
       <DashboardProgressBar
         variant="determinate"
         color="secondary"

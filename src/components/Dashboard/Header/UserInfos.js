@@ -13,7 +13,7 @@ import {
   DashboardHeaderUsername,
 } from 'src/styles/materialUi/materialUiStyles/Dashboard';
 
-import DashboardField from './DashboardField';
+import UsernameField from './UsernameField';
 
 // const UserInfos = ({ avatarUploadHandler, userAvatar }) => (
 // eslint-disable-next-line react/prop-types
@@ -57,7 +57,7 @@ const UserInfos = ({
 
                 <form onSubmit={(event) => handleAuthInputSubmit(event)} id="form-username">
                   {Object.values(userAuthInfosFiltred).map((field) => (
-                    <DashboardField
+                    <UsernameField
                       key={field.name}
                       // eslint-disable-next-line react/jsx-props-no-spreading
                       {...field}

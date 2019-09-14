@@ -9,13 +9,14 @@ import {
   Button,
   Tab,
   Box,
+  TextField,
+  Input,
 } from '@material-ui/core';
 
 import CreateIcon from '@material-ui/icons/Create';
 import HistoryIcon from '@material-ui/icons/History';
 import SettingsInputCompositeIcon from '@material-ui/icons/SettingsInputComposite';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 
 // .........................Header.........................
@@ -24,6 +25,10 @@ export const DashboardProgressBar = styled(LinearProgress)({
   height: 15,
   borderRadius: 25,
   boxShadow: '3px 4px 5px 0px rgba(30, 30, 30, 0.25)',
+});
+
+export const DashboardTitleProgressBar = styled(Typography)({
+  color: theme.palette.common.white,
 });
 
 export const DashboardHeaderConainer = styled(Container)({
@@ -86,8 +91,14 @@ export const DashboardUsernameIcon = styled(AccountCircle)({
   fontSize: '1.4em',
 });
 
+export const DashboardUsernameInput = styled(Input)({
+  color: theme.palette.common.white,
+  textAlign: 'center',
+});
+
 // .........................Modals.........................
 
+// HISTORY
 export const DashboardHistoryContainer = styled(Container)({
   minHeight: 400,
   minWidth: 400,
@@ -111,7 +122,7 @@ export const DashboardHistoryShowSubtitle = styled(Typography)({
 });
 
 export const DashboardHistoryListContainer = styled(Container)({
-  maxHeight: 400,
+  maxHeight: '60vh',
   maxWidth: 'auto',
   overflowY: 'scroll',
   overflowX: 'hidden',
@@ -120,6 +131,23 @@ export const DashboardHistoryListContainer = styled(Container)({
 
 export const DashboardHistoryDeleteIcon = styled(DeleteForeverIcon)({
   cursor: 'pointer',
+});
+
+// ACCOUNT SETTINGS
+export const DashboardAccountTextField = styled(TextField)({
+  color: theme.palette.primary.main,
+  input: {
+    color: theme.palette.primary.main,
+  },
+});
+
+export const DashboardSettignsIcon = styled(SettingsInputCompositeIcon)({
+  fontSize: '30em',
+  transform: 'rotate(180deg)',
+  position: 'absolute',
+  color: theme.palette.primary.light,
+  opacity: 0.05,
+  margin: '-20% 0 0 -25%',
 });
 
 // .........................Tabs.........................
