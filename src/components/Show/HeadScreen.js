@@ -48,11 +48,13 @@ const HeadScreen = ({ showDetail }) => (
           <Grid item>
             <DetailShowGroupList component="nav" aria-label="secondary mailbox folders">
               <ListItemText primary="Genres: " />
-              <ListItemText primary="Status: " />
+              <ListItemText primary={showDetail.rating == null ? 'Rating: Not rated yet' : `Rating: ${showDetail.rating}/10`} />
+              <ListItemText primary={showDetail.status === 0 ? 'Status: Running' : 'Status: Ended'} />
               <ListItemText primary="Network: " />
-              <ListItemText primary={`VO: ${showDetail.language}`} />
+              <ListItemText primary={`Original language: ${showDetail.language}`} />
               <ListItemText primary="Nb seasons: " />
               <ListItemText primary="Nb episodes: " />
+              <ListItemText primary={`Episode duration: ${showDetail.runtime} min`} />
             </DetailShowGroupList>
           </Grid>
         </Grid>

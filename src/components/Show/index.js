@@ -21,7 +21,7 @@ import './show.scss';
 const Show = ({ showDetail }) => (
   <>
     {console.log(showDetail)}
-    <IndexScreenPicture title="Head-Screen" image={showDetail.poster}>
+    <IndexScreenPicture image={showDetail.poster}>
       <div className="fond-img">
         <IndexContainer maxWidth="md">
 

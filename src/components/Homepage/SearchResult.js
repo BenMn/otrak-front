@@ -4,6 +4,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
+
 
 // import Material UI components
 import {
@@ -84,7 +86,7 @@ class SearchResult extends React.Component {
   }
 
   render() {
-    const { searchInputValue, storeSearchInputResult } = this.props;
+    const { searchInputValue, storeSearchInputResult, getDetailShow } = this.props;
 
     // Setting of Slider component
     const settings = {
@@ -120,42 +122,44 @@ class SearchResult extends React.Component {
             {storeSearchInputResult.map((currentShow) => (
               <Grid item key={currentShow.id_tvmaze}>
                 <HomePageCard key={currentShow.id_tvmaze}>
-                  <CardActionArea>
-                    <HomePageCardMedia
-                      image={currentShow.poster}
-                      title={currentShow.name}
-                    >
-                      <Grid
-                        container
-                        justify="flex-end"
+                  <NavLink exact to={`/show/${currentShow.name}`}>
+                    <CardActionArea onClick={() => getDetailShow(currentShow.id_tvmaze)}>
+                      <HomePageCardMedia
+                        image={currentShow.poster}
+                        title={currentShow.name}
                       >
-                        {/* Icons */}
-                        <HomePageIconContainer className="hiddenCardIcon">
-                          <AddCircleIcon />
-                        </HomePageIconContainer>
-                        <HomePageIconContainer className="hiddenCardIcon">
-                          <VisibilityIcon />
-                        </HomePageIconContainer>
-                        <HomePageIconContainer className="hiddenCardIcon">
-                          <CreateIcon />
-                        </HomePageIconContainer>
-                        <HomePageIconContainer className="hiddenCardIcon">
-                          <StarIcon />
-                        </HomePageIconContainer>
-                        <HomePageIconContainer className="hiddenCardIcon">
-                          <DeleteForeverIcon />
-                        </HomePageIconContainer>
-                        <HomePageIconContainer onClick={this.displayCardActionButtons}>
-                          <HomePageCardIcon onClick={this.displayCardActionButtons} />
-                        </HomePageIconContainer>
+                        <Grid
+                          container
+                          justify="flex-end"
+                        >
+                          {/* Icons */}
+                          <HomePageIconContainer className="hiddenCardIcon">
+                            <AddCircleIcon />
+                          </HomePageIconContainer>
+                          <HomePageIconContainer className="hiddenCardIcon">
+                            <VisibilityIcon />
+                          </HomePageIconContainer>
+                          <HomePageIconContainer className="hiddenCardIcon">
+                            <CreateIcon />
+                          </HomePageIconContainer>
+                          <HomePageIconContainer className="hiddenCardIcon">
+                            <StarIcon />
+                          </HomePageIconContainer>
+                          <HomePageIconContainer className="hiddenCardIcon">
+                            <DeleteForeverIcon />
+                          </HomePageIconContainer>
+                          <HomePageIconContainer onClick={this.displayCardActionButtons}>
+                            <HomePageCardIcon onClick={this.displayCardActionButtons} />
+                          </HomePageIconContainer>
 
-                      </Grid>
-                      {/* Show Title */}
-                      <HomePageCardTitle variant="h5" component="h2">
-                        {currentShow.name}
-                      </HomePageCardTitle>
-                    </HomePageCardMedia>
-                  </CardActionArea>
+                        </Grid>
+                        {/* Show Title */}
+                        <HomePageCardTitle variant="h5" component="h2">
+                          {currentShow.name}
+                        </HomePageCardTitle>
+                      </HomePageCardMedia>
+                    </CardActionArea>
+                  </NavLink>
                 </HomePageCard>
               </Grid>
             ))}
