@@ -3,13 +3,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// Swiper library
-import Swiper from 'react-id-swiper';
+// Slider library
+import Slider from 'react-slick';
+
+// Slider css style
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 // Import material UI components
 import {
   Grid,
   CardActionArea,
+  Typography,
 } from '@material-ui/core';
 
 //  Material UI custom Components
@@ -23,87 +28,104 @@ import {
 
 import {
   CastingTitleCasting,
+  CastingTitleNotAvailable,
 } from 'src/styles/materialUi/materialUiStyles/Show';
 
+// Micro component managing arrow's style
+function SampleNextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{
+        ...style,
+        display: 'block',
+        background: '#212121',
+        borderRadius: 25,
+      }}
+      onClick={onClick}
+    />
+  );
+}
+// Micro component managing arrow's style
+function SamplePrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{
+        ...style,
+        display: 'block',
+        background: '#212121',
+        borderRadius: 25,
+      }}
+      onClick={onClick}
+    />
+  );
+}
 
 const Casting = ({ showDetail }) => {
   if (Object.keys(showDetail).length > 0) {
-    // Params of slider
-    const params = {
-      lazy: true,
-      grabCursor: true,
-      slidesPerView: 3,
-      spaceBetween: 10,
-      mousewheel: true,
-      pagination: {
-        el: '.swiper-pagination',
-        type: 'progressbar',
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      breakpoints: {
-        1050: {
-          slidesPerView: 2,
-          spaceBetween: 20,
-        },
-        768: {
-          slidesPerView: 2,
-          spaceBetween: 20,
-        },
-        690: {
-          slidesPerView: 1,
-          spaceBetween: 20,
-        },
-        320: {
-          slidesPerView: 1,
-          spaceBetween: 10,
-        },
-      },
+    // Setting of Slider component
+    const settings = {
+      dots: true,
+      infinite: true,
+      arrows: true,
+      lazyLoad: true,
+      speed: 500,
+      slidesToShow: 3,
+      slidesToScroll: 2,
+      nextArrow: <SampleNextArrow />,
+      prevArrow: <SamplePrevArrow />,
     };
 
 
     return (
       <>
-        <CastingTitleCasting variant="h4" align="center" gutterBottom>Casting</CastingTitleCasting>
-        <Swiper {...params}>
+        {showDetail.cast.length > 0 ? (
+          <>
+            <CastingTitleCasting variant="h4" align="center" gutterBottom>Casting</CastingTitleCasting>
+            <Slider {...settings}>
 
-          {showDetail.cast.map((currentActor) => (
+              {showDetail.cast.map((currentActor) => (
+                <Grid item key={currentActor.person.name}>
+                  <HomePageCard>
+                    <CardActionArea>
+                      {console.log(currentActor.person.image)}
+                      <HomePageCardMedia
+                        image={currentActor.person.image === null ? '../../src/styles/assets/images/notAvailable/notAvailable.jpg' : currentActor.person.image.original}
+                        title={currentActor.person.name}
+                      >
+                        <Grid
+                          container
+                          justify="flex-end"
+                        />
+                        <AiredTitleCardAndSubtitle
+                          container
+                          direction="row"
+                          justify="flex-end"
+                        >
+                          <HomePageCardTitle variant="h5" component="h2">
+                            {currentActor.person.name}
+                          </HomePageCardTitle>
 
-            <Grid item key={currentActor.person.name}>
-              <HomePageCard>
-                <CardActionArea>
+                          <AiredSubtitleSeasonEpisode>
+                            {currentActor.character.name}
+                          </AiredSubtitleSeasonEpisode>
+                        </AiredTitleCardAndSubtitle>
 
-                  <HomePageCardMedia
-                    image={currentActor.person.image.original}
-                    title={currentActor.person.name}
-                  >
-                    <Grid
-                      container
-                      justify="flex-end"
-                    />
-                    <AiredTitleCardAndSubtitle
-                      container
-                      direction="row"
-                      justify="flex-end"
-                    >
-                      <HomePageCardTitle variant="h5" component="h2">
-                        {currentActor.person.name}
-                      </HomePageCardTitle>
+                      </HomePageCardMedia>
 
-                      <AiredSubtitleSeasonEpisode>
-                        {currentActor.character.name}
-                      </AiredSubtitleSeasonEpisode>
-                    </AiredTitleCardAndSubtitle>
-
-                  </HomePageCardMedia>
-
-                </CardActionArea>
-              </HomePageCard>
-            </Grid>
-          ))}
-        </Swiper>
+                    </CardActionArea>
+                  </HomePageCard>
+                </Grid>
+              ))}
+            </Slider>
+          </>
+        ) :
+          (
+            <CastingTitleNotAvailable variant="h4" align="center">Casting is not available yet for this program</CastingTitleNotAvailable>
+          )}
       </>
     );
   }

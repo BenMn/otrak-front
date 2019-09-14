@@ -69,3 +69,8 @@ export const CastingTitleCasting = styled(Typography)({
   paddingTop: 20,
   color: theme.palette.common.white,
 });
+
+export const CastingTitleNotAvailable = styled(Typography)({
+  paddingTop: 20,
+  color: theme.palette.common.white,
+});

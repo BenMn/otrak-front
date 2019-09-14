@@ -28,7 +28,6 @@ const Show = ({ showDetail }) => (
           <HeadScreen showDetail={showDetail} />
           <ResumeShow showDetail={showDetail} />
           <Casting showDetail={showDetail} />
-
         </IndexContainer>
       </div>
     </IndexScreenPicture>
