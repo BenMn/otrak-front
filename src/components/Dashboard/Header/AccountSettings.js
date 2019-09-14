@@ -26,7 +26,7 @@ const AccountSettings = () => (
         spacing={2}
       >
         <Grid item>
-          <Typography component="h1" variant="h5">
+          <Typography component="h1" variant="h5" color="primary">
             Account Settings
           </Typography>
         </Grid>
@@ -46,6 +46,7 @@ const AccountSettings = () => (
           variant="outlined"
           required
           fullWidth
+          color="primary"
         />
 
 
@@ -80,6 +81,9 @@ const AccountSettings = () => (
           Change your password
         </LogFormModalButton>
 
+        <Typography component="p" color="primary">
+          Too angry to stay ?
+        </Typography>
 
         <LogFormModalButton
           type="submit"
@@ -89,7 +93,7 @@ const AccountSettings = () => (
         >
           Delete your account
         </LogFormModalButton>
-        Too angry to stay ?
+
 
       </Grid>
     </Container>

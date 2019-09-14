@@ -11,24 +11,24 @@ import {
 
 const UserParams = () => (
   <>
-    <Box componenent="div" disabled mt={3}>
-      <Typography color="textSecondary">Stat perso marrant</Typography>
+    <Box componenent="div" mt={3}>
+      <Typography color="textPrimary">Stat perso marrant</Typography>
       <DashboardProgressBar
         variant="determinate"
         color="secondary"
         value={20}
       />
     </Box>
-    <Box componenent="div" disabled mt={3}>
-      <Typography color="textSecondary">Stat perso marrant</Typography>
+    <Box componenent="div" mt={3}>
+      <Typography color="textPrimary">Stat perso marrant</Typography>
       <DashboardProgressBar
         variant="determinate"
         color="secondary"
         value={70}
       />
     </Box>
-    <Box componenent="div" variant="caption" mt={3}>
-      <Typography color="textSecondary">Stat perso marrant</Typography>
+    <Box componenent="div" mt={3}>
+      <Typography color="textPrimary">Stat perso marrant</Typography>
       <DashboardProgressBar
         variant="determinate"
         color="secondary"

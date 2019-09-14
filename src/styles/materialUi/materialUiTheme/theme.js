@@ -35,7 +35,7 @@ const theme = createMuiTheme({
 
     text: {
       primary: 'rgba(255, 255, 255, 0.97)',
-      secondary: 'rgba(255, 255, 255, 0.77)',
+      secondary: 'rgba(0, 0, 0, 0.47)',
       disabled: 'rgba(0, 0, 0, 0.37)',
       hint: 'rgba(255, 255, 255, 0.37)',
     },
