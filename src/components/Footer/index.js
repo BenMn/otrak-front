@@ -29,13 +29,15 @@ const Footer = ({ open, handleOpen }) => (
     <FooterAppBar position="static">
       <Toolbar>
 
-        <Grid container>
-          <Grid item lg={1} md={1} xs={1}>
-            {/* Logo */}
-            <img src="src/styles/assets/images/logos/logo-owl.png" alt="O’Track logo" id="FooterLogo" />
+        <Grid container justify="center">
+          <Grid item lg={1} md={3} xs={4}>
+            <Grid container justify="center">
+              {/* Logo */}
+              <img src="src/styles/assets/images/logos/logo-owl.png" alt="O’Track logo" id="FooterLogo" />
+            </Grid>
           </Grid>
 
-          <Grid item lg={4} md={3} xs={3}>
+          <Grid item lg={4} md={4} xs={8}>
             <Typography variant="h6">
               All your favorites shows
             </Typography>
@@ -44,19 +46,24 @@ const Footer = ({ open, handleOpen }) => (
             </Typography>
           </Grid>
 
-          <Grid item lg={5} md={7} xs={7}>
-            {/* Central buttons */}
-            <FooterButton variant="outlined" color="inherit" onClick={() => handleOpen('up')}>
-              REGISTER NOW !
-            </FooterButton>
-            {open === true && <LogFormsModal />}
+          <Grid item lg={5} md={7} xs={10}>
+            <Grid
+              container
+              justify="center"
+              alignItems="center"
+            >
+              {/* Central buttons */}
+              <FooterButton variant="outlined" color="inherit" onClick={() => handleOpen('up')}>
+                REGISTER NOW !
+              </FooterButton>
+              {open === true && <LogFormsModal />}
 
-            <FooterButton color="inherit">TEAM</FooterButton>
-            <FooterButton color="inherit">LEGAL</FooterButton>
-            <FooterButton color="inherit">CONTACT</FooterButton>
-
+              <FooterButton color="inherit">TEAM</FooterButton>
+              <FooterButton color="inherit">LEGAL</FooterButton>
+              <FooterButton color="inherit">CONTACT</FooterButton>
+            </Grid>
           </Grid>
-          <Grid item lg={2} md={1} xs={1}>
+          <Grid item lg={2} md={1} xs={2}>
             {/* GitHub icon  */}
             <FooterIcon>
               <FontAwesomeIcon icon={faGithub} size="lg" />

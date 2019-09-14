@@ -22,7 +22,6 @@ import {
 // ------------------- Styles of All cards in HomePage -------------------//
 
 export const HomePageCard = styled(Card)({
-  maxWidth: 320,
   margin: theme.spacing(2),
 });
 

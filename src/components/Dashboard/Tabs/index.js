@@ -66,7 +66,13 @@ export default function TabsTest() {
     <>
 
       <AppBar position="static">
-        <Tabs centered value={value} onChange={handleChange} aria-label="simple tabs example">
+        <Tabs
+          centered
+          variant="fullWidth"
+          value={value}
+          onChange={handleChange}
+          aria-label="simple tabs example"
+        >
           <DashboardTab label="Watching" {...a11yProps(0)} />
           <DashboardTab label="Completed" {...a11yProps(1)} />
           <DashboardTab label="See Next" {...a11yProps(2)} />

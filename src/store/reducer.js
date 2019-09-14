@@ -1,11 +1,11 @@
 // Local data for testing
-// import dataApi from 'src/data/dataApi.json';
+import dataApi from 'src/data/dataApi.json';
 // import ShowComplet from 'src/data/showComplet.json';
 
 // == Initial State
 const initialState = {
   // Get trending infos
-  trendingList: [],
+  trendingList: dataApi,
   updatedHistoryList: [],
   // Single show details
   showDetail: {},
