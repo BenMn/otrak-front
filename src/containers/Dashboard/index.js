@@ -17,6 +17,7 @@ import {
 const mapStateToProps = (state) => ({
   userAvatar: state.userAvatar,
   userAuthInfos: state.userAuthInfos,
+
   setOpen: state.setOpen,
   open: state.open,
   modalName: state.modalName,

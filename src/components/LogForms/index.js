@@ -23,6 +23,9 @@ const LogFormsModal = ({
   handleAuthInput,
   handleAuthInputSubmit,
   userAuthInfos,
+  trendingList,
+  handleDeleteHistoryShow,
+  updatedHistoryList,
 }) => (
   <div>
     <Modal
@@ -65,7 +68,11 @@ const LogFormsModal = ({
           />
         )}
         {modalName === 'history' && (
-          <History />
+          <History
+            trendingList={trendingList}
+            handleDeleteHistoryShow={handleDeleteHistoryShow}
+            updatedHistoryList={updatedHistoryList}
+          />
         )}
         {modalName === 'account' && (
           <AccountSettings />
@@ -83,6 +90,9 @@ LogFormsModal.propTypes = {
   modalName: PropTypes.string,
   handleAuthInput: PropTypes.func.isRequired,
   handleAuthInputSubmit: PropTypes.func.isRequired,
+  trendingList: PropTypes.array.isRequired,
+  handleDeleteHistoryShow: PropTypes.func,
+  updatedHistoryList: PropTypes.array.isRequired,
 };
 
 LogFormsModal.defaultProps = {
@@ -90,6 +100,7 @@ LogFormsModal.defaultProps = {
   handleClose: () => { },
   handleOpen: () => { },
   modalName: '',
+  handleDeleteHistoryShow: () => { },
 };
 
 export default LogFormsModal;

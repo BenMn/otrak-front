@@ -11,6 +11,7 @@ import {
   updateAuthInput,
   fetchLoginAuthInfos,
   fetchRegisterAuthInfos,
+  removeShowHistoryList,
 } from 'src/store/reducer';
 
 const mapStateToProps = (state) => ({
@@ -19,6 +20,8 @@ const mapStateToProps = (state) => ({
   modalName: state.modalName,
   authInputValue: state.authInputValue,
   userAuthInfos: state.userAuthInfos,
+  trendingList: state.trendingList,
+  updatedHistoryList: state.updatedHistoryList,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -50,6 +53,11 @@ const mapDispatchToProps = (dispatch) => ({
       dispatch(fetchLoginAuthInfos(email, password));
     }
     event.preventDefault();
+  },
+
+  handleDeleteHistoryShow: (showId) => {
+    console.log(showId);
+    dispatch(removeShowHistoryList(showId));
   },
 });
 

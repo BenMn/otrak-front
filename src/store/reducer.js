@@ -3,6 +3,7 @@ import dataApi from 'src/data/dataApi.json';
 // == Initial State
 const initialState = {
   trendingList: dataApi,
+  updatedHistoryList: [],
   searchInputValue: '',
   storeSearchInputResult: [],
   view: 'landing',
@@ -63,6 +64,8 @@ const CLOSE_MODAL = 'CLOSE_MODAL';
 
 export const AVATAR_UPLOAD_HANDLER = 'AVATAR_UPLOAD_HANDLER';
 const STORE_NEW_USERNAME = 'STORE_NEW_USERNAME';
+
+const REMOVE_SHOW_HISTORY_LIST = 'REMOVE_SHOW_HISTORY_LIST';
 
 // == Reducer
 const reducer = (state = initialState, action = {}) => {
@@ -136,6 +139,17 @@ const reducer = (state = initialState, action = {}) => {
           },
         },
       };
+
+    case REMOVE_SHOW_HISTORY_LIST:
+      return Object.keys(state.updatedHistoryList).length === 0 ? ({
+        ...state,
+        updatedHistoryList:
+          state.trendingList.filter((show) => show.id_tvmaze !== action.showId),
+      }) : ({
+        ...state,
+        updatedHistoryList:
+          state.updatedHistoryList.filter((show) => show.id_tvmaze !== action.showId),
+      });
 
     default:
       return state;
@@ -211,6 +225,11 @@ export const storeNewUsername = (newUsername, name) => ({
   type: STORE_NEW_USERNAME,
   newUsername,
   name,
+});
+
+export const removeShowHistoryList = (showId) => ({
+  type: REMOVE_SHOW_HISTORY_LIST,
+  showId,
 });
 
 // == Selectors

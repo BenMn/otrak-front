@@ -16,6 +16,8 @@ import HistoryIcon from '@material-ui/icons/History';
 import SettingsInputCompositeIcon from '@material-ui/icons/SettingsInputComposite';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+
 // .........................Header.........................
 
 export const DashboardProgressBar = styled(LinearProgress)({
@@ -88,7 +90,7 @@ export const DashboardUsernameIcon = styled(AccountCircle)({
 
 export const DashboardHistoryContainer = styled(Container)({
   minHeight: 400,
-  minWidth: 350,
+  minWidth: 400,
   flexWrap: 'nowrap',
 });
 
@@ -108,7 +110,7 @@ export const DashboardHistoryShowSubtitle = styled(Typography)({
   color: theme.palette.text.disabled,
 });
 
-export const DashboardHistoryListContainer = styled(Typography)({
+export const DashboardHistoryListContainer = styled(Container)({
   maxHeight: 400,
   maxWidth: 'auto',
   overflowY: 'scroll',
@@ -116,6 +118,9 @@ export const DashboardHistoryListContainer = styled(Typography)({
   zIndex: 3,
 });
 
+export const DashboardHistoryDeleteIcon = styled(DeleteForeverIcon)({
+  cursor: 'pointer',
+});
 
 // .........................Tabs.........................
 

@@ -156,7 +156,6 @@ class Aired extends React.Component {
 
 Aired.propTypes = {
   trendingList: PropTypes.array.isRequired,
-
 };
 
 export default Aired;
