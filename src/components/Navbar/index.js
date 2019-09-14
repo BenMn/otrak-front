@@ -36,12 +36,12 @@ const Navbar = ({
         <Grid container spacing={2} justify="center">
 
           {/* Logo */}
-          <Grid item lg={3} md={3} xs={3}>
+          <Grid item lg={3} md={3} xs={4}>
             <img src="src/styles/assets/images/logos/logo-owl.png" alt="O'Track logo" />
           </Grid>
 
           {/* SearchBar */}
-          <Grid item lg={6} md={6} xs={4}>
+          <Grid item lg={6} md={6} xs={8}>
             <NavbarSearch>
               <NavbarSearchIcon />
               <form onSubmit={(event) => handleSearchInputSubmit(event, searchInputValue)} id="form-submit">
@@ -57,7 +57,7 @@ const Navbar = ({
           </Grid>
 
           {/* Buttons */}
-          <Grid item lg={3} md={3} xs={5}>
+          <Grid item lg={3} md={3} xs={12}>
             <NavbarLogButton variant="outlined" color="inherit" onClick={() => handleOpen('up')}>
               Sign up
             </NavbarLogButton>

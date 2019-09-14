@@ -32,8 +32,8 @@ export const DashboardTitleProgressBar = styled(Typography)({
 });
 
 export const DashboardHeaderConainer = styled(Container)({
-  minHeight: 300,
-  maxWidth: 3000,
+  minHeight: '30vh',
+  maxWidth: '3000vh',
   display: 'flex',
   alignItems: 'center',
   backgroundColor: theme.palette.primary.light,
@@ -100,8 +100,8 @@ export const DashboardUsernameInput = styled(Input)({
 
 // HISTORY
 export const DashboardHistoryContainer = styled(Container)({
-  minHeight: 400,
-  minWidth: 400,
+  minHeight: '50vh',
+  minWidth: '40vh',
   flexWrap: 'nowrap',
 });
 
@@ -110,7 +110,7 @@ export const DashboardHistoryIcon = styled(HistoryIcon)({
   position: 'absolute',
   color: theme.palette.secondary.dark,
   opacity: 0.05,
-  margin: '-20% 0 0 -10%',
+  margin: '-15vh 0 0 -15vh',
 });
 
 export const DashboardHistoryShowTitle = styled(Typography)({
@@ -147,17 +147,17 @@ export const DashboardSettignsIcon = styled(SettingsInputCompositeIcon)({
   position: 'absolute',
   color: theme.palette.primary.light,
   opacity: 0.05,
-  margin: '-20% 0 0 -25%',
+  margin: '-15vh 0 0 -15vh',
 });
 
 // .........................Tabs.........................
 
 export const DashboardTab = styled(Tab)({
   fontSize: '1em',
-  padding: theme.spacing(1, 11),
 });
 
 export const DashboardBoxOfCards = styled(Box)({
+  minHeight: '60vh',
   backgroundColor: theme.palette.secondary.light,
   background: `linear-gradient(0deg, ${theme.palette.secondary.dark} 0%, ${theme.palette.secondary.main} 50%, ${theme.palette.secondary.dark} 100%)`,
 });

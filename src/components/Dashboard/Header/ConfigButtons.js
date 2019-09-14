@@ -30,7 +30,7 @@ const ConfigButtons = ({
       </DashboardHeaderButtons>
     </Box>
 
-    <Box componenent="div" disabled mt={5}>
+    <Box componenent="div" disabled my={5}>
       <DashboardHeaderButtons
         variant="contained"
         color="primary"

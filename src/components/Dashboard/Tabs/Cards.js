@@ -55,7 +55,7 @@ class Next extends React.Component {
         justify="center"
       >
         {shows.map((show) => (
-          <Grid item key={show.title} xl={2} lg={3} md={4} xs={6}>
+          <Grid item key={show.title} xl={2} lg={3} md={4} xs={12}>
             <HomePageCard key={show.title}>
               <CardActionArea>
                 <HomePageCardMedia
