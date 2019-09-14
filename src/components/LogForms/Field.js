@@ -1,6 +1,8 @@
+// import NPM
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// Material UI Component
 import { TextField } from '@material-ui/core';
 
 const Field = ({
@@ -37,7 +39,6 @@ Field.propTypes = {
   index: PropTypes.number.isRequired,
 };
 
-// https://fr.reactjs.org/docs/typechecking-with-proptypes.html#default-prop-values
 Field.defaultProps = {
   type: 'text',
   value: '',

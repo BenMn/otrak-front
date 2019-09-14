@@ -1,19 +1,22 @@
+// Import NPM
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// MAterial UI Componenets
 import {
   Typography,
   Button,
 } from '@material-ui/core';
 
+// MAterial UI custom Componenets
 import {
   StartNowGrid,
   StartNowIcon,
   StartNowTitle,
 } from 'src/styles/materialUi/materialUiStyles/LandingPage';
 
+// Authentification modals
 import LogFormsModal from 'src/containers/LogForms';
-// import './LandingPage.scss';
 
 const StartToday = ({ open, handleOpen }) => (
   <>

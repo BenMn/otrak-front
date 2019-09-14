@@ -1,16 +1,25 @@
-import dataApi from 'src/data/dataApi.json';
+// Local data for testing
+// import dataApi from 'src/data/dataApi.json';
+// import ShowComplet from 'src/data/showComplet.json';
 
 // == Initial State
 const initialState = {
-  trendingList: dataApi,
+  // Get trending infos
+  trendingList: [],
   updatedHistoryList: [],
+  // Single show details
+  showDetail: {},
+  // Search
   searchInputValue: '',
   storeSearchInputResult: [],
-  view: 'landing',
-  storeAuthInputResult: {},
-  setOpen: false,
+  // Views & Modals
+  view: '',
+  viewModal: '',
   open: false,
+  setOpen: false,
   modalName: '',
+  // Authentification
+  storeAuthInputResult: {},
   userAuthInfos: {
     username: {
       index: 0,
@@ -46,7 +55,7 @@ const initialState = {
   userAvatar: null,
 };
 
-// == Types
+// ==  Action Types
 const UPDATE_SEARCH_INPUT = 'UPDATE_SEARCH_INPUT';
 export const FETCH_SEARCH_INPUT_RESULT = 'FETCH_SEARCH_INPUT_RESULT';
 export const STORE_SEARCH_INPUT_RESULT = 'STORE_SEARCH_INPUT_RESULT';
@@ -66,6 +75,9 @@ export const AVATAR_UPLOAD_HANDLER = 'AVATAR_UPLOAD_HANDLER';
 const STORE_NEW_USERNAME = 'STORE_NEW_USERNAME';
 
 const REMOVE_SHOW_HISTORY_LIST = 'REMOVE_SHOW_HISTORY_LIST';
+export const FETCH_DETAIL_SHOW = 'FETCH_DETAIL_SHOW';
+const STORE_DETAIL_SHOW = 'STORE_DETAIL_SHOW';
+
 
 // == Reducer
 const reducer = (state = initialState, action = {}) => {
@@ -85,7 +97,7 @@ const reducer = (state = initialState, action = {}) => {
     case STORE_SEARCH_INPUT_RESULT:
       return {
         ...state,
-        storeSearchInputResult: action.storeSearchInputResult,
+        storeSearchInputResult: action.data,
       };
 
     case UPDATE_AUTH_INPUT:
@@ -120,6 +132,12 @@ const reducer = (state = initialState, action = {}) => {
         setOpen: false,
         open: false,
         modalName: action.modalName,
+      };
+
+    case STORE_DETAIL_SHOW:
+      return {
+        ...state,
+        showDetail: action.data,
       };
 
     case AVATAR_UPLOAD_HANDLER:
@@ -214,6 +232,16 @@ export const closeModal = (modalName) => ({
   setOpen: false,
   open: false,
   modalName,
+});
+
+export const fetchDetailShow = (idShow) => ({
+  type: FETCH_DETAIL_SHOW,
+  idShow,
+});
+
+export const storeDetailShow = (data) => ({
+  type: STORE_DETAIL_SHOW,
+  data,
 });
 
 export const avatarUploadHandler = (newAvatar) => ({

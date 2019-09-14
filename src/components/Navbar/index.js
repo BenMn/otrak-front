@@ -1,12 +1,15 @@
+// import npm
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// Import material UI components
 import {
   AppBar,
   Toolbar,
   Grid,
 } from '@material-ui/core';
 
+// Import material UI custom components
 import {
   NavbarSearch,
   NavbarSearchInput,
@@ -14,9 +17,11 @@ import {
   NavbarLogButton,
 } from 'src/styles/materialUi/materialUiStyles/Navbar';
 
+// Authentification modals
+import LogFormsModal from 'src/containers/LogForms';
+
 import './Navbar.scss';
 
-import LogFormsModal from 'src/containers/LogForms';
 
 const Navbar = ({
   open,

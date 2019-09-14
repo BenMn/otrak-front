@@ -1,14 +1,17 @@
 /* eslint-disable react/prop-types */
-
+// Import NPM
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { LogFormsModal as Modal } from 'src/styles/materialUi/materialUiStyles/LogForms';
+//  Material UI Components
 import Backdrop from '@material-ui/core/Backdrop';
 
+//  Material UI custom Components
+import { LogFormsModal as Modal } from 'src/styles/materialUi/materialUiStyles/LogForms';
 import History from 'src/components/Dashboard/Header/History';
 import AccountSettings from 'src/components/Dashboard/Header/AccountSettings';
 
+// Local imports
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 import ForgotPassword from './ForgotPassword';
@@ -86,7 +89,6 @@ const LogFormsModal = ({
     </Modal>
   </div>
 );
-
 
 LogFormsModal.propTypes = {
   open: PropTypes.bool,

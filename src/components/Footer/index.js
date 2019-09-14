@@ -1,21 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// import Material UI components
 import {
   Grid,
   Typography,
   Toolbar,
 } from '@material-ui/core';
 
+// import custom Material UI components
 import {
   FooterAppBar,
   FooterButton,
   FooterIcon,
 } from 'src/styles/materialUi/materialUiStyles/Footer';
 
+// Material UI Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
+// Authentification modals
 import LogFormsModal from 'src/containers/LogForms';
 
 import './Footer.scss';

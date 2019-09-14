@@ -1,14 +1,7 @@
 /* eslint-disable no-plusplus */
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import Swiper from 'react-id-swiper';
 
-// scss
-import 'react-id-swiper/lib/styles/scss/swiper.scss';
-// css
-import 'react-id-swiper/lib/styles/css/swiper.css';
-
-// import PropTypes from 'prop-types';
 import {
   Typography,
   Grid,
@@ -16,14 +9,10 @@ import {
   Container,
 } from '@material-ui/core';
 
-// Icons
-
-
-// ComponentIconButtons
-
 // Data provisoire
 import shows from 'src/data/shows';
 
+// import Material UI custom components
 import {
   NextIconTitle,
   HomePageCard,
@@ -35,8 +24,10 @@ import {
   HomePageCardTitle,
   AiredSubtitleSeasonEpisode,
   AiredTitleCardAndSubtitle,
+  NextGridCurrentCard,
 } from 'src/styles/materialUi/materialUiStyles/HomePage';
 
+// Icons
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import CreateIcon from '@material-ui/icons/Create';
@@ -45,6 +36,7 @@ import StarIcon from '@material-ui/icons/Star';
 
 
 class Next extends React.Component {
+  // Opens card icons menu
   displayCardActionButtons = (event) => {
     event.persist();
     const parentIconElement = event.target.parentElement.parentElement;
@@ -55,41 +47,9 @@ class Next extends React.Component {
   }
 
   render() {
-    const params = {
-      lazy: true,
-      grabCursor: true,
-      slidesPerView: 4,
-      spaceBetween: 10,
-      mousewheel: true,
-      pagination: {
-        el: '.swiper-pagination',
-        type: 'progressbar',
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      breakpoints: {
-        1050: {
-          slidesPerView: 2,
-          spaceBetween: 20,
-        },
-        768: {
-          slidesPerView: 2,
-          spaceBetween: 20,
-        },
-        690: {
-          slidesPerView: 1,
-          spaceBetween: 20,
-        },
-        320: {
-          slidesPerView: 1,
-          spaceBetween: 10,
-        },
-      },
-    };
     return (
       <>
+        {/* Title */}
         <NextBlockTitleSeeAll
           container
           direction="row"
@@ -101,17 +61,25 @@ class Next extends React.Component {
         </NextBlockTitleSeeAll>
 
         <Container>
-          <Swiper {...params}>
+          <Grid
+            container
+            direction="row"
+            justify="center"
+            alignItems="flex-start"
+          >
+            {/* Single Card Show */}
             {shows.map((show) => (
-              <Grid item key={show.title}>
+              <NextGridCurrentCard item key={show.title}>
                 <HomePageCard key={show.title}>
                   <CardActionArea>
                     <HomePageCardMedia
                       image={show.image}
                       title={show.title}
                     >
+                      {/* Card icons */}
                       <Grid
                         container
+                        direction="row"
                         justify="flex-end"
                       >
                         <HomePageIconContainer className="hiddenCardIcon">
@@ -134,6 +102,7 @@ class Next extends React.Component {
                         </HomePageIconContainer>
                       </Grid>
 
+                      {/* Show title */}
                       <AiredTitleCardAndSubtitle
                         container
                         direction="row"
@@ -142,21 +111,19 @@ class Next extends React.Component {
                         <HomePageCardTitle variant="h5" component="h2">
                           {show.title}
                         </HomePageCardTitle>
+                        {/* Season + Episode */}
                         <AiredSubtitleSeasonEpisode>EXX SXX</AiredSubtitleSeasonEpisode>
                       </AiredTitleCardAndSubtitle>
                     </HomePageCardMedia>
                   </CardActionArea>
                 </HomePageCard>
-              </Grid>
+              </NextGridCurrentCard>
             ))}
-          </Swiper>
+          </Grid>
         </Container>
       </>
     );
   }
 }
-Next.propTypes = {
-
-};
 
 export default Next;

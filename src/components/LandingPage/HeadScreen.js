@@ -1,9 +1,12 @@
+// Import Npm
 import React from 'react';
 import PropTypes from 'prop-types';
 import theme from 'src/styles/materialUi/materialUiTheme/theme';
 
+// import material UI components
 import { Grid } from '@material-ui/core';
 
+// import material UI custom components
 import {
   HeadScreenSignInButton,
   HeadScreenSignUpButton,
@@ -12,11 +15,14 @@ import {
   HeadScreenSlogan,
 } from 'src/styles/materialUi/materialUiStyles/LandingPage';
 
-import './LandingPage.scss';
-
+// Authentification form modal
 import LogFormsModal from 'src/containers/LogForms';
 
+import './LandingPage.scss';
+
+
 class HeadScreen extends React.Component {
+  // Top search bar animation slide right
   handleSearchInput = () => {
     const fullSearchBar = document.getElementById('fullSearchBar').parentElement;
     fullSearchBar.classList.add('slide-in-left');
@@ -40,6 +46,7 @@ class HeadScreen extends React.Component {
             <Grid item className="div-input-icon-search">
               <HeadScreenSearchIcon fontSize="large" color="action" onMouseOver={this.handleSearchInput} />
 
+              {/* searchBar */}
               <form onSubmit={(event) => handleSearchInputSubmit(event, searchInputValue)} id="form-submit">
                 <HeadScreenSearchInput
                   placeholder="Try Game Of Thrones, Naruto..."
@@ -52,6 +59,7 @@ class HeadScreen extends React.Component {
             </Grid>
             <Grid item>
 
+              {/* LOG IN */}
               <HeadScreenSignInButton
                 variant="text"
                 onClick={() => handleOpen('in')}
@@ -59,6 +67,7 @@ class HeadScreen extends React.Component {
                 Sign in
               </HeadScreenSignInButton>
 
+              {/* REGISTER */}
               <HeadScreenSignUpButton
                 variant="outlined"
                 onClick={() => handleOpen('up')}
@@ -75,6 +84,8 @@ class HeadScreen extends React.Component {
               )}
             </Grid>
           </Grid>
+
+          {/* full logo ban */}
           <HeadScreenSlogan>
             <img src="src/styles/assets/images/logos/logo-ban-2.png" alt="O'Trak logo-ban" id="logo-ban" />
           </HeadScreenSlogan>

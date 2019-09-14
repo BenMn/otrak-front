@@ -13,9 +13,10 @@ import {
 } from 'src/store/reducer';
 
 const mapStateToProps = (state) => ({
-  message: state.message,
   trendingList: state.trendingList,
+
   searchInputValue: state.searchInputValue,
+
   setOpen: state.setOpen,
   open: state.open,
   modalName: state.modalName,
