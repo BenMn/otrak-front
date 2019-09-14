@@ -26,10 +26,7 @@ const AccountSettings = () => (
         spacing={2}
       >
         <Grid item>
-          <img src="src/styles/assets/images/logos/logo-owl.png" alt="O'Track Logo" id="LogFormModalLogo" />
-        </Grid>
-        <Grid item>
-          <Typography component="h1" variant="h5" color="primary">
+          <Typography component="h1" variant="h5">
             Account Settings
           </Typography>
         </Grid>
@@ -39,13 +36,39 @@ const AccountSettings = () => (
           </LogFormModalSubtitle>
         </Grid>
 
+
         <TextField
           id="filled-password-input"
-          label="Password"
+          label="Current Password"
           type="password"
           autoComplete="current-password"
           margin="normal"
-          variant="filled"
+          variant="outlined"
+          required
+          fullWidth
+        />
+
+
+        <TextField
+          id="filled-password-input"
+          label="New Password"
+          type="password"
+          autoComplete="current-password"
+          margin="normal"
+          variant="outlined"
+          required
+          fullWidth
+        />
+
+        <TextField
+          id="filled-password-input"
+          label="Password Confirmation"
+          type="password"
+          autoComplete="current-password"
+          margin="normal"
+          variant="outlined"
+          required
+          fullWidth
         />
 
         <LogFormModalButton
@@ -56,6 +79,18 @@ const AccountSettings = () => (
         >
           Change your password
         </LogFormModalButton>
+
+
+        <LogFormModalButton
+          type="submit"
+          fullWidth
+          variant="contained"
+          color="secondary"
+        >
+          Delete your account
+        </LogFormModalButton>
+        Too angry to stay ?
+
       </Grid>
     </Container>
   </LogFormModalPaper>

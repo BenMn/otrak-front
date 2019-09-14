@@ -84,6 +84,38 @@ export const DashboardUsernameIcon = styled(AccountCircle)({
   fontSize: '1.4em',
 });
 
+// .........................Modals.........................
+
+export const DashboardHistoryContainer = styled(Container)({
+  minHeight: 400,
+  minWidth: 350,
+  flexWrap: 'nowrap',
+});
+
+export const DashboardHistoryIcon = styled(HistoryIcon)({
+  fontSize: '30em',
+  position: 'absolute',
+  color: theme.palette.secondary.dark,
+  opacity: 0.05,
+  margin: '-20% 0 0 -10%',
+});
+
+export const DashboardHistoryShowTitle = styled(Typography)({
+});
+
+export const DashboardHistoryShowSubtitle = styled(Typography)({
+  margin: '-17px 0 17px 0',
+  color: theme.palette.text.disabled,
+});
+
+export const DashboardHistoryListContainer = styled(Typography)({
+  maxHeight: 400,
+  maxWidth: 'auto',
+  overflowY: 'scroll',
+  overflowX: 'hidden',
+  zIndex: 3,
+});
+
 
 // .........................Tabs.........................
 

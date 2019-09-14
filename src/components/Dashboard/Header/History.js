@@ -1,63 +1,256 @@
+// import NPM
 import React from 'react';
 
-import {
-  LogFormModalPaper,
-  LogFormModalButton,
-  LogFormModalSubtitle,
-} from 'src/styles/materialUi/materialUiStyles/LogForms';
-
+// Material UI Components
 import {
   Grid,
   Typography,
-  Container,
-  TextField,
 } from '@material-ui/core';
+
+// Material UI custom Components
+import {
+  LogFormModalPaper,
+} from 'src/styles/materialUi/materialUiStyles/LogForms';
+
+import {
+  DashboardHistoryContainer,
+  DashboardHistoryIcon,
+  DashboardHistoryShowTitle,
+  DashboardHistoryShowSubtitle,
+  DashboardHistoryListContainer,
+} from 'src/styles/materialUi/materialUiStyles/Dashboard';
+
+// Icons
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 
 import 'src/components/LogForms/LogForms.scss';
 
 const History = () => (
   <LogFormModalPaper id="History">
-    <Container component="main" maxWidth="xs">
+    <DashboardHistoryContainer component="main">
       <Grid
         container
         direction="column"
-        justify="center"
-        alignItems="center"
-        spacing={2}
+        spacing={4}
       >
+        {/* Modal Title */}
         <Grid item>
-          <img src="src/styles/assets/images/logos/logo-owl.png" alt="O'Track Logo" id="LogFormModalLogo" />
-        </Grid>
-        <Grid item>
-          <Typography component="h1" variant="h5" color="primary">
-            Account Settings
+          <Typography component="h3" variant="h3" color="primary">
+            History
           </Typography>
         </Grid>
+
         <Grid item>
-          <LogFormModalSubtitle component="h2" variant="subtitle1" color="secondary">
-            Change your password
-          </LogFormModalSubtitle>
+          <DashboardHistoryIcon />
         </Grid>
 
-        <TextField
-          id="filled-password-input"
-          label="Password"
-          type="password"
-          autoComplete="current-password"
-          margin="normal"
-          variant="filled"
-        />
+        {/* User History List */}
 
-        <LogFormModalButton
-          type="submit"
-          fullWidth
-          variant="contained"
-          color="primary"
-        >
-          Change your password
-        </LogFormModalButton>
+        <DashboardHistoryListContainer>
+
+          {/* single show */}
+          <Grid item>
+            <Grid
+              container
+              spacing={2}
+              justify="space-between"
+              alignItems="center"
+            >
+              <Grid item>
+                <DashboardHistoryShowTitle color="primary" variant="h6">SHOW TITTLE</DashboardHistoryShowTitle>
+              </Grid>
+              <Grid item>
+                <DeleteForeverIcon color="secondary" />
+              </Grid>
+            </Grid>
+            <DashboardHistoryShowSubtitle color="primary" variant="subtitle1">Season XX - Episode XX</DashboardHistoryShowSubtitle>
+
+          </Grid>
+
+          {/* single show */}
+          <Grid item>
+            <Grid
+              container
+              spacing={2}
+              justify="space-between"
+              alignItems="center"
+            >
+              <Grid item>
+                <DashboardHistoryShowTitle color="primary" variant="h6">SHOW TITTLE</DashboardHistoryShowTitle>
+              </Grid>
+              <Grid item>
+                <DeleteForeverIcon color="secondary" />
+              </Grid>
+            </Grid>
+            <DashboardHistoryShowSubtitle color="primary" variant="subtitle1">Season XX - Episode XX</DashboardHistoryShowSubtitle>
+
+          </Grid>
+          {/* single show */}
+          <Grid item>
+            <Grid
+              container
+              spacing={2}
+              justify="space-between"
+              alignItems="center"
+            >
+              <Grid item>
+                <DashboardHistoryShowTitle color="primary" variant="h6">SHOW TITTLE</DashboardHistoryShowTitle>
+              </Grid>
+              <Grid item>
+                <DeleteForeverIcon color="secondary" />
+              </Grid>
+            </Grid>
+            <DashboardHistoryShowSubtitle color="primary" variant="subtitle1">Season XX - Episode XX</DashboardHistoryShowSubtitle>
+
+          </Grid>
+          {/* single show */}
+          <Grid item>
+            <Grid
+              container
+              spacing={2}
+              justify="space-between"
+              alignItems="center"
+            >
+              <Grid item>
+                <DashboardHistoryShowTitle color="primary" variant="h6">SHOW TITTLE</DashboardHistoryShowTitle>
+              </Grid>
+              <Grid item>
+                <DeleteForeverIcon color="secondary" />
+              </Grid>
+            </Grid>
+            <DashboardHistoryShowSubtitle color="primary" variant="subtitle1">Season XX - Episode XX</DashboardHistoryShowSubtitle>
+
+          </Grid>
+          {/* single show */}
+          <Grid item>
+            <Grid
+              container
+              spacing={2}
+              justify="space-between"
+              alignItems="center"
+            >
+              <Grid item>
+                <DashboardHistoryShowTitle color="primary" variant="h6">SHOW TITTLE</DashboardHistoryShowTitle>
+              </Grid>
+              <Grid item>
+                <DeleteForeverIcon color="secondary" />
+              </Grid>
+            </Grid>
+            <DashboardHistoryShowSubtitle color="primary" variant="subtitle1">Season XX - Episode XX</DashboardHistoryShowSubtitle>
+
+          </Grid>
+          {/* single show */}
+          <Grid item>
+            <Grid
+              container
+              spacing={2}
+              justify="space-between"
+              alignItems="center"
+            >
+              <Grid item>
+                <DashboardHistoryShowTitle color="primary" variant="h6">SHOW TITTLE</DashboardHistoryShowTitle>
+              </Grid>
+              <Grid item>
+                <DeleteForeverIcon color="secondary" />
+              </Grid>
+            </Grid>
+            <DashboardHistoryShowSubtitle color="primary" variant="subtitle1">Season XX - Episode XX</DashboardHistoryShowSubtitle>
+
+          </Grid>
+          {/* single show */}
+          <Grid item>
+            <Grid
+              container
+              spacing={2}
+              justify="space-between"
+              alignItems="center"
+            >
+              <Grid item>
+                <DashboardHistoryShowTitle color="primary" variant="h6">SHOW TITTLE</DashboardHistoryShowTitle>
+              </Grid>
+              <Grid item>
+                <DeleteForeverIcon color="secondary" />
+              </Grid>
+            </Grid>
+            <DashboardHistoryShowSubtitle color="primary" variant="subtitle1">Season XX - Episode XX</DashboardHistoryShowSubtitle>
+
+          </Grid>
+          {/* single show */}
+          <Grid item>
+            <Grid
+              container
+              spacing={2}
+              justify="space-between"
+              alignItems="center"
+            >
+              <Grid item>
+                <DashboardHistoryShowTitle color="primary" variant="h6">SHOW TITTLE</DashboardHistoryShowTitle>
+              </Grid>
+              <Grid item>
+                <DeleteForeverIcon color="secondary" />
+              </Grid>
+            </Grid>
+            <DashboardHistoryShowSubtitle color="primary" variant="subtitle1">Season XX - Episode XX</DashboardHistoryShowSubtitle>
+
+          </Grid>
+          {/* single show */}
+          <Grid item>
+            <Grid
+              container
+              spacing={2}
+              justify="space-between"
+              alignItems="center"
+            >
+              <Grid item>
+                <DashboardHistoryShowTitle color="primary" variant="h6">SHOW TITTLE</DashboardHistoryShowTitle>
+              </Grid>
+              <Grid item>
+                <DeleteForeverIcon color="secondary" />
+              </Grid>
+            </Grid>
+            <DashboardHistoryShowSubtitle color="primary" variant="subtitle1">Season XX - Episode XX</DashboardHistoryShowSubtitle>
+
+          </Grid>
+          {/* single show */}
+          <Grid item>
+            <Grid
+              container
+              spacing={2}
+              justify="space-between"
+              alignItems="center"
+            >
+              <Grid item>
+                <DashboardHistoryShowTitle color="primary" variant="h6">SHOW TITTLE</DashboardHistoryShowTitle>
+              </Grid>
+              <Grid item>
+                <DeleteForeverIcon color="secondary" />
+              </Grid>
+            </Grid>
+            <DashboardHistoryShowSubtitle color="primary" variant="subtitle1">Season XX - Episode XX</DashboardHistoryShowSubtitle>
+
+          </Grid>
+          {/* single show */}
+          <Grid item>
+            <Grid
+              container
+              spacing={2}
+              justify="space-between"
+              alignItems="center"
+            >
+              <Grid item>
+                <DashboardHistoryShowTitle color="primary" variant="h6">SHOW TITTLE</DashboardHistoryShowTitle>
+              </Grid>
+              <Grid item>
+                <DeleteForeverIcon color="secondary" />
+              </Grid>
+            </Grid>
+            <DashboardHistoryShowSubtitle color="primary" variant="subtitle1">Season XX - Episode XX</DashboardHistoryShowSubtitle>
+
+          </Grid>
+        </DashboardHistoryListContainer>
+
       </Grid>
-    </Container>
+    </DashboardHistoryContainer>
   </LogFormModalPaper>
 );
 
