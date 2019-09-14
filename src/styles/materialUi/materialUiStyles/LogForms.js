@@ -16,9 +16,10 @@ export const LogFormsModal = styled(Modal)({
 
 export const LogFormModalPaper = styled(Paper)({
   backgroundColor: theme.palette.background.paper,
-  boxShadow: theme.shadows[5],
+  boxShadow: '0 0 15px 0px rgba(200, 200, 200, 0.55)',
   padding: 50,
   minHeight: 550,
+  minWidth: 500,
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',

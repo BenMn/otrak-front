@@ -6,6 +6,7 @@
 const initialState = {
   // Get trending infos
   trendingList: [],
+  updatedHistoryList: [],
   // Single show details
   showDetail: {},
   // Search
@@ -22,7 +23,7 @@ const initialState = {
   userAuthInfos: {
     username: {
       index: 0,
-      username: '',
+      username: 'jackiMimiiidu56',
       name: 'username',
       label: 'Username',
       autoComplete: 'username',
@@ -51,6 +52,7 @@ const initialState = {
       type: 'password',
     },
   },
+  userAvatar: null,
 };
 
 // ==  Action Types
@@ -69,6 +71,10 @@ export const FETCH_TRENDING = 'FETCH_TRENDING';
 const OPEN_MODAL = 'OPEN_MODAL';
 const CLOSE_MODAL = 'CLOSE_MODAL';
 
+export const AVATAR_UPLOAD_HANDLER = 'AVATAR_UPLOAD_HANDLER';
+const STORE_NEW_USERNAME = 'STORE_NEW_USERNAME';
+
+const REMOVE_SHOW_HISTORY_LIST = 'REMOVE_SHOW_HISTORY_LIST';
 export const FETCH_DETAIL_SHOW = 'FETCH_DETAIL_SHOW';
 const STORE_DETAIL_SHOW = 'STORE_DETAIL_SHOW';
 
@@ -117,7 +123,6 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         setOpen: true,
         open: true,
-        viewModal: action.viewModal,
         modalName: action.modalName,
       };
 
@@ -126,7 +131,6 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         setOpen: false,
         open: false,
-        viewModal: action.viewModal,
         modalName: action.modalName,
       };
 
@@ -135,6 +139,35 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         showDetail: action.data,
       };
+
+    case AVATAR_UPLOAD_HANDLER:
+      return {
+        ...state,
+        userAvatar: action.newAvatar,
+      };
+
+    case STORE_NEW_USERNAME:
+      return {
+        ...state,
+        userAuthInfos: {
+          ...state.userAuthInfos,
+          [action.name]: {
+            ...state.userAuthInfos[`${action.name}`],
+            [action.name]: action.newUsername,
+          },
+        },
+      };
+
+    case REMOVE_SHOW_HISTORY_LIST:
+      return Object.keys(state.updatedHistoryList).length === 0 ? ({
+        ...state,
+        updatedHistoryList:
+          state.trendingList.filter((show) => show.id_tvmaze !== action.showId),
+      }) : ({
+        ...state,
+        updatedHistoryList:
+          state.updatedHistoryList.filter((show) => show.id_tvmaze !== action.showId),
+      });
 
     default:
       return state;
@@ -187,19 +220,17 @@ export const storeSearchInputResult = (data) => ({
   data,
 });
 
-export const openModal = (viewModal, modalName) => ({
+export const openModal = (modalName) => ({
   type: OPEN_MODAL,
   setOpen: true,
   open: true,
-  viewModal,
   modalName,
 });
 
-export const closeModal = (viewModal, modalName) => ({
+export const closeModal = (modalName) => ({
   type: CLOSE_MODAL,
   setOpen: false,
   open: false,
-  viewModal,
   modalName,
 });
 
@@ -213,6 +244,21 @@ export const storeDetailShow = (data) => ({
   data,
 });
 
+export const avatarUploadHandler = (newAvatar) => ({
+  type: AVATAR_UPLOAD_HANDLER,
+  newAvatar,
+});
+
+export const storeNewUsername = (newUsername, name) => ({
+  type: STORE_NEW_USERNAME,
+  newUsername,
+  name,
+});
+
+export const removeShowHistoryList = (showId) => ({
+  type: REMOVE_SHOW_HISTORY_LIST,
+  showId,
+});
 
 // == Selectors
 

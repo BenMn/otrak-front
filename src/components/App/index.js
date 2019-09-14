@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import { MuiThemeProvider } from '@material-ui/core';
 import { Route, Redirect } from 'react-router-dom';
 
-
 // == Import : local
 
 // Custom theme
@@ -17,8 +16,9 @@ import Footer from 'src/containers/Footer';
 import LandingPage from 'src/containers/LandingPage';
 import LogFormModal from 'src/containers/LogForms';
 import Homepage from 'src/containers/Homepage';
+import Dashboard from 'src/containers/Dashboard';
 import Show from 'src/containers/Show';
-
+import './App.scss';
 
 // == Composant
 const App = ({
@@ -53,6 +53,8 @@ const App = ({
       <Route exact path="/show/:name" component={Show} />
 
       <Route exact path="/search" component={Homepage} />
+
+      <Route exact path="/dashboard" component={Dashboard} />
 
       <Footer />
     </div>

@@ -25,7 +25,6 @@ import './Navbar.scss';
 
 const Navbar = ({
   open,
-  viewModal,
   handleOpen,
   handleSearchInput,
   handleSearchInputSubmit,
@@ -59,13 +58,13 @@ const Navbar = ({
 
           {/* Buttons */}
           <Grid item lg={3} md={3} xs={5}>
-            <NavbarLogButton variant="outlined" color="inherit" onClick={(event) => handleOpen(event)}>
+            <NavbarLogButton variant="outlined" color="inherit" onClick={() => handleOpen('up')}>
               Sign up
             </NavbarLogButton>
-            <NavbarLogButton variant="text" color="inherit" onClick={(event) => handleOpen(event)}>
+            <NavbarLogButton variant="text" color="inherit" onClick={() => handleOpen('in')}>
               Sign in
             </NavbarLogButton>
-            {open === true && <LogFormsModal viewModal={viewModal} />}
+            {open === true && <LogFormsModal />}
           </Grid>
 
         </Grid>
@@ -79,13 +78,11 @@ Navbar.propTypes = {
   handleOpen: PropTypes.func.isRequired,
   handleSearchInput: PropTypes.func.isRequired,
   handleSearchInputSubmit: PropTypes.func.isRequired,
-  viewModal: PropTypes.string,
   searchInputValue: PropTypes.string.isRequired,
 };
 
 Navbar.defaultProps = {
   open: false,
-  viewModal: '',
 };
 
 

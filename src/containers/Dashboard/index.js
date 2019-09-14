@@ -2,40 +2,46 @@
 import { connect } from 'react-redux';
 
 // == Import : local
-import LogForms from 'src/components/LogForms';
+import Dashboard from 'src/components/Dashboard';
 
 // Action Creators
 import {
-  closeModal,
-  openModal,
+  avatarUploadHandler,
   updateAuthInput,
-  fetchLoginAuthInfos,
   fetchRegisterAuthInfos,
-  removeShowHistoryList,
+  fetchLoginAuthInfos,
+  storeNewUsername,
+  openModal,
 } from 'src/store/reducer';
 
 const mapStateToProps = (state) => ({
+  userAvatar: state.userAvatar,
+  userAuthInfos: state.userAuthInfos,
+
   setOpen: state.setOpen,
   open: state.open,
   modalName: state.modalName,
-  authInputValue: state.authInputValue,
-  userAuthInfos: state.userAuthInfos,
-  trendingList: state.trendingList,
-  updatedHistoryList: state.updatedHistoryList,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  handleClose: () => {
-    dispatch(closeModal());
-  },
-
-  handleOpen: (modalName) => {
-    dispatch(openModal(modalName));
+  avatarUploadHandler: (event) => {
+    event.persist();
+    const newAvatar = event.target.files[0];
+    dispatch(avatarUploadHandler(newAvatar));
   },
 
   handleAuthInput: (event, index) => {
     const { value, name } = event.target;
     dispatch(updateAuthInput(value, name, index));
+  },
+
+  handleNewUsername: (event) => {
+    event.persist();
+    console.log(event);
+    const newUsername = event.target.value;
+    console.log(newUsername);
+    const { name } = event.target;
+    dispatch(storeNewUsername(newUsername, name));
   },
 
   handleAuthInputSubmit: (event) => {
@@ -55,17 +61,17 @@ const mapDispatchToProps = (dispatch) => ({
     event.preventDefault();
   },
 
-  handleDeleteHistoryShow: (showId) => {
-    console.log(showId);
-    dispatch(removeShowHistoryList(showId));
+  handleOpen: (modalName) => {
+    dispatch(openModal(modalName));
   },
+
 });
 
 // Container
-const LogFormsContainer = connect(
+const DashboardContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(LogForms);
+)(Dashboard);
 
 // == Export
-export default LogFormsContainer;
+export default DashboardContainer;

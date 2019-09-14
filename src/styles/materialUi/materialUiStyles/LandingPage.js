@@ -102,7 +102,7 @@ export const ApiInfosSearchDark = styled(Paper)({
   margin: '2% 0 0 35%',
   display: 'flex',
   position: 'initial',
-  borderRadius: 15,
+  borderRadius: 25,
   backgroundColor: theme.palette.secondary.light,
   boxShadow: '3px 4px 7px 0px rgba(30, 30, 30, 0.55)',
   marginTop: 30,

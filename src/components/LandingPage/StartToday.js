@@ -18,7 +18,7 @@ import {
 // Authentification modals
 import LogFormsModal from 'src/containers/LogForms';
 
-const StartToday = ({ open, viewModal, handleOpen }) => (
+const StartToday = ({ open, handleOpen }) => (
   <>
     <StartNowGrid
       container
@@ -28,11 +28,10 @@ const StartToday = ({ open, viewModal, handleOpen }) => (
     >
       <StartNowIcon />
       <StartNowTitle variant="h3">Start Today</StartNowTitle>
-      {/* REGISTER */}
-      <Button variant="contained" color="primary" onClick={(event) => handleOpen(event)}>
-        Keep up to date my favorite shows
+      <Button variant="contained" color="primary" onClick={() => handleOpen('up')}>
+        Create your account
       </Button>
-      {open === true && <LogFormsModal viewModal={viewModal} />}
+      {open === true && <LogFormsModal />}
       <Typography>Don't be afraid, it's free !</Typography>
     </StartNowGrid>
   </>
@@ -41,12 +40,10 @@ const StartToday = ({ open, viewModal, handleOpen }) => (
 StartToday.propTypes = {
   open: PropTypes.bool,
   handleOpen: PropTypes.func.isRequired,
-  viewModal: PropTypes.string,
 };
 
 StartToday.defaultProps = {
   open: false,
-  viewModal: '',
 };
 
 export default StartToday;

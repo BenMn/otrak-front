@@ -8,12 +8,15 @@ import Backdrop from '@material-ui/core/Backdrop';
 
 //  Material UI custom Components
 import { LogFormsModal as Modal } from 'src/styles/materialUi/materialUiStyles/LogForms';
+import History from 'src/components/Dashboard/Header/History';
+import AccountSettings from 'src/components/Dashboard/Header/AccountSettings';
 
-// Import locaux
-import Fade from 'src/components/LogForms/ModalFade';
-import SignIn from 'src/components/LogForms/SignIn';
-import SignUp from 'src/components/LogForms/SignUp';
-import ForgotPassword from 'src/components/LogForms/ForgotPassword';
+// Local imports
+import SignIn from './SignIn';
+import SignUp from './SignUp';
+import ForgotPassword from './ForgotPassword';
+
+import Fade from './ModalFade';
 
 const LogFormsModal = ({
   open,
@@ -23,6 +26,9 @@ const LogFormsModal = ({
   handleAuthInput,
   handleAuthInputSubmit,
   userAuthInfos,
+  trendingList,
+  handleDeleteHistoryShow,
+  updatedHistoryList,
 }) => (
   <div>
     <Modal
@@ -64,6 +70,21 @@ const LogFormsModal = ({
             userAuthInfos={userAuthInfos}
           />
         )}
+        {modalName === 'history' && (
+          <History
+            trendingList={trendingList}
+            handleDeleteHistoryShow={handleDeleteHistoryShow}
+            updatedHistoryList={updatedHistoryList}
+          />
+        )}
+        {modalName === 'account' && (
+          <AccountSettings
+            handleOpen={handleOpen}
+            handleAuthInput={handleAuthInput}
+            handleAuthInputSubmit={handleAuthInputSubmit}
+            userAuthInfos={userAuthInfos}
+          />
+        )}
       </Fade>
     </Modal>
   </div>
@@ -76,6 +97,9 @@ LogFormsModal.propTypes = {
   modalName: PropTypes.string,
   handleAuthInput: PropTypes.func.isRequired,
   handleAuthInputSubmit: PropTypes.func.isRequired,
+  trendingList: PropTypes.array.isRequired,
+  handleDeleteHistoryShow: PropTypes.func,
+  updatedHistoryList: PropTypes.array.isRequired,
 };
 
 LogFormsModal.defaultProps = {
@@ -83,6 +107,7 @@ LogFormsModal.defaultProps = {
   handleClose: () => { },
   handleOpen: () => { },
   modalName: '',
+  handleDeleteHistoryShow: () => { },
 };
 
 export default LogFormsModal;
