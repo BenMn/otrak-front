@@ -11,7 +11,7 @@ import theme from 'src/styles/materialUi/materialUiTheme/theme';
 
 
 export const IndexScreenPicture = styled(CardMedia)({
-  height: '180vh',
+  height: '210vh',
   width: '100vw',
   // backgroundSize: 'cover',
   // backgroundRepeat: 'no-repeat',

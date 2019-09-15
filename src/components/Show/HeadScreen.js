@@ -27,7 +27,11 @@ const HeadScreen = ({ showDetail }) => (
     >
       {/* Left Side (poster) */}
       <Grid item>
-        <ShowHeadPoster className="poster-img" title="poster" image={showDetail.poster} />
+        <ShowHeadPoster
+          className="poster-img"
+          title="poster"
+          image={showDetail.poster === '' ? '../../src/styles/assets/images/notAvailable/no-image.jpeg' : showDetail.poster}
+        />
       </Grid>
 
       {/* Right Side (title + details) */}

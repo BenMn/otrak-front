@@ -128,7 +128,7 @@ class SearchResult extends React.Component {
                   <NavLink exact to={`/show/${currentShow.name}`}>
                     <CardActionArea onClick={() => getDetailShow(currentShow.id_tvmaze)}>
                       <HomePageCardMedia
-                        image={currentShow.poster}
+                        image={currentShow.poster === '' ? '../../src/styles/assets/images/notAvailable/no-image.jpeg' : currentShow.poster}
                         title={currentShow.name}
                       >
                         <Grid
