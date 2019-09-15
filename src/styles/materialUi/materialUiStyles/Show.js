@@ -5,6 +5,7 @@ import {
   Typography,
   Container,
   List,
+  Button,
 } from '@material-ui/core';
 import theme from 'src/styles/materialUi/materialUiTheme/theme';
 
@@ -25,6 +26,11 @@ export const IndexContainer = styled(Container)({
   borderRadius: 15,
   boxShadow: '6px 6px 10px 1px rgba(80, 80, 80, .5)',
 });
+
+export const IndexButtonReturn = styled(Button)({
+  marginBottom: 20,
+});
+
 
 // -----------------------------Resume HeadScreen.js--------------------------//
 

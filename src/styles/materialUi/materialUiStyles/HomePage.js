@@ -18,6 +18,7 @@ import {
   Typography,
   Grid,
   Paper,
+  Container,
 } from '@material-ui/core';
 // ------------------- Styles of All cards in HomePage -------------------//
 
@@ -76,6 +77,15 @@ export const HomePageCardIcon = styled(TuneIcon)({
 export const SearchResultIconTitle = styled(SearchIcon)({
   fontSize: '1.2em',
   margin: '40px 0px',
+});
+
+export const SearchResultContainerWithoutSlider = styled(Container)({
+  display: 'flex',
+  justifyContent: 'center',
+});
+
+export const SearchResultGridWithoutSlider = styled(Grid)({
+  minWidth: 352,
 });
 
 // ------------------- Styles of Aired.js ------------------------//

@@ -91,7 +91,6 @@ const Casting = ({ showDetail }) => {
                 <Grid item key={currentActor.person.name}>
                   <HomePageCard>
                     <CardActionArea>
-                      {console.log(currentActor.person.image)}
                       <HomePageCardMedia
                         image={currentActor.person.image === null ? '../../src/styles/assets/images/notAvailable/notAvailable.jpg' : currentActor.person.image.original}
                         title={currentActor.person.name}
