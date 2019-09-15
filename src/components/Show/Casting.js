@@ -14,7 +14,6 @@ import 'slick-carousel/slick/slick-theme.css';
 import {
   Grid,
   CardActionArea,
-  Typography,
 } from '@material-ui/core';
 
 //  Material UI custom Components
@@ -79,12 +78,61 @@ const Casting = ({ showDetail }) => {
       prevArrow: <SamplePrevArrow />,
     };
 
+    // If condition who manage the display of slider.
+    if (showDetail.cast.length <= 3) {
+      return (
+        <>
+          {showDetail.cast.length > 0 ? (
+            <>
+              <CastingTitleCasting variant="h4" align="center" gutterBottom>Casting</CastingTitleCasting>
+              {showDetail.cast.map((currentActor) => (
+                <Grid item key={currentActor.person.name}>
+                  <HomePageCard>
+                    <CardActionArea>
+                      <HomePageCardMedia
+                        image={currentActor.person.image === null ? '../../src/styles/assets/images/notAvailable/notAvailable.jpg' : currentActor.person.image.original}
+                        title={currentActor.person.name}
+                      >
+                        <Grid
+                          container
+                          justify="flex-end"
+                        />
+                        <AiredTitleCardAndSubtitle
+                          container
+                          direction="row"
+                          justify="flex-end"
+                        >
+                          <HomePageCardTitle variant="h5" component="h2">
+                            {currentActor.person.name}
+                          </HomePageCardTitle>
 
+                          <AiredSubtitleSeasonEpisode>
+                            {currentActor.character.name}
+                          </AiredSubtitleSeasonEpisode>
+                        </AiredTitleCardAndSubtitle>
+
+                      </HomePageCardMedia>
+
+                    </CardActionArea>
+                  </HomePageCard>
+                </Grid>
+              ))}
+            </>
+          ) :
+            (
+              <CastingTitleNotAvailable variant="h4" align="center">Casting is not available yet for this program</CastingTitleNotAvailable>
+            )}
+        </>
+      );
+    }
+
+    // Else of If condition who manage the display of slider.
     return (
       <>
         {showDetail.cast.length > 0 ? (
           <>
             <CastingTitleCasting variant="h4" align="center" gutterBottom>Casting</CastingTitleCasting>
+            {/* Slider Library */}
             <Slider {...settings}>
 
               {showDetail.cast.map((currentActor) => (

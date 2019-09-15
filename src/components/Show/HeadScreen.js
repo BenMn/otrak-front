@@ -17,7 +17,7 @@ import {
 } from 'src/styles/materialUi/materialUiStyles/Show';
 
 
-const HeadScreen = ({ showDetail }) => (
+const HeadScreen = ({ showDetail, addToWatchList }) => (
   <>
     {console.log(showDetail)}
 
@@ -46,9 +46,11 @@ const HeadScreen = ({ showDetail }) => (
           <Grid item>
             <ShowHeadTitle variant="h3">{showDetail.name}</ShowHeadTitle>
           </Grid>
+
           <Grid item>
-            <Button variant="contained" color="secondary">ADD TO MY WATCH LIST</Button>
+            <Button variant="contained" color="secondary" onClick={addToWatchList}>ADD TO MY WATCH LIST</Button>
           </Grid>
+          
           <Grid item>
             <DetailShowGroupList component="nav" aria-label="secondary mailbox folders">
               <ListItemText primary="Genres: " />
@@ -69,6 +71,7 @@ const HeadScreen = ({ showDetail }) => (
 
 HeadScreen.propTypes = {
   showDetail: PropTypes.object.isRequired,
+  addToWatchList: PropTypes.func.isRequired,
 };
 
 HeadScreen.defaultProps = {

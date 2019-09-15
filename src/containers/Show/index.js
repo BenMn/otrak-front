@@ -11,7 +11,11 @@ const mapStateToProps = (state) => ({
   showDetail: state.showDetail,
 });
 
-const mapDispatchToProps = () => ({});
+const mapDispatchToProps = () => ({
+  addToWatchList: () => {
+    console.log('addToWatchList');
+  },
+});
 
 // Container
 const ShowContainer = connect(
