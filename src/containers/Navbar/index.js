@@ -9,6 +9,7 @@ import {
   openModal,
   updateSearchInput,
   fetchSearchInputResult,
+  logOut,
 } from 'src/store/reducer';
 
 
@@ -16,6 +17,7 @@ const mapStateToProps = (state) => ({
   setOpen: state.setOpen,
   open: state.open,
   searchInputValue: state.searchInputValue,
+  isLogged: state.isLogged,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -30,6 +32,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   handleOpen: (modalName) => {
     dispatch(openModal(modalName));
+  },
+
+  handleLogOut: () => {
+    dispatch(logOut());
   },
 });
 

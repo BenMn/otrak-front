@@ -100,8 +100,8 @@ export const DashboardUsernameInput = styled(Input)({
 
 // HISTORY
 export const DashboardHistoryContainer = styled(Container)({
-  minHeight: '50vh',
-  minWidth: '40vh',
+  minHeight: '80vh',
+  minWidth: '60vh',
   flexWrap: 'nowrap',
 });
 

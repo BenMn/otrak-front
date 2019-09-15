@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 
 // import Material UI components
 import {
   Grid,
   Typography,
   Toolbar,
+  Link,
 } from '@material-ui/core';
 
 // import custom Material UI components
@@ -30,14 +32,16 @@ const Footer = ({ open, handleOpen }) => (
       <Toolbar>
 
         <Grid container justify="center">
-          <Grid item lg={1} md={3} xs={4}>
+          <Grid item xl={2} lg={1} md={2} sm={2} xs={4}>
             <Grid container justify="center">
               {/* Logo */}
-              <img src="src/styles/assets/images/logos/logo-owl.png" alt="O’Track logo" id="FooterLogo" />
+              <NavLink exact to="/search">
+                <img src="src/styles/assets/images/logos/logo-owl.png" alt="O’Track logo" id="FooterLogo" />
+              </NavLink>
             </Grid>
           </Grid>
 
-          <Grid item lg={4} md={4} xs={8}>
+          <Grid item xl={4} lg={4} md={4} sm={4} xs={8}>
             <Typography variant="h6">
               All your favorites shows
             </Typography>
@@ -46,7 +50,7 @@ const Footer = ({ open, handleOpen }) => (
             </Typography>
           </Grid>
 
-          <Grid item lg={5} md={7} xs={10}>
+          <Grid item xl={5} lg={5} md={4} sm={4} xs={10}>
             <Grid
               container
               justify="center"
@@ -58,16 +62,27 @@ const Footer = ({ open, handleOpen }) => (
               </FooterButton>
               {open === true && <LogFormsModal />}
 
-              <FooterButton color="inherit">TEAM</FooterButton>
-              <FooterButton color="inherit">LEGAL</FooterButton>
-              <FooterButton color="inherit">CONTACT</FooterButton>
+              <NavLink exact to="/team">
+                <FooterButton color="inherit">TEAM</FooterButton>
+              </NavLink>
+
+              <NavLink exact to="/legal">
+                <FooterButton color="inherit">LEGAL</FooterButton>
+              </NavLink>
+
+              <NavLink exact to="/contact">
+                <FooterButton color="inherit">CONTACT</FooterButton>
+              </NavLink>
+
             </Grid>
           </Grid>
-          <Grid item lg={2} md={1} xs={2}>
+          <Grid item xl={1} lg={2} md={2} sm={2} xs={2}>
             {/* GitHub icon  */}
-            <FooterIcon>
-              <FontAwesomeIcon icon={faGithub} size="lg" />
-            </FooterIcon>
+            <Link href="https://www.youtube.com/watch?v=MKrpadhcC8g">
+              <FooterIcon>
+                <FontAwesomeIcon icon={faGithub} size="lg" />
+              </FooterIcon>
+            </Link>
           </Grid>
         </Grid>
       </Toolbar>

@@ -3,6 +3,7 @@ import axios from 'axios';
 import {
   FETCH_LOGIN_AUTH_INFOS,
   FETCH_REGISTER_AUTH_INFOS,
+  // LOG_OUT,
 
   FETCH_TRENDING,
   storeTrending,
@@ -64,6 +65,21 @@ const ajaxMiddleware = (store) => (next) => (action) => {
           console.error(error);
         });
       break;
+
+      // case LOG_OUT:
+      //   axios.post('http://localhost:8001/api/users/new', {
+      //     username: action.username,
+      //     email: action.email,
+      //     password: action.password,
+      //     passwordConfirm: action.passwordConfirm,
+      //   })
+      //     .then((response) => {
+      //       console.log(response);
+      //     })
+      //     .catch((error) => {
+      //       console.error(error);
+      //     });
+      //   break;
 
       // case AVATAR_UPLOAD_HANDLER:
       //   const formData = new FormData();

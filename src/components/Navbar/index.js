@@ -1,6 +1,7 @@
 // import npm
 import React from 'react';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 
 // Import material UI components
 import {
@@ -29,6 +30,8 @@ const Navbar = ({
   handleSearchInput,
   handleSearchInputSubmit,
   searchInputValue,
+  isLogged,
+  handleLogOut,
 }) => (
   <div id="Navbar">
     <AppBar position="static">
@@ -36,12 +39,14 @@ const Navbar = ({
         <Grid container spacing={2} justify="center">
 
           {/* Logo */}
-          <Grid item lg={3} md={3} xs={4}>
-            <img src="src/styles/assets/images/logos/logo-owl.png" alt="O'Track logo" />
+          <Grid item lg={3} md={3} sm={3} xs={2}>
+            <NavLink exact to="/search">
+              <img src="src/styles/assets/images/logos/logo-owl.png" alt="O'Track logo" />
+            </NavLink>
           </Grid>
 
           {/* SearchBar */}
-          <Grid item lg={6} md={6} xs={8}>
+          <Grid item lg={6} md={6} sm={4} xs={4}>
             <NavbarSearch>
               <NavbarSearchIcon />
               <form onSubmit={(event) => handleSearchInputSubmit(event, searchInputValue)} id="form-submit">
@@ -55,17 +60,29 @@ const Navbar = ({
               </form>
             </NavbarSearch>
           </Grid>
-
-          {/* Buttons */}
-          <Grid item lg={3} md={3} xs={12}>
-            <NavbarLogButton variant="outlined" color="inherit" onClick={() => handleOpen('up')}>
-              Sign up
-            </NavbarLogButton>
-            <NavbarLogButton variant="text" color="inherit" onClick={() => handleOpen('in')}>
-              Sign in
-            </NavbarLogButton>
-            {open === true && <LogFormsModal />}
-          </Grid>
+          {isLogged === true ? (
+            <Grid item lg={3} md={3} sm={5} xs={6}>
+              <NavbarLogButton variant="text" color="inherit" onClick={handleLogOut}>
+                Log Out
+              </NavbarLogButton>
+              <NavbarLogButton variant="outlined" color="inherit">
+                <NavLink exact to="/dashboard" color="inherit">
+                  Dashboard
+                </NavLink>
+              </NavbarLogButton>
+              {open === true && <LogFormsModal />}
+            </Grid>
+          ) : (
+            <Grid item lg={3} md={3} sm={5} xs={6}>
+              <NavbarLogButton variant="outlined" color="inherit" onClick={() => handleOpen('up')}>
+                Sign up
+              </NavbarLogButton>
+              <NavbarLogButton variant="text" color="inherit" onClick={() => handleOpen('in')}>
+                Sign in
+              </NavbarLogButton>
+              {open === true && <LogFormsModal />}
+            </Grid>
+          )}
 
         </Grid>
       </Toolbar>
@@ -76,9 +93,11 @@ const Navbar = ({
 Navbar.propTypes = {
   open: PropTypes.bool,
   handleOpen: PropTypes.func.isRequired,
+  handleLogOut: PropTypes.func.isRequired,
   handleSearchInput: PropTypes.func.isRequired,
   handleSearchInputSubmit: PropTypes.func.isRequired,
   searchInputValue: PropTypes.string.isRequired,
+  isLogged: PropTypes.bool.isRequired,
 };
 
 Navbar.defaultProps = {
