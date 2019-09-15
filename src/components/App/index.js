@@ -18,6 +18,9 @@ import LogFormModal from 'src/containers/LogForms';
 import Homepage from 'src/containers/Homepage';
 import Dashboard from 'src/containers/Dashboard';
 import Show from 'src/containers/Show';
+import Team from 'src/components/StaticPages/Team';
+import Legal from 'src/components/StaticPages/Legal';
+import Contact from 'src/components/StaticPages/Contact';
 import './App.scss';
 
 // == Composant
@@ -26,6 +29,7 @@ const App = ({
   handleSearchInput,
   handleSearchInputSubmit,
   storeSearchInputResult,
+  handleLogOut,
 }) => (
   <MuiThemeProvider theme={theme}>
     <div id="app">
@@ -35,6 +39,7 @@ const App = ({
             handleOpen={handleOpen}
             handleSearchInput={handleSearchInput}
             handleSearchInputSubmit={handleSearchInputSubmit}
+            handleLogOut={handleLogOut}
           />
         )}
       <LogFormModal />
@@ -56,6 +61,12 @@ const App = ({
 
       <Route exact path="/dashboard" component={Dashboard} />
 
+      {/* Static Pages */}
+      <Route exact path="/team" component={Team} />
+      <Route exact path="/legal" component={Legal} />
+      <Route exact path="/contact" component={Contact} />
+
+
       <Footer />
     </div>
   </MuiThemeProvider>
@@ -67,12 +78,14 @@ App.propTypes = {
   handleSearchInput: PropTypes.func,
   handleSearchInputSubmit: PropTypes.func,
   storeSearchInputResult: PropTypes.array,
+  handleLogOut: PropTypes.func,
 };
 
 App.defaultProps = {
   handleOpen: () => { },
   handleSearchInput: () => { },
   handleSearchInputSubmit: () => { },
+  handleLogOut: () => { },
   storeSearchInputResult: [],
 };
 

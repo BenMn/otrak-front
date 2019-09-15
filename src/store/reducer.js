@@ -19,6 +19,7 @@ const initialState = {
   setOpen: false,
   modalName: '',
   // Authentification
+  isLogged: true,
   storeAuthInputResult: {},
   userAuthInfos: {
     username: {
@@ -64,6 +65,7 @@ const UPDATE_AUTH_INPUT = 'UPDATE_AUTH_INPUT';
 export const STORE_AUTH_INPUT_RESULT = 'STORE_AUTH_INPUT_RESULT';
 export const FETCH_LOGIN_AUTH_INFOS = 'FETCH_LOGIN_AUTH_INFOS';
 export const FETCH_REGISTER_AUTH_INFOS = 'FETCH_REGISTER_AUTH_INFOS';
+export const LOG_OUT = 'LOG_OUT';
 
 const STORE_TRENDING = 'STORE_TRENDING';
 export const FETCH_TRENDING = 'FETCH_TRENDING';
@@ -199,6 +201,10 @@ export const fetchRegisterAuthInfos = (username, email, password, passwordConfir
   email,
   password,
   passwordConfirm,
+});
+
+export const logOut = () => ({
+  type: LOG_OUT,
 });
 
 export const fetchTrending = () => ({
