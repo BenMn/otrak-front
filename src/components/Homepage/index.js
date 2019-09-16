@@ -31,6 +31,7 @@ class Homepage extends React.Component {
         <SearchResult
           storeSearchInputResult={storeSearchInputResult}
           searchInputValue={searchInputValue}
+          getDetailShow={getDetailShow}
         />
         )}
         <Aired

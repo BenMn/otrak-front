@@ -14,24 +14,29 @@ import {
 } from 'src/styles/materialUi/materialUiStyles/Show';
 
 const ResumeShow = ({ showDetail }) => {
-  // Summary Regex cleaning function
-  const dirtySummary = showDetail.summary;
-  const regex = /<[^>]*>/g;
+  if (Object.keys(showDetail).length > 0) {
+    // Summary Regex cleaning function
+    const dirtySummary = showDetail.summary;
+    const regex = /<[^>]*>/g;
 
-  const CleanSummary = dirtySummary.replace(regex, '');
+    const CleanSummary = dirtySummary.replace(regex, '');
 
+    return (
+      <>
+        <Grid
+          container
+          direction="column"
+          justify="flex-start"
+          alignItems="center"
+        >
+          <ResumeShowTitle variant="h4" gutterBottom> Synopsis </ResumeShowTitle>
+          <ResumeShowResumeText gutterBottom> {CleanSummary} </ResumeShowResumeText>
+        </Grid>
+      </>
+    );
+  }
   return (
-    <>
-      <Grid
-        container
-        direction="column"
-        justify="flex-start"
-        alignItems="center"
-      >
-        <ResumeShowTitle variant="h4" gutterBottom> Synopsis </ResumeShowTitle>
-        <ResumeShowResumeText gutterBottom> {CleanSummary} </ResumeShowResumeText>
-      </Grid>
-    </>
+    <div>Loading</div>
   );
 };
 

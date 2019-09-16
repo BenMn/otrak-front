@@ -39,10 +39,16 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       break;
 
     case FETCH_LOGIN_AUTH_INFOS:
-      axios.post('http://localhost:8001/api/login_check', {
+
+      const payload = {
         email: action.email,
         password: action.password,
-      })
+      };
+      // const email = JSON.stringify({ email:action.email });
+      // const password = JSON.stringify({ password: action.password })
+      axios.post('http://localhost:8001/api/login_check', JSON.stringify(payload))
+        // email: action.email,
+        // password: action.password,
         .then((response) => {
           console.log(response);
         })
