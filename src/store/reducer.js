@@ -19,7 +19,7 @@ const initialState = {
   setOpen: false,
   modalName: '',
   // Authentification
-  isLogged: true,
+  isLogged: false,
   storeAuthInputResult: {},
   userAuthInfos: {
     username: {
