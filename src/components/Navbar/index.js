@@ -1,12 +1,16 @@
+// import npm
 import React from 'react';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 
+// Import material UI components
 import {
   AppBar,
   Toolbar,
   Grid,
 } from '@material-ui/core';
 
+// Import material UI custom components
 import {
   NavbarSearch,
   NavbarSearchInput,
@@ -14,16 +18,20 @@ import {
   NavbarLogButton,
 } from 'src/styles/materialUi/materialUiStyles/Navbar';
 
+// Authentification modals
+import LogFormsModal from 'src/containers/LogForms';
+
 import './Navbar.scss';
 
-import LogFormsModal from 'src/containers/LogForms';
 
 const Navbar = ({
   open,
-  viewModal,
-  handleInput,
-  handleInputSubmit,
-  inputValue,
+  handleOpen,
+  handleSearchInput,
+  handleSearchInputSubmit,
+  searchInputValue,
+  isLogged,
+  handleLogOut,
 }) => (
   <div id="Navbar">
     <AppBar position="static">
@@ -31,36 +39,50 @@ const Navbar = ({
         <Grid container spacing={2} justify="center">
 
           {/* Logo */}
-          <Grid item lg={3} md={3} xs={3}>
-            <img src="src/styles/assets/images/logos/logo-owl.png" alt="O'Track logo" />
+          <Grid item lg={3} md={3} sm={3} xs={2}>
+            <NavLink exact to="/search">
+              <img src="src/styles/assets/images/logos/logo-owl.png" alt="O'Track logo" />
+            </NavLink>
           </Grid>
 
           {/* SearchBar */}
-          <Grid item lg={6} md={6} xs={4}>
+          <Grid item lg={6} md={6} sm={4} xs={4}>
             <NavbarSearch>
               <NavbarSearchIcon />
-              <form onSubmit={(event) => handleInputSubmit(event, inputValue)} id="form-submit">
+              <form onSubmit={(event) => handleSearchInputSubmit(event, searchInputValue)} id="form-submit">
                 <NavbarSearchInput
                   color="textPrimary"
                   placeholder="Start looking for a show..."
                   inputProps={{ 'aria-label': 'search' }}
-                  value={inputValue}
-                  onChange={(event) => handleInput(event.target.value)}
+                  value={searchInputValue}
+                  onChange={(event) => handleSearchInput(event.target.value)}
                 />
               </form>
             </NavbarSearch>
           </Grid>
-
-          {/* Buttons */}
-          <Grid item lg={3} md={3} xs={5}>
-            <NavbarLogButton variant="outlined" color="inherit" onClick="Je suis dans le Sign Up de la Navbar">
-              Sign up
-            </NavbarLogButton>
-            <NavbarLogButton variant="text" color="inherit" onClick="Je suis dans le Sign In de la Navbar">
-              Sign in
-            </NavbarLogButton>
-            {open === true && <LogFormsModal viewModal={viewModal} />}
-          </Grid>
+          {isLogged === true ? (
+            <Grid item lg={3} md={3} sm={5} xs={6}>
+              <NavbarLogButton variant="text" color="inherit" onClick={handleLogOut}>
+                Log Out
+              </NavbarLogButton>
+              <NavbarLogButton variant="outlined" color="inherit">
+                <NavLink exact to="/dashboard" color="inherit">
+                  Dashboard
+                </NavLink>
+              </NavbarLogButton>
+              {open === true && <LogFormsModal />}
+            </Grid>
+          ) : (
+            <Grid item lg={3} md={3} sm={5} xs={6}>
+              <NavbarLogButton variant="outlined" color="inherit" onClick={() => handleOpen('up')}>
+                Sign up
+              </NavbarLogButton>
+              <NavbarLogButton variant="text" color="inherit" onClick={() => handleOpen('in')}>
+                Sign in
+              </NavbarLogButton>
+              {open === true && <LogFormsModal />}
+            </Grid>
+          )}
 
         </Grid>
       </Toolbar>
@@ -70,15 +92,16 @@ const Navbar = ({
 
 Navbar.propTypes = {
   open: PropTypes.bool,
-  handleInput: PropTypes.func.isRequired,
-  handleInputSubmit: PropTypes.func.isRequired,
-  viewModal: PropTypes.string,
-  inputValue: PropTypes.string.isRequired,
+  handleOpen: PropTypes.func.isRequired,
+  handleLogOut: PropTypes.func.isRequired,
+  handleSearchInput: PropTypes.func.isRequired,
+  handleSearchInputSubmit: PropTypes.func.isRequired,
+  searchInputValue: PropTypes.string.isRequired,
+  isLogged: PropTypes.bool.isRequired,
 };
 
 Navbar.defaultProps = {
   open: false,
-  viewModal: '',
 };
 
 

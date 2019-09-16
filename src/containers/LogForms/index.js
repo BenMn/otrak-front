@@ -5,13 +5,23 @@ import { connect } from 'react-redux';
 import LogForms from 'src/components/LogForms';
 
 // Action Creators
-import { closeModal, openModal, updateAuthInput } from 'src/store/reducer';
+import {
+  closeModal,
+  openModal,
+  updateAuthInput,
+  fetchLoginAuthInfos,
+  fetchRegisterAuthInfos,
+  removeShowHistoryList,
+} from 'src/store/reducer';
 
 const mapStateToProps = (state) => ({
   setOpen: state.setOpen,
   open: state.open,
-  formName: state.formName,
-  username: state.userAuthInfos.username,
+  modalName: state.modalName,
+  authInputValue: state.authInputValue,
+  userAuthInfos: state.userAuthInfos,
+  trendingList: state.trendingList,
+  updatedHistoryList: state.updatedHistoryList,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -19,30 +29,35 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(closeModal());
   },
 
-  handleOpen: (event) => {
-    event.preventDefault();
-
-    const viewModalName = event.target.innerHTML;
-    let formName = '';
-    // Forgot Password Link
-    if (viewModalName.match(/password/g)) {
-      formName = viewModalName.match(/password/g).toString();
-    }
-    else if (viewModalName.match(/up/g)) {
-      formName = viewModalName.match(/up/g).toString();
-    }
-    else if (viewModalName.match(/in/g)) {
-      formName = viewModalName.match(/in/g).toString();
-    }
-    dispatch(openModal(viewModalName, formName));
+  handleOpen: (modalName) => {
+    dispatch(openModal(modalName));
   },
 
-  handleAuthInput: (newValue) => {
-    dispatch(updateAuthInput(newValue));
+  handleAuthInput: (event, index) => {
+    const { value, name } = event.target;
+    dispatch(updateAuthInput(value, name, index));
   },
 
-  handleUserAuthInfos: (event) => {
+  handleAuthInputSubmit: (event) => {
+    event.persist();
+    if (event.target.length === 9) {
+      const username = event.target[0].value;
+      const email = event.target[2].value;
+      const password = event.target[4].value;
+      const passwordConfirm = event.target[6].value;
+      dispatch(fetchRegisterAuthInfos(username, email, password, passwordConfirm));
+    }
+    if (event.target.length === 5) {
+      const email = event.target[0].value;
+      const password = event.target[2].value;
+      dispatch(fetchLoginAuthInfos(email, password));
+    }
     event.preventDefault();
+  },
+
+  handleDeleteHistoryShow: (showId) => {
+    console.log(showId);
+    dispatch(removeShowHistoryList(showId));
   },
 
 });

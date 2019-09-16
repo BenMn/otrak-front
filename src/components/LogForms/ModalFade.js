@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 
 import React from 'react';
+
+// Import the spring library (fade in modal entry effect)
 import { useSpring, animated } from 'react-spring';
 
 
@@ -9,8 +11,8 @@ const Fade = React.forwardRef((props, ref) => {
     in: open, children, onEnter, onExited, ...other
   } = props;
   const style = useSpring({
-    from: { opacity: 0 },
-    to: { opacity: open ? 1 : 0 },
+    from: { opacity: 0, outline: 'none' },
+    to: { opacity: open ? 1 : 0, outline: 'none' },
     onStart: () => {
       if (open && onEnter) {
         onEnter();

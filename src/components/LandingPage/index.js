@@ -1,15 +1,18 @@
+// NPM install
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// Local Imports
+import HeadScreen from 'src/components/LandingPage/HeadScreen';
+import ApiInfos from 'src/components/LandingPage/ApiInfos';
+import ManageShows from 'src/components/LandingPage/ManageShows';
+import Trending from 'src/components/LandingPage/Trending';
+import StartToday from 'src/components/LandingPage/StartToday';
+
 import './LandingPage.scss';
 
-import HeadScreen from './HeadScreen';
-import ApiInfos from './ApiInfos';
-import ManageShows from './ManageShows';
-import Trending from './Trending';
-import StartToday from './StartToday';
-
 class LandingPage extends React.Component {
+  // Fetch all the trendings shows when page load
   componentDidMount() {
     const { getTrending } = this.props;
     getTrending();
@@ -18,18 +21,23 @@ class LandingPage extends React.Component {
   render() {
     const {
       trendingList,
-      inputValue,
-      handleInput,
-      handleInputSubmit,
+      searchInputValue,
+      handleSearchInput,
+      handleSearchInputSubmit,
       handleOpen,
     } = this.props;
     return (
       <>
-        <HeadScreen handleOpen={handleOpen} />
+        <HeadScreen
+          handleOpen={handleOpen}
+          searchInputValue={searchInputValue}
+          handleSearchInput={handleSearchInput}
+          handleSearchInputSubmit={handleSearchInputSubmit}
+        />
         <ApiInfos
-          inputValue={inputValue}
-          handleInput={handleInput}
-          handleInputSubmit={handleInputSubmit}
+          searchInputValue={searchInputValue}
+          handleSearchInput={handleSearchInput}
+          handleSearchInputSubmit={handleSearchInputSubmit}
         />
         <ManageShows />
         <Trending trendingList={trendingList} />
@@ -42,9 +50,9 @@ class LandingPage extends React.Component {
 LandingPage.propTypes = {
   getTrending: PropTypes.func.isRequired,
   trendingList: PropTypes.object.isRequired,
-  inputValue: PropTypes.string.isRequired,
-  handleInput: PropTypes.func.isRequired,
-  handleInputSubmit: PropTypes.func.isRequired,
+  searchInputValue: PropTypes.string.isRequired,
+  handleSearchInput: PropTypes.func.isRequired,
+  handleSearchInputSubmit: PropTypes.func.isRequired,
   handleOpen: PropTypes.func.isRequired,
 };
 

@@ -6,20 +6,20 @@ import LandingPage from 'src/components/LandingPage';
 
 // Action Creators
 import {
-  updateInput,
   fetchTrending,
-  fetchInputResult,
+  updateSearchInput,
+  fetchSearchInputResult,
   openModal,
 } from 'src/store/reducer';
 
 const mapStateToProps = (state) => ({
-  message: state.message,
   trendingList: state.trendingList,
-  inputValue: state.inputValue,
+
+  searchInputValue: state.searchInputValue,
+
   setOpen: state.setOpen,
   open: state.open,
-  viewModal: state.viewModal,
-  formName: state.formName,
+  modalName: state.modalName,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -27,31 +27,17 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(fetchTrending());
   },
 
-  handleInput: (newValue) => {
-    dispatch(updateInput(newValue));
+  handleSearchInput: (newValue) => {
+    dispatch(updateSearchInput(newValue));
   },
 
-  handleInputSubmit: (event, inputValue) => {
+  handleSearchInputSubmit: (event, searchInputValue) => {
     event.preventDefault();
-    dispatch(fetchInputResult(inputValue));
+    dispatch(fetchSearchInputResult(searchInputValue));
   },
 
-  handleOpen: (event) => {
-    event.preventDefault();
-
-    const viewModalName = event.target.innerHTML;
-    let formName = '';
-    // Forgot Password Link
-    if (viewModalName.match(/password/g)) {
-      formName = viewModalName.match(/password/g).toString();
-    }
-    else if (viewModalName.match(/up/g)) {
-      formName = viewModalName.match(/up/g).toString();
-    }
-    else if (viewModalName.match(/in/g)) {
-      formName = viewModalName.match(/in/g).toString();
-    }
-    dispatch(openModal(viewModalName, formName));
+  handleOpen: (modalName) => {
+    dispatch(openModal(modalName));
   },
 });
 

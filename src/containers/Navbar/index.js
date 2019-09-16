@@ -5,23 +5,37 @@ import { connect } from 'react-redux';
 import Navbar from 'src/components/Navbar';
 
 // Action Creators
-import { updateInput, fetchInputResult } from 'src/store/reducer';
+import {
+  openModal,
+  updateSearchInput,
+  fetchSearchInputResult,
+  logOut,
+} from 'src/store/reducer';
+
 
 const mapStateToProps = (state) => ({
   setOpen: state.setOpen,
   open: state.open,
-  viewModal: state.viewModal,
-  inputValue: state.inputValue,
+  searchInputValue: state.searchInputValue,
+  isLogged: state.isLogged,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  handleInput: (newValue) => {
-    dispatch(updateInput(newValue));
+  handleSearchInput: (newValue) => {
+    dispatch(updateSearchInput(newValue));
   },
 
-  handleInputSubmit: (event, inputValue) => {
+  handleSearchInputSubmit: (event, searchInputValue) => {
     event.preventDefault();
-    dispatch(fetchInputResult(inputValue));
+    dispatch(fetchSearchInputResult(searchInputValue));
+  },
+
+  handleOpen: (modalName) => {
+    dispatch(openModal(modalName));
+  },
+
+  handleLogOut: () => {
+    dispatch(logOut());
   },
 });
 

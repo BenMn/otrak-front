@@ -1,22 +1,34 @@
 /* eslint-disable react/prop-types */
-
+// Import NPM
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { LogFormsModal as Modal } from 'src/styles/materialUi/materialUiStyles/LogForms';
+//  Material UI Components
 import Backdrop from '@material-ui/core/Backdrop';
-import Fade from './ModalFade';
+
+//  Material UI custom Components
+import { LogFormsModal as Modal } from 'src/styles/materialUi/materialUiStyles/LogForms';
+import History from 'src/components/Dashboard/Header/History';
+import AccountSettings from 'src/components/Dashboard/Header/AccountSettings';
+
+// Local imports
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 import ForgotPassword from './ForgotPassword';
 
+import Fade from './ModalFade';
+
 const LogFormsModal = ({
   open,
   handleClose,
-  formName,
+  modalName,
   handleOpen,
-  handleUserAuthInfos,
   handleAuthInput,
+  handleAuthInputSubmit,
+  userAuthInfos,
+  trendingList,
+  handleDeleteHistoryShow,
+  updatedHistoryList,
 }) => (
   <div>
     <Modal
@@ -31,29 +43,71 @@ const LogFormsModal = ({
       }}
     >
       <Fade in={open}>
-        {formName === 'in' && <SignIn handleOpen={handleOpen} handleUserAuthInfos={handleUserAuthInfos} handleAuthInput={handleAuthInput} />}
-        {formName === 'up' && <SignUp handleOpen={handleOpen} handleUserAuthInfos={handleUserAuthInfos} handleAuthInput={handleAuthInput} />}
-        {formName === 'password' && <ForgotPassword handleOpen={handleOpen} handleUserAuthInfos={handleUserAuthInfos} handleAuthInput={handleAuthInput} />}
+        {modalName === 'in' && (
+          <SignIn
+            modalName={modalName}
+            handleOpen={handleOpen}
+            handleAuthInput={handleAuthInput}
+            handleAuthInputSubmit={handleAuthInputSubmit}
+            userAuthInfos={userAuthInfos}
+          />
+        )}
+        {modalName === 'up' && (
+          <SignUp
+            modalName={modalName}
+            handleOpen={handleOpen}
+            handleAuthInput={handleAuthInput}
+            handleAuthInputSubmit={handleAuthInputSubmit}
+            userAuthInfos={userAuthInfos}
+          />
+        )}
+        {modalName === 'password' && (
+          <ForgotPassword
+            modalName={modalName}
+            handleOpen={handleOpen}
+            handleAuthInput={handleAuthInput}
+            handleAuthInputSubmit={handleAuthInputSubmit}
+            userAuthInfos={userAuthInfos}
+          />
+        )}
+        {modalName === 'history' && (
+          <History
+            trendingList={trendingList}
+            handleDeleteHistoryShow={handleDeleteHistoryShow}
+            updatedHistoryList={updatedHistoryList}
+          />
+        )}
+        {modalName === 'account' && (
+          <AccountSettings
+            handleOpen={handleOpen}
+            handleAuthInput={handleAuthInput}
+            handleAuthInputSubmit={handleAuthInputSubmit}
+            userAuthInfos={userAuthInfos}
+          />
+        )}
       </Fade>
     </Modal>
   </div>
 );
 
-
 LogFormsModal.propTypes = {
   open: PropTypes.bool,
   handleClose: PropTypes.func,
   handleOpen: PropTypes.func,
-  handleAuthInput: PropTypes.func,
-  formName: PropTypes.string,
+  modalName: PropTypes.string,
+  handleAuthInput: PropTypes.func.isRequired,
+  handleAuthInputSubmit: PropTypes.func.isRequired,
+  trendingList: PropTypes.array.isRequired,
+  handleDeleteHistoryShow: PropTypes.func,
+  updatedHistoryList: PropTypes.array.isRequired,
 };
 
 LogFormsModal.defaultProps = {
   open: false,
   handleClose: () => { },
   handleOpen: () => { },
-  handleAuthInput: () => { },
-  formName: '',
+  modalName: '',
+  handleDeleteHistoryShow: () => { },
 };
 
 export default LogFormsModal;

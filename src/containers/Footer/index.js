@@ -8,10 +8,12 @@ import Footer from 'src/components/Footer';
 const mapStateToProps = (state) => ({
   setOpen: state.setOpen,
   open: state.open,
-  viewModal: state.viewModal,
 });
 
-const mapDispatchToProps = () => ({
+const mapDispatchToProps = (dispatch) => ({
+  handleOpen: (modalName) => {
+    dispatch(openModal(modalName));
+  },
 });
 
 // Container

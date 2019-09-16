@@ -1,8 +1,12 @@
+// Import NPM
 import React from 'react';
+
+// Import material UI components
 import {
   Grid,
 } from '@material-ui/core';
 
+// Import material UI custom components
 import {
   TrendingCard,
   TrendingCardMedia,
@@ -18,7 +22,10 @@ const Trending = () => (
   <div id="footer-landing-page">
     <div id="footer-screen-landing-page">
       {/* ------------------ Anime Cards ----------------  */}
-      <TrendingTitleTranding variant="h3" align="center" className="title-icon"><TrendingIcon /> Trending Now</TrendingTitleTranding>
+      <TrendingTitleTranding variant="h3" align="center" className="title-icon">
+        <TrendingIcon />
+        Just Aired
+      </TrendingTitleTranding>
       <TrendingGridAnime
         container
         direction="row"

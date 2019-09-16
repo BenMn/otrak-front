@@ -1,5 +1,9 @@
 #LogFormModalLogo {
     width: 120px;
+
+    &:focus {
+        outline: none;
+    }
 }
 
 a {

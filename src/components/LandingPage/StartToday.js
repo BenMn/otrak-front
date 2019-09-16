@@ -1,21 +1,24 @@
-/* eslint-disable no-console */
+// Import NPM
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// MAterial UI Componenets
 import {
   Typography,
   Button,
 } from '@material-ui/core';
 
+// MAterial UI custom Componenets
 import {
   StartNowGrid,
   StartNowIcon,
   StartNowTitle,
 } from 'src/styles/materialUi/materialUiStyles/LandingPage';
 
+// Authentification modals
 import LogFormsModal from 'src/containers/LogForms';
 
-const StartToday = ({ open, viewModal }) => (
+const StartToday = ({ open, handleOpen }) => (
   <>
     <StartNowGrid
       container
@@ -25,10 +28,10 @@ const StartToday = ({ open, viewModal }) => (
     >
       <StartNowIcon />
       <StartNowTitle variant="h3">Start Today</StartNowTitle>
-      <Button variant="contained" color="primary" onClick={console.log('Je suis dans le Sign Up de StartToday')}>
-        Keep up to date my favorite shows
+      <Button variant="contained" color="primary" onClick={() => handleOpen('up')}>
+        Create your account
       </Button>
-      {open === true && <LogFormsModal viewModal={viewModal} />}
+      {open === true && <LogFormsModal />}
       <Typography>Don't be afraid, it's free !</Typography>
     </StartNowGrid>
   </>
@@ -36,12 +39,11 @@ const StartToday = ({ open, viewModal }) => (
 
 StartToday.propTypes = {
   open: PropTypes.bool,
-  viewModal: PropTypes.string,
+  handleOpen: PropTypes.func.isRequired,
 };
 
 StartToday.defaultProps = {
   open: false,
-  viewModal: '',
 };
 
 export default StartToday;
