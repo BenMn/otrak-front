@@ -58,6 +58,7 @@ const HeadScreen = ({ showDetail, addToWatchList }) => (
               <ListItemText primary={showDetail.status === 0 ? 'Status: Running' : 'Status: Ended'} />
               <ListItemText primary="Network: " />
               <ListItemText primary={`Original language: ${showDetail.language}`} />
+              <ListItemText primary={`Premiered: ${showDetail.premiered}`} />
               <ListItemText primary="Nb seasons: " />
               <ListItemText primary="Nb episodes: " />
               <ListItemText primary={`Episode duration: ${showDetail.runtime} min`} />

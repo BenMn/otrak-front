@@ -28,6 +28,8 @@ import {
 import {
   CastingTitleCasting,
   CastingTitleNotAvailable,
+  CastingGridWithoutSlider,
+  CastingContainerWithoutSlider,
 } from 'src/styles/materialUi/materialUiStyles/Show';
 
 // Micro component managing arrow's style
@@ -85,38 +87,40 @@ const Casting = ({ showDetail }) => {
           {showDetail.cast.length > 0 ? (
             <>
               <CastingTitleCasting variant="h4" align="center" gutterBottom>Casting</CastingTitleCasting>
-              {showDetail.cast.map((currentActor) => (
-                <Grid item key={currentActor.person.name}>
-                  <HomePageCard>
-                    <CardActionArea>
-                      <HomePageCardMedia
-                        image={currentActor.person.image === null ? '../../src/styles/assets/images/notAvailable/notAvailable.jpg' : currentActor.person.image.original}
-                        title={currentActor.person.name}
-                      >
-                        <Grid
-                          container
-                          justify="flex-end"
-                        />
-                        <AiredTitleCardAndSubtitle
-                          container
-                          direction="row"
-                          justify="flex-end"
+              <CastingContainerWithoutSlider>
+                {showDetail.cast.map((currentActor) => (
+                  <CastingGridWithoutSlider item key={currentActor.person.name}>
+                    <HomePageCard>
+                      <CardActionArea>
+                        <HomePageCardMedia
+                          image={currentActor.person.image === null ? '../../src/styles/assets/images/notAvailable/notAvailable.jpg' : currentActor.person.image.original}
+                          title={currentActor.person.name}
                         >
-                          <HomePageCardTitle variant="h5" component="h2">
-                            {currentActor.person.name}
-                          </HomePageCardTitle>
+                          <Grid
+                            container
+                            justify="flex-end"
+                          />
+                          <AiredTitleCardAndSubtitle
+                            container
+                            direction="row"
+                            justify="flex-end"
+                          >
+                            <HomePageCardTitle variant="h5" component="h2">
+                              {currentActor.person.name}
+                            </HomePageCardTitle>
 
-                          <AiredSubtitleSeasonEpisode>
-                            {currentActor.character.name}
-                          </AiredSubtitleSeasonEpisode>
-                        </AiredTitleCardAndSubtitle>
+                            <AiredSubtitleSeasonEpisode>
+                              {currentActor.character.name}
+                            </AiredSubtitleSeasonEpisode>
+                          </AiredTitleCardAndSubtitle>
 
-                      </HomePageCardMedia>
+                        </HomePageCardMedia>
 
-                    </CardActionArea>
-                  </HomePageCard>
-                </Grid>
-              ))}
+                      </CardActionArea>
+                    </HomePageCard>
+                  </CastingGridWithoutSlider>
+                ))}
+              </CastingContainerWithoutSlider>
             </>
           ) :
             (

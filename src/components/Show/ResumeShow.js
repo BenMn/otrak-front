@@ -23,15 +23,17 @@ const ResumeShow = ({ showDetail }) => {
 
     return (
       <>
-        <Grid
-          container
-          direction="column"
-          justify="flex-start"
-          alignItems="center"
-        >
-          <ResumeShowTitle variant="h4" gutterBottom> Synopsis </ResumeShowTitle>
-          <ResumeShowResumeText gutterBottom> {CleanSummary} </ResumeShowResumeText>
-        </Grid>
+        {showDetail.summary === '' ? <ResumeShowTitle variant="h4" gutterBottom align="center">Synopsis is not available yet for this program</ResumeShowTitle> : (
+          <Grid
+            container
+            direction="column"
+            justify="flex-start"
+            alignItems="center"
+          >
+            <ResumeShowTitle variant="h4" gutterBottom> Synopsis </ResumeShowTitle>
+            <ResumeShowResumeText gutterBottom> {CleanSummary} </ResumeShowResumeText>
+          </Grid>
+        )}
       </>
     );
   }
