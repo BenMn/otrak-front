@@ -207,12 +207,12 @@ export const logOut = () => ({
   type: LOG_OUT,
 });
 
-export const updateAuthInput = (username) => ({
-  type: UPDATE_AUTH_INPUT,
-  userAuthInfos: {
-    username,
-  },
-});
+// export const updateAuthInput = (username) => ({
+//   type: UPDATE_AUTH_INPUT,
+//   userAuthInfos: {
+//     username,
+//   },
+// });
 
 export const fetchTrending = () => ({
   type: FETCH_TRENDING,
