@@ -6,6 +6,7 @@ import {
   Container,
   List,
   Button,
+  Grid,
 } from '@material-ui/core';
 import theme from 'src/styles/materialUi/materialUiTheme/theme';
 
@@ -63,7 +64,6 @@ export const ResumeShowTitle = styled(Typography)({
 // -----------------------------DetailShow.js--------------------------//
 
 export const DetailShowGroupList = styled(List)({
-  paddingTop: 10,
   color: theme.palette.common.white,
 });
 
@@ -79,4 +79,13 @@ export const CastingTitleCasting = styled(Typography)({
 export const CastingTitleNotAvailable = styled(Typography)({
   paddingTop: 20,
   color: theme.palette.common.white,
+});
+
+export const CastingContainerWithoutSlider = styled(Container)({
+  display: 'flex',
+  justifyContent: 'center',
+});
+
+export const CastingGridWithoutSlider = styled(Grid)({
+  minWidth: 252,
 });
