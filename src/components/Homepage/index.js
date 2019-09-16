@@ -23,10 +23,14 @@ class Homepage extends React.Component {
       searchInputValue,
       trendingList,
       getDetailShow,
+      sortBy,
     } = this.props;
     return (
       <>
-        <Filter />
+        <Filter
+          storeSearchInputResult={storeSearchInputResult}
+          sortBy={sortBy}
+        />
         {(storeSearchInputResult.length > 0) === true && (
         <SearchResult
           storeSearchInputResult={storeSearchInputResult}
@@ -50,6 +54,7 @@ Homepage.propTypes = {
   trendingList: PropTypes.array.isRequired,
   getTrending: PropTypes.func.isRequired,
   getDetailShow: PropTypes.func.isRequired,
+  sortBy: PropTypes.func.isRequired,
 };
 
 Homepage.defaultProps = {

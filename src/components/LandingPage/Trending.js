@@ -1,5 +1,10 @@
 // Import NPM
 import React from 'react';
+import PropTypes from 'prop-types';
+
+
+// Import locaux
+import { FilteredAiredLandingPage } from 'src/utils';
 
 // Import material UI components
 import {
@@ -18,91 +23,103 @@ import {
 
 import './LandingPage.scss';
 
-const Trending = () => (
-  <div id="footer-landing-page">
-    <div id="footer-screen-landing-page">
-      {/* ------------------ Anime Cards ----------------  */}
-      <TrendingTitleTranding variant="h3" align="center" className="title-icon">
-        <TrendingIcon />
-        Just Aired
-      </TrendingTitleTranding>
-      <TrendingGridAnime
-        container
-        direction="row"
-        justify="center"
-        alignItems="center"
-      >
-        <Grid item lg={3} md={3} xs={5}>
-          <TrendingCard justify="center">
-            <TrendingCardMedia
-              image="src/styles/assets/images/mediumAnime/1.jpg"
-            />
-          </TrendingCard>
-        </Grid>
-        <Grid item lg={3} md={3} xs={5}>
-          <TrendingCard justify="center">
-            <TrendingCardMedia
-              image="src/styles/assets/images/mediumAnime/2.jpg"
-            />
-          </TrendingCard>
-        </Grid>
-        <Grid item lg={3} md={3} xs={5}>
-          <TrendingCard justify="center">
-            <TrendingCardMedia
-              image="src/styles/assets/images/mediumAnime/3.jpg"
-            />
-          </TrendingCard>
-        </Grid>
-        <Grid item lg={3} md={3} xs={5}>
-          <TrendingCard justify="center">
-            <TrendingCardMedia
-              image="src/styles/assets/images/mediumAnime/4.jpg"
-            />
-          </TrendingCard>
-        </Grid>
-      </TrendingGridAnime>
+const Trending = ({ trendingList }) => {
+  console.log(FilteredAiredLandingPage(trendingList));
+  return (
+    <div id="footer-landing-page">
+      <div id="footer-screen-landing-page">
+        {/* ------------------ Anime Cards ----------------  */}
+        <TrendingTitleTranding variant="h3" align="center" className="title-icon">
+          <TrendingIcon />
+          Just Aired
+        </TrendingTitleTranding>
+        <TrendingGridAnime
+          container
+          direction="row"
+          justify="center"
+          alignItems="center"
+        >
+          <Grid item lg={3} md={3} xs={5}>
+            <TrendingCard justify="center">
+              <TrendingCardMedia
+                image="src/styles/assets/images/mediumAnime/1.jpg"
+              />
+            </TrendingCard>
+          </Grid>
+          <Grid item lg={3} md={3} xs={5}>
+            <TrendingCard justify="center">
+              <TrendingCardMedia
+                image="src/styles/assets/images/mediumAnime/2.jpg"
+              />
+            </TrendingCard>
+          </Grid>
+          <Grid item lg={3} md={3} xs={5}>
+            <TrendingCard justify="center">
+              <TrendingCardMedia
+                image="src/styles/assets/images/mediumAnime/3.jpg"
+              />
+            </TrendingCard>
+          </Grid>
+          <Grid item lg={3} md={3} xs={5}>
+            <TrendingCard justify="center">
+              <TrendingCardMedia
+                image="src/styles/assets/images/mediumAnime/4.jpg"
+              />
+            </TrendingCard>
+          </Grid>
+        </TrendingGridAnime>
 
 
-      {/* ------------------ Series Cards ----------------  */}
-      <TrendingGridSeries
-        container
-        direction="row"
-        justify="center"
-        alignItems="center"
-        mx={3}
-      >
-        <Grid item lg={3} md={3} xs={5}>
-          <TrendingCard justify="center">
-            <TrendingCardMedia
-              image="src/styles/assets/images/mediumSeries/1.jpg"
-            />
-          </TrendingCard>
-        </Grid>
-        <Grid item lg={3} md={3} xs={5}>
-          <TrendingCard justify="center">
-            <TrendingCardMedia
-              image="src/styles/assets/images/mediumSeries/2.jpg"
-            />
-          </TrendingCard>
-        </Grid>
-        <Grid item lg={3} md={3} xs={5}>
-          <TrendingCard justify="center">
-            <TrendingCardMedia
-              image="src/styles/assets/images/mediumSeries/3.jpg"
-            />
-          </TrendingCard>
-        </Grid>
-        <Grid item lg={3} md={3} xs={5}>
-          <TrendingCard justify="center">
-            <TrendingCardMedia
-              image="src/styles/assets/images/mediumSeries/4.jpg"
-            />
-          </TrendingCard>
-        </Grid>
-      </TrendingGridSeries>
+        {/* ------------------ Series Cards ----------------  */}
+        <TrendingGridSeries
+          container
+          direction="row"
+          justify="center"
+          alignItems="center"
+          mx={3}
+        >
+          <Grid item lg={3} md={3} xs={5}>
+            <TrendingCard justify="center">
+              <TrendingCardMedia
+                image="src/styles/assets/images/mediumSeries/1.jpg"
+              />
+            </TrendingCard>
+          </Grid>
+          <Grid item lg={3} md={3} xs={5}>
+            <TrendingCard justify="center">
+              <TrendingCardMedia
+                image="src/styles/assets/images/mediumSeries/2.jpg"
+              />
+            </TrendingCard>
+          </Grid>
+          <Grid item lg={3} md={3} xs={5}>
+            <TrendingCard justify="center">
+              <TrendingCardMedia
+                image="src/styles/assets/images/mediumSeries/3.jpg"
+              />
+            </TrendingCard>
+          </Grid>
+          <Grid item lg={3} md={3} xs={5}>
+            <TrendingCard justify="center">
+              <TrendingCardMedia
+                image="src/styles/assets/images/mediumSeries/4.jpg"
+              />
+            </TrendingCard>
+          </Grid>
+        </TrendingGridSeries>
+      </div>
     </div>
-  </div>
-);
+  );
+}
+  
+
+Trending.propTypes = {
+  trendingList: PropTypes.array,
+};
+
+Trending.defaultProps = {
+  trendingList: [],
+};
 
 
 export default Trending;

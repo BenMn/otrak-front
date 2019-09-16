@@ -49,7 +49,7 @@ class LandingPage extends React.Component {
 
 LandingPage.propTypes = {
   getTrending: PropTypes.func.isRequired,
-  trendingList: PropTypes.object.isRequired,
+  trendingList: PropTypes.array.isRequired,
   searchInputValue: PropTypes.string.isRequired,
   handleSearchInput: PropTypes.func.isRequired,
   handleSearchInputSubmit: PropTypes.func.isRequired,

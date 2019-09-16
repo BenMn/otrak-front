@@ -80,6 +80,7 @@ const REMOVE_SHOW_HISTORY_LIST = 'REMOVE_SHOW_HISTORY_LIST';
 export const FETCH_DETAIL_SHOW = 'FETCH_DETAIL_SHOW';
 const STORE_DETAIL_SHOW = 'STORE_DETAIL_SHOW';
 
+const STORE_SORTED_ARRAY = 'STORE_SORTED_ARRAY';
 
 // == Reducer
 const reducer = (state = initialState, action = {}) => {
@@ -170,6 +171,42 @@ const reducer = (state = initialState, action = {}) => {
         updatedHistoryList:
           state.updatedHistoryList.filter((show) => show.id_tvmaze !== action.showId),
       });
+
+    case STORE_SORTED_ARRAY:
+      switch (action.filterName) {
+        case 'Title':
+          console.log(action, '<<<<<<<<<<<<< action');
+          console.log(state, '<<<<<<<<<<<<< state');
+          function compare(a, b) {
+            const genreA = a.name.toUpperCase();
+            const genreB = b.name.toUpperCase();
+
+            let comparison = 0;
+              if (genreA > genreB) {
+                comparison = 1;
+              } else if (genreA < genreB) {
+                comparison = -1;
+              }
+              return comparison;
+          }
+          const sortedArray = state.storeSearchInputResult.sort(compare);
+          return {
+            ...state,
+            storeSearchInputResult: sortedArray,
+          };
+
+        case 'Release date':
+          return (console.log("c'est le Release !"));
+
+        case 'Rating':
+          return (console.log("c'est le Rating !"));
+
+        case 'Language':
+          return (console.log("c'est le Language !"));
+
+        default:
+          return 'ça marche pas';
+      }
 
     default:
       return state;
@@ -266,6 +303,12 @@ export const removeShowHistoryList = (showId) => ({
   showId,
 });
 
+export const storeSortedArray = (storeSearchInputResult, filterName, index) => ({
+  type: STORE_SORTED_ARRAY,
+  storeSearchInputResult,
+  filterName,
+  index,
+});
 // == Selectors
 
 

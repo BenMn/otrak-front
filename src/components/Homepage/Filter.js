@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import clsx from 'clsx';
 
 import { makeStyles, withStyles } from '@material-ui/core/styles';
@@ -103,9 +104,10 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export default function Filter() {
+const Filter = ({ storeSearchInputResult, sortBy }) => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const filterNameArray = ['Title', 'Release date', 'Rating', 'Language'];
 
   function handleDrawerOpen() {
     setOpen(true);
@@ -114,6 +116,27 @@ export default function Filter() {
   function handleDrawerClose() {
     setOpen(false);
   }
+
+  // // Sort by: title => order(resultArray)
+  // const sortBy = (filterName) => {
+  //   switch (filterName) {
+  //     case 'Title':
+  //       return storeSearchInputResult.map((show) => show.name).sort();
+
+  //     case 'Release date':
+  //       return (console.log("c'est le Release !"));
+
+  //     case 'Rating':
+  //       return (console.log("c'est le Rating !"));
+
+  //     case 'Language':
+  //       return (console.log("c'est le Language !"));
+
+  //     default:
+  //       return 'ça marche pas';
+  //   }
+  // };
+
 
   return (
     <div className={classes.root}>
@@ -155,8 +178,8 @@ export default function Filter() {
         </div>
         <Divider />
         <List>
-          {['Title', 'Release date', 'Rating', 'Language'].map((text) => (
-            <ListItem button key={text}>
+          {filterNameArray.map((text, index) => (
+            <ListItem button key={text} onClick={() => sortBy(storeSearchInputResult, text, index)}>
               <ListItemText primary={text} />
             </ListItem>
           ))}
@@ -164,4 +187,15 @@ export default function Filter() {
       </Drawer>
     </div>
   );
-}
+};
+
+Filter.propTypes = {
+  storeSearchInputResult: PropTypes.array,
+  sortBy: PropTypes.func.isRequired,
+};
+
+Filter.defaultProps = {
+  storeSearchInputResult: [],
+};
+
+export default Filter;
