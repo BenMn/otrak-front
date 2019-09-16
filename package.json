@@ -71,6 +71,7 @@
     "react-spring": "^8.0.27",
     "redux": "^4.0.4",
     "slick-carousel": "^1.8.1",
-    "swiper": "^4.5.0"
+    "swiper": "^4.5.0",
+    "terser-webpack-plugin": "^2.0.1"
   }
 }
