@@ -25,6 +25,8 @@ class LandingPage extends React.Component {
       handleSearchInput,
       handleSearchInputSubmit,
       handleOpen,
+      fetchUserProfileInfos,
+      userAuthToken,
     } = this.props;
     return (
       <>
@@ -33,6 +35,8 @@ class LandingPage extends React.Component {
           searchInputValue={searchInputValue}
           handleSearchInput={handleSearchInput}
           handleSearchInputSubmit={handleSearchInputSubmit}
+          fetchUserProfileInfos={fetchUserProfileInfos}
+          userAuthToken={userAuthToken}
         />
         <ApiInfos
           searchInputValue={searchInputValue}
@@ -49,11 +53,17 @@ class LandingPage extends React.Component {
 
 LandingPage.propTypes = {
   getTrending: PropTypes.func.isRequired,
-  trendingList: PropTypes.object.isRequired,
+  trendingList: PropTypes.array.isRequired,
   searchInputValue: PropTypes.string.isRequired,
   handleSearchInput: PropTypes.func.isRequired,
   handleSearchInputSubmit: PropTypes.func.isRequired,
   handleOpen: PropTypes.func.isRequired,
+  fetchUserProfileInfos: PropTypes.func.isRequired,
+  userAuthToken: PropTypes.string,
+};
+
+LandingPage.defaultProps = {
+  userAuthToken: '',
 };
 
 export default LandingPage;

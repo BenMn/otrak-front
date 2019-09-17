@@ -3,7 +3,9 @@ import axios from 'axios';
 import {
   FETCH_LOGIN_AUTH_INFOS,
   FETCH_REGISTER_AUTH_INFOS,
+  storeUserAuthInfos,
   // LOG_OUT,
+  GET_USER_INFOS,
 
   FETCH_TRENDING,
   storeTrending,
@@ -40,15 +42,38 @@ const ajaxMiddleware = (store) => (next) => (action) => {
 
     case FETCH_LOGIN_AUTH_INFOS:
 
+      // eslint-disable-next-line no-case-declarations
       const payload = {
         email: action.email,
         password: action.password,
       };
       // const email = JSON.stringify({ email:action.email });
       // const password = JSON.stringify({ password: action.password })
-      axios.post('http://localhost:8001/api/login_check', JSON.stringify(payload))
+      axios.post('http://localhost:8000/api/login_check',
+        JSON.stringify(payload), {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        })
         // email: action.email,
         // password: action.password,
+        .then((response) => {
+          store.dispatch(storeUserAuthInfos(response.data.token));
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+      break;
+
+
+    case GET_USER_INFOS:
+      console.log(action.userAuthToken, '<<<<<< TOKEN');
+      axios.get('http://localhost:8000/api/users/1', {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${action.userAuthToken}`,
+        },
+      })
         .then((response) => {
           console.log(response);
         })

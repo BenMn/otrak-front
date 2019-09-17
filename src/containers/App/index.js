@@ -10,6 +10,8 @@ import { } from 'src/store/reducer';
 const mapStateToProps = (state) => ({
   view: state.view,
   storeSearchInputResult: state.storeSearchInputResult,
+  userAuthToken: state.userAuthToken,
+  isLogged: state.isLogged,
 });
 
 const mapDispatchToProps = () => ({});
