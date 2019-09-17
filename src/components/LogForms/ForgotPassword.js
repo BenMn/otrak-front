@@ -97,12 +97,12 @@ const ForgotPassword = ({
             {/* Other modal links */}
             <Grid container direction="row" spacing={3}>
               <Grid item xs>
-                <Link onClick={() => handleOpen('in')} variant="body2" color="secondary">
+                <Link onClick={() => handleOpen('in')} variant="body2">
                   Already registred ? Sign in
                 </Link>
               </Grid>
               <Grid item>
-                <Link onClick={() => handleOpen('up')} variant="body2" color="secondary">
+                <Link onClick={() => handleOpen('up')} variant="body2">
                   Don't have an account? Sign up
                 </Link>
               </Grid>

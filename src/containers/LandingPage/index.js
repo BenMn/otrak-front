@@ -10,7 +10,6 @@ import {
   updateSearchInput,
   fetchSearchInputResult,
   openModal,
-  getUserInfos,
 } from 'src/store/reducer';
 
 const mapStateToProps = (state) => ({
@@ -42,10 +41,6 @@ const mapDispatchToProps = (dispatch) => ({
 
   handleOpen: (modalName) => {
     dispatch(openModal(modalName));
-  },
-
-  fetchUserProfileInfos: (userAuthToken) => {
-    dispatch(getUserInfos(userAuthToken));
   },
 });
 

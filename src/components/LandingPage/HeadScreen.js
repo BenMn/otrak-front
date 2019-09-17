@@ -38,8 +38,6 @@ class HeadScreen extends React.Component {
       searchInputValue,
       handleSearchInput,
       handleSearchInputSubmit,
-      fetchUserProfileInfos,
-      userAuthToken,
     } = this.props;
     return (
       <div id="landing-page">
@@ -77,14 +75,6 @@ class HeadScreen extends React.Component {
                 Sign up
               </HeadScreenSignUpButton>
 
-              {/* REGISTER */}
-              <HeadScreenSignUpButton
-                variant="outlined"
-                onClick={() => fetchUserProfileInfos(userAuthToken)}
-              >
-                USER INFO REQUEST
-              </HeadScreenSignUpButton>
-
               {/* eslint-disable-next-line max-len */}
               {open === true && (
                 <LogFormsModal
@@ -112,14 +102,11 @@ HeadScreen.propTypes = {
   searchInputValue: PropTypes.string.isRequired,
   handleSearchInput: PropTypes.func.isRequired,
   handleSearchInputSubmit: PropTypes.func.isRequired,
-  fetchUserProfileInfos: PropTypes.func.isRequired,
-  userAuthToken: PropTypes.string,
 };
 
 HeadScreen.defaultProps = {
   open: false,
   modalName: '',
-  userAuthToken: '',
 };
 
 export default HeadScreen;

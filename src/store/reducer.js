@@ -55,6 +55,7 @@ const initialState = {
     },
   },
   userAvatar: null,
+  userInfos: {},
 };
 
 // ==  Action Types
@@ -63,6 +64,9 @@ export const FETCH_SEARCH_INPUT_RESULT = 'FETCH_SEARCH_INPUT_RESULT';
 export const STORE_SEARCH_INPUT_RESULT = 'STORE_SEARCH_INPUT_RESULT';
 const STORE_USER_AUTH_INFOS = 'STORE_USER_AUTH_INFOS';
 export const GET_USER_INFOS = 'GET_USER_INFOS';
+const STORE_USER_INFOS = 'STORE_USER_INFOS';
+
+const EMPTY_SEARCH_RESULTS = 'EMPTY_SEARCH_RESULTS';
 
 const UPDATE_AUTH_INPUT = 'UPDATE_AUTH_INPUT';
 export const STORE_AUTH_INPUT_RESULT = 'STORE_AUTH_INPUT_RESULT';
@@ -130,6 +134,12 @@ const reducer = (state = initialState, action = {}) => {
         isLogged: true,
       };
 
+    case STORE_USER_INFOS:
+      return {
+        ...state,
+        userInfos: action.userInfos,
+      };
+
     case OPEN_MODAL:
       return {
         ...state,
@@ -181,6 +191,12 @@ const reducer = (state = initialState, action = {}) => {
           state.updatedHistoryList.filter((show) => show.id_tvmaze !== action.showId),
       });
 
+    case EMPTY_SEARCH_RESULTS:
+      return {
+        ...state,
+        storeSearchInputResult: [],
+      };
+
     default:
       return state;
   }
@@ -225,6 +241,11 @@ export const storeUserAuthInfos = (token) => ({
 export const getUserInfos = (userAuthToken) => ({
   type: GET_USER_INFOS,
   userAuthToken,
+});
+
+export const storeUserInfos = (userInfos) => ({
+  type: STORE_USER_INFOS,
+  userInfos,
 });
 
 export const fetchTrending = () => ({
@@ -284,6 +305,10 @@ export const storeNewUsername = (newUsername, name) => ({
 export const removeShowHistoryList = (showId) => ({
   type: REMOVE_SHOW_HISTORY_LIST,
   showId,
+});
+
+export const emptySearchResults = () => ({
+  type: EMPTY_SEARCH_RESULTS,
 });
 
 // == Selectors

@@ -12,11 +12,14 @@ import {
   fetchLoginAuthInfos,
   storeNewUsername,
   openModal,
+  getUserInfos,
 } from 'src/store/reducer';
 
 const mapStateToProps = (state) => ({
   userAvatar: state.userAvatar,
   userAuthInfos: state.userAuthInfos,
+  userAuthToken: state.userAuthToken,
+  userInfos: state.userInfos,
 
   setOpen: state.setOpen,
   open: state.open,
@@ -37,9 +40,7 @@ const mapDispatchToProps = (dispatch) => ({
 
   handleNewUsername: (event) => {
     event.persist();
-    console.log(event);
     const newUsername = event.target.value;
-    console.log(newUsername);
     const { name } = event.target;
     dispatch(storeNewUsername(newUsername, name));
   },
@@ -63,6 +64,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   handleOpen: (modalName) => {
     dispatch(openModal(modalName));
+  },
+
+  fetchUserProfileInfos: (userAuthToken) => {
+    dispatch(getUserInfos(userAuthToken));
   },
 
 });

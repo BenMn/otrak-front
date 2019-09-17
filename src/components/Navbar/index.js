@@ -19,19 +19,17 @@ import {
 } from 'src/styles/materialUi/materialUiStyles/Navbar';
 
 // Authentification modals
-import LogFormsModal from 'src/containers/LogForms';
-
 import './Navbar.scss';
 
 
 const Navbar = ({
-  open,
   handleOpen,
   handleSearchInput,
   handleSearchInputSubmit,
   searchInputValue,
   isLogged,
   handleLogOut,
+  emptySearchResults,
 }) => (
   <div id="Navbar">
     <AppBar position="static">
@@ -44,7 +42,6 @@ const Navbar = ({
               <img src="src/styles/assets/images/logos/logo-owl.png" alt="O'Track logo" />
             </NavLink>
           </Grid>
-
           {/* SearchBar */}
           <Grid item lg={6} md={6} sm={4} xs={4}>
             <NavbarSearch>
@@ -66,11 +63,10 @@ const Navbar = ({
                 Log Out
               </NavbarLogButton>
               <NavbarLogButton variant="outlined" color="inherit">
-                <NavLink exact to="/dashboard" color="inherit">
+                <NavLink exact to="/dashboard" color="inherit" onClick={() => emptySearchResults()}>
                   Dashboard
                 </NavLink>
               </NavbarLogButton>
-              {open === true && <LogFormsModal />}
             </Grid>
           ) : (
             <Grid item lg={3} md={3} sm={5} xs={6}>
@@ -80,7 +76,6 @@ const Navbar = ({
               <NavbarLogButton variant="text" color="inherit" onClick={() => handleOpen('in')}>
                 Sign in
               </NavbarLogButton>
-              {open === true && <LogFormsModal />}
             </Grid>
           )}
 
@@ -91,17 +86,17 @@ const Navbar = ({
 );
 
 Navbar.propTypes = {
-  open: PropTypes.bool,
   handleOpen: PropTypes.func.isRequired,
   handleLogOut: PropTypes.func.isRequired,
   handleSearchInput: PropTypes.func.isRequired,
   handleSearchInputSubmit: PropTypes.func.isRequired,
   searchInputValue: PropTypes.string.isRequired,
   isLogged: PropTypes.bool.isRequired,
+  emptySearchResults: PropTypes.func,
 };
 
 Navbar.defaultProps = {
-  open: false,
+  emptySearchResults: () => { },
 };
 
 

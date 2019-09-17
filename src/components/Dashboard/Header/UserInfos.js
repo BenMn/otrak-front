@@ -22,6 +22,7 @@ const UserInfos = ({
   handleAuthInput,
   handleAuthInputSubmit,
   handleNewUsername,
+  userInfos,
 }) => {
   const allowed = [0];
 
@@ -32,6 +33,8 @@ const UserInfos = ({
       newObject[key] = userAuthInfos[key];
       return newObject;
     }, {});
+
+  console.log(userInfos, '<<<<<<<<<<<<<<<<< USER INFOS');
 
   return (
     <Grid
@@ -83,6 +86,7 @@ UserInfos.propTypes = {
   handleAuthInput: PropTypes.func.isRequired,
   handleAuthInputSubmit: PropTypes.func.isRequired,
   handleNewUsername: PropTypes.func.isRequired,
+  userInfos: PropTypes.object.isRequired,
   // avatarUploadHandler: PropTypes.func.isRequired,
 };
 

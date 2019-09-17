@@ -19,7 +19,7 @@ export const LogFormModalPaper = styled(Paper)({
   boxShadow: '0 0 15px 0px rgba(200, 200, 200, 0.55)',
   padding: 50,
   maxHeight: '90vh',
-  maxWidth: '70vh',
+  maxWidth: '50vw',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',

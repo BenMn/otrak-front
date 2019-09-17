@@ -12,6 +12,7 @@ const mapStateToProps = (state) => ({
   storeSearchInputResult: state.storeSearchInputResult,
   userAuthToken: state.userAuthToken,
   isLogged: state.isLogged,
+  open: state.open,
 });
 
 const mapDispatchToProps = () => ({});

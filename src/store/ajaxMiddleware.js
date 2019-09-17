@@ -6,6 +6,7 @@ import {
   storeUserAuthInfos,
   // LOG_OUT,
   GET_USER_INFOS,
+  storeUserInfos,
 
   FETCH_TRENDING,
   storeTrending,
@@ -15,6 +16,8 @@ import {
 
   FETCH_DETAIL_SHOW,
   storeDetailShow,
+
+  closeModal,
 } from 'src/store/reducer';
 
 
@@ -23,7 +26,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
 
   switch (action.type) {
     case FETCH_TRENDING:
-      axios.get('http://localhost:8001/api/shows/aired')
+      axios.get('http://localhost:8000/api/shows/aired')
         .then((response) => {
           const { data } = response;
           store.dispatch(storeTrending(data));
@@ -32,7 +35,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       break;
 
     case FETCH_SEARCH_INPUT_RESULT:
-      axios.get(`http://localhost:8001/api/shows/search/${action.searchInputValue}`)
+      axios.get(`http://localhost:8000/api/shows/search/${action.searchInputValue}`)
         .then((response) => {
           const { data } = response;
           store.dispatch(storeSearchInputResult(data));
@@ -41,7 +44,6 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       break;
 
     case FETCH_LOGIN_AUTH_INFOS:
-
       // eslint-disable-next-line no-case-declarations
       const payload = {
         email: action.email,
@@ -59,6 +61,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
         // password: action.password,
         .then((response) => {
           store.dispatch(storeUserAuthInfos(response.data.token));
+          store.dispatch(closeModal());
         })
         .catch((error) => {
           console.error(error);
@@ -75,7 +78,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
         },
       })
         .then((response) => {
-          console.log(response);
+          store.dispatch(storeUserInfos(response.data));
         })
         .catch((error) => {
           console.error(error);
@@ -83,7 +86,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       break;
 
     case FETCH_REGISTER_AUTH_INFOS:
-      axios.post('http://localhost:8001/api/users/new', {
+      axios.post('http://localhost:8000/api/users/new', {
         username: action.username,
         email: action.email,
         password: action.password,
@@ -98,7 +101,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       break;
 
       // case LOG_OUT:
-      //   axios.post('http://localhost:8001/api/users/new', {
+      //   axios.post('http://localhost:8000/api/users/new', {
       //     username: action.username,
       //     email: action.email,
       //     password: action.password,
@@ -125,7 +128,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       //   break;
 
     case FETCH_DETAIL_SHOW:
-      axios.get(`http://localhost:8001/api/shows/${action.idShow}`)
+      axios.get(`http://localhost:8000/api/shows/${action.idShow}`)
         .then((response) => {
           console.log(response);
           const { data } = response;
