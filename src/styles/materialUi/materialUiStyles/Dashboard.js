@@ -33,7 +33,7 @@ export const DashboardTitleProgressBar = styled(Typography)({
 
 export const DashboardHeaderConainer = styled(Container)({
   minHeight: '30vh',
-  maxWidth: '3000vh',
+  maxWidth: '3000vw',
   display: 'flex',
   alignItems: 'center',
   backgroundColor: theme.palette.primary.light,
@@ -113,9 +113,6 @@ export const DashboardHistoryIcon = styled(HistoryIcon)({
   margin: '-15vh 0 0 -15vh',
 });
 
-export const DashboardHistoryShowTitle = styled(Typography)({
-});
-
 export const DashboardHistoryShowSubtitle = styled(Typography)({
   margin: '-17px 0 17px 0',
   color: theme.palette.text.disabled,
@@ -123,7 +120,6 @@ export const DashboardHistoryShowSubtitle = styled(Typography)({
 
 export const DashboardHistoryListContainer = styled(Container)({
   maxHeight: '60vh',
-  maxWidth: 'auto',
   overflowY: 'scroll',
   overflowX: 'hidden',
   zIndex: 3,

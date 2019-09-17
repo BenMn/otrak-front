@@ -14,13 +14,14 @@ import theme from 'src/styles/materialUi/materialUiTheme/theme';
 import Navbar from 'src/containers/Navbar';
 import Footer from 'src/containers/Footer';
 import LandingPage from 'src/containers/LandingPage';
-import LogFormModal from 'src/containers/LogForms';
+import LogFormsModal from 'src/containers/LogForms';
 import Homepage from 'src/containers/Homepage';
 import Dashboard from 'src/containers/Dashboard';
 import Show from 'src/containers/Show';
-import Team from 'src/components/StaticPages/Team';
-import Legal from 'src/components/StaticPages/Legal';
-import Contact from 'src/components/StaticPages/Contact';
+import Contact from 'src/containers/Contact';
+import Legal from 'src/containers/Legal';
+import Team from 'src/containers/Team';
+
 import './App.scss';
 
 // == Composant
@@ -30,44 +31,151 @@ const App = ({
   handleSearchInputSubmit,
   storeSearchInputResult,
   handleLogOut,
+  isLogged,
+  open,
 }) => (
   <MuiThemeProvider theme={theme}>
     <div id="app">
-      {window.location.pathname !== '/'
-        && (
-          <Navbar
-            handleOpen={handleOpen}
-            handleSearchInput={handleSearchInput}
-            handleSearchInputSubmit={handleSearchInputSubmit}
-            handleLogOut={handleLogOut}
-          />
-        )}
-      <LogFormModal />
+
+      {isLogged === false ? (
+        <Route
+          exact
+          path="/"
+          render={() => (
+            storeSearchInputResult.length > 0 ? (
+              <Redirect to="/search" />
+            ) : (
+              <LandingPage />
+            )
+          )}
+        />
+      ) : (
+        <Redirect to="/dashboard" />
+      )}
+
+      {open === true && <LogFormsModal />}
+
       <Route
         exact
-        path="/"
+        path="/show/:name"
         render={() => (
           storeSearchInputResult.length > 0 ? (
             <Redirect to="/search" />
           ) : (
-            <LandingPage />
+            <>
+              <Navbar
+                handleOpen={handleOpen}
+                handleSearchInput={handleSearchInput}
+                handleSearchInputSubmit={handleSearchInputSubmit}
+                handleLogOut={handleLogOut}
+              />
+              <Show />
+            </>
           )
         )}
       />
 
-      <Route exact path="/show/:name" component={Show} />
+      <Route
+        exact
+        path="/dashboard"
+        render={() => (
+          storeSearchInputResult.length > 0 ? (
+            <Redirect to="/search" />
+          ) : (
+            <>
+              <Navbar
+                handleOpen={handleOpen}
+                handleSearchInput={handleSearchInput}
+                handleSearchInputSubmit={handleSearchInputSubmit}
+                handleLogOut={handleLogOut}
+              />
+              <Dashboard />
+            </>
+          )
+        )}
+      />
 
-      <Route exact path="/search" component={Homepage} />
-
-      <Route exact path="/dashboard" component={Dashboard} />
+      <Route
+        exact
+        path="/search"
+        render={() => (
+          <>
+            <Navbar
+              handleOpen={handleOpen}
+              handleSearchInput={handleSearchInput}
+              handleSearchInputSubmit={handleSearchInputSubmit}
+              handleLogOut={handleLogOut}
+            />
+            <Homepage />
+          </>
+        )}
+      />
 
       {/* Static Pages */}
-      <Route exact path="/team" component={Team} />
-      <Route exact path="/legal" component={Legal} />
-      <Route exact path="/contact" component={Contact} />
+      <Route
+        exact
+        path="/team"
+        render={() => (
+          storeSearchInputResult.length > 0 ? (
+            <Redirect to="/search" />
+          ) : (
+            <>
+              <Navbar
+                handleOpen={handleOpen}
+                handleSearchInput={handleSearchInput}
+                handleSearchInputSubmit={handleSearchInputSubmit}
+                handleLogOut={handleLogOut}
+              />
+              <Team />
+            </>
+          )
+        )}
+      />
 
+
+      <Route
+        exact
+        path="/legal"
+        render={() => (
+          storeSearchInputResult.length > 0 ? (
+            <Redirect to="/search" />
+          ) : (
+            <>
+              <Navbar
+                handleOpen={handleOpen}
+                handleSearchInput={handleSearchInput}
+                handleSearchInputSubmit={handleSearchInputSubmit}
+                handleLogOut={handleLogOut}
+              />
+              <Legal />
+            </>
+          )
+        )}
+      />
+
+
+      <Route
+        exact
+        path="/contact"
+        render={() => (
+          storeSearchInputResult.length > 0 ? (
+            <Redirect to="/search" />
+          ) : (
+            <>
+              <Navbar
+                handleOpen={handleOpen}
+                handleSearchInput={handleSearchInput}
+                handleSearchInputSubmit={handleSearchInputSubmit}
+                handleLogOut={handleLogOut}
+              />
+              <Contact />
+            </>
+          )
+        )}
+      />
 
       <Footer />
+
     </div>
   </MuiThemeProvider>
 );
@@ -79,6 +187,8 @@ App.propTypes = {
   handleSearchInputSubmit: PropTypes.func,
   storeSearchInputResult: PropTypes.array,
   handleLogOut: PropTypes.func,
+  isLogged: PropTypes.bool,
+  open: PropTypes.bool,
 };
 
 App.defaultProps = {
@@ -87,6 +197,8 @@ App.defaultProps = {
   handleSearchInputSubmit: () => { },
   handleLogOut: () => { },
   storeSearchInputResult: [],
+  isLogged: false,
+  open: false,
 };
 
 // == Export

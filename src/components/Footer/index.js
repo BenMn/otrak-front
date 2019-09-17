@@ -21,12 +21,9 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
-// Authentification modals
-import LogFormsModal from 'src/containers/LogForms';
-
 import './Footer.scss';
 
-const Footer = ({ open, handleOpen }) => (
+const Footer = ({ handleOpen, isLogged, emptySearchResults }) => (
   <div id="Footer">
     <FooterAppBar position="static">
       <Toolbar>
@@ -57,20 +54,27 @@ const Footer = ({ open, handleOpen }) => (
               alignItems="center"
             >
               {/* Central buttons */}
-              <FooterButton variant="outlined" color="inherit" onClick={() => handleOpen('up')}>
-                REGISTER NOW !
-              </FooterButton>
-              {open === true && <LogFormsModal />}
+              {isLogged === true ? (
+                <NavLink exact to="/dashboard" color="inherit" onClick={() => emptySearchResults()}>
+                  <FooterButton variant="outlined" color="inherit">
+                      Dashboard
+                  </FooterButton>
+                </NavLink>
+              ) : (
+                <FooterButton variant="outlined" color="inherit" onClick={() => handleOpen('up')}>
+                  REGISTER NOW !
+                </FooterButton>
+              )}
 
-              <NavLink exact to="/team">
+              <NavLink exact to="/team" onClick={() => emptySearchResults()}>
                 <FooterButton color="inherit">TEAM</FooterButton>
               </NavLink>
 
-              <NavLink exact to="/legal">
+              <NavLink exact to="/legal" onClick={() => emptySearchResults()}>
                 <FooterButton color="inherit">LEGAL</FooterButton>
               </NavLink>
 
-              <NavLink exact to="/contact">
+              <NavLink exact to="/contact" onClick={() => emptySearchResults()}>
                 <FooterButton color="inherit">CONTACT</FooterButton>
               </NavLink>
 
@@ -91,13 +95,14 @@ const Footer = ({ open, handleOpen }) => (
 );
 
 Footer.propTypes = {
-  open: PropTypes.bool,
   handleOpen: PropTypes.func,
+  isLogged: PropTypes.bool.isRequired,
+  emptySearchResults: PropTypes.func,
 };
 
 Footer.defaultProps = {
-  open: false,
   handleOpen: () => { },
+  emptySearchResults: () => { },
 };
 
 export default Footer;

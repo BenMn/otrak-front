@@ -49,7 +49,6 @@ const Show = ({ showDetail, addToWatchList }) => (
   </>
 );
 
-
 Show.propTypes = {
   showDetail: PropTypes.object.isRequired,
   addToWatchList: PropTypes.func.isRequired,

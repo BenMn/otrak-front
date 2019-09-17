@@ -95,12 +95,12 @@ const SignIn = ({
             {/* Other modal links */}
             <Grid container direction="row" spacing={3}>
               <Grid item xs>
-                <Link onClick={() => handleOpen('password')} variant="body2" color="secondary">
+                <Link onClick={() => handleOpen('password')} variant="body2">
                   Forgot password?
                 </Link>
               </Grid>
               <Grid item>
-                <Link onClick={() => handleOpen('up')} variant="body2" color="secondary">
+                <Link onClick={() => handleOpen('up')} variant="body2">
                   Don't have an account? Sign up
                 </Link>
               </Grid>

@@ -24,6 +24,7 @@ const Header = ({
   userAuthInfos,
   handleNewUsername,
   handleOpen,
+  userInfos,
 }) => (
   <div id="Header">
 
@@ -42,6 +43,7 @@ const Header = ({
             handleAuthInputSubmit={handleAuthInputSubmit}
             userAuthInfos={userAuthInfos}
             handleNewUsername={handleNewUsername}
+            userInfos={userInfos}
           />
         </Grid>
 
@@ -62,6 +64,11 @@ Header.propTypes = {
   handleAuthInputSubmit: PropTypes.func.isRequired,
   handleNewUsername: PropTypes.func.isRequired,
   handleOpen: PropTypes.func.isRequired,
+  userInfos: PropTypes.object,
+};
+
+Header.defaultProps = {
+  userInfos: {},
 };
 
 export default Header;

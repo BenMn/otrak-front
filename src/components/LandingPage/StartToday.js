@@ -15,10 +15,7 @@ import {
   StartNowTitle,
 } from 'src/styles/materialUi/materialUiStyles/LandingPage';
 
-// Authentification modals
-import LogFormsModal from 'src/containers/LogForms';
-
-const StartToday = ({ open, handleOpen }) => (
+const StartToday = ({ handleOpen }) => (
   <>
     <StartNowGrid
       container
@@ -31,19 +28,13 @@ const StartToday = ({ open, handleOpen }) => (
       <Button variant="contained" color="primary" onClick={() => handleOpen('up')}>
         Create your account
       </Button>
-      {open === true && <LogFormsModal />}
       <Typography>Don't be afraid, it's free !</Typography>
     </StartNowGrid>
   </>
 );
 
 StartToday.propTypes = {
-  open: PropTypes.bool,
   handleOpen: PropTypes.func.isRequired,
-};
-
-StartToday.defaultProps = {
-  open: false,
 };
 
 export default StartToday;

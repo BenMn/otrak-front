@@ -10,6 +10,7 @@ import {
   updateSearchInput,
   fetchSearchInputResult,
   logOut,
+  emptySearchResults,
 } from 'src/store/reducer';
 
 
@@ -36,6 +37,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   handleLogOut: () => {
     dispatch(logOut());
+  },
+
+  emptySearchResults: () => {
+    dispatch(emptySearchResults());
   },
 });
 

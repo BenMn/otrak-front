@@ -16,7 +16,6 @@ import {
 import {
   DashboardHistoryContainer,
   DashboardHistoryIcon,
-  DashboardHistoryShowTitle,
   DashboardHistoryShowSubtitle,
   DashboardHistoryListContainer,
   DashboardHistoryDeleteIcon,
@@ -75,10 +74,10 @@ const History = ({ trendingList, handleDeleteHistoryShow, updatedHistoryList }) 
                   justify="space-between"
                   alignItems="center"
                 >
-                  <Grid item>
-                    <DashboardHistoryShowTitle color="primary" variant="h6">{currentShow.name}</DashboardHistoryShowTitle>
+                  <Grid item lg={11}>
+                    <Typography color="primary" variant="h6">{currentShow.name}</Typography>
                   </Grid>
-                  <Grid item onClick={() => handleDeleteHistoryShow(currentShow.id_tvmaze)}>
+                  <Grid item lg={1} onClick={() => handleDeleteHistoryShow(currentShow.id_tvmaze)}>
                     <DashboardHistoryDeleteIcon color="secondary" />
                   </Grid>
                 </Grid>
