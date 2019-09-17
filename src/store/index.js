@@ -1,27 +1,37 @@
 // == Import : npm
-import { createStore, compose, applyMiddleware } from 'redux';
+import {
+  createStore,
+  compose,
+  applyMiddleware,
+  combineReducers,
+} from 'redux';
 
 // == Import : local
-import reducer from 'src/store/reducer';
-import ajaxMiddleware from './ajaxMiddleware';
+
+// Reducers
+import appReducer from 'src/store/reducers/appReducer';
+import searchReducer from 'src/store/reducers/searchReducer';
+import userReducer from 'src/store/reducers/userReducer';
+
+// Middlewares
+import userMiddleware from 'src/store/Middlewares/userMiddleware';
+import searchMiddleware from 'src/store/Middlewares/searchMiddleware';
 
 // == Store
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const enhancers = composeEnhancers(
-  applyMiddleware(ajaxMiddleware),
+  applyMiddleware(
+    searchMiddleware,
+    userMiddleware,
+  ),
 );
 
-/*
-// On peut avoir plusieurs middlewares :
-// nos actions passeront tour à tout dans chaque middleware dans l'ordre avant d'arriver au reducer
-const enhancers = composeEnhancers(
-  applyMiddleware(
-    logMiddleware,
-    ajaxMiddleware,
-  )
-);
-*/
+const reducer = combineReducers({
+  searchReducer,
+  userReducer,
+  appReducer,
+});
 
 const store = createStore(
   reducer,

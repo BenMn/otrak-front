@@ -6,12 +6,18 @@ import LandingPage from 'src/components/LandingPage';
 
 // Action Creators
 import {
+  getUserInfos,
+} from 'src/store/reducers/userReducer';
+
+import {
   fetchTrending,
   updateSearchInput,
   fetchSearchInputResult,
+} from 'src/store/reducers/searchReducer';
+
+import {
   openModal,
-  getUserInfos,
-} from 'src/store/reducer';
+} from 'src/store/reducers/appReducer';
 
 const mapStateToProps = (state) => ({
   trendingList: state.trendingList,

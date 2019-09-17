@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import Footer from 'src/components/Footer';
 
 // Action Creators
-import { openModal } from 'src/store/reducer';
+import { openModal } from 'src/store/reducers/appReducer';
 
 const mapStateToProps = (state) => ({
   setOpen: state.setOpen,

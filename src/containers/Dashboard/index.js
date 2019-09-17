@@ -11,8 +11,12 @@ import {
   fetchRegisterAuthInfos,
   fetchLoginAuthInfos,
   storeNewUsername,
+} from 'src/store/reducers/userReducer';
+
+// Action Creators
+import {
   openModal,
-} from 'src/store/reducer';
+} from 'src/store/reducers/appReducer';
 
 const mapStateToProps = (state) => ({
   userAvatar: state.userAvatar,
@@ -37,9 +41,7 @@ const mapDispatchToProps = (dispatch) => ({
 
   handleNewUsername: (event) => {
     event.persist();
-    console.log(event);
     const newUsername = event.target.value;
-    console.log(newUsername);
     const { name } = event.target;
     dispatch(storeNewUsername(newUsername, name));
   },

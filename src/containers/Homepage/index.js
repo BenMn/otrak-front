@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import Homepage from 'src/components/Homepage';
 
 // Action Creators
-import { fetchTrending, fetchDetailShow } from 'src/store/reducer';
+import { fetchTrending, fetchDetailShow } from 'src/store/reducers/searchReducer';
 
 const mapStateToProps = (state) => ({
   storeSearchInputResult: state.storeSearchInputResult,

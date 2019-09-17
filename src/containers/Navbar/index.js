@@ -6,11 +6,17 @@ import Navbar from 'src/components/Navbar';
 
 // Action Creators
 import {
-  openModal,
+  logOut,
+} from 'src/store/reducers/userReducer';
+
+import {
   updateSearchInput,
   fetchSearchInputResult,
-  logOut,
-} from 'src/store/reducer';
+} from 'src/store/reducers/searchReducer';
+
+import {
+  openModal,
+} from 'src/store/reducers/appReducer';
 
 
 const mapStateToProps = (state) => ({

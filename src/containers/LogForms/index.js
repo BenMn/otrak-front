@@ -6,13 +6,20 @@ import LogForms from 'src/components/LogForms';
 
 // Action Creators
 import {
-  closeModal,
-  openModal,
   updateAuthInput,
   fetchLoginAuthInfos,
   fetchRegisterAuthInfos,
+} from 'src/store/reducers/userReducer';
+
+import {
   removeShowHistoryList,
-} from 'src/store/reducer';
+} from 'src/store/reducers/searchReducer';
+
+import {
+  closeModal,
+  openModal,
+} from 'src/store/reducers/appReducer';
+
 
 const mapStateToProps = (state) => ({
   setOpen: state.setOpen,
@@ -56,7 +63,6 @@ const mapDispatchToProps = (dispatch) => ({
   },
 
   handleDeleteHistoryShow: (showId) => {
-    console.log(showId);
     dispatch(removeShowHistoryList(showId));
   },
 });
