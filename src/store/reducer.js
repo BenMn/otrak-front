@@ -143,6 +143,7 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         userInfos: action.userInfos,
+        isLogged: true,
       };
 
     case OPEN_MODAL:
