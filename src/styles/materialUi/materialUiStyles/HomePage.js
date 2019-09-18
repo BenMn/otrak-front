@@ -19,6 +19,7 @@ import {
   Grid,
   Paper,
   Container,
+  CardActionArea,
 } from '@material-ui/core';
 // ------------------- Styles of All cards in HomePage -------------------//
 
@@ -70,6 +71,7 @@ export const HomePageCardIcon = styled(TuneIcon)({
   margin: '5px 6px',
   cursor: 'pointer',
 });
+
 
 // ------------------- Styles of SearchResult.js ------------------------//
 
