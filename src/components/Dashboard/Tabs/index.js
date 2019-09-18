@@ -76,7 +76,8 @@ export default function TabsTest() {
           <DashboardTab label="Watching" {...a11yProps(0)} />
           <DashboardTab label="Completed" {...a11yProps(1)} />
           <DashboardTab label="See Next" {...a11yProps(2)} />
-          <DashboardTab label="Stopped" {...a11yProps(3)} />
+          <DashboardTab label="Upcoming" {...a11yProps(3)} />
+          <DashboardTab label="Stopped" {...a11yProps(4)} />
         </Tabs>
       </AppBar>
 
@@ -101,8 +102,15 @@ export default function TabsTest() {
         </Grid>
       </TabPanel>
 
-      {/* Stopped */}
+      {/* Upcoming */}
       <TabPanel value={value} index={3}>
+        <Grid container spacing={2} justify="center">
+          <Cards />
+        </Grid>
+      </TabPanel>
+
+      {/* Stopped */}
+      <TabPanel value={value} index={4}>
         <Grid container spacing={2} justify="center">
           <Cards />
         </Grid>

@@ -56,7 +56,6 @@ const mapDispatchToProps = (dispatch) => ({
   },
 
   handleDeleteHistoryShow: (showId) => {
-    console.log(showId);
     dispatch(removeShowHistoryList(showId));
   },
 });
