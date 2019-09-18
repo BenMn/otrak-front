@@ -9,6 +9,7 @@ import {
   GET_USER_INFOS,
   getUserInfos,
   storeUserInfos,
+  storeUserAuthInfos,
   GET_USER_FOLLOWINGS,
   getUserFollowings,
   storeUserFollowings,
@@ -66,6 +67,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
         })
         .then((response) => {
           store.dispatch(getUserInfos(response.data.token));
+          store.dispatch(storeUserAuthInfos(response.data.token));
           store.dispatch(closeModal());
         })
         .catch((error) => {
@@ -166,7 +168,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       break;
 
     case START_FOLLOWING_SHOW:
-      axios.post(`http://localhost:8001/api/followings/new/2/0/${action.idShow}/0/0`, {
+      axios.post(`http://localhost:8001/api/followings/new/${action.userId}/0/${action.idShow}/0/0`, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${action.token}`,

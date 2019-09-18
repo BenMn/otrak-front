@@ -418,10 +418,11 @@ export const storeUserFollowings = (userFollowings) => ({
   userFollowings,
 });
 
-export const startFollowingShow = (idShow, token) => ({
+export const startFollowingShow = (idShow, token, userId) => ({
   type: START_FOLLOWING_SHOW,
   idShow,
   token,
+  userId,
 });
 
 export const storeSortedArray = (typeSort) => ({
