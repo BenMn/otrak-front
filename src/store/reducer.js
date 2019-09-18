@@ -332,9 +332,10 @@ export const getUserInfos = (userAuthToken) => ({
   userAuthToken,
 });
 
-export const getUserFollowings = (userId) => ({
+export const getUserFollowings = (userId, userAuthToken) => ({
   type: GET_USER_FOLLOWINGS,
   userId,
+  userAuthToken,
 });
 
 export const storeUserInfos = (userInfos) => ({

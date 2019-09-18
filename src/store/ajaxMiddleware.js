@@ -74,6 +74,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       break;
 
     case GET_USER_INFOS:
+      console.log(action.userAuthToken, '<<<<<<<<<<<<<<<<< USER AUTH TOKEN');
       axios.get('http://localhost:8001/api/users/profile', {
         headers: {
           'Content-Type': 'application/json',
@@ -82,17 +83,19 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       })
         .then((response) => {
           store.dispatch(storeUserInfos(response.data));
-          store.dispatch(getUserFollowings(response.data.id));
+          store.dispatch(getUserFollowings(response.data.id, action.userAuthToken));
         })
         .catch((error) => {
           console.error(error);
         });
       break;
 
+
     case GET_USER_FOLLOWINGS:
       axios.get(`http://localhost:8001/api/users/${action.userId}/followings`, {
         headers: {
           'Content-Type': 'application/json',
+          Authorization: `Bearer ${action.userAuthToken}`,
         },
       })
         .then((response) => {
