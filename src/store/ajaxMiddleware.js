@@ -75,7 +75,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       break;
 
     case GET_USER_INFOS:
-      axios.get('http://localhost:8000/api/users/2', {
+      axios.get('http://localhost:8001/api/users/2', {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${action.userAuthToken}`,
@@ -91,7 +91,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       break;
 
     case GET_USER_FOLLOWINGS:
-      axios.get(`http://localhost:8000/api/users/${action.userId}/followings`, {
+      axios.get(`http://localhost:8001/api/users/${action.userId}/followings`, {
         headers: {
           'Content-Type': 'application/json',
         },
