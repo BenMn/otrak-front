@@ -14,12 +14,13 @@ import {
 const mapStateToProps = (state) => ({
   showDetail: state.showDetail,
   userAuthToken: state.userAuthToken,
+  userInfos: state.userInfos,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  addToWatchList: (idShow, token) => {
+  addToWatchList: (idShow, token, userId) => {
     console.log('TOKKKEEEENNNN', token);
-    dispatch(startFollowingShow(idShow, token));
+    dispatch(startFollowingShow(idShow, token, userId));
   },
 });
 

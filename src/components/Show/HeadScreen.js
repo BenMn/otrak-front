@@ -17,7 +17,12 @@ import {
 } from 'src/styles/materialUi/materialUiStyles/Show';
 
 
-const HeadScreen = ({ showDetail, addToWatchList }) => {
+const HeadScreen = ({
+  showDetail,
+  addToWatchList,
+  userAuthToken,
+  userInfos,
+}) => {
   if (Object.keys(showDetail).length > 0) {
     return (
       <>
@@ -50,7 +55,7 @@ const HeadScreen = ({ showDetail, addToWatchList }) => {
               </Grid>
 
               <Grid item>
-                <Button variant="contained" color="secondary" onClick={addToWatchList}>ADD TO MY WATCH LIST</Button>
+                <Button variant="contained" color="secondary" onClick={() => addToWatchList(showDetail.id_tvmaze, userAuthToken, userInfos.id)}>ADD TO MY WATCH LIST</Button>
               </Grid>
 
               <Grid item>
