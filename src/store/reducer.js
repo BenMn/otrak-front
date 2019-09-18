@@ -1,6 +1,14 @@
+/* eslint-disable no-case-declarations */
+
 // Local data for testing
-// import dataApi from 'src/data/dataApi.json';
-// import ShowComplet from 'src/data/showComplet.json';
+
+// Utils functions
+import {
+  compareTitle,
+  compareRating,
+  compareReleaseDate,
+  compareLanguage,
+} from 'src/utils/index';
 
 // == Initial State
 const initialState = {
@@ -91,6 +99,8 @@ const STORE_DETAIL_SHOW = 'STORE_DETAIL_SHOW';
 const STORE_USER_FOLLOWINGS = 'STORE_USER_FOLLOWINGS';
 
 export const START_FOLLOWING_SHOW = 'START_FOLLOWING_SHOW';
+
+const STORE_SORTED_ARRAY = 'STORE_SORTED_ARRAY';
 
 
 // == Reducer
@@ -208,6 +218,49 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         userFollowings: action.userFollowings,
       };
+
+    case STORE_SORTED_ARRAY:
+
+      switch (action.typeSort) {
+        case 'Title':
+
+          const sortedTiltleArray = [...state.storeSearchInputResult].sort(compareTitle);
+
+          return {
+            ...state,
+            storeSearchInputResult: sortedTiltleArray,
+          };
+
+        case 'Rating':
+
+          const sortedRatingArray = [...state.storeSearchInputResult].sort(compareRating);
+
+          return {
+            ...state,
+            storeSearchInputResult: sortedRatingArray,
+          };
+
+        case 'Release date':
+
+          const sortedReleaseDateArray = [...state.storeSearchInputResult].sort(compareReleaseDate);
+
+          return {
+            ...state,
+            storeSearchInputResult: sortedReleaseDateArray,
+          };
+
+        case 'Language':
+
+          const sortedLanguageArray = [...state.storeSearchInputResult].sort(compareLanguage);
+
+          return {
+            ...state,
+            storeSearchInputResult: sortedLanguageArray,
+          };
+
+        default:
+          return state;
+      }
 
     default:
       return state;
@@ -340,6 +393,10 @@ export const startFollowingShow = (idShow, token) => ({
   token,
 });
 
+export const storeSortedArray = (typeSort) => ({
+  type: STORE_SORTED_ARRAY,
+  typeSort,
+});
 // == Selectors
 
 

@@ -103,7 +103,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export default function Filter() {
+const Filter = ({ sortBy }) => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -134,8 +134,8 @@ export default function Filter() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap>
-            Filter
+          <Typography variant="h6" noWrap onClick={handleDrawerOpen}>
+            Sort by
           </Typography>
         </Toolbar>
       </AppBar>
@@ -156,7 +156,7 @@ export default function Filter() {
         <Divider />
         <List>
           {['Title', 'Release date', 'Rating', 'Language'].map((text) => (
-            <ListItem button key={text}>
+            <ListItem button key={text} onClick={() => sortBy(text)}>
               <ListItemText primary={text} />
             </ListItem>
           ))}
@@ -164,4 +164,6 @@ export default function Filter() {
       </Drawer>
     </div>
   );
-}
+};
+
+export default Filter;

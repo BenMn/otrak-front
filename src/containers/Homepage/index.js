@@ -6,7 +6,12 @@ import { connect } from 'react-redux';
 import Homepage from 'src/components/Homepage';
 
 // Action Creators
-import { fetchTrending, fetchDetailShow, emptySearchResults } from 'src/store/reducer';
+import {
+  fetchTrending,
+  fetchDetailShow,
+  emptySearchResults,
+  storeSortedArray,
+} from 'src/store/reducer';
 
 const mapStateToProps = (state) => ({
   storeSearchInputResult: state.storeSearchInputResult,
@@ -21,6 +26,9 @@ const mapDispatchToProps = (dispatch) => ({
   getDetailShow: (IdShow) => {
     dispatch(emptySearchResults());
     dispatch(fetchDetailShow(IdShow));
+  },
+  sortBy: (typeSort) => {
+    dispatch(storeSortedArray(typeSort));
   },
 });
 
