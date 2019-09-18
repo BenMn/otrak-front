@@ -8,6 +8,7 @@ import Dashboard from 'src/components/Dashboard';
 import {
   avatarUploadHandler,
   updateAuthInput,
+  updateUsernameInput,
   fetchRegisterAuthInfos,
   fetchLoginAuthInfos,
   storeNewUsername,
@@ -38,13 +39,6 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(updateAuthInput(value, name, index));
   },
 
-  handleNewUsername: (event) => {
-    event.persist();
-    const newUsername = event.target.value;
-    const { name } = event.target;
-    dispatch(storeNewUsername(newUsername, name));
-  },
-
   handleAuthInputSubmit: (event) => {
     event.persist();
     if (event.target.length === 9) {
@@ -61,6 +55,20 @@ const mapDispatchToProps = (dispatch) => ({
     }
     event.preventDefault();
   },
+
+  handleUsernameInput: (event) => {
+    console.log(event.target.value);
+    const { value, name } = event.target;
+    dispatch(updateUsernameInput(value, name));
+  },
+
+  handleUsernameInputSubmit: (event, userId) => {
+    event.persist();
+    const newUsername = event.target.value;
+    const { name } = event.target;
+    dispatch(storeNewUsername(newUsername, name, userId));
+  },
+
 
   handleOpen: (modalName) => {
     dispatch(openModal(modalName));

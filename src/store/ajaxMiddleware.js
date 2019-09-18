@@ -1,3 +1,4 @@
+/* eslint-disable no-case-declarations */
 /* eslint-disable no-console */
 import axios from 'axios';
 import {
@@ -11,6 +12,8 @@ import {
   GET_USER_FOLLOWINGS,
   getUserFollowings,
   storeUserFollowings,
+  STORE_NEW_USERNAME,
+  storeNewUsernameInput,
 
   FETCH_TRENDING,
   storeTrending,
@@ -97,7 +100,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
         },
       })
         .then((response) => {
-          store.dispatch(storeUserFollowings(response.data));
+          store.dispatch(storeUserFollowings(response.data['hydra:member']));
         })
         .catch((error) => {
           console.error(error);
@@ -113,6 +116,27 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       })
         .then((response) => {
           console.log(response);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+      break;
+
+    case STORE_NEW_USERNAME:
+
+      const username = {
+        username: action.newUsername,
+      };
+
+      console.log(action);
+      axios.put(`http://localhost:8001/api/users/${action.userId}`,
+        JSON.stringify(username), {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        })
+        .then((response) => {
+          store.dispatch(storeNewUsernameInput(response.data.username));
         })
         .catch((error) => {
           console.error(error);

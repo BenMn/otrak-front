@@ -19,8 +19,8 @@ import '../Dashboard.scss';
 
 const Header = ({
   avatarUploadHandler,
-  handleAuthInput,
-  handleAuthInputSubmit,
+  handleUsernameInput,
+  handleUsernameInputSubmit,
   userAuthInfos,
   handleNewUsername,
   handleOpen,
@@ -39,8 +39,8 @@ const Header = ({
         <Grid item lg={4} md={4} xs={12}>
           <UserInfos
             avatarUploadHandler={avatarUploadHandler}
-            handleAuthInput={handleAuthInput}
-            handleAuthInputSubmit={handleAuthInputSubmit}
+            handleUsernameInput={handleUsernameInput}
+            handleUsernameInputSubmit={handleUsernameInputSubmit}
             userAuthInfos={userAuthInfos}
             handleNewUsername={handleNewUsername}
             userInfos={userInfos}
@@ -60,9 +60,8 @@ const Header = ({
 
 Header.propTypes = {
   avatarUploadHandler: PropTypes.func.isRequired,
-  handleAuthInput: PropTypes.func.isRequired,
-  handleAuthInputSubmit: PropTypes.func.isRequired,
-  handleNewUsername: PropTypes.func.isRequired,
+  handleUsernameInput: PropTypes.func.isRequired,
+  handleUsernameInputSubmit: PropTypes.func.isRequired,
   handleOpen: PropTypes.func.isRequired,
   userInfos: PropTypes.object,
 };
