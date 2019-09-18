@@ -1,9 +1,9 @@
 #user-avatar {
-  background-image: url(/src/styles/assets/images/avatars/avatar.jpg);
   background-position: center;
   background-size: contain;
   box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.55);
-  }
+  width: inherit;
+}
 
 #user-avatar-gradient {
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.589) 100%);

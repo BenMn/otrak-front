@@ -17,6 +17,7 @@ const Dashboard = ({
   handleNewUsername,
   handleOpen,
   userInfos,
+  userAvatar,
 }) => (
   <div id="Dashboard">
     <Header
@@ -27,6 +28,7 @@ const Dashboard = ({
       handleNewUsername={handleNewUsername}
       handleOpen={handleOpen}
       userInfos={userInfos}
+      userAvatar={userAvatar}
     />
     <Tabs />
   </div>
@@ -38,6 +40,7 @@ Dashboard.propTypes = {
   handleUsernameInputSubmit: PropTypes.func.isRequired,
   handleOpen: PropTypes.func.isRequired,
   userInfos: PropTypes.object,
+  userAvatar: PropTypes.string.isRequired,
 };
 
 Dashboard.defaultProps = {

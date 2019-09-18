@@ -63,7 +63,7 @@ const initialState = {
       type: 'password',
     },
   },
-  userAvatar: '',
+  userAvatar: '/src/styles/assets/images/avatars/avatar-default.png',
   userInfos: {},
 };
 

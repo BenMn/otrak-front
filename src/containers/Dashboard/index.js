@@ -27,7 +27,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   avatarUploadHandler: (event) => {
     event.persist();
-    const newAvatar = event.target.files[0];
+    const newAvatar = event.target.files[0].name;
+    console.log(newAvatar);
     dispatch(avatarUploadHandler(newAvatar));
   },
 

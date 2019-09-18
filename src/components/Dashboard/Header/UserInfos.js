@@ -20,6 +20,8 @@ const UserInfos = ({
   handleUsernameInput,
   handleUsernameInputSubmit,
   userInfos,
+  avatarUploadHandler,
+  userAvatar,
 }) => (
   <Grid
     container
@@ -29,12 +31,13 @@ const UserInfos = ({
   >
 
     <Grid item>
-      <DashboardHeaderAvatar alt="User Avatar" id="user-avatar">
+      <DashboardHeaderAvatar>
+        <img src={userAvatar} alt="User Avatar" id="user-avatar" />
         <Box component="div" id="user-avatar-gradient" />
       </DashboardHeaderAvatar>
     </Grid>
 
-    {/* <input type="file" onChange={(event) => avatarUploadHandler(event)} /> */}
+    <input type="file" onChange={(event) => avatarUploadHandler(event)} />
 
     <Grid item>
       <Box component="div" mb={3}>
@@ -73,7 +76,7 @@ UserInfos.propTypes = {
   handleUsernameInput: PropTypes.func.isRequired,
   handleUsernameInputSubmit: PropTypes.func.isRequired,
   userInfos: PropTypes.object.isRequired,
-  // avatarUploadHandler: PropTypes.func.isRequired,
+  avatarUploadHandler: PropTypes.func.isRequired,
 };
 
 export default UserInfos;
