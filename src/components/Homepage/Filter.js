@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import clsx from 'clsx';
 
 import { makeStyles, withStyles } from '@material-ui/core/styles';
@@ -115,6 +116,27 @@ const Filter = ({ sortBy }) => {
     setOpen(false);
   }
 
+  // // Sort by: title => order(resultArray)
+  // const sortBy = (filterName) => {
+  //   switch (filterName) {
+  //     case 'Title':
+  //       return storeSearchInputResult.map((show) => show.name).sort();
+
+  //     case 'Release date':
+  //       return (console.log("c'est le Release !"));
+
+  //     case 'Rating':
+  //       return (console.log("c'est le Rating !"));
+
+  //     case 'Language':
+  //       return (console.log("c'est le Language !"));
+
+  //     default:
+  //       return 'ça marche pas';
+  //   }
+  // };
+
+
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -164,6 +186,10 @@ const Filter = ({ sortBy }) => {
       </Drawer>
     </div>
   );
+};
+
+Filter.propTypes = {
+  sortBy: PropTypes.func.isRequired,
 };
 
 export default Filter;

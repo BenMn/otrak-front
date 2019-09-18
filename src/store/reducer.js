@@ -102,7 +102,6 @@ export const START_FOLLOWING_SHOW = 'START_FOLLOWING_SHOW';
 
 const STORE_SORTED_ARRAY = 'STORE_SORTED_ARRAY';
 
-
 // == Reducer
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {

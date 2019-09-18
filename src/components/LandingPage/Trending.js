@@ -1,5 +1,10 @@
 // Import NPM
 import React from 'react';
+import PropTypes from 'prop-types';
+
+
+// Import locaux
+import { FilteredAiredLandingPage } from 'src/utils';
 
 // Import material UI components
 import {
@@ -103,6 +108,14 @@ const Trending = () => (
     </div>
   </div>
 );
+
+Trending.propTypes = {
+  trendingList: PropTypes.array,
+};
+
+Trending.defaultProps = {
+  trendingList: [],
+};
 
 
 export default Trending;
