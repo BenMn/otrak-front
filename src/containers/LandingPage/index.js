@@ -10,6 +10,7 @@ import {
   updateSearchInput,
   fetchSearchInputResult,
   openModal,
+  activeLoading,
 } from 'src/store/reducer';
 
 const mapStateToProps = (state) => ({
@@ -20,6 +21,7 @@ const mapStateToProps = (state) => ({
   setOpen: state.setOpen,
   open: state.open,
   modalName: state.modalName,
+  loading: state.loading,
 
   userAuthToken: state.userAuthToken,
 });
@@ -36,6 +38,7 @@ const mapDispatchToProps = (dispatch) => ({
 
   handleSearchInputSubmit: (event, searchInputValue) => {
     event.preventDefault();
+    dispatch(activeLoading());
     dispatch(fetchSearchInputResult(searchInputValue));
   },
 

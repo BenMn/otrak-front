@@ -12,6 +12,7 @@ import {
   fetchLoginAuthInfos,
   fetchRegisterAuthInfos,
   removeShowHistoryList,
+  activeLoading,
 } from 'src/store/reducer';
 
 const mapStateToProps = (state) => ({
@@ -22,6 +23,7 @@ const mapStateToProps = (state) => ({
   userAuthInfos: state.userAuthInfos,
   trendingList: state.trendingList,
   updatedHistoryList: state.updatedHistoryList,
+  loading: state.loading,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -39,6 +41,7 @@ const mapDispatchToProps = (dispatch) => ({
   },
 
   handleAuthInputSubmit: (event) => {
+    dispatch(activeLoading());
     event.persist();
     if (event.target.length === 9) {
       const username = event.target[0].value;

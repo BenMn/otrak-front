@@ -11,6 +11,7 @@ import {
   fetchSearchInputResult,
   logOut,
   emptySearchResults,
+  activeLoading,
 } from 'src/store/reducer';
 
 
@@ -19,6 +20,7 @@ const mapStateToProps = (state) => ({
   open: state.open,
   searchInputValue: state.searchInputValue,
   isLogged: state.isLogged,
+  loading: state.loading,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -28,6 +30,7 @@ const mapDispatchToProps = (dispatch) => ({
 
   handleSearchInputSubmit: (event, searchInputValue) => {
     event.preventDefault();
+    dispatch(activeLoading());
     dispatch(fetchSearchInputResult(searchInputValue));
   },
 

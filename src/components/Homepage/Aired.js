@@ -5,6 +5,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
+// Local import
+import Loader from 'src/components/Loader';
+
 // Slider library
 import Slider from 'react-slick';
 
@@ -115,71 +118,75 @@ class Aired extends React.Component {
 
         <Container>
 
-          <Slider {...settings}>
+          {trendingList.length !== 0 ? (
+            <Slider {...settings}>
 
-            {trendingList.map((currentShow) => (
+              {trendingList.map((currentShow) => (
 
-              <Grid item key={currentShow.id_tvmaze}>
+                <Grid item key={currentShow.id_tvmaze}>
 
-                <HomePageCard>
+                  <HomePageCard>
 
-                  <NavLink exact to={`/show/${currentShow.show_name}`}>
+                    <NavLink exact to={`/show/${currentShow.show_name}`}>
 
-                    <CardActionArea onClick={() => getDetailShow(currentShow.show_id_tvmaze)}>
-                      <HomePageCardMedia
-                        image={currentShow.poster}
-                        title={currentShow.show_name}
-                      >
-
-                        <Grid
-                          container
-                          justify="flex-end"
+                      <CardActionArea onClick={() => getDetailShow(currentShow.show_id_tvmaze)}>
+                        <HomePageCardMedia
+                          image={currentShow.poster}
+                          title={currentShow.show_name}
                         >
-                          <HomePageIconContainer className="hiddenCardIcon">
-                            <AddCircleIcon />
-                          </HomePageIconContainer>
-                          <HomePageIconContainer className="hiddenCardIcon">
-                            <VisibilityIcon />
-                          </HomePageIconContainer>
-                          <HomePageIconContainer className="hiddenCardIcon">
-                            <CreateIcon />
-                          </HomePageIconContainer>
-                          <HomePageIconContainer className="hiddenCardIcon">
-                            <StarIcon />
-                          </HomePageIconContainer>
-                          <HomePageIconContainer className="hiddenCardIcon">
-                            <DeleteForeverIcon />
-                          </HomePageIconContainer>
-                          <HomePageIconContainer onClick={this.displayCardActionButtons}>
-                            <HomePageCardIcon onClick={this.displayCardActionButtons} />
-                          </HomePageIconContainer>
-                        </Grid>
 
-                        <AiredTitleCardAndSubtitle
-                          container
-                          direction="row"
-                          justify="flex-end"
-                        >
-                          <HomePageCardTitle variant="h5" component="h2">
-                            {currentShow.show_name}
-                          </HomePageCardTitle>
+                          <Grid
+                            container
+                            justify="flex-end"
+                          >
+                            <HomePageIconContainer className="hiddenCardIcon">
+                              <AddCircleIcon />
+                            </HomePageIconContainer>
+                            <HomePageIconContainer className="hiddenCardIcon">
+                              <VisibilityIcon />
+                            </HomePageIconContainer>
+                            <HomePageIconContainer className="hiddenCardIcon">
+                              <CreateIcon />
+                            </HomePageIconContainer>
+                            <HomePageIconContainer className="hiddenCardIcon">
+                              <StarIcon />
+                            </HomePageIconContainer>
+                            <HomePageIconContainer className="hiddenCardIcon">
+                              <DeleteForeverIcon />
+                            </HomePageIconContainer>
+                            <HomePageIconContainer onClick={this.displayCardActionButtons}>
+                              <HomePageCardIcon onClick={this.displayCardActionButtons} />
+                            </HomePageIconContainer>
+                          </Grid>
 
-                          <AiredSubtitleSeasonEpisode>
-                            S{currentShow.season} E{currentShow.number}
-                          </AiredSubtitleSeasonEpisode>
+                          <AiredTitleCardAndSubtitle
+                            container
+                            direction="row"
+                            justify="flex-end"
+                          >
+                            <HomePageCardTitle variant="h5" component="h2">
+                              {currentShow.show_name}
+                            </HomePageCardTitle>
 
-                        </AiredTitleCardAndSubtitle>
+                            <AiredSubtitleSeasonEpisode>
+                              S{currentShow.season} E{currentShow.number}
+                            </AiredSubtitleSeasonEpisode>
 
-                      </HomePageCardMedia>
-                    </CardActionArea>
+                          </AiredTitleCardAndSubtitle>
 
-                  </NavLink>
+                        </HomePageCardMedia>
+                      </CardActionArea>
 
-                </HomePageCard>
+                    </NavLink>
 
-              </Grid>
-            ))}
-          </Slider>
+                  </HomePageCard>
+
+                </Grid>
+              ))}
+            </Slider>
+          ) : (
+            <Loader />
+          )}
         </Container>
       </>
     );

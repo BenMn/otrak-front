@@ -2,6 +2,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// Local Import
+import Loader from 'src/components/Loader';
+
 // Import material UI custom components
 import {
   Link,
@@ -28,6 +31,7 @@ const SignUp = ({
   handleAuthInputSubmit,
   // eslint-disable-next-line react/prop-types
   userAuthInfos,
+  loading,
 }) => (
   <LogFormModalPaper id="SignUp">
     <Container component="main" maxWidth="xs">
@@ -55,48 +59,50 @@ const SignUp = ({
           </LogFormModalSubtitle>
         </Grid>
 
-        {/* REGISTER Submit form */}
-        <form onSubmit={(event) => handleAuthInputSubmit(event)} id="form-signUp">
+        {loading === false ? (
+          <form onSubmit={(event) => handleAuthInputSubmit(event)} id="form-signUp">
 
-          <Grid item>
-            {Object.values(userAuthInfos).map((field) => (
-              <Field
-                key={field.name}
-                // eslint-disable-next-line react/jsx-props-no-spreading
-                {...field}
-                handleAuthInput={handleAuthInput}
-                value={field[field.name]}
-                id={`${field.name}-sign-up`}
-              />
-            ))}
-          </Grid>
-          {/* Button */}
-          <Grid item>
-            <LogFormModalButton
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-            >
-              Create your account
-            </LogFormModalButton>
-          </Grid>
-          {/* Other modal links */}
-          <Grid container direction="row" spacing={3}>
-            <Grid item xs>
-              <Link onClick={() => handleOpen('password')} variant="body2">
-                Forgot password?
-              </Link>
-            </Grid>
             <Grid item>
-              <Link onClick={() => handleOpen('in')} variant="body2">
-                Already registred ? Sign in
-              </Link>
+              {Object.values(userAuthInfos).map((field) => (
+                <Field
+                  key={field.name}
+                  // eslint-disable-next-line react/jsx-props-no-spreading
+                  {...field}
+                  handleAuthInput={handleAuthInput}
+                  value={field[field.name]}
+                  id={`${field.name}-sign-up`}
+                />
+              ))}
             </Grid>
-          </Grid>
 
-        </form>
+            <Grid item>
+              <LogFormModalButton
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+              >
+                Create your account
+              </LogFormModalButton>
+            </Grid>
 
+            <Grid container direction="row" spacing={3}>
+              <Grid item xs>
+                <Link onClick={() => handleOpen('password')} variant="body2">
+                  Forgot password?
+                </Link>
+              </Grid>
+              <Grid item>
+                <Link onClick={() => handleOpen('in')} variant="body2">
+                  Already registred ? Sign in
+                </Link>
+              </Grid>
+            </Grid>
+
+          </form>
+        ) : (
+          <Loader />
+        )}
       </Grid>
     </Container>
   </LogFormModalPaper>
@@ -105,6 +111,7 @@ const SignUp = ({
 SignUp.propTypes = {
   handleOpen: PropTypes.func.isRequired,
   handleAuthInput: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
   handleAuthInputSubmit: PropTypes.func.isRequired,
 };
 

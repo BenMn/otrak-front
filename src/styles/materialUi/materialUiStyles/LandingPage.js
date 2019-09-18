@@ -116,11 +116,12 @@ export const ApiInfosSearchDarkIcon = styled(SearchIcon)({
   color: theme.palette.common.white,
   display: 'flex',
   alignSelf: 'center',
-  margin: 5,
+  margin: '5px 5px 5px 10px',
 });
 
 export const ApiInfosSearchDarkInput = styled(InputBase)({
   color: theme.palette.common.white,
+  marginLeft: 10,
 });
 
 
