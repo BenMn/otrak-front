@@ -59,8 +59,10 @@ const Navbar = ({
           </Grid>
           {isLogged === true ? (
             <Grid item lg={3} md={3} sm={5} xs={6}>
-              <NavbarLogButton variant="text" color="inherit" onClick={handleLogOut}>
-                Log Out
+              <NavbarLogButton variant="text" color="inherit">
+                <NavLink exact to="/" color="inherit" onClick={handleLogOut}>
+                  Log Out
+                </NavLink>
               </NavbarLogButton>
               <NavbarLogButton variant="outlined" color="inherit">
                 <NavLink exact to="/dashboard" color="inherit" onClick={() => emptySearchResults()}>

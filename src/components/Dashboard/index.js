@@ -18,8 +18,8 @@ class Dashboard extends React.Component {
   render() {
     const {
       avatarUploadHandler,
-      handleAuthInput,
-      handleAuthInputSubmit,
+      handleUsernameInput,
+      handleUsernameInputSubmit,
       userAuthInfos,
       handleNewUsername,
       handleOpen,
@@ -29,8 +29,8 @@ class Dashboard extends React.Component {
       <div id="Dashboard">
         <Header
           avatarUploadHandler={avatarUploadHandler}
-          handleAuthInput={handleAuthInput}
-          handleAuthInputSubmit={handleAuthInputSubmit}
+          handleUsernameInput={handleUsernameInput}
+          handleUsernameInputSubmit={handleUsernameInputSubmit}
           userAuthInfos={userAuthInfos}
           handleNewUsername={handleNewUsername}
           handleOpen={handleOpen}
@@ -44,9 +44,8 @@ class Dashboard extends React.Component {
 
 Dashboard.propTypes = {
   avatarUploadHandler: PropTypes.func.isRequired,
-  handleAuthInput: PropTypes.func.isRequired,
-  handleAuthInputSubmit: PropTypes.func.isRequired,
-  handleNewUsername: PropTypes.func.isRequired,
+  handleUsernameInput: PropTypes.func.isRequired,
+  handleUsernameInputSubmit: PropTypes.func.isRequired,
   handleOpen: PropTypes.func.isRequired,
   fetchUserProfileInfos: PropTypes.func.isRequired,
   userAuthToken: PropTypes.string,

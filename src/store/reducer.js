@@ -34,7 +34,7 @@ const initialState = {
   userAuthInfos: {
     username: {
       index: 0,
-      username: 'jackiMimiiidu56',
+      username: '',
       name: 'username',
       label: 'Username',
       autoComplete: 'username',
@@ -63,7 +63,7 @@ const initialState = {
       type: 'password',
     },
   },
-  userAvatar: null,
+  userAvatar: '',
   userInfos: {},
 };
 
@@ -79,10 +79,13 @@ export const GET_USER_FOLLOWINGS = 'GET_USER_FOLLOWINGS';
 const EMPTY_SEARCH_RESULTS = 'EMPTY_SEARCH_RESULTS';
 
 const UPDATE_AUTH_INPUT = 'UPDATE_AUTH_INPUT';
+const UPDATE_USERNAME_INPUT = 'UPDATE_USERNAME_INPUT';
+const STORE_NEW_USERNAME_INPUT = 'STORE_NEW_USERNAME_INPUT';
+
 export const STORE_AUTH_INPUT_RESULT = 'STORE_AUTH_INPUT_RESULT';
 export const FETCH_LOGIN_AUTH_INFOS = 'FETCH_LOGIN_AUTH_INFOS';
 export const FETCH_REGISTER_AUTH_INFOS = 'FETCH_REGISTER_AUTH_INFOS';
-export const LOG_OUT = 'LOG_OUT';
+const LOG_OUT = 'LOG_OUT';
 
 const STORE_TRENDING = 'STORE_TRENDING';
 export const FETCH_TRENDING = 'FETCH_TRENDING';
@@ -91,7 +94,7 @@ const OPEN_MODAL = 'OPEN_MODAL';
 const CLOSE_MODAL = 'CLOSE_MODAL';
 
 export const AVATAR_UPLOAD_HANDLER = 'AVATAR_UPLOAD_HANDLER';
-const STORE_NEW_USERNAME = 'STORE_NEW_USERNAME';
+export const STORE_NEW_USERNAME = 'STORE_NEW_USERNAME';
 
 const REMOVE_SHOW_HISTORY_LIST = 'REMOVE_SHOW_HISTORY_LIST';
 export const FETCH_DETAIL_SHOW = 'FETCH_DETAIL_SHOW';
@@ -135,6 +138,25 @@ const reducer = (state = initialState, action = {}) => {
         },
       };
 
+    case UPDATE_USERNAME_INPUT:
+      return {
+        ...state,
+        userInfos: {
+          ...state.userInfos,
+          username: action.value,
+        },
+      };
+
+    case LOG_OUT:
+      return {
+        ...state,
+        isLogged: false,
+        userAuthToken: '',
+        userInfos: {},
+        storeUserAuthInfos: {},
+        userAvatar: '',
+      };
+
     case STORE_AUTH_INPUT_RESULT:
       return {
         ...state,
@@ -153,6 +175,15 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         userInfos: action.userInfos,
         isLogged: true,
+      };
+
+    case STORE_NEW_USERNAME_INPUT:
+      return {
+        ...state,
+        userInfos: {
+          ...state.userInfos,
+          username: action.newUsername,
+        },
       };
 
     case OPEN_MODAL:
@@ -181,18 +212,6 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         userAvatar: action.newAvatar,
-      };
-
-    case STORE_NEW_USERNAME:
-      return {
-        ...state,
-        userAuthInfos: {
-          ...state.userAuthInfos,
-          [action.name]: {
-            ...state.userAuthInfos[`${action.name}`],
-            [action.name]: action.newUsername,
-          },
-        },
       };
 
     case REMOVE_SHOW_HISTORY_LIST:
@@ -277,6 +296,12 @@ export const updateAuthInput = (value, name, index) => ({
   value,
   name,
   index,
+});
+
+export const updateUsernameInput = (value, name) => ({
+  type: UPDATE_USERNAME_INPUT,
+  value,
+  name,
 });
 
 export const fetchLoginAuthInfos = (email, password) => ({
@@ -365,10 +390,16 @@ export const avatarUploadHandler = (newAvatar) => ({
   newAvatar,
 });
 
-export const storeNewUsername = (newUsername, name) => ({
+export const storeNewUsername = (newUsername, name, userId) => ({
   type: STORE_NEW_USERNAME,
   newUsername,
   name,
+  userId,
+});
+
+export const storeNewUsernameInput = (newUsername) => ({
+  type: STORE_NEW_USERNAME_INPUT,
+  newUsername,
 });
 
 export const removeShowHistoryList = (showId) => ({
