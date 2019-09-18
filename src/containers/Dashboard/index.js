@@ -7,10 +7,7 @@ import Dashboard from 'src/components/Dashboard';
 // Action Creators
 import {
   avatarUploadHandler,
-  updateAuthInput,
   updateUsernameInput,
-  fetchRegisterAuthInfos,
-  fetchLoginAuthInfos,
   storeNewUsername,
   openModal,
   getUserInfos,
@@ -34,30 +31,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(avatarUploadHandler(newAvatar));
   },
 
-  handleAuthInput: (event, index) => {
-    const { value, name } = event.target;
-    dispatch(updateAuthInput(value, name, index));
-  },
-
-  handleAuthInputSubmit: (event) => {
-    event.persist();
-    if (event.target.length === 9) {
-      const username = event.target[0].value;
-      const email = event.target[2].value;
-      const password = event.target[4].value;
-      const passwordConfirm = event.target[6].value;
-      dispatch(fetchRegisterAuthInfos(username, email, password, passwordConfirm));
-    }
-    if (event.target.length === 5) {
-      const email = event.target[0].value;
-      const password = event.target[2].value;
-      dispatch(fetchLoginAuthInfos(email, password));
-    }
-    event.preventDefault();
-  },
-
   handleUsernameInput: (event) => {
-    console.log(event.target.value);
     const { value, name } = event.target;
     dispatch(updateUsernameInput(value, name));
   },

@@ -55,7 +55,7 @@ const initialState = {
       type: 'password',
     },
   },
-  userAvatar: null,
+  userAvatar: '',
   userInfos: {},
 };
 
@@ -77,7 +77,7 @@ const STORE_NEW_USERNAME_INPUT = 'STORE_NEW_USERNAME_INPUT';
 export const STORE_AUTH_INPUT_RESULT = 'STORE_AUTH_INPUT_RESULT';
 export const FETCH_LOGIN_AUTH_INFOS = 'FETCH_LOGIN_AUTH_INFOS';
 export const FETCH_REGISTER_AUTH_INFOS = 'FETCH_REGISTER_AUTH_INFOS';
-export const LOG_OUT = 'LOG_OUT';
+const LOG_OUT = 'LOG_OUT';
 
 const STORE_TRENDING = 'STORE_TRENDING';
 export const FETCH_TRENDING = 'FETCH_TRENDING';
@@ -136,6 +136,16 @@ const reducer = (state = initialState, action = {}) => {
           ...state.userInfos,
           username: action.value,
         },
+      };
+
+    case LOG_OUT:
+      return {
+        ...state,
+        isLogged: false,
+        userAuthToken: '',
+        userInfos: {},
+        storeUserAuthInfos: {},
+        userAvatar: '',
       };
 
     case STORE_AUTH_INPUT_RESULT:
