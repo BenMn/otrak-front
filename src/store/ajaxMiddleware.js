@@ -18,6 +18,8 @@ import {
   storeDetailShow,
 
   closeModal,
+
+  START_FOLLOWING_SHOW,
 } from 'src/store/reducer';
 
 
@@ -26,7 +28,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
 
   switch (action.type) {
     case FETCH_TRENDING:
-      axios.get('http://localhost:8000/api/shows/aired')
+      axios.get('http://localhost:8001/api/shows/aired')
         .then((response) => {
           const { data } = response;
           store.dispatch(storeTrending(data));
@@ -35,7 +37,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       break;
 
     case FETCH_SEARCH_INPUT_RESULT:
-      axios.get(`http://localhost:8000/api/shows/search/${action.searchInputValue}`)
+      axios.get(`http://localhost:8001/api/shows/search/${action.searchInputValue}`)
         .then((response) => {
           const { data } = response;
           store.dispatch(storeSearchInputResult(data));
@@ -51,7 +53,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       };
       // const email = JSON.stringify({ email:action.email });
       // const password = JSON.stringify({ password: action.password })
-      axios.post('http://localhost:8000/api/login_check',
+      axios.post('http://localhost:8001/api/login_check',
         JSON.stringify(payload), {
           headers: {
             'Content-Type': 'application/json',
@@ -71,7 +73,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
 
     case GET_USER_INFOS:
       console.log(action.userAuthToken, '<<<<<< TOKEN');
-      axios.get('http://localhost:8000/api/users/1', {
+      axios.get('http://localhost:8001/api/users/2', {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${action.userAuthToken}`,
@@ -86,7 +88,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       break;
 
     case FETCH_REGISTER_AUTH_INFOS:
-      axios.post('http://localhost:8000/api/users/new', {
+      axios.post('http://localhost:8001/api/users/new', {
         username: action.username,
         email: action.email,
         password: action.password,
@@ -101,7 +103,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       break;
 
       // case LOG_OUT:
-      //   axios.post('http://localhost:8000/api/users/new', {
+      //   axios.post('http://localhost:8001/api/users/new', {
       //     username: action.username,
       //     email: action.email,
       //     password: action.password,
@@ -118,7 +120,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       // case AVATAR_UPLOAD_HANDLER:
       //   const formData = new FormData();
       //   formData.append('image', action.newAvatar, action.newAvatar.name);
-      //   axios.post('http://localhost:8000/api/users/avatar', formData)
+      //   axios.post('http://localhost:8001/api/users/avatar', formData)
       //     .then((response) => {
       //       console.log(response);
       //     })
@@ -128,11 +130,26 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       //   break;
 
     case FETCH_DETAIL_SHOW:
-      axios.get(`http://localhost:8000/api/shows/${action.idShow}`)
+      axios.get(`http://localhost:8001/api/shows/${action.idShow}`)
         .then((response) => {
           console.log(response);
           const { data } = response;
           store.dispatch(storeDetailShow(data));
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+      break;
+
+    case START_FOLLOWING_SHOW:
+      axios.post(`http://localhost:8001/api/followings/new/2/0/${action.idShow}/0/0`, {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${action.token}`,
+        },
+      })
+        .then((response) => {
+          console.log(response);
         })
         .catch((error) => {
           console.error(error);

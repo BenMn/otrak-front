@@ -24,7 +24,7 @@ import './show.scss';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 
-const Show = ({ showDetail, addToWatchList }) => (
+const Show = ({ showDetail, addToWatchList, userAuthToken }) => (
   <>
     {/* Background Picture */}
     <IndexScreenPicture image={showDetail.poster}>
@@ -40,7 +40,7 @@ const Show = ({ showDetail, addToWatchList }) => (
           </NavLink>
 
           {/* Children Components */}
-          <HeadScreen showDetail={showDetail} addToWatchList={addToWatchList} />
+          <HeadScreen showDetail={showDetail} addToWatchList={addToWatchList} userAuthToken={userAuthToken} />
           <ResumeShow showDetail={showDetail} />
           <Casting showDetail={showDetail} />
         </IndexContainer>
@@ -52,6 +52,7 @@ const Show = ({ showDetail, addToWatchList }) => (
 Show.propTypes = {
   showDetail: PropTypes.object.isRequired,
   addToWatchList: PropTypes.func.isRequired,
+  userAuthToken: PropTypes.string.isRequired,
 };
 
 export default Show;

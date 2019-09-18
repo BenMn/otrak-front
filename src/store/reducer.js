@@ -87,6 +87,8 @@ const REMOVE_SHOW_HISTORY_LIST = 'REMOVE_SHOW_HISTORY_LIST';
 export const FETCH_DETAIL_SHOW = 'FETCH_DETAIL_SHOW';
 const STORE_DETAIL_SHOW = 'STORE_DETAIL_SHOW';
 
+export const START_FOLLOWING_SHOW = 'START_FOLLOWING_SHOW';
+
 
 // == Reducer
 const reducer = (state = initialState, action = {}) => {
@@ -309,6 +311,12 @@ export const removeShowHistoryList = (showId) => ({
 
 export const emptySearchResults = () => ({
   type: EMPTY_SEARCH_RESULTS,
+});
+
+export const startFollowingShow = (idShow, token) => ({
+  type: START_FOLLOWING_SHOW,
+  idShow,
+  token,
 });
 
 // == Selectors
