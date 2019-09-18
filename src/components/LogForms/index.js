@@ -29,6 +29,7 @@ const LogFormsModal = ({
   trendingList,
   handleDeleteHistoryShow,
   updatedHistoryList,
+  loading,
 }) => (
   <div>
     <Modal
@@ -50,6 +51,7 @@ const LogFormsModal = ({
             handleAuthInput={handleAuthInput}
             handleAuthInputSubmit={handleAuthInputSubmit}
             userAuthInfos={userAuthInfos}
+            loading={loading}
           />
         )}
         {modalName === 'up' && (
@@ -59,6 +61,7 @@ const LogFormsModal = ({
             handleAuthInput={handleAuthInput}
             handleAuthInputSubmit={handleAuthInputSubmit}
             userAuthInfos={userAuthInfos}
+            loading={loading}
           />
         )}
         {modalName === 'password' && (
@@ -68,6 +71,7 @@ const LogFormsModal = ({
             handleAuthInput={handleAuthInput}
             handleAuthInputSubmit={handleAuthInputSubmit}
             userAuthInfos={userAuthInfos}
+            loading={loading}
           />
         )}
         {modalName === 'history' && (
@@ -75,6 +79,7 @@ const LogFormsModal = ({
             trendingList={trendingList}
             handleDeleteHistoryShow={handleDeleteHistoryShow}
             updatedHistoryList={updatedHistoryList}
+            loading={loading}
           />
         )}
         {modalName === 'account' && (
@@ -83,6 +88,7 @@ const LogFormsModal = ({
             handleAuthInput={handleAuthInput}
             handleAuthInputSubmit={handleAuthInputSubmit}
             userAuthInfos={userAuthInfos}
+            loading={loading}
           />
         )}
       </Fade>
@@ -100,6 +106,7 @@ LogFormsModal.propTypes = {
   trendingList: PropTypes.array.isRequired,
   handleDeleteHistoryShow: PropTypes.func,
   updatedHistoryList: PropTypes.array.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 LogFormsModal.defaultProps = {

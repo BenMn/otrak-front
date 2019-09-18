@@ -17,6 +17,7 @@ import {
 import HeadScreen from 'src/components/Show/HeadScreen';
 import ResumeShow from 'src/components/Show/ResumeShow';
 import Casting from 'src/components/Show/Casting';
+import Loader from 'src/components/Loader';
 
 import './show.scss';
 
@@ -31,23 +32,30 @@ const Show = ({
   userInfos,
 }) => (
   <>
-    {/* Background Picture */}
     <IndexScreenPicture image={showDetail.poster}>
 
-      {/* Black effect on the Background */}
       <div className="fond-img">
 
         <IndexContainer maxWidth="md">
 
-          {/* Return Button */}
           <NavLink exact to="/search">
             <IndexButtonReturn color="secondary"><ArrowBackIcon />Return</IndexButtonReturn>
           </NavLink>
 
-          {/* Children Components */}
-          <HeadScreen showDetail={showDetail} addToWatchList={addToWatchList} userAuthToken={userAuthToken} userInfos={userInfos} />
-          <ResumeShow showDetail={showDetail} />
-          <Casting showDetail={showDetail} />
+          {Object.keys(showDetail).length !== 0 ? (
+            <>
+              <HeadScreen
+                showDetail={showDetail}
+                addToWatchList={addToWatchList}
+                userAuthToken={userAuthToken}
+                userInfos={userInfos}
+              />
+              <ResumeShow showDetail={showDetail} />
+              <Casting showDetail={showDetail} />
+            </>
+          ) : (
+            <Loader />
+          )}
         </IndexContainer>
       </div>
     </IndexScreenPicture>

@@ -29,10 +29,11 @@ export const NavbarSearchIcon = styled(SearchIcon)({
   color: theme.palette.common.white,
   display: 'flex',
   alignSelf: 'center',
-  margin: 5,
+  margin: '5px 5px 5px 10px',
 });
 
 export const NavbarSearchInput = styled(InputBase)({
   width: '100%',
   color: theme.palette.common.white,
+  marginLeft: 10,
 });

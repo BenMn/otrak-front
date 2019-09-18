@@ -3,8 +3,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import theme from 'src/styles/materialUi/materialUiTheme/theme';
 
+// Local import
+import SmallLoader from 'src/components/Loader/SmallLoader';
+
 // import material UI components
-import { Grid } from '@material-ui/core';
+import { Grid, Box } from '@material-ui/core';
 
 // import material UI custom components
 import {
@@ -38,13 +41,21 @@ class HeadScreen extends React.Component {
       searchInputValue,
       handleSearchInput,
       handleSearchInputSubmit,
+      loading,
     } = this.props;
     return (
       <div id="landing-page">
         <div className="screen-landing-page">
           <Grid container justify="space-between" className="header-transparent-navbar">
             <Grid item className="div-input-icon-search">
-              <HeadScreenSearchIcon fontSize="large" color="action" onMouseOver={this.handleSearchInput} />
+
+              {loading === false ? (
+                <HeadScreenSearchIcon fontSize="large" color="action" onMouseOver={this.handleSearchInput} />
+              ) : (
+                <Box id="headScreen-smallLoader">
+                  <SmallLoader />
+                </Box>
+              )}
 
               {/* searchBar */}
               <form onSubmit={(event) => handleSearchInputSubmit(event, searchInputValue)} id="form-submit">
@@ -55,7 +66,6 @@ class HeadScreen extends React.Component {
                   onChange={(event) => handleSearchInput(event.target.value)}
                 />
               </form>
-
             </Grid>
             <Grid item>
 
@@ -102,6 +112,7 @@ HeadScreen.propTypes = {
   searchInputValue: PropTypes.string.isRequired,
   handleSearchInput: PropTypes.func.isRequired,
   handleSearchInputSubmit: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 HeadScreen.defaultProps = {

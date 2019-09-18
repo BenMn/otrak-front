@@ -2,10 +2,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// Local Import
+import SmallLoader from 'src/components/Loader/SmallLoader';
+
 // import material UI components
 import {
   Grid,
   Typography,
+  Box,
 } from '@material-ui/core';
 
 // import material UI custom components
@@ -18,7 +22,12 @@ import {
 } from 'src/styles/materialUi/materialUiStyles/LandingPage';
 
 // Section #3 of LP
-const ApiInfos = ({ searchInputValue, handleSearchInput, handleSearchInputSubmit }) => (
+const ApiInfos = ({
+  searchInputValue,
+  handleSearchInput,
+  handleSearchInputSubmit,
+  loading,
+}) => (
   <Grid container alignItems="center" justify="flex-end">
 
     {/* screenshot */}
@@ -40,7 +49,14 @@ const ApiInfos = ({ searchInputValue, handleSearchInput, handleSearchInputSubmit
 
         {/* SearchBar */}
         <ApiInfosSearchDark align="right">
-          <ApiInfosSearchDarkIcon />
+
+          {loading === false ? (
+            <ApiInfosSearchDarkIcon />
+          ) : (
+            <Box id="apiInfos-smallLoader">
+              <SmallLoader />
+            </Box>
+          )}
           <form onSubmit={(event) => handleSearchInputSubmit(event, searchInputValue)} id="form-submit">
             <ApiInfosSearchDarkInput
               color="textPrimary"
@@ -62,6 +78,7 @@ ApiInfos.propTypes = {
   searchInputValue: PropTypes.string.isRequired,
   handleSearchInput: PropTypes.func.isRequired,
   handleSearchInputSubmit: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 export default ApiInfos;

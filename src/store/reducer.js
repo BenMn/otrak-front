@@ -27,6 +27,7 @@ const initialState = {
   open: false,
   setOpen: false,
   modalName: '',
+  loading: false,
   // Authentification
   isLogged: false,
   userAuthToken: '',
@@ -92,6 +93,7 @@ export const FETCH_TRENDING = 'FETCH_TRENDING';
 
 const OPEN_MODAL = 'OPEN_MODAL';
 const CLOSE_MODAL = 'CLOSE_MODAL';
+const ACTIVE_LOADING = 'ACTIVE_LOADING';
 
 export const AVATAR_UPLOAD_HANDLER = 'AVATAR_UPLOAD_HANDLER';
 export const STORE_NEW_USERNAME = 'STORE_NEW_USERNAME';
@@ -124,6 +126,7 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         storeSearchInputResult: action.data,
+        loading: false,
       };
 
     case UPDATE_AUTH_INPUT:
@@ -161,6 +164,7 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         storeAuthInputResult: action.storeAuthInputResult,
+        loading: false,
       };
 
     case STORE_USER_AUTH_INFOS:
@@ -168,6 +172,7 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         userAuthToken: action.token,
         isLogged: true,
+        loading: false,
       };
 
     case STORE_USER_INFOS:
@@ -175,6 +180,7 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         userInfos: action.userInfos,
         isLogged: true,
+        loading: false,
       };
 
     case STORE_NEW_USERNAME_INPUT:
@@ -200,6 +206,12 @@ const reducer = (state = initialState, action = {}) => {
         setOpen: false,
         open: false,
         modalName: action.modalName,
+      };
+
+    case ACTIVE_LOADING:
+      return {
+        ...state,
+        loading: true,
       };
 
     case STORE_DETAIL_SHOW:
@@ -428,6 +440,10 @@ export const startFollowingShow = (idShow, token, userId) => ({
 export const storeSortedArray = (typeSort) => ({
   type: STORE_SORTED_ARRAY,
   typeSort,
+});
+
+export const activeLoading = () => ({
+  type: ACTIVE_LOADING,
 });
 // == Selectors
 

@@ -18,7 +18,9 @@ import {
   NavbarLogButton,
 } from 'src/styles/materialUi/materialUiStyles/Navbar';
 
-// Authentification modals
+// Local Import
+import SmallLoader from 'src/components/Loader/SmallLoader';
+
 import './Navbar.scss';
 
 
@@ -30,6 +32,7 @@ const Navbar = ({
   isLogged,
   handleLogOut,
   emptySearchResults,
+  loading,
 }) => (
   <div id="Navbar">
     <AppBar position="static">
@@ -45,7 +48,11 @@ const Navbar = ({
           {/* SearchBar */}
           <Grid item lg={6} md={6} sm={4} xs={4}>
             <NavbarSearch>
-              <NavbarSearchIcon />
+              {loading === true ? (
+                <SmallLoader />
+              ) : (
+                <NavbarSearchIcon />
+              )}
               <form onSubmit={(event) => handleSearchInputSubmit(event, searchInputValue)} id="form-submit">
                 <NavbarSearchInput
                   color="textPrimary"
@@ -95,6 +102,7 @@ Navbar.propTypes = {
   searchInputValue: PropTypes.string.isRequired,
   isLogged: PropTypes.bool.isRequired,
   emptySearchResults: PropTypes.func,
+  loading: PropTypes.bool.isRequired,
 };
 
 Navbar.defaultProps = {
