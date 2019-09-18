@@ -35,28 +35,28 @@ const Trending = () => (
         <Grid item lg={3} md={3} xs={5}>
           <TrendingCard justify="center">
             <TrendingCardMedia
-              image="src/styles/assets/images/mediumAnime/1.jpg"
+              image="../../src/styles/assets/images/mediumAnime/1.jpg"
             />
           </TrendingCard>
         </Grid>
         <Grid item lg={3} md={3} xs={5}>
           <TrendingCard justify="center">
             <TrendingCardMedia
-              image="src/styles/assets/images/mediumAnime/2.jpg"
+              image="../../src/styles/assets/images/mediumAnime/2.jpg"
             />
           </TrendingCard>
         </Grid>
         <Grid item lg={3} md={3} xs={5}>
           <TrendingCard justify="center">
             <TrendingCardMedia
-              image="src/styles/assets/images/mediumAnime/3.jpg"
+              image="../../src/styles/assets/images/mediumAnime/3.jpg"
             />
           </TrendingCard>
         </Grid>
         <Grid item lg={3} md={3} xs={5}>
           <TrendingCard justify="center">
             <TrendingCardMedia
-              image="src/styles/assets/images/mediumAnime/4.jpg"
+              image="../../src/styles/assets/images/mediumAnime/4.jpg"
             />
           </TrendingCard>
         </Grid>
@@ -74,28 +74,28 @@ const Trending = () => (
         <Grid item lg={3} md={3} xs={5}>
           <TrendingCard justify="center">
             <TrendingCardMedia
-              image="src/styles/assets/images/mediumSeries/1.jpg"
+              image="../../src/styles/assets/images/mediumSeries/1.jpg"
             />
           </TrendingCard>
         </Grid>
         <Grid item lg={3} md={3} xs={5}>
           <TrendingCard justify="center">
             <TrendingCardMedia
-              image="src/styles/assets/images/mediumSeries/2.jpg"
+              image="../../src/styles/assets/images/mediumSeries/2.jpg"
             />
           </TrendingCard>
         </Grid>
         <Grid item lg={3} md={3} xs={5}>
           <TrendingCard justify="center">
             <TrendingCardMedia
-              image="src/styles/assets/images/mediumSeries/3.jpg"
+              image="../../src/styles/assets/images/mediumSeries/3.jpg"
             />
           </TrendingCard>
         </Grid>
         <Grid item lg={3} md={3} xs={5}>
           <TrendingCard justify="center">
             <TrendingCardMedia
-              image="src/styles/assets/images/mediumSeries/4.jpg"
+              image="../../src/styles/assets/images/mediumSeries/4.jpg"
             />
           </TrendingCard>
         </Grid>

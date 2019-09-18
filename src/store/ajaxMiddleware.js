@@ -3,10 +3,14 @@ import axios from 'axios';
 import {
   FETCH_LOGIN_AUTH_INFOS,
   FETCH_REGISTER_AUTH_INFOS,
-  storeUserAuthInfos,
+  // storeUserAuthInfos,
   // LOG_OUT,
   GET_USER_INFOS,
+  getUserInfos,
   storeUserInfos,
+  GET_USER_FOLLOWINGS,
+  getUserFollowings,
+  storeUserFollowings,
 
   FETCH_TRENDING,
   storeTrending,
@@ -62,7 +66,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
         // email: action.email,
         // password: action.password,
         .then((response) => {
-          store.dispatch(storeUserAuthInfos(response.data.token));
+          store.dispatch(getUserInfos(response.data.token));
           store.dispatch(closeModal());
         })
         .catch((error) => {
@@ -70,10 +74,8 @@ const ajaxMiddleware = (store) => (next) => (action) => {
         });
       break;
 
-
     case GET_USER_INFOS:
-      console.log(action.userAuthToken, '<<<<<< TOKEN');
-      axios.get('http://localhost:8001/api/users/2', {
+      axios.get('http://localhost:8000/api/users/2', {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${action.userAuthToken}`,
@@ -81,6 +83,21 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       })
         .then((response) => {
           store.dispatch(storeUserInfos(response.data));
+          store.dispatch(getUserFollowings(response.data.id));
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+      break;
+
+    case GET_USER_FOLLOWINGS:
+      axios.get(`http://localhost:8000/api/users/${action.userId}/followings`, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+        .then((response) => {
+          store.dispatch(storeUserFollowings(response.data));
         })
         .catch((error) => {
           console.error(error);

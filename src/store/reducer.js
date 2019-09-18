@@ -9,6 +9,7 @@ const initialState = {
   updatedHistoryList: [],
   // Single show details
   showDetail: {},
+  userFollowings: {},
   // Search
   searchInputValue: '',
   storeSearchInputResult: [],
@@ -65,6 +66,7 @@ export const STORE_SEARCH_INPUT_RESULT = 'STORE_SEARCH_INPUT_RESULT';
 const STORE_USER_AUTH_INFOS = 'STORE_USER_AUTH_INFOS';
 export const GET_USER_INFOS = 'GET_USER_INFOS';
 const STORE_USER_INFOS = 'STORE_USER_INFOS';
+export const GET_USER_FOLLOWINGS = 'GET_USER_FOLLOWINGS';
 
 const EMPTY_SEARCH_RESULTS = 'EMPTY_SEARCH_RESULTS';
 
@@ -86,6 +88,7 @@ const STORE_NEW_USERNAME = 'STORE_NEW_USERNAME';
 const REMOVE_SHOW_HISTORY_LIST = 'REMOVE_SHOW_HISTORY_LIST';
 export const FETCH_DETAIL_SHOW = 'FETCH_DETAIL_SHOW';
 const STORE_DETAIL_SHOW = 'STORE_DETAIL_SHOW';
+const STORE_USER_FOLLOWINGS = 'STORE_USER_FOLLOWINGS';
 
 export const START_FOLLOWING_SHOW = 'START_FOLLOWING_SHOW';
 
@@ -199,6 +202,12 @@ const reducer = (state = initialState, action = {}) => {
         storeSearchInputResult: [],
       };
 
+    case STORE_USER_FOLLOWINGS:
+      return {
+        ...state,
+        userFollowings: action.userFollowings,
+      };
+
     default:
       return state;
   }
@@ -243,6 +252,11 @@ export const storeUserAuthInfos = (token) => ({
 export const getUserInfos = (userAuthToken) => ({
   type: GET_USER_INFOS,
   userAuthToken,
+});
+
+export const getUserFollowings = (userId) => ({
+  type: GET_USER_FOLLOWINGS,
+  userId,
 });
 
 export const storeUserInfos = (userInfos) => ({
@@ -311,6 +325,12 @@ export const removeShowHistoryList = (showId) => ({
 
 export const emptySearchResults = () => ({
   type: EMPTY_SEARCH_RESULTS,
+});
+
+
+export const storeUserFollowings = (userFollowings) => ({
+  type: STORE_USER_FOLLOWINGS,
+  userFollowings,
 });
 
 export const startFollowingShow = (idShow, token) => ({
