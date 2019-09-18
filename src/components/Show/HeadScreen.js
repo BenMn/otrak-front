@@ -17,7 +17,7 @@ import {
 } from 'src/styles/materialUi/materialUiStyles/Show';
 
 
-const HeadScreen = ({ showDetail, addToWatchList }) => (
+const HeadScreen = ({ showDetail, addToWatchList, userAuthToken }) => (
   <>
     {console.log(showDetail)}
 
@@ -46,9 +46,9 @@ const HeadScreen = ({ showDetail, addToWatchList }) => (
           <Grid item>
             <ShowHeadTitle variant="h3">{showDetail.name}</ShowHeadTitle>
           </Grid>
-
+          {console.log(userAuthToken, 'fkldnjgkldkl')}
           <Grid item>
-            <Button variant="contained" color="secondary" onClick={addToWatchList}>ADD TO MY WATCH LIST</Button>
+            <Button variant="contained" color="secondary" onClick={() => addToWatchList(showDetail.id_tvmaze, userAuthToken)}>ADD TO MY WATCH LIST</Button>
           </Grid>
           
           <Grid item>
@@ -73,6 +73,7 @@ const HeadScreen = ({ showDetail, addToWatchList }) => (
 HeadScreen.propTypes = {
   showDetail: PropTypes.object.isRequired,
   addToWatchList: PropTypes.func.isRequired,
+  userAuthToken: PropTypes.string.isRequired,
 };
 
 HeadScreen.defaultProps = {

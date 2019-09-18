@@ -6,14 +6,20 @@ import { connect } from 'react-redux';
 import Show from 'src/components/Show';
 
 // Action Creators
+import {
+  startFollowingShow,
+} from 'src/store/reducer';
+
 
 const mapStateToProps = (state) => ({
   showDetail: state.showDetail,
+  userAuthToken: state.userAuthToken,
 });
 
-const mapDispatchToProps = () => ({
-  addToWatchList: () => {
-    console.log('addToWatchList');
+const mapDispatchToProps = (dispatch) => ({
+  addToWatchList: (idShow, token) => {
+    console.log('TOKKKEEEENNNN', token);
+    dispatch(startFollowingShow(idShow, token));
   },
 });
 

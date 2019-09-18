@@ -90,6 +90,8 @@ export const FETCH_DETAIL_SHOW = 'FETCH_DETAIL_SHOW';
 const STORE_DETAIL_SHOW = 'STORE_DETAIL_SHOW';
 const STORE_USER_FOLLOWINGS = 'STORE_USER_FOLLOWINGS';
 
+export const START_FOLLOWING_SHOW = 'START_FOLLOWING_SHOW';
+
 
 // == Reducer
 const reducer = (state = initialState, action = {}) => {
@@ -325,10 +327,18 @@ export const emptySearchResults = () => ({
   type: EMPTY_SEARCH_RESULTS,
 });
 
+
 export const storeUserFollowings = (userFollowings) => ({
   type: STORE_USER_FOLLOWINGS,
   userFollowings,
 });
+
+export const startFollowingShow = (idShow, token) => ({
+  type: START_FOLLOWING_SHOW,
+  idShow,
+  token,
+});
+
 // == Selectors
 
 
