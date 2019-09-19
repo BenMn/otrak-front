@@ -55,7 +55,7 @@ function a11yProps(index) {
   };
 }
 
-export default function TabsTest() {
+const AllTabs = ({ userFollowings }) => {
   const [value, setValue] = React.useState(0);
 
   function handleChange(event, newValue) {
@@ -84,38 +84,58 @@ export default function TabsTest() {
       {/* Watching */}
       <TabPanel value={value} index={0}>
         <Grid container spacing={2} justify="center">
-          <Cards />
+          <Cards
+            userFollowings={userFollowings}
+          />
         </Grid>
       </TabPanel>
 
       {/* Completed */}
       <TabPanel value={value} index={1}>
         <Grid container spacing={2} justify="center">
-          <Cards />
+          <Cards
+            userFollowings={userFollowings}
+          />
         </Grid>
       </TabPanel>
 
       {/* See Next */}
       <TabPanel value={value} index={2}>
         <Grid container spacing={2} justify="center">
-          <Cards />
+          <Cards
+            userFollowings={userFollowings}
+          />
         </Grid>
       </TabPanel>
 
       {/* Upcoming */}
       <TabPanel value={value} index={3}>
         <Grid container spacing={2} justify="center">
-          <Cards />
+          <Cards
+            userFollowings={userFollowings}
+          />
         </Grid>
       </TabPanel>
 
       {/* Stopped */}
       <TabPanel value={value} index={4}>
         <Grid container spacing={2} justify="center">
-          <Cards />
+          <Cards
+            userFollowings={userFollowings}
+          />
         </Grid>
       </TabPanel>
 
     </>
   );
-}
+};
+
+AllTabs.propTypes = {
+  userFollowings: PropTypes.array,
+};
+
+AllTabs.defaultProps = {
+  userFollowings: [],
+};
+
+export default AllTabs;

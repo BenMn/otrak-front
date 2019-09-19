@@ -9,28 +9,44 @@ import Tabs from './Tabs';
 
 import './Dashboard.scss';
 
-const Dashboard = ({
-  avatarUploadHandler,
-  handleUsernameInput,
-  handleUsernameInputSubmit,
-  userAuthInfos,
-  handleNewUsername,
-  handleOpen,
-  userInfos,
-}) => (
-  <div id="Dashboard">
-    <Header
-      avatarUploadHandler={avatarUploadHandler}
-      handleUsernameInput={handleUsernameInput}
-      handleUsernameInputSubmit={handleUsernameInputSubmit}
-      userAuthInfos={userAuthInfos}
-      handleNewUsername={handleNewUsername}
-      handleOpen={handleOpen}
-      userInfos={userInfos}
-    />
-    <Tabs />
-  </div>
-);
+class Dashboard extends React.Component {
+  componentDidMount() {
+    const { getUserFollowings, userInfos, userAuthToken } = this.props;
+    console.log(userInfos.id, '<<<<<<<<<<<<<<<< DASH COMPOSANT unserInfos');
+    console.log(userAuthToken, '<<<<<<<<<<<<<<<< DASH COMPOSANT token');
+    getUserFollowings(userInfos.id, userAuthToken);
+  }
+
+  render() {
+    const {
+      avatarUploadHandler,
+      handleUsernameInput,
+      handleUsernameInputSubmit,
+      userAuthInfos,
+      handleNewUsername,
+      handleOpen,
+      userInfos,
+      userFollowings,
+    } = this.props;
+    return (
+      <div id="Dashboard">
+        <Header
+          avatarUploadHandler={avatarUploadHandler}
+          handleUsernameInput={handleUsernameInput}
+          handleUsernameInputSubmit={handleUsernameInputSubmit}
+          userAuthInfos={userAuthInfos}
+          handleNewUsername={handleNewUsername}
+          handleOpen={handleOpen}
+          userInfos={userInfos}
+        />
+        <Tabs
+          userFollowings={userFollowings}
+        />
+      </div>
+    );
+  }
+}
+
 
 Dashboard.propTypes = {
   avatarUploadHandler: PropTypes.func.isRequired,
@@ -38,10 +54,14 @@ Dashboard.propTypes = {
   handleUsernameInputSubmit: PropTypes.func.isRequired,
   handleOpen: PropTypes.func.isRequired,
   userInfos: PropTypes.object,
+  userFollowings: PropTypes.array,
+  userAuthToken: PropTypes.string,
 };
 
 Dashboard.defaultProps = {
   userInfos: {},
+  userFollowings: [],
+  userAuthToken: '',
 };
 
 export default Dashboard;

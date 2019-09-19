@@ -29,6 +29,7 @@ const Show = ({
   showDetail,
   addToWatchList,
   userAuthToken,
+  // eslint-disable-next-line react/prop-types
   userInfos,
 }) => (
   <>
