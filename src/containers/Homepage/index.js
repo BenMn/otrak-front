@@ -30,6 +30,9 @@ const mapDispatchToProps = (dispatch) => ({
   sortBy: (typeSort) => {
     dispatch(storeSortedArray(typeSort));
   },
+  testClickCardMedia: () => {
+    console.log("c'est le clique de la card");
+  },
 });
 
 // Container

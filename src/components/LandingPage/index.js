@@ -26,6 +26,7 @@ class LandingPage extends React.Component {
       handleSearchInputSubmit,
       handleOpen,
       loading,
+      getDetailShow,
     } = this.props;
     return (
       <>
@@ -43,7 +44,7 @@ class LandingPage extends React.Component {
           loading={loading}
         />
         <ManageShows />
-        <Trending trendingList={trendingList} />
+        <Trending trendingList={trendingList} getDetailShow={getDetailShow} />
         <StartToday handleOpen={handleOpen} />
       </>
     );
@@ -58,6 +59,7 @@ LandingPage.propTypes = {
   handleSearchInputSubmit: PropTypes.func.isRequired,
   handleOpen: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
+  getDetailShow: PropTypes.func.isRequired,
 };
 
 export default LandingPage;

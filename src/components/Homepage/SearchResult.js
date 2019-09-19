@@ -88,7 +88,12 @@ class SearchResult extends React.Component {
   }
 
   render() {
-    const { searchInputValue, storeSearchInputResult, getDetailShow } = this.props;
+    const {
+      searchInputValue,
+      storeSearchInputResult,
+      getDetailShow,
+      testClickCardMedia,
+    } = this.props;
 
     // Setting of Slider component
 
@@ -125,44 +130,45 @@ class SearchResult extends React.Component {
             {storeSearchInputResult.map((currentShow) => (
               <SearchResultGridWithoutSlider item key={currentShow.id_tvmaze}>
                 <HomePageCard key={currentShow.id_tvmaze}>
-                  <NavLink exact to={`/show/${currentShow.name}`}>
-                    <CardActionArea onClick={() => getDetailShow(currentShow.id_tvmaze)}>
-                      <HomePageCardMedia
-                        image={currentShow.poster === '' ? '../../src/styles/assets/images/notAvailable/no-image.jpeg' : currentShow.poster}
-                        title={currentShow.name}
-                      >
-                        <Grid
-                          container
-                          justify="flex-end"
-                        >
-                          {/* Icons */}
-                          <HomePageIconContainer className="hiddenCardIcon">
-                            <AddCircleIcon />
-                          </HomePageIconContainer>
-                          <HomePageIconContainer className="hiddenCardIcon">
-                            <VisibilityIcon />
-                          </HomePageIconContainer>
-                          <HomePageIconContainer className="hiddenCardIcon">
-                            <CreateIcon />
-                          </HomePageIconContainer>
-                          <HomePageIconContainer className="hiddenCardIcon">
-                            <StarIcon />
-                          </HomePageIconContainer>
-                          <HomePageIconContainer className="hiddenCardIcon">
-                            <DeleteForeverIcon />
-                          </HomePageIconContainer>
-                          <HomePageIconContainer onClick={this.displayCardActionButtons}>
-                            <HomePageCardIcon onClick={this.displayCardActionButtons} />
-                          </HomePageIconContainer>
+                  <HomePageCardMedia
+                    image={currentShow.poster === '' ? '../../src/styles/assets/images/notAvailable/no-image.jpeg' : currentShow.poster}
+                    title={currentShow.name}
+                  >
+                    <Grid
+                      container
+                      justify="flex-end"
+                    >
+                      {/* Icons */}
+                      <HomePageIconContainer className="hiddenCardIcon">
+                        <AddCircleIcon />
+                      </HomePageIconContainer>
+                      <HomePageIconContainer className="hiddenCardIcon">
+                        <VisibilityIcon />
+                      </HomePageIconContainer>
+                      <HomePageIconContainer className="hiddenCardIcon">
+                        <CreateIcon />
+                      </HomePageIconContainer>
+                      <HomePageIconContainer className="hiddenCardIcon">
+                        <StarIcon />
+                      </HomePageIconContainer>
+                      <HomePageIconContainer className="hiddenCardIcon">
+                        <DeleteForeverIcon />
+                      </HomePageIconContainer>
+                      <HomePageIconContainer onClick={this.displayCardActionButtons}>
+                        <HomePageCardIcon />
+                      </HomePageIconContainer>
 
-                        </Grid>
-                        {/* Show Title */}
+                    </Grid>
+                    {/* Show Title */}
+                    <NavLink exact to={`/show/${currentShow.name}`}>
+                      <CardActionArea onClick={() => testClickCardMedia()}>
+                        {/* getDetailShow(currentShow.id_tvmaze) */}
                         <HomePageCardTitle variant="h5" component="h2">
                           {currentShow.name}
                         </HomePageCardTitle>
-                      </HomePageCardMedia>
-                    </CardActionArea>
-                  </NavLink>
+                      </CardActionArea>
+                    </NavLink>
+                  </HomePageCardMedia>
                 </HomePageCard>
               </SearchResultGridWithoutSlider>
             ))}
@@ -193,44 +199,45 @@ class SearchResult extends React.Component {
             {storeSearchInputResult.map((currentShow) => (
               <Grid item key={currentShow.id_tvmaze}>
                 <HomePageCard key={currentShow.id_tvmaze}>
-                  <NavLink exact to={`/show/${currentShow.name}`}>
-                    <CardActionArea onClick={() => getDetailShow(currentShow.id_tvmaze)}>
-                      <HomePageCardMedia
-                        image={currentShow.poster}
-                        title={currentShow.name}
-                      >
-                        <Grid
-                          container
-                          justify="flex-end"
-                        >
-                          {/* Icons */}
-                          <HomePageIconContainer className="hiddenCardIcon">
-                            <AddCircleIcon />
-                          </HomePageIconContainer>
-                          <HomePageIconContainer className="hiddenCardIcon">
-                            <VisibilityIcon />
-                          </HomePageIconContainer>
-                          <HomePageIconContainer className="hiddenCardIcon">
-                            <CreateIcon />
-                          </HomePageIconContainer>
-                          <HomePageIconContainer className="hiddenCardIcon">
-                            <StarIcon />
-                          </HomePageIconContainer>
-                          <HomePageIconContainer className="hiddenCardIcon">
-                            <DeleteForeverIcon />
-                          </HomePageIconContainer>
-                          <HomePageIconContainer onClick={this.displayCardActionButtons}>
-                            <HomePageCardIcon onClick={this.displayCardActionButtons} />
-                          </HomePageIconContainer>
+                  <HomePageCardMedia
+                    image={currentShow.poster}
+                    title={currentShow.name}
+                  >
+                    <Grid
+                      container
+                      justify="flex-end"
+                    >
+                      {/* Icons */}
+                      <HomePageIconContainer className="hiddenCardIcon">
+                        <AddCircleIcon />
+                      </HomePageIconContainer>
+                      <HomePageIconContainer className="hiddenCardIcon">
+                        <VisibilityIcon />
+                      </HomePageIconContainer>
+                      <HomePageIconContainer className="hiddenCardIcon">
+                        <CreateIcon />
+                      </HomePageIconContainer>
+                      <HomePageIconContainer className="hiddenCardIcon">
+                        <StarIcon />
+                      </HomePageIconContainer>
+                      <HomePageIconContainer className="hiddenCardIcon">
+                        <DeleteForeverIcon />
+                      </HomePageIconContainer>
+                      <HomePageIconContainer onClick={this.displayCardActionButtons}>
+                        <HomePageCardIcon onClick={this.displayCardActionButtons} />
+                      </HomePageIconContainer>
 
-                        </Grid>
-                        {/* Show Title */}
+                    </Grid>
+
+                    {/* Show Title */}
+                    <NavLink exact to={`/show/${currentShow.name}`}>
+                      <CardActionArea onClick={() => getDetailShow(currentShow.id_tvmaze)}>
                         <HomePageCardTitle variant="h5" component="h2">
                           {currentShow.name}
                         </HomePageCardTitle>
-                      </HomePageCardMedia>
-                    </CardActionArea>
-                  </NavLink>
+                      </CardActionArea>
+                    </NavLink>
+                  </HomePageCardMedia>
                 </HomePageCard>
               </Grid>
             ))}
@@ -244,6 +251,7 @@ class SearchResult extends React.Component {
 SearchResult.propTypes = {
   searchInputValue: PropTypes.string.isRequired,
   storeSearchInputResult: PropTypes.array.isRequired,
+  testClickCardMedia: PropTypes.array.isRequired,
 };
 
 export default SearchResult;

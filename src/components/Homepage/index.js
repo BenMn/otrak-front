@@ -24,6 +24,7 @@ class Homepage extends React.Component {
       trendingList,
       getDetailShow,
       sortBy,
+      testClickCardMedia,
     } = this.props;
     return (
       <>
@@ -33,13 +34,15 @@ class Homepage extends React.Component {
           storeSearchInputResult={storeSearchInputResult}
           searchInputValue={searchInputValue}
           getDetailShow={getDetailShow}
+          testClickCardMedia={testClickCardMedia}
         />
         )}
         <Aired
           trendingList={trendingList}
           getDetailShow={getDetailShow}
+          testClickCardMedia={testClickCardMedia}
         />
-        <Next />
+        <Next testClickCardMedia={testClickCardMedia} />
       </>
     );
   }
@@ -52,6 +55,7 @@ Homepage.propTypes = {
   getTrending: PropTypes.func.isRequired,
   getDetailShow: PropTypes.func.isRequired,
   sortBy: PropTypes.func.isRequired,
+  testClickCardMedia: PropTypes.func.isRequired,
 };
 
 Homepage.defaultProps = {

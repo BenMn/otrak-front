@@ -89,7 +89,7 @@ class Aired extends React.Component {
   };
 
   render() {
-    const { trendingList, getDetailShow } = this.props;
+    const { trendingList, getDetailShow, testClickCardMedia } = this.props;
 
     // Setting of Slider component
     const settings = {
@@ -127,43 +127,43 @@ class Aired extends React.Component {
 
                   <HomePageCard>
 
-                    <NavLink exact to={`/show/${currentShow.show_name}`}>
+                    <HomePageCardMedia
+                      image={currentShow.poster}
+                      title={currentShow.show_name}
+                    >
 
-                      <CardActionArea onClick={() => getDetailShow(currentShow.show_id_tvmaze)}>
-                        <HomePageCardMedia
-                          image={currentShow.poster}
-                          title={currentShow.show_name}
+                      <Grid
+                        container
+                        justify="flex-end"
+                      >
+                        <HomePageIconContainer className="hiddenCardIcon">
+                          <AddCircleIcon />
+                        </HomePageIconContainer>
+                        <HomePageIconContainer className="hiddenCardIcon">
+                          <VisibilityIcon />
+                        </HomePageIconContainer>
+                        <HomePageIconContainer className="hiddenCardIcon">
+                          <CreateIcon />
+                        </HomePageIconContainer>
+                        <HomePageIconContainer className="hiddenCardIcon">
+                          <StarIcon />
+                        </HomePageIconContainer>
+                        <HomePageIconContainer className="hiddenCardIcon">
+                          <DeleteForeverIcon />
+                        </HomePageIconContainer>
+                        <HomePageIconContainer onClick={this.displayCardActionButtons}>
+                          <HomePageCardIcon />
+                        </HomePageIconContainer>
+                      </Grid>
+                        
+                      <CardActionArea>
+                        <AiredTitleCardAndSubtitle
+                          container
+                          direction="row"
+                          justify="flex-end"
+                          onClick={() => getDetailShow(currentShow.show_id_tvmaze)}
                         >
-
-                          <Grid
-                            container
-                            justify="flex-end"
-                          >
-                            <HomePageIconContainer className="hiddenCardIcon">
-                              <AddCircleIcon />
-                            </HomePageIconContainer>
-                            <HomePageIconContainer className="hiddenCardIcon">
-                              <VisibilityIcon />
-                            </HomePageIconContainer>
-                            <HomePageIconContainer className="hiddenCardIcon">
-                              <CreateIcon />
-                            </HomePageIconContainer>
-                            <HomePageIconContainer className="hiddenCardIcon">
-                              <StarIcon />
-                            </HomePageIconContainer>
-                            <HomePageIconContainer className="hiddenCardIcon">
-                              <DeleteForeverIcon />
-                            </HomePageIconContainer>
-                            <HomePageIconContainer onClick={this.displayCardActionButtons}>
-                              <HomePageCardIcon onClick={this.displayCardActionButtons} />
-                            </HomePageIconContainer>
-                          </Grid>
-
-                          <AiredTitleCardAndSubtitle
-                            container
-                            direction="row"
-                            justify="flex-end"
-                          >
+                          <NavLink exact to={`/show/${currentShow.show_name}`}>
                             <HomePageCardTitle variant="h5" component="h2">
                               {currentShow.show_name}
                             </HomePageCardTitle>
@@ -171,13 +171,12 @@ class Aired extends React.Component {
                             <AiredSubtitleSeasonEpisode>
                               S{currentShow.season} E{currentShow.number}
                             </AiredSubtitleSeasonEpisode>
-
-                          </AiredTitleCardAndSubtitle>
-
-                        </HomePageCardMedia>
+                          </NavLink>
+                        </AiredTitleCardAndSubtitle>
                       </CardActionArea>
 
-                    </NavLink>
+                    </HomePageCardMedia>
+
 
                   </HomePageCard>
 
@@ -196,7 +195,7 @@ class Aired extends React.Component {
 Aired.propTypes = {
   trendingList: PropTypes.array.isRequired,
   getDetailShow: PropTypes.func.isRequired,
-
+  testClickCardMedia: PropTypes.func.isRequired,
 };
 
 export default Aired;
