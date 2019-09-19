@@ -23,6 +23,8 @@ import SmallLoader from 'src/components/Loader/SmallLoader';
 
 import './Navbar.scss';
 
+// Images
+import logoOwl from './logo-owl.png';
 
 const Navbar = ({
   handleOpen,
@@ -42,7 +44,7 @@ const Navbar = ({
           {/* Logo */}
           <Grid item lg={3} md={3} sm={3} xs={2}>
             <NavLink exact to="/search">
-              <img src="src/styles/assets/images/logos/logo-owl.png" alt="O'Track logo" />
+              <img src={logoOwl} alt="O'Track logo" />
             </NavLink>
           </Grid>
           {/* SearchBar */}

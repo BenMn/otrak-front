@@ -12,6 +12,10 @@ import {
   ManageShowsIconStar,
 } from 'src/styles/materialUi/materialUiStyles/LandingPage';
 
+// Images
+import screendemo2 from './images/screendemo2.png';
+
+
 const ManageShows = () => (
   <Grid container alignItems="center">
     <Grid item lg={7}>
@@ -39,7 +43,7 @@ const ManageShows = () => (
 
     {/* Screenshot */}
     <Grid item lg={5}>
-      <img src="src/styles/assets/images/screendemo2.png" alt="ballekkkkk" className="ScreenDemo ScreenDemo--right" />
+      <img src={screendemo2} alt="ballekkkkk" className="ScreenDemo ScreenDemo--right" />
     </Grid>
 
   </Grid>

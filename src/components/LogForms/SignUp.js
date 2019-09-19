@@ -25,6 +25,9 @@ import Field from 'src/components/LogForms/Field';
 
 import './LogForms.scss';
 
+// Images
+import logoOwl from './logo-owl.png';
+
 const SignUp = ({
   handleOpen,
   handleAuthInput,
@@ -44,7 +47,7 @@ const SignUp = ({
       >
         {/* Logo */}
         <Grid item>
-          <img src="src/styles/assets/images/logos/logo-owl.png" alt="O'Track Logo" id="LogFormModalLogo" />
+          <img src={logoOwl} alt="O'Track Logo" id="LogFormModalLogo" />
         </Grid>
         {/* Title */}
         <Grid item>
