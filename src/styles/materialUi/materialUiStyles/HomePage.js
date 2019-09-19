@@ -19,9 +19,12 @@ import {
   Grid,
   Paper,
   Container,
-  CardActionArea,
 } from '@material-ui/core';
 // ------------------- Styles of All cards in HomePage -------------------//
+export const HomePageGridOfOnCard = styled(Grid)({
+  outline: 'none',
+});
+
 
 export const HomePageCard = styled(Card)({
   margin: theme.spacing(2),
@@ -46,7 +49,7 @@ export const HomePageCardDescription = styled(Typography)({
 export const HomePageCardTitle = styled(Typography)({
   color: theme.palette.common.white,
   // background: theme.palette.common.black,
-  background: 'linear-gradient(0deg, rgba(21,21,21,1) 40%, rgba(21,21,21,0) 100%)',
+  // background: 'linear-gradient(0deg, rgba(21,21,21,1) 40%, rgba(21,21,21,0) 100%)',
   minHeight: 70,
   width: '100%',
   padding: theme.spacing(2),
@@ -54,6 +57,7 @@ export const HomePageCardTitle = styled(Typography)({
   fontWeight: 'bold',
   display: 'flex',
   alignItems: 'flex-end',
+  justifyContent: 'center',
 });
 
 export const HomePageIconContainer = styled(Paper)({
@@ -78,6 +82,20 @@ export const HomePageCardIcon = styled(TuneIcon)({
 export const SearchResultIconTitle = styled(SearchIcon)({
   fontSize: '1.2em',
   margin: '40px 0px',
+});
+
+export const SearchResultTitle = styled(Typography)({
+  color: theme.palette.common.white,
+  // background: theme.palette.common.black,
+  background: 'linear-gradient(0deg, rgba(21,21,21,1) 40%, rgba(21,21,21,0) 100%)',
+  minHeight: 70,
+  width: '100%',
+  padding: theme.spacing(2),
+  fontSize: 20,
+  fontWeight: 'bold',
+  display: 'flex',
+  alignItems: 'flex-end',
+  justifyContent: 'center',
 });
 
 export const SearchResultContainerWithoutSlider = styled(Container)({
@@ -117,7 +135,7 @@ export const AiredSubtitleSeasonEpisode = styled(Typography)({
 });
 
 export const AiredTitleCardAndSubtitle = styled(Grid)({
-  background: 'linear-gradient(0deg, rgba(21,21,21,1) 40%, rgba(21,21,21,0) 100%)',
+  background: 'linear-gradient(0deg, rgba(21,21,21,1) 55%, rgba(21,21,21,0) 100%)',
 });
 // ------------------- Styles of Next.js ------------------------//
 
