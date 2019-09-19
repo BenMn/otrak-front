@@ -17,7 +17,7 @@ const initialState = {
   updatedHistoryList: [],
   // Single show details
   showDetail: {},
-  userFollowings: {},
+  userFollowings: [],
   // Search
   searchInputValue: '',
   storeSearchInputResult: [],

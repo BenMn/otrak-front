@@ -11,6 +11,7 @@ import {
   storeNewUsername,
   openModal,
   getUserInfos,
+  getUserFollowings,
 } from 'src/store/reducer';
 
 const mapStateToProps = (state) => ({
@@ -18,6 +19,8 @@ const mapStateToProps = (state) => ({
   userAuthInfos: state.userAuthInfos,
   userAuthToken: state.userAuthToken,
   userInfos: state.userInfos,
+
+  userFollowings: state.userFollowings,
 
   setOpen: state.setOpen,
   open: state.open,
@@ -50,6 +53,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   fetchUserProfileInfos: (userAuthToken) => {
     dispatch(getUserInfos(userAuthToken));
+  },
+
+  getUserFollowings: (userId, userAuthToken) => {
+    dispatch(getUserFollowings(userId, userAuthToken));
   },
 
 });

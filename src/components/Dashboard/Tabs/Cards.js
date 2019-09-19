@@ -1,6 +1,7 @@
 /* eslint-disable no-plusplus */
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // scss
 import 'react-id-swiper/lib/styles/scss/swiper.scss';
@@ -17,9 +18,6 @@ import {
 
 
 // ComponentIconButtons
-
-// Data provisoire
-import shows from 'src/data/shows';
 
 import {
   HomePageCard,
@@ -38,7 +36,7 @@ import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import StarIcon from '@material-ui/icons/Star';
 
 
-class Next extends React.Component {
+class Cards extends React.Component {
   displayCardActionButtons = (event) => {
     event.persist();
     const parentIconElement = event.target.parentElement.parentElement;
@@ -49,18 +47,20 @@ class Next extends React.Component {
   }
 
   render() {
+    const { userFollowings } = this.props;
+    console.log(userFollowings, '<<<<<<<<<<<<<<<<<<<< userFollowings');
     return (
       <Grid
         container
         justify="center"
       >
-        {shows.map((show) => (
-          <Grid item key={show.title} xl={2} lg={3} md={4} sm={6} xs={12}>
-            <HomePageCard key={show.title}>
+        {userFollowings.map((show) => (
+          <Grid item key={show.tvShow.name} xl={2} lg={3} md={4} sm={6} xs={12}>
+            <HomePageCard key={show.tvShow.name}>
               <CardActionArea>
                 <HomePageCardMedia
-                  image={show.image}
-                  title={show.title}
+                  image={show.tvShow.poster}
+                  title={show.tvShow.name}
                 >
                   <Grid
                     container
@@ -92,7 +92,7 @@ class Next extends React.Component {
                     justify="flex-end"
                   >
                     <HomePageCardTitle variant="h5" component="h2">
-                      {show.title}
+                      {show.tvShow.name}
                     </HomePageCardTitle>
                     <AiredSubtitleSeasonEpisode>EXX SXX</AiredSubtitleSeasonEpisode>
                   </AiredTitleCardAndSubtitle>
@@ -105,8 +105,14 @@ class Next extends React.Component {
     );
   }
 }
-Next.propTypes = {
 
+Cards.propTypes = {
+  userFollowings: PropTypes.array,
 };
 
-export default Next;
+Cards.defaultProps = {
+  userFollowings: [],
+};
+
+
+export default Cards;
