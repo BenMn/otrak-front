@@ -1,11 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 // Import
 
-
-// For LandingPage--Aired: Pour filtrer le nombre de résultat d'un tableau par langue et par note.
-// Avoir que 8 resultats, 4 langues US et 4 langue JP avec les meilleures notes.
-
-
 // Trie SearchInputResult.
 export function compareTitle(a, b) {
   const nameA = a.name.toUpperCase();
@@ -62,4 +57,24 @@ export function compareLanguage(a, b) {
     comparison = -1;
   }
   return comparison;
+}
+
+// For LandingPage--Aired: Pour filtrer le nombre de résultat d'un tableau par langue et par note.
+// Avoir que 8 resultats, 4 langues US et 4 langue JP avec les meilleures notes.
+export function FilteredAiredLandingPage(airedArray) {
+  console.log(airedArray, 'dans utils');
+  const jpShow = airedArray.filter((currentShow) => currentShow.Show_type === 'Animation').splice(0, 4);
+  // .sort(compareRating);
+
+
+  console.log(jpShow);
+
+  const usShow = airedArray.filter((currentShow) => currentShow.Show_type === 'Scripted').splice(0, 4);
+  // .sort(compareRating);
+  console.log(usShow);
+
+  const newArray = [jpShow, usShow];
+  console.log(newArray);
+
+  return newArray;
 }
