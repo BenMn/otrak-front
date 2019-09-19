@@ -45,6 +45,9 @@ import CreateIcon from '@material-ui/icons/Create';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import StarIcon from '@material-ui/icons/Star';
 
+// Utils funtions
+import { displayCardActionButtons } from 'src/utils';
+
 // Micro component managing arrow's style
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -78,120 +81,108 @@ function SamplePrevArrow(props) {
   );
 }
 
-class Aired extends React.Component {
-  // Opens card icons menu
-  displayCardActionButtons = (event) => {
-    event.persist();
-    const parentIconElement = event.target.parentElement.parentElement;
-    const hiddenIcons = parentIconElement.getElementsByClassName('hiddenCardIcon');
-    for (let i = 0; i < hiddenIcons.length; i++) {
-      hiddenIcons[i].style.display = 'block';
-    }
+const Aired = ({ trendingList, getDetailShow }) => {
+  // Setting of Slider component
+  const settings = {
+    dots: true,
+    infinite: true,
+    arrows: true,
+    lazyLoad: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 2,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
   };
 
-  render() {
-    const { trendingList, getDetailShow } = this.props;
+  return (
+    <>
+      <AiredBlockTitleSeeAll
+        container
+        direction="row"
+        justify="space-around"
+        alignItems="center"
+      >
+        <Typography variant="h3" component="p" className="title-icon-next-aired"><AiredIconTitle /> Just Aired</Typography>
+        <Typography variant="h6"><a href="." className="see-all-next-aired"> See all<AiredSeeAllIcon /></a></Typography>
+      </AiredBlockTitleSeeAll>
 
-    // Setting of Slider component
-    const settings = {
-      dots: true,
-      infinite: true,
-      arrows: true,
-      lazyLoad: true,
-      speed: 500,
-      slidesToShow: 4,
-      slidesToScroll: 2,
-      nextArrow: <SampleNextArrow />,
-      prevArrow: <SamplePrevArrow />,
-    };
+      <Container>
 
-    return (
-      <>
-        <AiredBlockTitleSeeAll
-          container
-          direction="row"
-          justify="space-around"
-          alignItems="center"
-        >
-          <Typography variant="h3" component="p" className="title-icon-next-aired"><AiredIconTitle /> Just Aired</Typography>
-          <Typography variant="h6"><a href="." className="see-all-next-aired"> See all<AiredSeeAllIcon /></a></Typography>
-        </AiredBlockTitleSeeAll>
+        {trendingList.length !== 0 ? (
+          <Slider {...settings}>
 
-        <Container>
+            {trendingList.map((currentShow) => (
 
-          {trendingList.length !== 0 ? (
-            <Slider {...settings}>
+              <HomePageGridOfOnCard item key={currentShow.id_tvmaze}>
 
-              {trendingList.map((currentShow) => (
+                <HomePageCard id="currentCard">
 
-                <HomePageGridOfOnCard item key={currentShow.id_tvmaze}>
+                  <HomePageCardMedia
+                    image={currentShow.poster}
+                    title={currentShow.show_name}
+                  >
 
-                  <HomePageCard>
-
-                    <HomePageCardMedia
-                      image={currentShow.poster}
-                      title={currentShow.show_name}
+                    <Grid
+                      container
+                      justify="flex-end"
                     >
-
-                      <Grid
-                        container
-                        justify="flex-end"
+                      <HomePageIconContainer className="hiddenCardIcon">
+                        <AddCircleIcon />
+                      </HomePageIconContainer>
+                      <HomePageIconContainer className="hiddenCardIcon">
+                        <VisibilityIcon />
+                      </HomePageIconContainer>
+                      <HomePageIconContainer className="hiddenCardIcon">
+                        <CreateIcon />
+                      </HomePageIconContainer>
+                      <HomePageIconContainer className="hiddenCardIcon">
+                        <StarIcon />
+                      </HomePageIconContainer>
+                      <HomePageIconContainer className="hiddenCardIcon">
+                        <DeleteForeverIcon />
+                      </HomePageIconContainer>
+                      <HomePageIconContainer
+                        onMouseOver={(event) => displayCardActionButtons(event)}
                       >
-                        <HomePageIconContainer className="hiddenCardIcon">
-                          <AddCircleIcon />
-                        </HomePageIconContainer>
-                        <HomePageIconContainer className="hiddenCardIcon">
-                          <VisibilityIcon />
-                        </HomePageIconContainer>
-                        <HomePageIconContainer className="hiddenCardIcon">
-                          <CreateIcon />
-                        </HomePageIconContainer>
-                        <HomePageIconContainer className="hiddenCardIcon">
-                          <StarIcon />
-                        </HomePageIconContainer>
-                        <HomePageIconContainer className="hiddenCardIcon">
-                          <DeleteForeverIcon />
-                        </HomePageIconContainer>
-                        <HomePageIconContainer onClick={this.displayCardActionButtons}>
-                          <HomePageCardIcon />
-                        </HomePageIconContainer>
-                      </Grid>
-                        
-                      <CardActionArea>
-                        <AiredTitleCardAndSubtitle
-                          container
-                          direction="row"
-                          justify="center"
-                          onClick={() => getDetailShow(currentShow.show_id_tvmaze)}
-                        >
-                          <NavLink exact to={`/show/${currentShow.show_name}`}>
-                            <HomePageCardTitle variant="h5" component="h2">
-                              {currentShow.show_name}
-                            </HomePageCardTitle>
+                        <HomePageCardIcon />
+                      </HomePageIconContainer>
+                    </Grid>
 
-                            <AiredSubtitleSeasonEpisode>
-                              {currentShow.season.toString().length > 2 ? currentShow.season : `S${currentShow.season}`} {currentShow.number === null ? '' : `E${currentShow.number}`}
-                            </AiredSubtitleSeasonEpisode>
-                          </NavLink>
-                        </AiredTitleCardAndSubtitle>
-                      </CardActionArea>
+                    <CardActionArea>
+                      <AiredTitleCardAndSubtitle
+                        container
+                        direction="row"
+                        justify="center"
+                        onClick={() => getDetailShow(currentShow.show_id_tvmaze)}
+                      >
+                        <NavLink exact to={`/show/${currentShow.show_name}`}>
+                          <HomePageCardTitle variant="h5" component="h2">
+                            {currentShow.show_name}
+                          </HomePageCardTitle>
 
-                    </HomePageCardMedia>
+                          <AiredSubtitleSeasonEpisode>
+                            {currentShow.season.toString().length > 2 ? currentShow.season : `S${currentShow.season}`} {currentShow.number === null ? '' : `E${currentShow.number}`}
+                          </AiredSubtitleSeasonEpisode>
+                        </NavLink>
+                      </AiredTitleCardAndSubtitle>
+                    </CardActionArea>
+
+                  </HomePageCardMedia>
 
 
-                  </HomePageCard>
+                </HomePageCard>
 
-                </HomePageGridOfOnCard>
-              ))}
-            </Slider>
-          ) : (
-            <Loader />
-          )}
-        </Container>
-      </>
-    );
-  }
-}
+              </HomePageGridOfOnCard>
+            ))}
+          </Slider>
+        ) : (
+          <Loader />
+        )}
+      </Container>
+    </>
+  );
+};
 
 Aired.propTypes = {
   trendingList: PropTypes.array.isRequired,

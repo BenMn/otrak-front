@@ -74,7 +74,7 @@ const Navbar = ({
                 </NavLink>
               </NavbarLogButton>
               <NavbarLogButton variant="outlined" color="inherit">
-                <NavLink exact to="/dashboard" color="inherit" onClick={() => emptySearchResults()}>
+                <NavLink exact to="/dashboard" id="dashboard-nav-button" onClick={() => emptySearchResults()}>
                   Dashboard
                 </NavLink>
               </NavbarLogButton>

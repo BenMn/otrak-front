@@ -31,6 +31,8 @@ const Show = ({
   userAuthToken,
   // eslint-disable-next-line react/prop-types
   userInfos,
+  isLogged,
+  handleOpen,
 }) => (
   <>
     <IndexScreenPicture image={showDetail.poster}>
@@ -50,6 +52,8 @@ const Show = ({
                 addToWatchList={addToWatchList}
                 userAuthToken={userAuthToken}
                 userInfos={userInfos}
+                isLogged={isLogged}
+                handleOpen={handleOpen}
               />
               <ResumeShow showDetail={showDetail} />
               <Casting showDetail={showDetail} />
@@ -67,6 +71,8 @@ Show.propTypes = {
   showDetail: PropTypes.object.isRequired,
   addToWatchList: PropTypes.func.isRequired,
   userAuthToken: PropTypes.string.isRequired,
+  isLogged: PropTypes.bool.isRequired,
+  handleOpen: PropTypes.func.isRequired,
 };
 
 export default Show;

@@ -72,8 +72,10 @@ export const HomePageIconContainer = styled(Paper)({
 
 export const HomePageCardIcon = styled(TuneIcon)({
   borderRadius: '50%',
-  margin: '5px 6px',
+  margin: '6px',
   cursor: 'pointer',
+  display: 'flex',
+  alignItems: 'center',
 });
 
 

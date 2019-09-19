@@ -12,8 +12,6 @@ import './Dashboard.scss';
 class Dashboard extends React.Component {
   componentDidMount() {
     const { getUserFollowings, userInfos, userAuthToken } = this.props;
-    console.log(userInfos.id, '<<<<<<<<<<<<<<<< DASH COMPOSANT unserInfos');
-    console.log(userAuthToken, '<<<<<<<<<<<<<<<< DASH COMPOSANT token');
     getUserFollowings(userInfos.id, userAuthToken);
   }
 

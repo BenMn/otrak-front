@@ -76,7 +76,6 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       break;
 
     case GET_USER_INFOS:
-      console.log(action.userAuthToken, '<<<<<<<<<<<<<<<<< USER AUTH TOKEN');
       axios.get('http://localhost:8001/api/users/profile', {
         headers: {
           'Content-Type': 'application/json',
@@ -128,7 +127,6 @@ const ajaxMiddleware = (store) => (next) => (action) => {
         username: action.newUsername,
       };
 
-      console.log(action);
       axios.put(`http://localhost:8001/api/users/${action.userId}`,
         JSON.stringify(username), {
           headers: {

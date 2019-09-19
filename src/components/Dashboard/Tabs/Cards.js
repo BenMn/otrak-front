@@ -14,8 +14,6 @@ import {
   CardActionArea,
 } from '@material-ui/core';
 
-// Icons
-
 
 // ComponentIconButtons
 
@@ -35,84 +33,73 @@ import CreateIcon from '@material-ui/icons/Create';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import StarIcon from '@material-ui/icons/Star';
 
+import { displayCardActionButtons } from 'src/utils';
 
-class Cards extends React.Component {
-  displayCardActionButtons = (event) => {
-    event.persist();
-    const parentIconElement = event.target.parentElement.parentElement;
-    const hiddenIcons = parentIconElement.getElementsByClassName('hiddenCardIcon');
-    for (let i = 0; i < hiddenIcons.length; i++) {
-      hiddenIcons[i].style.display = 'block';
-    }
-  }
-
-  render() {
-    const { userFollowings } = this.props;
-    console.log(userFollowings, '<<<<<<<<<<<<<<<<<<<< userFollowings');
-    return (
-      <Grid
-        container
-        justify="center"
-      >
-        {userFollowings.map((show) => (
-          <Grid item key={show.tvShow.name} xl={2} lg={3} md={4} sm={6} xs={12}>
-            <HomePageCard key={show.tvShow.name}>
-              <CardActionArea>
-                <HomePageCardMedia
-                  image={show.tvShow.poster}
-                  title={show.tvShow.name}
+const Cards = ({ userFollowings }) => (
+  <Grid
+    container
+    justify="center"
+  >
+    {userFollowings.map((show) => (
+      <Grid item key={show.tvShow.name} xl={2} lg={3} md={4} sm={6} xs={12}>
+        <HomePageCard key={show.tvShow.name} id="currentCard">
+          <CardActionArea>
+            <HomePageCardMedia
+              image={show.tvShow.poster}
+              title={show.tvShow.name}
+            >
+              <Grid
+                container
+                justify="flex-end"
+              >
+                <HomePageIconContainer className="hiddenCardIcon">
+                  <AddCircleIcon />
+                </HomePageIconContainer>
+                <HomePageIconContainer className="hiddenCardIcon">
+                  <VisibilityIcon />
+                </HomePageIconContainer>
+                <HomePageIconContainer className="hiddenCardIcon">
+                  <CreateIcon />
+                </HomePageIconContainer>
+                <HomePageIconContainer className="hiddenCardIcon">
+                  <StarIcon />
+                </HomePageIconContainer>
+                <HomePageIconContainer className="hiddenCardIcon">
+                  <DeleteForeverIcon />
+                </HomePageIconContainer>
+                <HomePageIconContainer
+                  onMouseOver={(event) => displayCardActionButtons(event)}
                 >
-                  <Grid
-                    container
-                    justify="flex-end"
-                  >
-                    <HomePageIconContainer className="hiddenCardIcon">
-                      <AddCircleIcon />
-                    </HomePageIconContainer>
-                    <HomePageIconContainer className="hiddenCardIcon">
-                      <VisibilityIcon />
-                    </HomePageIconContainer>
-                    <HomePageIconContainer className="hiddenCardIcon">
-                      <CreateIcon />
-                    </HomePageIconContainer>
-                    <HomePageIconContainer className="hiddenCardIcon">
-                      <StarIcon />
-                    </HomePageIconContainer>
-                    <HomePageIconContainer className="hiddenCardIcon">
-                      <DeleteForeverIcon />
-                    </HomePageIconContainer>
-                    <HomePageIconContainer onClick={this.displayCardActionButtons}>
-                      <HomePageCardIcon onClick={this.displayCardActionButtons} />
-                    </HomePageIconContainer>
-                  </Grid>
+                  <HomePageCardIcon />
+                </HomePageIconContainer>
+              </Grid>
 
-                  <AiredTitleCardAndSubtitle
-                    container
-                    direction="row"
-                    justify="flex-end"
-                  >
-                    <HomePageCardTitle variant="h5" component="h2">
-                      {show.tvShow.name}
-                    </HomePageCardTitle>
-                    {show.tvShow.genre.length}
-                    <AiredSubtitleSeasonEpisode>
-                      {show.tvShow.genre.map((genre) => (
-                        <>
-                          {genre.name}
-                          &nbsp;
-                        </>
-                      ))}
-                    </AiredSubtitleSeasonEpisode>
-                  </AiredTitleCardAndSubtitle>
-                </HomePageCardMedia>
-              </CardActionArea>
-            </HomePageCard>
-          </Grid>
-        ))}
+              <AiredTitleCardAndSubtitle
+                container
+                direction="row"
+                justify="flex-end"
+              >
+                <HomePageCardTitle variant="h5" component="h2">
+                  {show.tvShow.name}
+                </HomePageCardTitle>
+                {show.tvShow.genre.length}
+                <AiredSubtitleSeasonEpisode>
+                  {show.tvShow.genre.map((genre) => (
+                    <>
+                      {genre.name}
+                      &nbsp;
+                    </>
+                  ))}
+                </AiredSubtitleSeasonEpisode>
+              </AiredTitleCardAndSubtitle>
+            </HomePageCardMedia>
+          </CardActionArea>
+        </HomePageCard>
       </Grid>
-    );
-  }
-}
+    ))}
+  </Grid>
+);
+
 
 Cards.propTypes = {
   userFollowings: PropTypes.array,

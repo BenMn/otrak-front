@@ -9,7 +9,6 @@ import { FilteredAiredLandingPage } from 'src/utils';
 
 // Import material UI components
 import {
-  Grid,
   CardActionArea,
 } from '@material-ui/core';
 
@@ -64,7 +63,7 @@ const Trending = ({ trendingList, getDetailShow }) => {
                         direction="row"
                         justify="center"
                       >
-                        <HomePageCardTitle variant="h5" component="h2" alignItems="center">
+                        <HomePageCardTitle variant="h5" component="h2">
                           {currentShow.show_name}
                         </HomePageCardTitle>
 
@@ -104,7 +103,7 @@ const Trending = ({ trendingList, getDetailShow }) => {
                         direction="row"
                         justify="center"
                       >
-                        <HomePageCardTitle variant="h5" component="h2" alignItems="center">
+                        <HomePageCardTitle variant="h5" component="h2">
                           {currentShow.show_name}
                         </HomePageCardTitle>
 

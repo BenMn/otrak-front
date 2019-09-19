@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 /* eslint-disable import/prefer-default-export */
 // Import
 
@@ -62,19 +63,41 @@ export function compareLanguage(a, b) {
 // For LandingPage--Aired: Pour filtrer le nombre de résultat d'un tableau par langue et par note.
 // Avoir que 8 resultats, 4 langues US et 4 langue JP avec les meilleures notes.
 export function FilteredAiredLandingPage(airedArray) {
-  console.log(airedArray, 'dans utils');
   const jpShow = airedArray.filter((currentShow) => currentShow.Show_type === 'Animation').splice(0, 4);
   // .sort(compareRating);
 
-
-  console.log(jpShow);
-
   const usShow = airedArray.filter((currentShow) => currentShow.Show_type === 'Scripted').splice(0, 4);
   // .sort(compareRating);
-  console.log(usShow);
 
   const newArray = [jpShow, usShow];
-  console.log(newArray);
 
   return newArray;
+}
+
+
+export function showStatusSwitch(showDetailStatus) {
+  switch (showDetailStatus) {
+    case 0: return 'In development';
+    case 1: return 'Running';
+    case 2: return 'Ended';
+    default: return 'Not specified';
+  }
+}
+
+export function displayCardActionButtons(event) {
+  event.persist();
+  const parentIconElement = event.target.parentElement.parentElement;
+  const hiddenIcons = parentIconElement.getElementsByClassName('hiddenCardIcon');
+  for (let i = 0; i < hiddenIcons.length; i++) {
+    hiddenIcons[i].style.display = 'block';
+    hiddenIcons[i].classList.add('scale-up-center');
+  }
+  const currentCard = document.querySelectorAll('#currentCard');
+  for (let i = 0; i < currentCard.length; i++) {
+    currentCard[i].addEventListener('mouseleave', () => {
+      for (let index = 0; index < hiddenIcons.length; index++) {
+        hiddenIcons[index].style.display = 'none';
+      }
+    });
+  }
 }
