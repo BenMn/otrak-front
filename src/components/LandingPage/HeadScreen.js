@@ -23,6 +23,9 @@ import LogFormsModal from 'src/containers/LogForms';
 
 import './LandingPage.scss';
 
+// Images
+import logoBan from './images/logo-ban-2.png';
+
 
 class HeadScreen extends React.Component {
   // Top search bar animation slide right
@@ -97,7 +100,7 @@ class HeadScreen extends React.Component {
 
           {/* full logo ban */}
           <HeadScreenSlogan>
-            <img src="src/styles/assets/images/logos/logo-ban-2.png" alt="O'Trak logo-ban" id="logo-ban" />
+            <img src={logoBan} alt="O'Trak logo-ban" id="logo-ban" />
           </HeadScreenSlogan>
         </div>
       </div>

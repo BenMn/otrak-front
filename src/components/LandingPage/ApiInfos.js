@@ -21,6 +21,9 @@ import {
   ApiInfosSearchDarkIcon,
 } from 'src/styles/materialUi/materialUiStyles/LandingPage';
 
+// Images
+import screendemo1 from './images/screendemo1.png';
+
 // Section #3 of LP
 const ApiInfos = ({
   searchInputValue,
@@ -32,7 +35,7 @@ const ApiInfos = ({
 
     {/* screenshot */}
     <Grid item lg={5}>
-      <img src="src/styles/assets/images/screendemo1.png" alt="ballekkkkk" className="ScreenDemo ScreenDemo--left" />
+      <img src={screendemo1} alt="ballekkkkk" className="ScreenDemo ScreenDemo--left" />
     </Grid>
 
     <Grid item lg={7}>

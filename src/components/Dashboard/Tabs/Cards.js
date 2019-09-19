@@ -94,7 +94,15 @@ class Cards extends React.Component {
                     <HomePageCardTitle variant="h5" component="h2">
                       {show.tvShow.name}
                     </HomePageCardTitle>
-                    <AiredSubtitleSeasonEpisode>EXX SXX</AiredSubtitleSeasonEpisode>
+                    {show.tvShow.genre.length}
+                    <AiredSubtitleSeasonEpisode>
+                      {show.tvShow.genre.map((genre) => (
+                        <>
+                          {genre.name}
+                          &nbsp;
+                        </>
+                      ))}
+                    </AiredSubtitleSeasonEpisode>
                   </AiredTitleCardAndSubtitle>
                 </HomePageCardMedia>
               </CardActionArea>

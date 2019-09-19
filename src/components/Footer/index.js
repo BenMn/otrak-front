@@ -23,6 +23,9 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 import './Footer.scss';
 
+// Images
+import logoOwl from './logo-owl.png';
+
 const Footer = ({ handleOpen, isLogged, emptySearchResults }) => (
   <div id="Footer">
     <FooterAppBar position="static">
@@ -33,7 +36,7 @@ const Footer = ({ handleOpen, isLogged, emptySearchResults }) => (
             <Grid container justify="center">
               {/* Logo */}
               <NavLink exact to="/search">
-                <img src="src/styles/assets/images/logos/logo-owl.png" alt="O’Track logo" id="FooterLogo" />
+                <img src={logoOwl} alt="O’Track logo" id="FooterLogo" />
               </NavLink>
             </Grid>
           </Grid>
