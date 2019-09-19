@@ -34,6 +34,8 @@ import {
   HomePageCardIcon,
   SearchResultContainerWithoutSlider,
   SearchResultGridWithoutSlider,
+  HomePageGridOfOnCard,
+  SearchResultTitle,
 } from 'src/styles/materialUi/materialUiStyles/HomePage';
 
 
@@ -92,7 +94,6 @@ class SearchResult extends React.Component {
       searchInputValue,
       storeSearchInputResult,
       getDetailShow,
-      testClickCardMedia,
     } = this.props;
 
     // Setting of Slider component
@@ -161,11 +162,10 @@ class SearchResult extends React.Component {
                     </Grid>
                     {/* Show Title */}
                     <NavLink exact to={`/show/${currentShow.name}`}>
-                      <CardActionArea onClick={() => testClickCardMedia()}>
-                        {/* getDetailShow(currentShow.id_tvmaze) */}
-                        <HomePageCardTitle variant="h5" component="h2">
+                      <CardActionArea onClick={() => getDetailShow(currentShow.id_tvmaze)}>
+                        <SearchResultTitle variant="h5" component="h2">
                           {currentShow.name}
-                        </HomePageCardTitle>
+                        </SearchResultTitle>
                       </CardActionArea>
                     </NavLink>
                   </HomePageCardMedia>
@@ -197,7 +197,7 @@ class SearchResult extends React.Component {
           {/* Slider */}
           <Slider {...settings}>
             {storeSearchInputResult.map((currentShow) => (
-              <Grid item key={currentShow.id_tvmaze}>
+              <HomePageGridOfOnCard item key={currentShow.id_tvmaze}>
                 <HomePageCard key={currentShow.id_tvmaze}>
                   <HomePageCardMedia
                     image={currentShow.poster}
@@ -232,14 +232,14 @@ class SearchResult extends React.Component {
                     {/* Show Title */}
                     <NavLink exact to={`/show/${currentShow.name}`}>
                       <CardActionArea onClick={() => getDetailShow(currentShow.id_tvmaze)}>
-                        <HomePageCardTitle variant="h5" component="h2">
+                        <SearchResultTitle variant="h5" component="h2">
                           {currentShow.name}
-                        </HomePageCardTitle>
+                        </SearchResultTitle>
                       </CardActionArea>
                     </NavLink>
                   </HomePageCardMedia>
                 </HomePageCard>
-              </Grid>
+              </HomePageGridOfOnCard>
             ))}
           </Slider>
         </Container>

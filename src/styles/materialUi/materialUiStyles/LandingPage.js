@@ -143,31 +143,18 @@ export const ManageShowsIconStar = styled(Star)({
 
 // ------------------- Styles of Trending.js ------------------------//
 
-export const TrendingCard = styled(Card)({
-  maxWidth: 210,
-  boxShadow: '10px 19px 24px 0px rgba(20, 20, 20, 0.95)',
-  borderRadius: 10,
-  '&:hover': {
-    transform: 'scale(0.9)',
-    boxShadow: '6px 15px 20px 0px rgba(10, 10, 10, 0.95)',
-    cursor: 'pointer',
-  },
-  justifyContent: 'center',
-  margin: '25px 0',
-
-});
-
 export const TrendingCardMedia = styled(CardMedia)({
-  height: 295,
-
+  height: 420,
+  display: 'flex',
+  minWidth: 285,
+  maxWidth: 285,
+  flexDirection: 'row',
+  justifyContent: 'center',
+  alignItems: 'flex-end',
 });
 
 export const TrendingTitleTranding = styled(Typography)({
   padding: '130px 0 40px 0',
-});
-
-export const TrendingSubtitle = styled(Typography)({
-  padding: '55px 0px 15px 0px',
 });
 
 export const TrendingGridSeries = styled(Grid)({

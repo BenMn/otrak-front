@@ -10,17 +10,25 @@ import { FilteredAiredLandingPage } from 'src/utils';
 // Import material UI components
 import {
   Grid,
+  CardActionArea,
 } from '@material-ui/core';
 
 // Import material UI custom components
 import {
-  TrendingCard,
-  TrendingCardMedia,
   TrendingTitleTranding,
   TrendingGridSeries,
   TrendingGridAnime,
   TrendingIcon,
+  TrendingCardMedia,
 } from 'src/styles/materialUi/materialUiStyles/LandingPage';
+
+import {
+  HomePageCard,
+  HomePageCardTitle,
+  AiredSubtitleSeasonEpisode,
+  AiredTitleCardAndSubtitle,
+  HomePageGridOfOnCard,
+} from 'src/styles/materialUi/materialUiStyles/HomePage';
 
 import './LandingPage.scss';
 
@@ -37,39 +45,80 @@ const Trending = ({ trendingList, getDetailShow }) => {
         <TrendingGridAnime
           container
           direction="row"
-          justify="center"
+          justify="space-around"
           alignItems="center"
         >
           {filteredAiredList[0].map((currentShow) => (
-            <Grid item lg={3} md={3} xs={5} onClick={() => getDetailShow(currentShow.show_id_tvmaze)}>
-              <NavLink exact to={`/show/${currentShow.show_name}`}>
-                <TrendingCard justify="center">
-                  <TrendingCardMedia
-                    image={currentShow.poster}
-                  />
-                </TrendingCard>
-              </NavLink>
-            </Grid>
+            <HomePageGridOfOnCard item key={currentShow.id_tvmaze}>
+
+              <HomePageCard>
+
+                <NavLink exact to={`/show/${currentShow.show_name}`}>
+                  <CardActionArea onClick={() => getDetailShow(currentShow.show_id_tvmaze)}>
+                    <TrendingCardMedia
+                      image={currentShow.poster}
+                      title={currentShow.show_name}
+                    >
+                      <AiredTitleCardAndSubtitle
+                        container
+                        direction="row"
+                        justify="center"
+                      >
+                        <HomePageCardTitle variant="h5" component="h2" alignItems="center">
+                          {currentShow.show_name}
+                        </HomePageCardTitle>
+
+                        <AiredSubtitleSeasonEpisode>
+                          {currentShow.season.toString().length > 2 ? currentShow.season : `S${currentShow.season}`} {currentShow.number === null ? '' : `E${currentShow.number}`}
+                        </AiredSubtitleSeasonEpisode>
+                      </AiredTitleCardAndSubtitle>
+                    </TrendingCardMedia>
+                  </CardActionArea>
+                </NavLink>
+
+              </HomePageCard>
+
+            </HomePageGridOfOnCard>
           ))}
         </TrendingGridAnime>
         {/* ------------------ Series Cards ----------------  */}
         <TrendingGridSeries
           container
           direction="row"
-          justify="center"
+          justify="space-around"
           alignItems="center"
-          mx={3}
         >
           {filteredAiredList[1].map((currentShow) => (
-            <Grid item lg={3} md={3} xs={5} onClick={() => getDetailShow(currentShow.show_id_tvmaze)}>
-              <NavLink exact to={`/show/${currentShow.show_name}`}>
-                <TrendingCard justify="center">
-                  <TrendingCardMedia
-                    image={currentShow.poster}
-                  />
-                </TrendingCard>
-              </NavLink>
-            </Grid>
+            <HomePageGridOfOnCard item key={currentShow.id_tvmaze}>
+
+              <HomePageCard>
+
+                <NavLink exact to={`/show/${currentShow.show_name}`}>
+                  <CardActionArea onClick={() => getDetailShow(currentShow.show_id_tvmaze)}>
+                    <TrendingCardMedia
+                      image={currentShow.poster}
+                      title={currentShow.show_name}
+                    >
+                      <AiredTitleCardAndSubtitle
+                        container
+                        direction="row"
+                        justify="center"
+                      >
+                        <HomePageCardTitle variant="h5" component="h2" alignItems="center">
+                          {currentShow.show_name}
+                        </HomePageCardTitle>
+
+                        <AiredSubtitleSeasonEpisode>
+                          {currentShow.season.toString().length > 2 ? currentShow.season : `S${currentShow.season}`} {currentShow.number === null ? '' : `E${currentShow.number}`}
+                        </AiredSubtitleSeasonEpisode>
+                      </AiredTitleCardAndSubtitle>
+                    </TrendingCardMedia>
+                  </CardActionArea>
+                </NavLink>
+
+              </HomePageCard>
+
+            </HomePageGridOfOnCard>
           ))}
         </TrendingGridSeries>
       </div>

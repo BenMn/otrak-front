@@ -35,6 +35,7 @@ import {
   AiredSeeAllIcon,
   AiredSubtitleSeasonEpisode,
   AiredTitleCardAndSubtitle,
+  HomePageGridOfOnCard,
 } from 'src/styles/materialUi/materialUiStyles/HomePage';
 
 // import Material UI Icons
@@ -89,7 +90,7 @@ class Aired extends React.Component {
   };
 
   render() {
-    const { trendingList, getDetailShow, testClickCardMedia } = this.props;
+    const { trendingList, getDetailShow } = this.props;
 
     // Setting of Slider component
     const settings = {
@@ -123,7 +124,7 @@ class Aired extends React.Component {
 
               {trendingList.map((currentShow) => (
 
-                <Grid item key={currentShow.id_tvmaze}>
+                <HomePageGridOfOnCard item key={currentShow.id_tvmaze}>
 
                   <HomePageCard>
 
@@ -160,7 +161,7 @@ class Aired extends React.Component {
                         <AiredTitleCardAndSubtitle
                           container
                           direction="row"
-                          justify="flex-end"
+                          justify="center"
                           onClick={() => getDetailShow(currentShow.show_id_tvmaze)}
                         >
                           <NavLink exact to={`/show/${currentShow.show_name}`}>
@@ -169,7 +170,7 @@ class Aired extends React.Component {
                             </HomePageCardTitle>
 
                             <AiredSubtitleSeasonEpisode>
-                              S{currentShow.season} E{currentShow.number}
+                              {currentShow.season.toString().length > 2 ? currentShow.season : `S${currentShow.season}`} {currentShow.number === null ? '' : `E${currentShow.number}`}
                             </AiredSubtitleSeasonEpisode>
                           </NavLink>
                         </AiredTitleCardAndSubtitle>
@@ -180,7 +181,7 @@ class Aired extends React.Component {
 
                   </HomePageCard>
 
-                </Grid>
+                </HomePageGridOfOnCard>
               ))}
             </Slider>
           ) : (

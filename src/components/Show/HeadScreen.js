@@ -60,12 +60,15 @@ const HeadScreen = ({
 
               <Grid item>
                 <DetailShowGroupList component="nav" aria-label="secondary mailbox folders">
-                  <ListItemText primary={showDetail.genre.length < 1 ? 'Genre: not specified' : `Genre: ${showDetail.genre}`} />
-                  <ListItemText primary={showDetail.rating == null ? 'Rating: Not rated yet' : `Rating: ${showDetail.rating}/10`} />
-                  <ListItemText primary={showDetail.status === '' ? 'Status: not specified' : `Status: ${showDetail.status}`} />
-                  <ListItemText primary="Network: " />
+                  <ListItemText primary={showDetail.genre.length < 1 ? 'Genre: Not specified' : `Genre: ${showDetail.genre}`} />
+                  <ListItemText primary={showDetail.rating === 0 ? 'Rating: Not rated yet' : `Rating: ${showDetail.rating}/10`} />
+                  <ListItemText primary={showDetail.status === null ? 'Status: Not specified' : ''} />
+                  <ListItemText primary={showDetail.status === 0 ? 'Status: In development' : ''} />
+                  <ListItemText primary={showDetail.status === 1 ? 'Status: Running' : ''} />
+                  <ListItemText primary={showDetail.status === 2 ? 'Status: Ended' : ''} />
+                  <ListItemText primary={showDetail.network === null ? 'Network: Not specified' : `Network: ${showDetail.network}`} />
                   <ListItemText primary={`Original language: ${showDetail.language}`} />
-                  <ListItemText primary={`Premiered: ${showDetail.premiered}`} />
+                  <ListItemText primary={showDetail.premiered === null ? 'Premiered: Not specified' : `Premiered: ${showDetail.premiered}`} />
                   <ListItemText primary="Nb seasons: " />
                   <ListItemText primary="Nb episodes: " />
                   <ListItemText primary={`Episode duration: ${showDetail.runtime} min`} />
