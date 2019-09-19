@@ -1,6 +1,7 @@
 // Import NPM
 import React from 'react';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 
 
 // Import locaux
@@ -23,7 +24,7 @@ import {
 
 import './LandingPage.scss';
 
-const Trending = ({ trendingList }) => {
+const Trending = ({ trendingList, getDetailShow }) => {
   const filteredAiredList = FilteredAiredLandingPage(trendingList);
   return (
     <div id="footer-landing-page">
@@ -40,12 +41,14 @@ const Trending = ({ trendingList }) => {
           alignItems="center"
         >
           {filteredAiredList[0].map((currentShow) => (
-            <Grid item lg={3} md={3} xs={5}>
-              <TrendingCard justify="center">
-                <TrendingCardMedia
-                  image={currentShow.poster}
-                />
-              </TrendingCard>
+            <Grid item lg={3} md={3} xs={5} onClick={() => getDetailShow(currentShow.show_id_tvmaze)}>
+              <NavLink exact to={`/show/${currentShow.show_name}`}>
+                <TrendingCard justify="center">
+                  <TrendingCardMedia
+                    image={currentShow.poster}
+                  />
+                </TrendingCard>
+              </NavLink>
             </Grid>
           ))}
         </TrendingGridAnime>
@@ -58,12 +61,14 @@ const Trending = ({ trendingList }) => {
           mx={3}
         >
           {filteredAiredList[1].map((currentShow) => (
-            <Grid item lg={3} md={3} xs={5}>
-              <TrendingCard justify="center">
-                <TrendingCardMedia
-                  image={currentShow.poster}
-                />
-              </TrendingCard>
+            <Grid item lg={3} md={3} xs={5} onClick={() => getDetailShow(currentShow.show_id_tvmaze)}>
+              <NavLink exact to={`/show/${currentShow.show_name}`}>
+                <TrendingCard justify="center">
+                  <TrendingCardMedia
+                    image={currentShow.poster}
+                  />
+                </TrendingCard>
+              </NavLink>
             </Grid>
           ))}
         </TrendingGridSeries>
@@ -74,6 +79,7 @@ const Trending = ({ trendingList }) => {
 
 Trending.propTypes = {
   trendingList: PropTypes.array,
+  getDetailShow: PropTypes.func.isRequired,
 };
 
 Trending.defaultProps = {

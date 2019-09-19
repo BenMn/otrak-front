@@ -11,6 +11,8 @@ import {
   fetchSearchInputResult,
   openModal,
   activeLoading,
+  emptySearchResults,
+  fetchDetailShow,
 } from 'src/store/reducer';
 
 const mapStateToProps = (state) => ({
@@ -44,6 +46,11 @@ const mapDispatchToProps = (dispatch) => ({
 
   handleOpen: (modalName) => {
     dispatch(openModal(modalName));
+  },
+
+  getDetailShow: (IdShow) => {
+    dispatch(emptySearchResults());
+    dispatch(fetchDetailShow(IdShow));
   },
 });
 

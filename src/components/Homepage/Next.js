@@ -1,6 +1,9 @@
 /* eslint-disable no-plusplus */
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
+import PropTypes from 'prop-types';
+
+import { NavLink } from 'react-router-dom';
 
 import {
   Typography,
@@ -38,6 +41,7 @@ import StarIcon from '@material-ui/icons/Star';
 class Next extends React.Component {
   // Opens card icons menu
   displayCardActionButtons = (event) => {
+    console.log('C\'est le clic du bouton con');
     event.persist();
     const parentIconElement = event.target.parentElement.parentElement;
     const hiddenIcons = parentIconElement.getElementsByClassName('hiddenCardIcon');
@@ -47,6 +51,7 @@ class Next extends React.Component {
   }
 
   render() {
+    const { testClickCardMedia } = this.props;
     return (
       <>
         {/* Title */}
@@ -71,51 +76,55 @@ class Next extends React.Component {
             {shows.map((show) => (
               <NextGridCurrentCard item key={show.title}>
                 <HomePageCard key={show.title}>
-                  <CardActionArea>
-                    <HomePageCardMedia
-                      image={show.image}
-                      title={show.title}
+                  <HomePageCardMedia
+                    image={show.image}
+                    title={show.title}
+                  >
+                    {/* Card icons */}
+                    <Grid
+                      container
+                      direction="row"
+                      justify="flex-end"
                     >
-                      {/* Card icons */}
-                      <Grid
-                        container
-                        direction="row"
-                        justify="flex-end"
-                      >
-                        <HomePageIconContainer className="hiddenCardIcon">
-                          <AddCircleIcon />
-                        </HomePageIconContainer>
-                        <HomePageIconContainer className="hiddenCardIcon">
-                          <VisibilityIcon />
-                        </HomePageIconContainer>
-                        <HomePageIconContainer className="hiddenCardIcon">
-                          <CreateIcon />
-                        </HomePageIconContainer>
-                        <HomePageIconContainer className="hiddenCardIcon">
-                          <StarIcon />
-                        </HomePageIconContainer>
-                        <HomePageIconContainer className="hiddenCardIcon">
-                          <DeleteForeverIcon />
-                        </HomePageIconContainer>
-                        <HomePageIconContainer onClick={this.displayCardActionButtons}>
-                          <HomePageCardIcon onClick={this.displayCardActionButtons} />
-                        </HomePageIconContainer>
-                      </Grid>
+                      <HomePageIconContainer className="hiddenCardIcon">
+                        <AddCircleIcon />
+                      </HomePageIconContainer>
+                      <HomePageIconContainer className="hiddenCardIcon">
+                        <VisibilityIcon />
+                      </HomePageIconContainer>
+                      <HomePageIconContainer className="hiddenCardIcon">
+                        <CreateIcon />
+                      </HomePageIconContainer>
+                      <HomePageIconContainer className="hiddenCardIcon">
+                        <StarIcon />
+                      </HomePageIconContainer>
+                      <HomePageIconContainer className="hiddenCardIcon">
+                        <DeleteForeverIcon />
+                      </HomePageIconContainer>
+                      <HomePageIconContainer onClick={this.displayCardActionButtons}>
+                        <HomePageCardIcon />
+                      </HomePageIconContainer>
+                    </Grid>
 
-                      {/* Show title */}
-                      <AiredTitleCardAndSubtitle
-                        container
-                        direction="row"
-                        justify="flex-end"
-                      >
-                        <HomePageCardTitle variant="h5" component="h2">
-                          {show.title}
-                        </HomePageCardTitle>
-                        {/* Season + Episode */}
-                        <AiredSubtitleSeasonEpisode>EXX SXX</AiredSubtitleSeasonEpisode>
-                      </AiredTitleCardAndSubtitle>
-                    </HomePageCardMedia>
-                  </CardActionArea>
+                    {/* Show title */}
+                    {/* <NavLink exact to={`/show/${currentShow.name}`}> */}
+                    <NavLink exact to="/show">
+                      <CardActionArea>
+                        <AiredTitleCardAndSubtitle
+                          container
+                          direction="row"
+                          justify="flex-end"
+                          onClick={() => testClickCardMedia()}
+                        >
+                          <HomePageCardTitle variant="h5" component="h2">
+                            {show.title}
+                          </HomePageCardTitle>
+                          {/* Season + Episode */}
+                          <AiredSubtitleSeasonEpisode>EXX SXX</AiredSubtitleSeasonEpisode>
+                        </AiredTitleCardAndSubtitle>
+                      </CardActionArea>
+                    </NavLink>
+                  </HomePageCardMedia>
                 </HomePageCard>
               </NextGridCurrentCard>
             ))}
@@ -125,5 +134,10 @@ class Next extends React.Component {
     );
   }
 }
+
+Next.propTypes = {
+  testClickCardMedia: PropTypes.func.isRequired,
+};
+
 
 export default Next;

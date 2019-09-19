@@ -92,8 +92,8 @@ export const SearchResultGridWithoutSlider = styled(Grid)({
 // ------------------- Styles of Aired.js ------------------------//
 
 export const AiredIconTitle = styled(NewReleasesIcon)({
-  fontSize: '1.5em',
-  margin: '40px 0px',
+  fontSize: '1.2em',
+  margin: '40px 7px 40px 0',
 });
 
 export const AiredBlockTitleSeeAll = styled(Grid)({
