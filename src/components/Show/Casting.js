@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-props-no-spreading */
 // Import NPM
 import React from 'react';
@@ -122,10 +123,9 @@ const Casting = ({ showDetail }) => {
                 ))}
               </CastingContainerWithoutSlider>
             </>
-          ) :
-            (
-              <CastingTitleNotAvailable variant="h4" align="center">Casting is not available yet for this program</CastingTitleNotAvailable>
-            )}
+          ) : (
+            <CastingTitleNotAvailable variant="h4" align="center">Casting is not available yet for this program</CastingTitleNotAvailable>
+          )}
         </>
       );
     }
@@ -173,10 +173,9 @@ const Casting = ({ showDetail }) => {
               ))}
             </Slider>
           </>
-        ) :
-          (
-            <CastingTitleNotAvailable variant="h4" align="center">Casting is not available yet for this program</CastingTitleNotAvailable>
-          )}
+        ) : (
+          <CastingTitleNotAvailable variant="h4" align="center">Casting is not available yet for this program</CastingTitleNotAvailable>
+        )}
       </>
     );
   }

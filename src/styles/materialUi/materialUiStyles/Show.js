@@ -37,13 +37,17 @@ export const IndexButtonReturn = styled(Button)({
 
 
 export const ShowHeadPoster = styled(CardMedia)({
-  height: 380,
-  width: 260,
+  minHeight: 410,
+  minWidth: 260,
+  maxHeight: 500,
+  maxWidth: 340,
   borderRadius: 10,
+  alignItems: 'center',
 });
 
 export const ShowHeadTitle = styled(Typography)({
   color: theme.palette.common.white,
+  maxWidth: 'fit-content',
 });
 
 // -----------------------------ResumeShow.js--------------------------//
@@ -56,7 +60,7 @@ export const ResumeShowResumeText = styled(Typography)({
 });
 
 export const ResumeShowTitle = styled(Typography)({
-  marginTop: 20,
+  marginTop: '7vh',
   color: theme.palette.common.white,
 });
 
@@ -72,12 +76,12 @@ export const DetailShowGroupList = styled(List)({
 
 
 export const CastingTitleCasting = styled(Typography)({
-  paddingTop: 20,
+  marginTop: '7vh',
   color: theme.palette.common.white,
 });
 
 export const CastingTitleNotAvailable = styled(Typography)({
-  paddingTop: 20,
+  marginTop: '7vh',
   color: theme.palette.common.white,
 });
 

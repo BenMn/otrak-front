@@ -10,6 +10,7 @@ import Backdrop from '@material-ui/core/Backdrop';
 import { LogFormsModal as Modal } from 'src/styles/materialUi/materialUiStyles/LogForms';
 import History from 'src/components/Dashboard/Header/History';
 import AccountSettings from 'src/components/Dashboard/Header/AccountSettings';
+import EditShow from 'src/components/Show/EditShow';
 
 // Local imports
 import SignIn from './SignIn';
@@ -30,6 +31,14 @@ const LogFormsModal = ({
   handleDeleteHistoryShow,
   updatedHistoryList,
   loading,
+  getDetailShow,
+  userInfos,
+  userAuthToken,
+  showDetail,
+  userSingleFollowing,
+  userFollowings,
+  getUserSingleFollowing,
+  getUserFollowings,
 }) => (
   <div>
     <Modal
@@ -91,6 +100,19 @@ const LogFormsModal = ({
             loading={loading}
           />
         )}
+        {typeof (modalName) === 'number' && (
+          <EditShow
+            showId={modalName}
+            getDetailShow={getDetailShow}
+            userInfos={userInfos}
+            userAuthToken={userAuthToken}
+            showDetail={showDetail}
+            userSingleFollowing={userSingleFollowing}
+            userFollowings={userFollowings}
+            getUserSingleFollowing={getUserSingleFollowing}
+            getUserFollowings={getUserFollowings}
+          />
+        )}
       </Fade>
     </Modal>
   </div>
@@ -100,21 +122,35 @@ LogFormsModal.propTypes = {
   open: PropTypes.bool,
   handleClose: PropTypes.func,
   handleOpen: PropTypes.func,
-  modalName: PropTypes.string,
+  modalName: PropTypes.node,
   handleAuthInput: PropTypes.func.isRequired,
   handleAuthInputSubmit: PropTypes.func.isRequired,
   trendingList: PropTypes.array.isRequired,
   handleDeleteHistoryShow: PropTypes.func,
   updatedHistoryList: PropTypes.array.isRequired,
   loading: PropTypes.bool.isRequired,
+  getDetailShow: PropTypes.func,
+  userInfos: PropTypes.object,
+  userAuthToken: PropTypes.string,
+  showDetail: PropTypes.object,
+  userSingleFollowing: PropTypes.object,
+  getUserSingleFollowing: PropTypes.func.isRequired,
+  getUserFollowings: PropTypes.func.isRequired,
+  userFollowings: PropTypes.array,
 };
 
 LogFormsModal.defaultProps = {
   open: false,
   handleClose: () => { },
   handleOpen: () => { },
-  modalName: '',
+  modalName: null,
   handleDeleteHistoryShow: () => { },
+  getDetailShow: () => { },
+  userInfos: {},
+  userAuthToken: '',
+  showDetail: {},
+  userSingleFollowing: {},
+  userFollowings: [],
 };
 
 export default LogFormsModal;

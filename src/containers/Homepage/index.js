@@ -23,15 +23,12 @@ const mapDispatchToProps = (dispatch) => ({
   getTrending: () => {
     dispatch(fetchTrending());
   },
-  getDetailShow: (IdShow) => {
+  getDetailShow: (showId) => {
     dispatch(emptySearchResults());
-    dispatch(fetchDetailShow(IdShow));
+    dispatch(fetchDetailShow(showId));
   },
   sortBy: (typeSort) => {
     dispatch(storeSortedArray(typeSort));
-  },
-  testClickCardMedia: () => {
-    console.log("c'est le clique de la card");
   },
 });
 

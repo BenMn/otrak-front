@@ -83,7 +83,7 @@ const AllTabs = ({ userFollowings }) => {
 
       {/* Watching */}
       <TabPanel value={value} index={0}>
-        <Grid container spacing={2} justify="center">
+        <Grid container spacing={6} justify="center">
           <Cards
             userFollowings={userFollowings}
           />
@@ -92,7 +92,7 @@ const AllTabs = ({ userFollowings }) => {
 
       {/* Completed */}
       <TabPanel value={value} index={1}>
-        <Grid container spacing={2} justify="center">
+        <Grid container spacing={6} justify="center">
           <Cards
             userFollowings={userFollowings}
           />
@@ -101,7 +101,7 @@ const AllTabs = ({ userFollowings }) => {
 
       {/* See Next */}
       <TabPanel value={value} index={2}>
-        <Grid container spacing={2} justify="center">
+        <Grid container spacing={6} justify="center">
           <Cards
             userFollowings={userFollowings}
           />
@@ -110,7 +110,7 @@ const AllTabs = ({ userFollowings }) => {
 
       {/* Upcoming */}
       <TabPanel value={value} index={3}>
-        <Grid container spacing={2} justify="center">
+        <Grid container spacing={6} justify="center">
           <Cards
             userFollowings={userFollowings}
           />
@@ -119,7 +119,7 @@ const AllTabs = ({ userFollowings }) => {
 
       {/* Stopped */}
       <TabPanel value={value} index={4}>
-        <Grid container spacing={2} justify="center">
+        <Grid container spacing={6} justify="center">
           <Cards
             userFollowings={userFollowings}
           />

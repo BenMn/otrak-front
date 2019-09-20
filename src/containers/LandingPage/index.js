@@ -48,9 +48,9 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(openModal(modalName));
   },
 
-  getDetailShow: (IdShow) => {
+  getDetailShow: (showId) => {
     dispatch(emptySearchResults());
-    dispatch(fetchDetailShow(IdShow));
+    dispatch(fetchDetailShow(showId));
   },
 });
 

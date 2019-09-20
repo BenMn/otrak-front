@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/no-this-in-sfc */
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -16,24 +17,28 @@ import {
   DetailShowGroupList,
 } from 'src/styles/materialUi/materialUiStyles/Show';
 
+import { showStatusSwitch } from 'src/utils';
+
+import './show.scss';
 
 const HeadScreen = ({
   showDetail,
   addToWatchList,
   userAuthToken,
   userInfos,
+  isLogged,
+  handleOpen,
 }) => {
   if (Object.keys(showDetail).length > 0) {
     return (
       <>
-        {console.log(showDetail)}
-
         <Grid
           container
           justify="space-evenly"
+          spacing={3}
         >
           {/* Left Side (poster) */}
-          <Grid item>
+          <Grid item lg={4}>
             <ShowHeadPoster
               className="poster-img"
               title="poster"
@@ -42,36 +47,76 @@ const HeadScreen = ({
           </Grid>
 
           {/* Right Side (title + details) */}
-          <Grid item>
+          <Grid item lg={8}>
             <Grid
               container
               direction="column"
               align="flex-start"
               spacing={4}
               justify="center"
+              wrap="nowrap"
             >
               <Grid item>
                 <ShowHeadTitle variant="h3">{showDetail.name}</ShowHeadTitle>
+                <Grid container spacing={2}>
+                  <Grid item>
+                    <ListItemText primary="XX Seasons" />
+                  </Grid>
+                  <Grid item>
+                    <ListItemText primary="•" />
+                  </Grid>
+                  <Grid item>
+                    <ListItemText primary="XXX Episodes" />
+                  </Grid>
+                </Grid>
               </Grid>
 
               <Grid item>
-                <Button variant="contained" color="secondary" onClick={() => addToWatchList(showDetail.id_tvmaze, userAuthToken, userInfos.id)}>ADD TO MY WATCH LIST</Button>
+                {isLogged === false ? (
+                  <Button variant="contained" color="secondary" onClick={() => handleOpen('up')}>JOIN US TO ADD THIS SHOW</Button>
+                ) : (
+                  <Button variant="contained" color="secondary" onClick={() => addToWatchList(showDetail.id_tvmaze, userAuthToken, userInfos.id)}>ADD TO MY WATCH LIST</Button>
+                )}
               </Grid>
 
               <Grid item>
                 <DetailShowGroupList component="nav" aria-label="secondary mailbox folders">
-                  <ListItemText primary={showDetail.genre.length < 1 ? 'Genre: Not specified' : `Genre: ${showDetail.genre}`} />
-                  <ListItemText primary={showDetail.rating === 0 ? 'Rating: Not rated yet' : `Rating: ${showDetail.rating}/10`} />
-                  <ListItemText primary={showDetail.status === null ? 'Status: Not specified' : ''} />
-                  <ListItemText primary={showDetail.status === 0 ? 'Status: In development' : ''} />
-                  <ListItemText primary={showDetail.status === 1 ? 'Status: Running' : ''} />
-                  <ListItemText primary={showDetail.status === 2 ? 'Status: Ended' : ''} />
-                  <ListItemText primary={showDetail.network === null ? 'Network: Not specified' : `Network: ${showDetail.network}`} />
-                  <ListItemText primary={`Original language: ${showDetail.language}`} />
-                  <ListItemText primary={showDetail.premiered === null ? 'Premiered: Not specified' : `Premiered: ${showDetail.premiered}`} />
-                  <ListItemText primary="Nb seasons: " />
-                  <ListItemText primary="Nb episodes: " />
-                  <ListItemText primary={`Episode duration: ${showDetail.runtime} min`} />
+
+                  <Grid container justify="space-between" className="HeadScreen-infos-border">
+                    <ListItemText primary="Genre" />
+                    <ListItemText align="right" primary={showDetail.genre.length < 1 ? 'Not specified' : `${showDetail.genre}`} />
+                  </Grid>
+
+                  <Grid container justify="space-between" className="HeadScreen-infos-border">
+                    <ListItemText primary="Rating" />
+                    <ListItemText align="right" primary={showDetail.rating === 0 ? 'Not rated yet' : `${showDetail.rating}/10`} />
+                  </Grid>
+
+                  <Grid container justify="space-between" className="HeadScreen-infos-border">
+                    <ListItemText primary="Status" />
+                    <ListItemText align="right" primary={showStatusSwitch(showDetail.status)} />
+                  </Grid>
+
+                  <Grid container justify="space-between" className="HeadScreen-infos-border">
+                    <ListItemText primary="Network" />
+                    <ListItemText align="right" primary={showDetail.network === (null || undefined) ? 'Not specified' : `${showDetail.network}`} />
+                  </Grid>
+
+                  <Grid container justify="space-between" className="HeadScreen-infos-border">
+                    <ListItemText primary="Original language" />
+                    <ListItemText align="right" primary={showDetail.language} />
+                  </Grid>
+
+                  <Grid container justify="space-between" className="HeadScreen-infos-border">
+                    <ListItemText primary="Premiered" />
+                    <ListItemText align="right" primary={showDetail.premiered === null ? 'Not specified' : `${showDetail.premiered}`} />
+                  </Grid>
+
+                  <Grid container justify="space-between" className="HeadScreen-infos-border">
+                    <ListItemText primary="Episode duration" />
+                    <ListItemText align="right" primary={`${showDetail.runtime} min`} />
+                  </Grid>
+
                 </DetailShowGroupList>
               </Grid>
             </Grid>
@@ -87,7 +132,9 @@ const HeadScreen = ({
 HeadScreen.propTypes = {
   showDetail: PropTypes.object.isRequired,
   addToWatchList: PropTypes.func.isRequired,
+  handleOpen: PropTypes.func.isRequired,
   userAuthToken: PropTypes.string.isRequired,
+  isLogged: PropTypes.bool.isRequired,
 };
 
 HeadScreen.defaultProps = {
