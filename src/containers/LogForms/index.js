@@ -13,6 +13,10 @@ import {
   fetchRegisterAuthInfos,
   removeShowHistoryList,
   activeLoading,
+  getUserSingleFollowing,
+  getUserFollowings,
+  emptySearchResults,
+  fetchDetailShow,
 } from 'src/store/reducer';
 
 const mapStateToProps = (state) => ({
@@ -24,6 +28,11 @@ const mapStateToProps = (state) => ({
   trendingList: state.trendingList,
   updatedHistoryList: state.updatedHistoryList,
   loading: state.loading,
+  userInfos: state.userInfos,
+  userAuthToken: state.userAuthToken,
+  userSingleFollowing: state.userSingleFollowing,
+  userFollowings: state.userFollowings,
+  showDetail: state.showDetail,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -60,6 +69,19 @@ const mapDispatchToProps = (dispatch) => ({
 
   handleDeleteHistoryShow: (showId) => {
     dispatch(removeShowHistoryList(showId));
+  },
+
+  getUserFollowings: (userId, userAuthToken) => {
+    dispatch(getUserFollowings(userId, userAuthToken));
+  },
+
+  getUserSingleFollowing: (followId, userAuthToken) => {
+    dispatch(getUserSingleFollowing(followId, userAuthToken));
+  },
+
+  getDetailShow: (showId) => {
+    dispatch(emptySearchResults());
+    dispatch(fetchDetailShow(showId));
   },
 });
 

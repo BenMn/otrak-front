@@ -7,6 +7,7 @@ import { NavLink } from 'react-router-dom';
 
 // Local import
 import Loader from 'src/components/Loader';
+import Icons from 'src/containers/Icons';
 
 // Slider library
 import Slider from 'react-slick';
@@ -28,25 +29,13 @@ import {
   AiredIconTitle,
   HomePageCard,
   HomePageCardMedia,
-  HomePageIconContainer,
   HomePageCardTitle,
   AiredBlockTitleSeeAll,
-  HomePageCardIcon,
   AiredSeeAllIcon,
   AiredSubtitleSeasonEpisode,
   AiredTitleCardAndSubtitle,
   HomePageGridOfOnCard,
 } from 'src/styles/materialUi/materialUiStyles/HomePage';
-
-// import Material UI Icons
-import AddCircleIcon from '@material-ui/icons/AddCircle';
-import VisibilityIcon from '@material-ui/icons/Visibility';
-import CreateIcon from '@material-ui/icons/Create';
-import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import StarIcon from '@material-ui/icons/Star';
-
-// Utils funtions
-import { displayCardActionButtons } from 'src/utils';
 
 // Micro component managing arrow's style
 function SampleNextArrow(props) {
@@ -126,27 +115,9 @@ const Aired = ({ trendingList, getDetailShow }) => {
                     <Grid
                       container
                       justify="flex-end"
+                      id={currentShow.id_tvmaze}
                     >
-                      <HomePageIconContainer className="hiddenCardIcon">
-                        <AddCircleIcon />
-                      </HomePageIconContainer>
-                      <HomePageIconContainer className="hiddenCardIcon">
-                        <VisibilityIcon />
-                      </HomePageIconContainer>
-                      <HomePageIconContainer className="hiddenCardIcon">
-                        <CreateIcon />
-                      </HomePageIconContainer>
-                      <HomePageIconContainer className="hiddenCardIcon">
-                        <StarIcon />
-                      </HomePageIconContainer>
-                      <HomePageIconContainer className="hiddenCardIcon">
-                        <DeleteForeverIcon />
-                      </HomePageIconContainer>
-                      <HomePageIconContainer
-                        onMouseOver={(event) => displayCardActionButtons(event)}
-                      >
-                        <HomePageCardIcon />
-                      </HomePageIconContainer>
+                      <Icons showId={currentShow.show_id_tvmaze} showName={currentShow.show_name} />
                     </Grid>
 
                     <CardActionArea>
@@ -187,7 +158,6 @@ const Aired = ({ trendingList, getDetailShow }) => {
 Aired.propTypes = {
   trendingList: PropTypes.array.isRequired,
   getDetailShow: PropTypes.func.isRequired,
-  testClickCardMedia: PropTypes.func.isRequired,
 };
 
 export default Aired;

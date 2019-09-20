@@ -18,6 +18,7 @@ const initialState = {
   // Single show details
   showDetail: {},
   userFollowings: [],
+  userSingleFollowing: {},
   // Search
   searchInputValue: '',
   storeSearchInputResult: [],
@@ -76,6 +77,8 @@ const STORE_USER_AUTH_INFOS = 'STORE_USER_AUTH_INFOS';
 export const GET_USER_INFOS = 'GET_USER_INFOS';
 const STORE_USER_INFOS = 'STORE_USER_INFOS';
 export const GET_USER_FOLLOWINGS = 'GET_USER_FOLLOWINGS';
+export const GET_USER_SINGLE_FOLLOWING = 'GET_USER_SINGLE_FOLLOWING';
+const STORE_USER_SINGLE_FOLLOWING = 'STORE_USER_SINGLE_FOLLOWING';
 
 const EMPTY_SEARCH_RESULTS = 'EMPTY_SEARCH_RESULTS';
 
@@ -249,40 +252,38 @@ const reducer = (state = initialState, action = {}) => {
         userFollowings: action.userFollowings,
       };
 
+    case STORE_USER_SINGLE_FOLLOWING:
+      return {
+        ...state,
+        userSingleFollowing: action.show,
+      };
+
     case STORE_SORTED_ARRAY:
 
       switch (action.typeSort) {
         case 'Title':
-
           const sortedTiltleArray = [...state.storeSearchInputResult].sort(compareTitle);
-
           return {
             ...state,
             storeSearchInputResult: sortedTiltleArray,
           };
 
         case 'Rating':
-
           const sortedRatingArray = [...state.storeSearchInputResult].sort(compareRating);
-
           return {
             ...state,
             storeSearchInputResult: sortedRatingArray,
           };
 
         case 'Release date':
-
           const sortedReleaseDateArray = [...state.storeSearchInputResult].sort(compareReleaseDate);
-
           return {
             ...state,
             storeSearchInputResult: sortedReleaseDateArray,
           };
 
         case 'Language':
-
           const sortedLanguageArray = [...state.storeSearchInputResult].sort(compareLanguage);
-
           return {
             ...state,
             storeSearchInputResult: sortedLanguageArray,
@@ -347,6 +348,17 @@ export const getUserInfos = (userAuthToken) => ({
 export const getUserFollowings = (userId, userAuthToken) => ({
   type: GET_USER_FOLLOWINGS,
   userId,
+  userAuthToken,
+});
+
+export const storeUserSingleFollowing = (show) => ({
+  type: STORE_USER_SINGLE_FOLLOWING,
+  show,
+});
+
+export const getUserSingleFollowing = (followId, userAuthToken) => ({
+  type: GET_USER_SINGLE_FOLLOWING,
+  followId,
   userAuthToken,
 });
 

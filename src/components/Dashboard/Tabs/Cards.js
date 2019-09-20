@@ -3,6 +3,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// Local Import
+import Icons from 'src/containers/Icons';
+
 // scss
 import 'react-id-swiper/lib/styles/scss/swiper.scss';
 // css
@@ -14,26 +17,13 @@ import {
   CardActionArea,
 } from '@material-ui/core';
 
-
-// ComponentIconButtons
-
 import {
   HomePageCard,
   HomePageCardMedia,
-  HomePageIconContainer,
-  HomePageCardIcon,
   HomePageCardTitle,
   AiredSubtitleSeasonEpisode,
   AiredTitleCardAndSubtitle,
 } from 'src/styles/materialUi/materialUiStyles/HomePage';
-
-import AddCircleIcon from '@material-ui/icons/AddCircle';
-import VisibilityIcon from '@material-ui/icons/Visibility';
-import CreateIcon from '@material-ui/icons/Create';
-import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import StarIcon from '@material-ui/icons/Star';
-
-import { displayCardActionButtons } from 'src/utils';
 
 const Cards = ({ userFollowings }) => (
   <Grid
@@ -52,26 +42,7 @@ const Cards = ({ userFollowings }) => (
                 container
                 justify="flex-end"
               >
-                <HomePageIconContainer className="hiddenCardIcon">
-                  <AddCircleIcon />
-                </HomePageIconContainer>
-                <HomePageIconContainer className="hiddenCardIcon">
-                  <VisibilityIcon />
-                </HomePageIconContainer>
-                <HomePageIconContainer className="hiddenCardIcon">
-                  <CreateIcon />
-                </HomePageIconContainer>
-                <HomePageIconContainer className="hiddenCardIcon">
-                  <StarIcon />
-                </HomePageIconContainer>
-                <HomePageIconContainer className="hiddenCardIcon">
-                  <DeleteForeverIcon />
-                </HomePageIconContainer>
-                <HomePageIconContainer
-                  onMouseOver={(event) => displayCardActionButtons(event)}
-                >
-                  <HomePageCardIcon />
-                </HomePageIconContainer>
+                <Icons showId={show.tvShow.id} />
               </Grid>
 
               <AiredTitleCardAndSubtitle

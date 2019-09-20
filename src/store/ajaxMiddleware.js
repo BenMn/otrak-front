@@ -13,6 +13,10 @@ import {
   GET_USER_FOLLOWINGS,
   getUserFollowings,
   storeUserFollowings,
+
+  GET_USER_SINGLE_FOLLOWING,
+  storeUserSingleFollowing,
+
   STORE_NEW_USERNAME,
   storeNewUsernameInput,
 
@@ -101,6 +105,23 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       })
         .then((response) => {
           store.dispatch(storeUserFollowings(response.data['hydra:member']));
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+      break;
+
+    case GET_USER_SINGLE_FOLLOWING:
+      axios.get(`http://localhost:8001/api/followings/${action.followId}`, {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${action.userAuthToken}`,
+        },
+      })
+        .then((response) => {
+          console.log(response, '<<<<<<<<<<<<< SINGLE SHOW USER FOLLOWING');
+          store.dispatch(storeUserSingleFollowing(response.data));
+          // store.dispatch(storeUserFollowings(response.data['hydra:member']));
         })
         .catch((error) => {
           console.error(error);

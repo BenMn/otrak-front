@@ -6,6 +6,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
+// Local import
+import Icons from 'src/containers/Icons';
 
 // import Material UI components
 import {
@@ -29,24 +31,11 @@ import {
   AiredBlockTitleSeeAll,
   AiredSeeAllIcon,
   SearchResultIconTitle,
-  HomePageIconContainer,
-  HomePageCardIcon,
   SearchResultContainerWithoutSlider,
   SearchResultGridWithoutSlider,
   HomePageGridOfOnCard,
   SearchResultTitle,
 } from 'src/styles/materialUi/materialUiStyles/HomePage';
-
-
-// Icons
-import AddCircleIcon from '@material-ui/icons/AddCircle';
-import VisibilityIcon from '@material-ui/icons/Visibility';
-import CreateIcon from '@material-ui/icons/Create';
-import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import StarIcon from '@material-ui/icons/Star';
-
-// Utils funtions
-import { displayCardActionButtons } from 'src/utils';
 
 
 function SampleNextArrow(props) {
@@ -128,28 +117,7 @@ const SearchResult = ({
                     container
                     justify="flex-end"
                   >
-                    {/* Icons */}
-                    <HomePageIconContainer className="hiddenCardIcon">
-                      <AddCircleIcon />
-                    </HomePageIconContainer>
-                    <HomePageIconContainer className="hiddenCardIcon">
-                      <VisibilityIcon />
-                    </HomePageIconContainer>
-                    <HomePageIconContainer className="hiddenCardIcon">
-                      <CreateIcon />
-                    </HomePageIconContainer>
-                    <HomePageIconContainer className="hiddenCardIcon">
-                      <StarIcon />
-                    </HomePageIconContainer>
-                    <HomePageIconContainer className="hiddenCardIcon">
-                      <DeleteForeverIcon />
-                    </HomePageIconContainer>
-                    <HomePageIconContainer
-                      onMouseOver={(event) => displayCardActionButtons(event)}
-                    >
-                      <HomePageCardIcon />
-                    </HomePageIconContainer>
-
+                    <Icons showId={currentShow.id_tvmaze} />
                   </Grid>
                   {/* Show Title */}
                   <NavLink exact to={`/show/${currentShow.name}`}>
@@ -198,28 +166,7 @@ const SearchResult = ({
                     container
                     justify="flex-end"
                   >
-                    {/* Icons */}
-                    <HomePageIconContainer className="hiddenCardIcon">
-                      <AddCircleIcon />
-                    </HomePageIconContainer>
-                    <HomePageIconContainer className="hiddenCardIcon">
-                      <VisibilityIcon />
-                    </HomePageIconContainer>
-                    <HomePageIconContainer className="hiddenCardIcon">
-                      <CreateIcon />
-                    </HomePageIconContainer>
-                    <HomePageIconContainer className="hiddenCardIcon">
-                      <StarIcon />
-                    </HomePageIconContainer>
-                    <HomePageIconContainer className="hiddenCardIcon">
-                      <DeleteForeverIcon />
-                    </HomePageIconContainer>
-                    <HomePageIconContainer
-                      onMouseOver={(event) => displayCardActionButtons(event)}
-                    >
-                      <HomePageCardIcon />
-                    </HomePageIconContainer>
-
+                    <Icons showId={currentShow.id_tvmaze} />
                   </Grid>
 
                   {/* Show Title */}
@@ -244,7 +191,6 @@ const SearchResult = ({
 SearchResult.propTypes = {
   searchInputValue: PropTypes.string.isRequired,
   storeSearchInputResult: PropTypes.array.isRequired,
-  testClickCardMedia: PropTypes.array.isRequired,
 };
 
 export default SearchResult;
