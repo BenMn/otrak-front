@@ -52,11 +52,11 @@ class EditShow extends React.Component {
 
           <Grid container>
 
-            <Grid item lg={4}>
-              <img src={currentFollow[key].tvShow.poster} alt={currentFollow[key].tvShow.name} />
+            <Grid item>
+              <img src={currentFollow[key].tvShow.poster} alt={currentFollow[key].tvShow.name} id="edit-modal-image" />
             </Grid>
 
-            <Grid item lg={8}>
+            <Grid item style={{ padding: '3vh 4vw' }}>
               <Grid
                 container
                 direction="column"
@@ -64,10 +64,10 @@ class EditShow extends React.Component {
                 justify="center"
               >
 
-                <Grid item lg={2}>
-                  <Grid container>
+                <Grid item>
+                  <Grid container spacing={2}>
 
-                    <Grid item lg={6}>
+                    <Grid item>
                       <TextField
                         fullWidth
                         variant="outlined"
@@ -77,7 +77,7 @@ class EditShow extends React.Component {
                         margin="normal"
                       />
                     </Grid>
-                    <Grid item lg={6}>
+                    <Grid item>
                       <TextField
                         fullWidth
                         variant="outlined"
@@ -94,10 +94,10 @@ class EditShow extends React.Component {
                   </Grid>
                 </Grid>
 
-                <Grid item lg={2}>
-                  <Grid container>
+                <Grid item>
+                  <Grid container spacing={2}>
 
-                    <Grid item lg={6}>
+                    <Grid item>
                       <TextField
                         fullWidth
                         variant="outlined"
@@ -107,7 +107,7 @@ class EditShow extends React.Component {
                         margin="normal"
                       />
                     </Grid>
-                    <Grid item lg={6}>
+                    <Grid item>
                       <TextField
                         fullWidth
                         variant="outlined"
@@ -121,10 +121,10 @@ class EditShow extends React.Component {
                   </Grid>
                 </Grid>
 
-                <Grid item lg={2}>
-                  <Grid container>
+                <Grid item>
+                  <Grid container spacing={2}>
 
-                    <Grid item lg={6}>
+                    <Grid item>
                       <TextField
                         fullWidth
                         variant="outlined"
@@ -138,7 +138,7 @@ class EditShow extends React.Component {
                       />
                     </Grid>
 
-                    <Grid item lg={6}>
+                    <Grid item>
                       <TextField
                         fullWidth
                         variant="outlined"
@@ -155,7 +155,7 @@ class EditShow extends React.Component {
                   </Grid>
                 </Grid>
 
-                <Grid item lg={2}>
+                <Grid item>
                   <TextField
                     fullWidth
                     variant="outlined"
@@ -166,14 +166,18 @@ class EditShow extends React.Component {
                   />
                 </Grid>
 
-                <Grid item lg={2}>
-                  <Grid container>
+                <Grid item>
+                  <Grid
+                    container
+                    spacing={2}
+                    justify="space-between"
+                  >
 
-                    <Grid item lg={6}>
+                    <Grid item>
                       <Button fullWidth variant="contained" color="secondary">REMOVE THIS SHOW</Button>
                     </Grid>
 
-                    <Grid item lg={6}>
+                    <Grid item>
                       <Button fullWidth variant="contained" color="primary">SAVE CHANGES</Button>
                     </Grid>
 
