@@ -60,13 +60,13 @@ const HeadScreen = ({
                 <ShowHeadTitle variant="h3">{showDetail.name}</ShowHeadTitle>
                 <Grid container spacing={2}>
                   <Grid item>
-                    <ListItemText primary="XX Seasons" />
+                    <ListItemText primary={`${showDetail.nbSeasons} seasons`} />
                   </Grid>
                   <Grid item>
                     <ListItemText primary="•" />
                   </Grid>
                   <Grid item>
-                    <ListItemText primary="XXX Episodes" />
+                    <ListItemText primary={`${showDetail.nbEpisodes} épisodes`} />
                   </Grid>
                 </Grid>
               </Grid>
@@ -84,12 +84,12 @@ const HeadScreen = ({
 
                   <Grid container justify="space-between" className="HeadScreen-infos-border">
                     <ListItemText primary="Genre" />
-                    <ListItemText align="right" primary={showDetail.genre.length < 1 ? 'Not specified' : `${showDetail.genre}`} />
+                    <ListItemText align="right" primary={showDetail.genre.length < 1 ? 'Not specified' : `${showDetail.genre.name}`} />
                   </Grid>
 
                   <Grid container justify="space-between" className="HeadScreen-infos-border">
                     <ListItemText primary="Rating" />
-                    <ListItemText align="right" primary={showDetail.rating === 0 ? 'Not rated yet' : `${showDetail.rating}/10`} />
+                    <ListItemText align="right" primary={showDetail.rating === null ? 'Not rated yet' : `${showDetail.rating}/10`} />
                   </Grid>
 
                   <Grid container justify="space-between" className="HeadScreen-infos-border">
