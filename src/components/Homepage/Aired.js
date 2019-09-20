@@ -70,7 +70,7 @@ function SamplePrevArrow(props) {
   );
 }
 
-const Aired = ({ trendingList, getDetailShow }) => {
+const Aired = ({ trendingList, getDetailShow, userFollowings }) => {
   // Setting of Slider component
   const settings = {
     dots: true,
@@ -109,7 +109,6 @@ const Aired = ({ trendingList, getDetailShow }) => {
 
                   <HomePageCardMedia
                     image={currentShow.poster}
-                    title={currentShow.show_name}
                   >
 
                     <Grid
@@ -117,7 +116,14 @@ const Aired = ({ trendingList, getDetailShow }) => {
                       justify="flex-end"
                       id={currentShow.id_tvmaze}
                     >
-                      <Icons showId={currentShow.show_id_tvmaze} showName={currentShow.show_name} />
+                      <Icons
+                        showId={currentShow.show_id_tvmaze}
+                        showName={currentShow.show_name}
+                        showSeason={currentShow.season}
+                        showEpisode={currentShow.number}
+                        userFollowings={userFollowings}
+                        categorie="aired"
+                      />
                     </Grid>
 
                     <CardActionArea>

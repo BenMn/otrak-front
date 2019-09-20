@@ -111,13 +111,12 @@ const SearchResult = ({
               <HomePageCard key={currentShow.id_tvmaze} id="currentCard">
                 <HomePageCardMedia
                   image={currentShow.poster === '' ? '../../src/styles/assets/images/notAvailable/no-image.jpeg' : currentShow.poster}
-                  title={currentShow.name}
                 >
                   <Grid
                     container
                     justify="flex-end"
                   >
-                    <Icons showId={currentShow.id_tvmaze} />
+                    <Icons showId={currentShow.id_tvmaze} categorie="search" />
                   </Grid>
                   {/* Show Title */}
                   <NavLink exact to={`/show/${currentShow.name}`}>
@@ -160,13 +159,12 @@ const SearchResult = ({
               <HomePageCard key={currentShow.id_tvmaze} id="currentCard">
                 <HomePageCardMedia
                   image={currentShow.poster}
-                  title={currentShow.name}
                 >
                   <Grid
                     container
                     justify="flex-end"
                   >
-                    <Icons showId={currentShow.id_tvmaze} />
+                    <Icons showId={currentShow.id_tvmaze} categorie="search" />
                   </Grid>
 
                   {/* Show Title */}

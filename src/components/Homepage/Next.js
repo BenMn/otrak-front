@@ -57,7 +57,6 @@ const Next = () => (
             <HomePageCard key={show.title} id="currentCard">
               <HomePageCardMedia
                 image={show.image}
-                title={show.title}
               >
                 {/* Card icons */}
                 <Grid
@@ -65,7 +64,7 @@ const Next = () => (
                   direction="row"
                   justify="flex-end"
                 >
-                  <Icons showId={show.id} />
+                  <Icons showId={show.id} categorie="next" />
                 </Grid>
 
                 {/* Show title */}

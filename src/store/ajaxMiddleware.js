@@ -32,6 +32,10 @@ import {
   closeModal,
 
   START_FOLLOWING_SHOW,
+
+  START_FOLLOWING_SHOW_AT_THIS_EPISODE,
+
+  PLANNING_WATCH_SHOW,
 } from 'src/store/reducer';
 
 
@@ -191,6 +195,36 @@ const ajaxMiddleware = (store) => (next) => (action) => {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${action.token}`,
+        },
+      })
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+      break;
+
+    case START_FOLLOWING_SHOW_AT_THIS_EPISODE:
+      axios.post(`http://localhost:8001/api/followings/new/${action.userId}/0/${action.showId}/${action.showSeason}/${action.showEpisode}`, {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${action.userAuthToken}`,
+        },
+      })
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+      break;
+
+    case PLANNING_WATCH_SHOW:
+      axios.post(`http://localhost:8001/api/followings/new/${action.userId}/2/${action.showId}/0/0`, {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${action.userAuthToken}`,
         },
       })
         .then((response) => {

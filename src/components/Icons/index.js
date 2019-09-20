@@ -8,6 +8,10 @@ import {
   HomePageCardIcon,
 } from 'src/styles/materialUi/materialUiStyles/HomePage';
 
+import {
+  Tooltip,
+} from '@material-ui/core';
+
 // import Material UI Icons
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import VisibilityIcon from '@material-ui/icons/Visibility';
@@ -16,41 +20,67 @@ import CreateIcon from '@material-ui/icons/Create';
 // import StarIcon from '@material-ui/icons/Star';
 
 // Utils funtions
-import { displayCardActionButtons } from 'src/utils';
+import { displayCardActionButtons, tooltipTitleByCategory } from 'src/utils';
 
 const Icons = ({
-  addToWatchList,
   userAuthToken,
   userInfos,
   isLogged,
   handleOpen,
   showId,
   showName,
-  getDetailShow,
+  showSeason,
+  showEpisode,
+  categorie,
+  addShowByCategorie,
 }) => (
   <>
     {/* Add to list */}
     {isLogged === true ? (
-      <HomePageIconContainer className="hiddenCardIcon">
-        <AddCircleIcon onClick={() => addToWatchList(showId, userAuthToken, userInfos.id)} />
-      </HomePageIconContainer>
+      <Tooltip title={tooltipTitleByCategory(categorie)} placement="top">
+        <HomePageIconContainer className="hiddenCardIcon">
+          <AddCircleIcon onClick={() => addShowByCategorie(
+            categorie,
+            showId,
+            userAuthToken,
+            userInfos.id,
+            showSeason,
+            showEpisode,
+          )}
+          />
+        </HomePageIconContainer>
+      </Tooltip>
     ) : (
-      <HomePageIconContainer className="hiddenCardIcon">
-        <AddCircleIcon onClick={() => handleOpen('in')} />
-      </HomePageIconContainer>
+      <Tooltip title="Sign in to add this show" placement="top">
+        <HomePageIconContainer className="hiddenCardIcon">
+          <AddCircleIcon onClick={() => handleOpen('in')} />
+        </HomePageIconContainer>
+      </Tooltip>
     )}
 
     {/* See show */}
-    <HomePageIconContainer className="hiddenCardIcon">
-      <NavLink exact to={`/show/${showName}`}>
-        <VisibilityIcon onClick={() => getDetailShow(showId)} />
-      </NavLink>
-    </HomePageIconContainer>
+    <Tooltip title="Plan to See Show" placement="top">
+      <HomePageIconContainer className="hiddenCardIcon">
+        <NavLink exact to={`/show/${showName}`}>
+          <VisibilityIcon />
+        </NavLink>
+      </HomePageIconContainer>
+    </Tooltip>
 
     {/* Edit show */}
-    <HomePageIconContainer className="hiddenCardIcon">
-      <CreateIcon onClick={() => handleOpen(showId)} />
-    </HomePageIconContainer>
+    {isLogged === true ? (
+      <Tooltip title="Edit Show" placement="top">
+        <HomePageIconContainer className="hiddenCardIcon">
+          <CreateIcon onClick={() => handleOpen(showId)} />
+        </HomePageIconContainer>
+      </Tooltip>
+    ) : (
+      <Tooltip title="Sign in to edit this show" placement="top">
+        <HomePageIconContainer className="hiddenCardIcon">
+          <CreateIcon onClick={() => handleOpen('in')} />
+        </HomePageIconContainer>
+      </Tooltip>
+    )}
 
     {/* Add to favorites */}
     {/* uniquement display quand la catégorie existera */}
@@ -58,11 +88,17 @@ const Icons = ({
       <StarIcon />
     </HomePageIconContainer> */}
 
-    {/* Remove from list */}
-    {/* uniquement display si l'id du show est contenu dans le tableau userFollings */}
-    {/* <HomePageIconContainer className="hiddenCardIcon">
-      <DeleteForeverIcon />
-    </HomePageIconContainer> */}
+    {/* Remove from list
+    uniquement display si l'id du show est contenu dans le tableau userFollings */}
+    {/* {showName === userFollowing.name ? (
+      <Tooltip title="Unfollow this show" placement="top">
+        <HomePageIconContainer
+        className="hiddenCardIcon"
+        onClick={() => stopFollowingShow(showId, userAuthToken)}>
+          <DeleteForeverIcon />
+        </HomePageIconContainer>
+      </Tooltip>
+    ) : '' } */}
 
     {/* Display buttons */}
     <HomePageIconContainer
@@ -74,9 +110,11 @@ const Icons = ({
 );
 
 Icons.propTypes = {
-  addToWatchList: PropTypes.func.isRequired,
+  showSeason: PropTypes.number,
+  showEpisode: PropTypes.number,
+  categorie: PropTypes.string.isRequired,
+  addShowByCategorie: PropTypes.func.isRequired,
   handleOpen: PropTypes.func.isRequired,
-  getDetailShow: PropTypes.func.isRequired,
   userAuthToken: PropTypes.string,
   userInfos: PropTypes.object,
   isLogged: PropTypes.bool.isRequired,
@@ -89,6 +127,8 @@ Icons.defaultProps = {
   userInfos: {},
   showId: null,
   showName: '',
+  showSeason: null,
+  showEpisode: null,
 };
 
 export default Icons;

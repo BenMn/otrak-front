@@ -84,6 +84,15 @@ export function showStatusSwitch(showDetailStatus) {
   }
 }
 
+export function tooltipTitleByCategory(categorie) {
+  switch (categorie) {
+    case 'search': return 'Add this show';
+    case 'aired': return 'Start follow from this episode';
+    case 'next': return 'Episode watched';
+    default: return '';
+  }
+}
+
 export function displayCardActionButtons(event) {
   event.persist();
   const parentIconElement = event.target.parentElement.parentElement;
@@ -101,3 +110,9 @@ export function displayCardActionButtons(event) {
     });
   }
 }
+
+// export function CheckIfUserFollowThisShow(allShowFollowed, nameCurrentShow) {
+//   const currentFollow = userFollowings.filter((show) => show.tvShow.name === showDetail.name);
+//     const currentFollowId = Object.keys(currentFollow).map((key) => currentFollow[key].id);
+//   return currentFollow;
+// }

@@ -34,3 +34,10 @@ export const LogFormModalSubtitle = styled(Typography)({
   margintop: -15,
   color: theme.palette.text.disabled,
 });
+
+export const LogFormModalEditPaper = styled(Paper)({
+  backgroundColor: theme.palette.primary.light,
+  boxShadow: '0 0 15px 0px rgba(200, 200, 200, 0.55)',
+  maxHeight: '90vh',
+  maxWidth: '90vw',
+});
