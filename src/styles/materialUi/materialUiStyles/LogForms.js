@@ -36,8 +36,9 @@ export const LogFormModalSubtitle = styled(Typography)({
 });
 
 export const LogFormModalEditPaper = styled(Paper)({
-  backgroundColor: theme.palette.primary.light,
+  backgroundColor: theme.palette.background.paper,
   boxShadow: '0 0 15px 0px rgba(200, 200, 200, 0.55)',
   maxHeight: '90vh',
   maxWidth: '90vw',
+  padding: 0,
 });
