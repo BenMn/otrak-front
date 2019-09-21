@@ -19,14 +19,14 @@ export function compareTitle(a, b) {
 
 
 export function compareRating(a, b) {
-  const ratingA = a.rating.toUpperCase();
-  const ratingB = b.rating.toUpperCase();
+  const ratingA = a.rating;
+  const ratingB = b.rating;
 
   let comparison = 0;
-  if (ratingA > ratingB) {
+  if (ratingA < ratingB) {
     comparison = 1;
   }
-  else if (ratingA < ratingB) {
+  else if (ratingA > ratingB) {
     comparison = -1;
   }
   return comparison;
