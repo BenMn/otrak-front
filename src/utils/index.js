@@ -60,16 +60,29 @@ export function compareLanguage(a, b) {
   return comparison;
 }
 
+
+export function compareRatingForAiredList(a, b) {
+  const ratingA = a.show_rating;
+  const ratingB = b.show_rating;
+
+  let comparison = 0;
+  if (ratingA < ratingB) {
+    comparison = 1;
+  }
+  else if (ratingA > ratingB) {
+    comparison = -1;
+  }
+  return comparison;
+}
+
 // For LandingPage--Aired: Pour filtrer le nombre de résultat d'un tableau par langue et par note.
 // Avoir que 8 resultats, 4 langues US et 4 langue JP avec les meilleures notes.
 export function FilteredAiredLandingPage(airedArray) {
-  const jpShow = airedArray.filter((currentShow) => currentShow.Show_type === 'Animation').splice(0, 4);
-  // .sort(compareRating);
+  const arrayWithoutRatingNull = airedArray.filter((currentShow) => currentShow.show_rating !== null);
 
-  const usShow = airedArray.filter((currentShow) => currentShow.Show_type === 'Scripted' || currentShow.Show_type === 'Reality').splice(0, 4);
-  // .sort(compareRating);
-  console.log(usShow);
+  const jpShow = arrayWithoutRatingNull.filter((currentShow) => currentShow.Show_type === 'Animation').sort(compareRatingForAiredList).splice(0, 4);
 
+  const usShow = arrayWithoutRatingNull.filter((currentShow) => currentShow.Show_type === 'Scripted' || currentShow.Show_type === 'Reality').sort(compareRatingForAiredList).splice(0, 4);
 
   const newArray = [jpShow, usShow];
 
