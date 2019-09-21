@@ -66,8 +66,10 @@ export function FilteredAiredLandingPage(airedArray) {
   const jpShow = airedArray.filter((currentShow) => currentShow.Show_type === 'Animation').splice(0, 4);
   // .sort(compareRating);
 
-  const usShow = airedArray.filter((currentShow) => currentShow.Show_type === 'Scripted').splice(0, 4);
+  const usShow = airedArray.filter((currentShow) => currentShow.Show_type === 'Scripted' || currentShow.Show_type === 'Reality').splice(0, 4);
   // .sort(compareRating);
+  console.log(usShow);
+
 
   const newArray = [jpShow, usShow];
 
