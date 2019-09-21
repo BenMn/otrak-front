@@ -479,10 +479,10 @@ export const planningWatchShow = (showId, userId, userAuthToken) => ({
   userAuthToken,
 });
 
-export const DeleteFollowingShow = (idShow, token) => ({
+export const DeleteFollowingShow = (showIdBdd, userAuthToken) => ({
   type: DELETE_FOLLOWING_SHOW,
-  idShow,
-  token,
+  showIdBdd,
+  userAuthToken,
 });
 
 export const startFollowingShowFromTheBeginning = (showId, userId, userAuthToken) => ({

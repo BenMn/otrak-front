@@ -118,6 +118,7 @@ const Aired = ({ trendingList, getDetailShow, userFollowings }) => {
                     >
                       <Icons
                         showId={currentShow.show_id_tvmaze}
+                        showIdBdd={currentShow.show_id}
                         showName={currentShow.show_name}
                         showSeason={currentShow.season}
                         showEpisode={currentShow.number}

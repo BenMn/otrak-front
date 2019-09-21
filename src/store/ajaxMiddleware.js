@@ -31,13 +31,13 @@ import {
 
   closeModal,
 
-  START_FOLLOWING_SHOW,
-
   START_FOLLOWING_SHOW_AT_THIS_EPISODE,
 
   START_FOLLOWING_SHOW_FROM_THE_BEGINNING,
 
   PLANNING_WATCH_SHOW,
+
+  DELETE_FOLLOWING_SHOW,
 } from 'src/store/reducer';
 
 
@@ -224,6 +224,21 @@ const ajaxMiddleware = (store) => (next) => (action) => {
 
     case PLANNING_WATCH_SHOW:
       axios.post(`http://localhost:8001/api/followings/new/${action.userId}/2/${action.showId}/0/0`, {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${action.userAuthToken}`,
+        },
+      })
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+      break;
+
+    case DELETE_FOLLOWING_SHOW:
+      axios.delete(`http://localhost:8001/api/followings/${action.showIdBdd}`, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${action.userAuthToken}`,
