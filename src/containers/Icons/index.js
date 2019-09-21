@@ -14,6 +14,7 @@ import {
   planningWatchShow,
   getUserFollowings,
   DeleteFollowingShow,
+  startFollowingShowFromTheBeginning,
 } from 'src/store/reducer';
 
 const mapStateToProps = (state) => ({
@@ -25,9 +26,6 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  addToWatchList: (idShow, token, userId) => {
-    dispatch(startFollowingShow(idShow, token, userId));
-  },
 
   handleOpen: (modalName) => {
     dispatch(openModal(modalName));
@@ -63,7 +61,7 @@ const mapDispatchToProps = (dispatch) => ({
         break;
 
       case 'search':
-        dispatch(planningWatchShow(
+        dispatch(startFollowingShowFromTheBeginning(
           showId,
           userId,
           userAuthToken,
@@ -73,10 +71,12 @@ const mapDispatchToProps = (dispatch) => ({
       default: console.log('default case');
     }
   },
+  addToPlanningWatchShow: (showId, userId, userAuthToken) => {
+    dispatch(planningWatchShow(showId, userId, userAuthToken));
+  },
 
-  stopFollowingShow: (showId, userAuthToken) => {
-    console.log('je veux stopper le suivi de ce show', showId);
-    dispatch(DeleteFollowingShow(showId, userAuthToken));
+  stopFollowingShow: (showIdBdd, userAuthToken) => {
+    dispatch(DeleteFollowingShow(showIdBdd, userAuthToken));
   },
 
 });

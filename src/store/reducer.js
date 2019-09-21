@@ -106,8 +106,6 @@ export const FETCH_DETAIL_SHOW = 'FETCH_DETAIL_SHOW';
 const STORE_DETAIL_SHOW = 'STORE_DETAIL_SHOW';
 const STORE_USER_FOLLOWINGS = 'STORE_USER_FOLLOWINGS';
 
-export const START_FOLLOWING_SHOW = 'START_FOLLOWING_SHOW';
-
 const STORE_SORTED_ARRAY = 'STORE_SORTED_ARRAY';
 
 export const START_FOLLOWING_SHOW_AT_THIS_EPISODE = 'START_FOLLOWING_SHOW_AT_THIS_EPISODE';
@@ -115,6 +113,8 @@ export const START_FOLLOWING_SHOW_AT_THIS_EPISODE = 'START_FOLLOWING_SHOW_AT_THI
 export const PLANNING_WATCH_SHOW = 'PLANNING_WATCH_SHOW';
 
 export const DELETE_FOLLOWING_SHOW = 'DELETE_FOLLOWING_SHOW';
+
+export const START_FOLLOWING_SHOW_FROM_THE_BEGINNING = 'START_FOLLOWING_SHOW_FROM_THE_BEGINNING';
 
 // == Reducer
 const reducer = (state = initialState, action = {}) => {
@@ -448,13 +448,6 @@ export const storeUserFollowings = (userFollowings) => ({
   userFollowings,
 });
 
-export const startFollowingShow = (idShow, token, userId) => ({
-  type: START_FOLLOWING_SHOW,
-  idShow,
-  token,
-  userId,
-});
-
 export const storeSortedArray = (typeSort) => ({
   type: STORE_SORTED_ARRAY,
   typeSort,
@@ -486,10 +479,17 @@ export const planningWatchShow = (showId, userId, userAuthToken) => ({
   userAuthToken,
 });
 
-export const DeleteFollowingShow = (idShow, token) => ({
+export const DeleteFollowingShow = (showIdBdd, userAuthToken) => ({
   type: DELETE_FOLLOWING_SHOW,
-  idShow,
-  token,
+  showIdBdd,
+  userAuthToken,
+});
+
+export const startFollowingShowFromTheBeginning = (showId, userId, userAuthToken) => ({
+  type: START_FOLLOWING_SHOW_FROM_THE_BEGINNING,
+  showId,
+  userId,
+  userAuthToken,
 });
 // == Selectors
 

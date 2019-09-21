@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
 
 // import Material UI custom components
 import {
@@ -16,7 +15,7 @@ import {
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import CreateIcon from '@material-ui/icons/Create';
-// import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 // import StarIcon from '@material-ui/icons/Star';
 
 // Utils funtions
@@ -28,11 +27,14 @@ const Icons = ({
   isLogged,
   handleOpen,
   showId,
+  showIdBdd,
   showName,
   showSeason,
   showEpisode,
   categorie,
   addShowByCategorie,
+  addToPlanningWatchShow,
+  stopFollowingShow,
 }) => (
   <>
     {/* Add to list */}
@@ -58,12 +60,10 @@ const Icons = ({
       </Tooltip>
     )}
 
-    {/* See show */}
-    <Tooltip title="Plan to See Show" placement="top">
+    {/* Add to next to watch */}
+    <Tooltip title="Plan to See" placement="top">
       <HomePageIconContainer className="hiddenCardIcon">
-        <NavLink exact to={`/show/${showName}`}>
-          <VisibilityIcon />
-        </NavLink>
+        <VisibilityIcon onClick={() => addToPlanningWatchShow(showId, userInfos.id, userAuthToken)} />
       </HomePageIconContainer>
     </Tooltip>
 
@@ -90,15 +90,13 @@ const Icons = ({
 
     {/* Remove from list
     uniquement display si l'id du show est contenu dans le tableau userFollings */}
-    {/* {showName === userFollowing.name ? (
-      <Tooltip title="Unfollow this show" placement="top">
-        <HomePageIconContainer
-        className="hiddenCardIcon"
-        onClick={() => stopFollowingShow(showId, userAuthToken)}>
-          <DeleteForeverIcon />
-        </HomePageIconContainer>
-      </Tooltip>
-    ) : '' } */}
+
+    <Tooltip title="Unfollow this show" placement="top">
+      <HomePageIconContainer className="hiddenCardIcon">
+        <DeleteForeverIcon onClick={() => stopFollowingShow(showIdBdd, userAuthToken)} />
+      </HomePageIconContainer>
+    </Tooltip>
+
 
     {/* Display buttons */}
     <HomePageIconContainer
@@ -110,22 +108,37 @@ const Icons = ({
 );
 
 Icons.propTypes = {
+  // Function required
+  addShowByCategorie: PropTypes.func.isRequired,
+  addToPlanningWatchShow: PropTypes.func.isRequired,
+  handleOpen: PropTypes.func.isRequired,
+  stopFollowingShow: PropTypes.func.isRequired,
+
+  // String required
+  categorie: PropTypes.string.isRequired,
+
+  // Boolean required
+  isLogged: PropTypes.bool.isRequired,
+
+  // Number not required
   showSeason: PropTypes.number,
   showEpisode: PropTypes.number,
-  categorie: PropTypes.string.isRequired,
-  addShowByCategorie: PropTypes.func.isRequired,
-  handleOpen: PropTypes.func.isRequired,
-  userAuthToken: PropTypes.string,
-  userInfos: PropTypes.object,
-  isLogged: PropTypes.bool.isRequired,
   showId: PropTypes.number,
+  showIdBdd: PropTypes.number,
+
+  // String not required
+  userAuthToken: PropTypes.string,
   showName: PropTypes.string,
+
+  // Object not required
+  userInfos: PropTypes.object,
 };
 
 Icons.defaultProps = {
   userAuthToken: '',
   userInfos: {},
   showId: null,
+  showIdBdd: null,
   showName: '',
   showSeason: null,
   showEpisode: null,
