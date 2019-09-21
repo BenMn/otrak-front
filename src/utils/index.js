@@ -126,6 +126,18 @@ export function displayCardActionButtons(event) {
   }
 }
 
+// Sort all the shows followed by the user.
+export function SortShowFollowedByStatus(allShows) {
+  const arrayWatching = allShows.filter((currentShow) => currentShow.status === 0);
+  const arrayCompleted = allShows.filter((currentShow) => currentShow.status === 1);
+  const arraySeeNext = allShows.filter((currentShow) => currentShow.status === 2);
+  const arrayUpcomming = allShows.filter((currentShow) => currentShow.status === 3);
+  const arrayStopped = allShows.filter((currentShow) => currentShow.status === 4);
+
+  const allShowsSorted = [arrayWatching, arrayCompleted, arraySeeNext, arrayUpcomming, arrayStopped];
+  return allShowsSorted;
+}
+
 // export function CheckIfUserFollowThisShow(allShowFollowed, nameCurrentShow) {
 //   const currentFollow = userFollowings.filter((show) => show.tvShow.name === showDetail.name);
 //     const currentFollowId = Object.keys(currentFollow).map((key) => currentFollow[key].id);

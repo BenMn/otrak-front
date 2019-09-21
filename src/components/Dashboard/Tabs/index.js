@@ -1,6 +1,11 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import PropTypes from 'prop-types';
+
+import {
+  SortShowFollowedByStatus,
+} from 'src/utils';
+
 import {
   Grid,
   AppBar,
@@ -58,6 +63,9 @@ function a11yProps(index) {
 const AllTabs = ({ userFollowings }) => {
   const [value, setValue] = React.useState(0);
 
+  // Appel pour fonction utilitaire qui permet de trier la liste de tout les shows de l'utilisateur
+  const userFollowingsShowsSortedByStatus = SortShowFollowedByStatus(userFollowings);
+
   function handleChange(event, newValue) {
     setValue(newValue);
   }
@@ -85,6 +93,7 @@ const AllTabs = ({ userFollowings }) => {
       <TabPanel value={value} index={0}>
         <Grid container spacing={6} justify="center">
           <Cards
+            userFollowingsShowsSortedByStatus={userFollowingsShowsSortedByStatus[0]}
             userFollowings={userFollowings}
           />
         </Grid>
@@ -94,6 +103,7 @@ const AllTabs = ({ userFollowings }) => {
       <TabPanel value={value} index={1}>
         <Grid container spacing={6} justify="center">
           <Cards
+            userFollowingsShowsSortedByStatus={userFollowingsShowsSortedByStatus[1]}
             userFollowings={userFollowings}
           />
         </Grid>
@@ -103,6 +113,7 @@ const AllTabs = ({ userFollowings }) => {
       <TabPanel value={value} index={2}>
         <Grid container spacing={6} justify="center">
           <Cards
+            userFollowingsShowsSortedByStatus={userFollowingsShowsSortedByStatus[2]}
             userFollowings={userFollowings}
           />
         </Grid>
@@ -112,6 +123,7 @@ const AllTabs = ({ userFollowings }) => {
       <TabPanel value={value} index={3}>
         <Grid container spacing={6} justify="center">
           <Cards
+            userFollowingsShowsSortedByStatus={userFollowingsShowsSortedByStatus[3]}
             userFollowings={userFollowings}
           />
         </Grid>
@@ -121,6 +133,7 @@ const AllTabs = ({ userFollowings }) => {
       <TabPanel value={value} index={4}>
         <Grid container spacing={6} justify="center">
           <Cards
+            userFollowingsShowsSortedByStatus={userFollowingsShowsSortedByStatus[4]}
             userFollowings={userFollowings}
           />
         </Grid>
