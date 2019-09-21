@@ -14,6 +14,7 @@ import {
   planningWatchShow,
   getUserFollowings,
   DeleteFollowingShow,
+  startFollowingShowFromTheBeginning,
 } from 'src/store/reducer';
 
 const mapStateToProps = (state) => ({
@@ -63,7 +64,7 @@ const mapDispatchToProps = (dispatch) => ({
         break;
 
       case 'search':
-        dispatch(planningWatchShow(
+        dispatch(startFollowingShowFromTheBeginning(
           showId,
           userId,
           userAuthToken,

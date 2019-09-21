@@ -58,8 +58,8 @@ const Icons = ({
       </Tooltip>
     )}
 
-    {/* See show */}
-    <Tooltip title="Plan to See Show" placement="top">
+    {/* Add to next to watch */}
+    <Tooltip title="Plan to See" placement="top">
       <HomePageIconContainer className="hiddenCardIcon">
         <NavLink exact to={`/show/${showName}`}>
           <VisibilityIcon />
