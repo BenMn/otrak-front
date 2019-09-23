@@ -9,6 +9,9 @@ import {
 
 import {
   Tooltip,
+  // Snackbar,
+  // Button,
+  // IconButton,
 } from '@material-ui/core';
 
 // import Material UI Icons
@@ -16,6 +19,7 @@ import AddCircleIcon from '@material-ui/icons/AddCircle';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import CreateIcon from '@material-ui/icons/Create';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+// import CloseIcon from '@material-ui/icons/Close';
 // import StarIcon from '@material-ui/icons/Star';
 
 // Utils funtions
@@ -60,16 +64,31 @@ const Icons = ({
     )}
 
     {/* Add to next to watch */}
-    <Tooltip title="Plan to See" placement="top">
-      <HomePageIconContainer className="hiddenCardIcon">
-        <VisibilityIcon onClick={() => addToPlanningWatchShow(
-          showId,
-          userInfos.id,
-          userAuthToken,
-        )}
-        />
-      </HomePageIconContainer>
-    </Tooltip>
+    {isLogged === true ? (
+      <>
+        <Tooltip title="Plan to See" placement="top">
+          <HomePageIconContainer className="hiddenCardIcon">
+            <VisibilityIcon onClick={() => addToPlanningWatchShow(
+              showId,
+              userInfos.id,
+              userAuthToken,
+            )}
+            />
+          </HomePageIconContainer>
+        </Tooltip>
+      </>
+    ) : (
+      <Tooltip title="Sign in to add this show in your planning list" placement="top">
+        <HomePageIconContainer className="hiddenCardIcon">
+          <VisibilityIcon onClick={() => addToPlanningWatchShow(
+            showId,
+            userInfos.id,
+            userAuthToken,
+          )}
+          />
+        </HomePageIconContainer>
+      </Tooltip>
+    )}
 
     {/* Edit show */}
     {isLogged === true ? (
@@ -92,15 +111,16 @@ const Icons = ({
       <StarIcon />
     </HomePageIconContainer> */}
 
-    {/* Remove from list
-    uniquement display si l'id du show est contenu dans le tableau userFollings */}
-
-    <Tooltip title="Unfollow this show" placement="top">
-      <HomePageIconContainer className="hiddenCardIcon">
-        <DeleteForeverIcon onClick={() => stopFollowingShow(showIdBdd, userAuthToken)} />
-      </HomePageIconContainer>
-    </Tooltip>
-
+    {/* Remove from list */}
+    {isLogged === true && showIdBdd !== null ? (
+      <Tooltip title="Unfollow this show" placement="top">
+        <HomePageIconContainer className="hiddenCardIcon">
+          <DeleteForeverIcon onClick={() => stopFollowingShow(showIdBdd, userAuthToken)} />
+        </HomePageIconContainer>
+      </Tooltip>
+    ) : (
+      ''
+    )}
 
     {/* Display buttons */}
     <HomePageIconContainer
@@ -110,6 +130,7 @@ const Icons = ({
     </HomePageIconContainer>
   </>
 );
+
 
 Icons.propTypes = {
   // Function required

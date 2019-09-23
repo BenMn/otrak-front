@@ -11,12 +11,14 @@ import {
   fetchDetailShow,
   emptySearchResults,
   storeSortedArray,
+  fetchNext,
 } from 'src/store/reducer';
 
 const mapStateToProps = (state) => ({
   storeSearchInputResult: state.storeSearchInputResult,
   searchInputValue: state.searchInputValue,
   trendingList: state.trendingList,
+  nextList: state.nextList,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -29,6 +31,10 @@ const mapDispatchToProps = (dispatch) => ({
   },
   sortBy: (typeSort) => {
     dispatch(storeSortedArray(typeSort));
+  },
+  getNext: () => {
+    console.log('coucou');
+    dispatch(fetchNext());
   },
 });
 

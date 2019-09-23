@@ -15,6 +15,8 @@ const initialState = {
   // Get trending infos
   trendingList: [],
   updatedHistoryList: [],
+  // Get NextToSee List for HomePage
+  nextList: [],
   // Single show details
   showDetail: {},
   userFollowings: [],
@@ -106,6 +108,9 @@ const LOG_OUT = 'LOG_OUT';
 const STORE_TRENDING = 'STORE_TRENDING';
 export const FETCH_TRENDING = 'FETCH_TRENDING';
 
+const STORE_NEXT = 'STORE_NEXT';
+export const FETCH_NEXT = 'FETCH_NEXT';
+
 const OPEN_MODAL = 'OPEN_MODAL';
 const CLOSE_MODAL = 'CLOSE_MODAL';
 const ACTIVE_LOADING = 'ACTIVE_LOADING';
@@ -135,6 +140,12 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         trendingList: action.data,
+      };
+
+    case STORE_NEXT:
+      return {
+        ...state,
+        nextList: action.data,
       };
 
     case UPDATE_SEARCH_INPUT:
@@ -401,6 +412,15 @@ export const fetchTrending = () => ({
 
 export const storeTrending = (data) => ({
   type: STORE_TRENDING,
+  data,
+});
+
+export const fetchNext = () => ({
+  type: FETCH_NEXT,
+});
+
+export const storeNext = (data) => ({
+  type: STORE_NEXT,
   data,
 });
 

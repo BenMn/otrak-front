@@ -13,8 +13,9 @@ import Next from 'src/components/Homepage/Next';
 
 class Homepage extends React.Component {
   componentDidMount() {
-    const { getTrending } = this.props;
+    const { getTrending, getNext } = this.props;
     getTrending();
+    getNext();
   }
 
   render() {
@@ -24,6 +25,7 @@ class Homepage extends React.Component {
       trendingList,
       getDetailShow,
       sortBy,
+      nextList,
     } = this.props;
     return (
       <>
@@ -39,7 +41,12 @@ class Homepage extends React.Component {
           trendingList={trendingList}
           getDetailShow={getDetailShow}
         />
-        <Next />
+        {(nextList.length > 0) === true && (
+          <Next
+            nextList={nextList}
+            getDetailShow={getDetailShow}
+          />
+        )}
       </>
     );
   }
@@ -49,9 +56,11 @@ Homepage.propTypes = {
   storeSearchInputResult: PropTypes.array,
   searchInputValue: PropTypes.string.isRequired,
   trendingList: PropTypes.array.isRequired,
+  nextList: PropTypes.array.isRequired,
   getTrending: PropTypes.func.isRequired,
   getDetailShow: PropTypes.func.isRequired,
   sortBy: PropTypes.func.isRequired,
+  getNext: PropTypes.func.isRequired,
 };
 
 Homepage.defaultProps = {
