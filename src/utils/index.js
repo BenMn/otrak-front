@@ -1,6 +1,7 @@
 /* eslint-disable no-plusplus */
 /* eslint-disable import/prefer-default-export */
 // Import
+import axios from 'axios';
 
 // Trie SearchInputResult.
 export function compareTitle(a, b) {
@@ -130,9 +131,7 @@ export function displayCardActionButtons(event) {
 
 // Sort all the shows followed by the user.
 export function SortShowFollowedByStatus(allShows) {
-
   const arrayWithoutEpisodes = allShows.filter((currentShow) => currentShow.season === null);
-  console.log(arrayWithoutEpisodes, 'prrrrrrrrrrrrrrrrrrrrrrrrr');
 
   const arrayWatching = arrayWithoutEpisodes.filter((currentShow) => currentShow.status === 0);
   const arrayCompleted = arrayWithoutEpisodes.filter((currentShow) => currentShow.status === 1);
@@ -147,7 +146,6 @@ export function SortShowFollowedByStatus(allShows) {
     arrayUpcomming,
     arrayStopped,
   ];
-  console.log(allShowsSorted);
 
   return allShowsSorted;
 }
@@ -169,3 +167,13 @@ export function transformToInt(StatusInLetter) {
 //     const currentFollowId = Object.keys(currentFollow).map((key) => currentFollow[key].id);
 //   return currentFollow;
 // }
+
+
+export function setAuthorizationToken(token) {
+  if (token) {
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  }
+  else {
+    delete axios.defaults.headers.common.Authorization;
+  }
+}

@@ -1,6 +1,9 @@
 /* eslint-disable no-case-declarations */
 /* eslint-disable no-console */
+
 import axios from 'axios';
+import jwt from 'jsonwebtoken';
+
 import {
   FETCH_LOGIN_AUTH_INFOS,
   fetchLoginAuthInfos,
@@ -13,6 +16,8 @@ import {
   GET_USER_FOLLOWINGS,
   getUserFollowings,
   storeUserFollowings,
+
+  setCurrentUser,
 
   UPDATE_CURRENT_FOLLOWING_SHOW,
 
@@ -47,11 +52,12 @@ import {
 
 import {
   transformToInt,
+  setAuthorizationToken,
 } from 'src/utils';
 
 
 const ajaxMiddleware = (store) => (next) => (action) => {
-
+  // eslint-disable-next-line no-unused-vars
   const urlServer = 'http://82.243.9.13';
   const urlLocal = 'http://localhost:8001';
   const url = urlLocal;
@@ -64,7 +70,6 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       axios.get(`${url}/api/shows/aired`, {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${action.userAuthToken}`,
         },
       })
         .then((response) => {
@@ -78,7 +83,6 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       axios.get(`${url}/api/shows/next`, {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${action.userAuthToken}`,
         },
       })
         .then((response) => {
@@ -110,8 +114,13 @@ const ajaxMiddleware = (store) => (next) => (action) => {
           },
         })
         .then((response) => {
-          store.dispatch(getUserInfos(response.data.token));
-          store.dispatch(storeUserAuthInfos(response.data.token));
+          const { token } = response.data;
+          localStorage.setItem('token', token);
+          setAuthorizationToken(token);
+          const actionSetCurrentUser = setCurrentUser(jwt.decode(token));
+          store.dispatch(actionSetCurrentUser);
+          store.dispatch(getUserInfos());
+          store.dispatch(storeUserAuthInfos());
           store.dispatch(closeModal());
         })
         .catch((error) => {
@@ -123,12 +132,11 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       axios.get(`${url}/api/users/profile`, {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${action.userAuthToken}`,
         },
       })
         .then((response) => {
           store.dispatch(storeUserInfos(response.data));
-          store.dispatch(getUserFollowings(response.data.id, action.userAuthToken));
+          store.dispatch(getUserFollowings(response.data.id));
         })
         .catch((error) => {
           console.error(error);
@@ -140,7 +148,6 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       axios.get(`${url}/api/users/${action.userId}/followings`, {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${action.userAuthToken}`,
         },
       })
         .then((response) => {
@@ -155,7 +162,6 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       axios.get(`${url}/api/followings/${action.followId}`, {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${action.userAuthToken}`,
         },
       })
         .then((response) => {
@@ -230,7 +236,6 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       axios.post(`${url}/api/followings/new/${action.userId}/0/${action.showId}/${action.showSeason}/${action.showEpisode}`, {}, {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${action.userAuthToken}`,
         },
       })
         .then((response) => {
@@ -245,7 +250,6 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       axios.post(`${url}/api/followings/new/${action.userId}/0/${action.showId}/1/1`, {}, {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${action.userAuthToken}`,
         },
       })
         .then((response) => {
@@ -260,7 +264,6 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       axios.post(`${url}/api/followings/new/${action.userId}/2/${action.showId}/0/0`, {}, {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${action.userAuthToken}`,
         },
       })
         .then((response) => {
@@ -307,7 +310,6 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       axios.delete(`${url}/api/followings/${action.showIdBdd}`, {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${action.userAuthToken}`,
         },
       })
         .then((response) => {

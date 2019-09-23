@@ -1,6 +1,5 @@
 /* eslint-disable no-case-declarations */
-
-// Local data for testing
+import { isEmpty } from 'lodash';
 
 // Utils functions
 import {
@@ -81,6 +80,8 @@ const initialState = {
 };
 
 // ==  Action Types
+const SET_CURRENT_USER = 'SET_CURRENT_USER';
+
 const UPDATE_SEARCH_INPUT = 'UPDATE_SEARCH_INPUT';
 export const FETCH_SEARCH_INPUT_RESULT = 'FETCH_SEARCH_INPUT_RESULT';
 export const STORE_SEARCH_INPUT_RESULT = 'STORE_SEARCH_INPUT_RESULT';
@@ -295,6 +296,13 @@ const reducer = (state = initialState, action = {}) => {
           ...state.updatedUserSingleFollowing,
           [action.name]: action.value,
         },
+      };
+
+    case SET_CURRENT_USER:
+      return {
+        ...state,
+        isLogged: !isEmpty(action.user),
+        user: action.user,
       };
 
     case STORE_SORTED_ARRAY:
@@ -564,6 +572,13 @@ export const updateCurrentFollowingShow = (
   followId,
   userAuthToken,
 });
+
+export function setCurrentUser(user) {
+  return {
+    type: SET_CURRENT_USER,
+    user,
+  };
+}
 // == Selectors
 
 
