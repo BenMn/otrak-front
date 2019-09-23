@@ -212,7 +212,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       break;
 
     case START_FOLLOWING_SHOW_AT_THIS_EPISODE:
-      axios.post(`http://localhost:8001/api/followings/new/${action.userId}/0/${action.showId}/${action.showSeason}/${action.showEpisode}`, {
+      axios.post(`http://localhost:8001/api/followings/new/${action.userId}/0/${action.showId}/${action.showSeason}/${action.showEpisode}`, {}, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${action.userAuthToken}`,
@@ -227,7 +227,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       break;
 
     case START_FOLLOWING_SHOW_FROM_THE_BEGINNING:
-      axios.post(`http://localhost:8001/api/followings/new/${action.userId}/0/${action.showId}/0/0`, {
+      axios.post(`http://localhost:8001/api/followings/new/${action.userId}/0/${action.showId}/0/0`, {}, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${action.userAuthToken}`,
@@ -242,7 +242,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       break;
 
     case PLANNING_WATCH_SHOW:
-      axios.post(`http://localhost:8001/api/followings/new/${action.userId}/2/${action.showId}/0/0`, {
+      axios.post(`http://localhost:8001/api/followings/new/${action.userId}/2/${action.showId}/0/0`, {}, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${action.userAuthToken}`,
