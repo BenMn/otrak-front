@@ -112,7 +112,7 @@ const Icons = ({
 Icons.propTypes = {
   showSeason: PropTypes.number,
   showEpisode: PropTypes.number,
-  categorie: PropTypes.string.isRequired,
+  categorie: PropTypes.string,
   addShowByCategorie: PropTypes.func.isRequired,
   handleOpen: PropTypes.func.isRequired,
   userAuthToken: PropTypes.string,
@@ -124,6 +124,7 @@ Icons.propTypes = {
 
 Icons.defaultProps = {
   userAuthToken: '',
+  categorie: '',
   userInfos: {},
   showId: null,
   showName: '',

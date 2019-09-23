@@ -2,6 +2,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// Local Import
+import Loader from 'src/components/Loader';
+
 // Material UI Components
 import {
   Grid,
@@ -25,79 +28,100 @@ import {
 
 import 'src/components/LogForms/LogForms.scss';
 
-const History = ({ trendingList, handleDeleteHistoryShow, updatedHistoryList }) => {
+const History = ({ userFollowings, handleDeleteHistoryShow, updatedHistoryList }) => {
   if (updatedHistoryList.length === 0) {
     // eslint-disable-next-line no-param-reassign
-    updatedHistoryList = trendingList;
+    updatedHistoryList = userFollowings;
   }
-  return (
-    <LogFormModalPaper id="History">
-      <DashboardHistoryContainer component="main">
-        <Grid
-          container
-          direction="column"
-          spacing={4}
-        >
-          {/* Modal Title */}
-          <Grid item>
-            <Grid
-              container
-              alignItems="flex-end"
-              justify="space-between"
-            >
-              <Grid item>
-                <Typography component="h3" variant="h3" color="primary">
-                  History
-                </Typography>
-              </Grid>
-              <Grid item>
-                <DashboardHistoryShowSubtitle>
-                  ({updatedHistoryList.length})
-                </DashboardHistoryShowSubtitle>
+
+  console.log('°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°');
+  console.log(updatedHistoryList);
+  console.log('°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°');
+
+  if (Object.keys(updatedHistoryList).length > 1) {
+    return (
+      <LogFormModalPaper id="History">
+        <DashboardHistoryContainer component="main">
+          <Grid
+            container
+            direction="column"
+            spacing={4}
+          >
+            {/* Modal Title */}
+            <Grid item>
+              <Grid
+                container
+                alignItems="flex-end"
+                justify="space-between"
+              >
+                <Grid item>
+                  <Typography component="h3" variant="h3" color="primary">
+                    History
+                  </Typography>
+                </Grid>
+                <Grid item>
+                  <DashboardHistoryShowSubtitle>
+                    ({updatedHistoryList.length})
+                  </DashboardHistoryShowSubtitle>
+                </Grid>
               </Grid>
             </Grid>
-          </Grid>
 
-          <Grid item>
-            <DashboardHistoryIcon />
-          </Grid>
+            <Grid item>
+              <DashboardHistoryIcon />
+            </Grid>
 
-          {/* User History List */}
-          <DashboardHistoryListContainer id="historyContainer">
+            {/* User History List */}
+            <DashboardHistoryListContainer id="historyContainer">
 
-            {/* single show */}
-            {updatedHistoryList.map((currentShow) => (
-              <Grid item key={currentShow.id_tvmaze} id={currentShow.id_tvmaze}>
-                <Grid
-                  container
-                  spacing={2}
-                  justify="space-between"
-                  alignItems="center"
-                >
-                  <Grid item lg={11}>
-                    <Typography color="primary" variant="h6">{currentShow.name}</Typography>
+              {/* single show */}
+              {updatedHistoryList.map((currentShow) => (
+                <Grid item key={currentShow.id} id={currentShow.id}>
+                  <Grid
+                    container
+                    spacing={2}
+                    justify="space-between"
+                    alignItems="center"
+                  >
+                    <Grid item lg={11}>
+                      <Typography color="primary" variant="h6">{currentShow.tvShow.name}</Typography>
+                    </Grid>
+                    <Grid item lg={1} onClick={() => handleDeleteHistoryShow(currentShow.id)}>
+                      <DashboardHistoryDeleteIcon color="secondary" />
+                    </Grid>
                   </Grid>
-                  <Grid item lg={1} onClick={() => handleDeleteHistoryShow(currentShow.id_tvmaze)}>
-                    <DashboardHistoryDeleteIcon color="secondary" />
-                  </Grid>
+                  {currentShow.season || currentShow.episode ? (
+                    <DashboardHistoryShowSubtitle color="primary" variant="subtitle1">
+                      Season {currentShow.season.number} - Episode {currentShow.episode.number}
+                    </DashboardHistoryShowSubtitle>
+                  ) : (
+                    <DashboardHistoryShowSubtitle color="primary" variant="subtitle1">
+                      No season or episode specified
+                    </DashboardHistoryShowSubtitle>
+                  )}
                 </Grid>
-                <DashboardHistoryShowSubtitle color="primary" variant="subtitle1">Season {currentShow.runtime} - Episode {currentShow.id_tvmaze}</DashboardHistoryShowSubtitle>
+              ))}
 
-              </Grid>
-            ))}
+            </DashboardHistoryListContainer>
 
-          </DashboardHistoryListContainer>
-
-        </Grid>
-      </DashboardHistoryContainer>
-    </LogFormModalPaper>
+          </Grid>
+        </DashboardHistoryContainer>
+      </LogFormModalPaper>
+    );
+  }
+  return (
+    <Loader />
   );
 };
 
 History.propTypes = {
-  trendingList: PropTypes.array.isRequired,
+  userFollowings: PropTypes.array,
   updatedHistoryList: PropTypes.array.isRequired,
   handleDeleteHistoryShow: PropTypes.func.isRequired,
+};
+
+History.defaultProps = {
+  userFollowings: [],
 };
 
 export default History;

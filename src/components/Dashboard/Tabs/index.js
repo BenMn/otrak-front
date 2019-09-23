@@ -1,6 +1,10 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import PropTypes from 'prop-types';
+
+// Local Import
+import Loader from 'src/components/Loader/PrimaryLoader';
+
 import {
   Grid,
   AppBar,
@@ -58,9 +62,11 @@ function a11yProps(index) {
 const AllTabs = ({ userFollowings }) => {
   const [value, setValue] = React.useState(0);
 
-  function handleChange(event, newValue) {
+  function handleChangeEditShow(event, newValue) {
     setValue(newValue);
   }
+
+  const status = [0, 1, 2, 3, 4];
 
   return (
     <>
@@ -70,7 +76,7 @@ const AllTabs = ({ userFollowings }) => {
           centered
           variant="fullWidth"
           value={value}
-          onChange={handleChange}
+          onChange={handleChangeEditShow}
           aria-label="simple tabs example"
         >
           <DashboardTab label="Watching" {...a11yProps(0)} />
@@ -81,51 +87,22 @@ const AllTabs = ({ userFollowings }) => {
         </Tabs>
       </AppBar>
 
-      {/* Watching */}
-      <TabPanel value={value} index={0}>
-        <Grid container spacing={6} justify="center">
-          <Cards
-            userFollowings={userFollowings}
-          />
-        </Grid>
-      </TabPanel>
-
-      {/* Completed */}
-      <TabPanel value={value} index={1}>
-        <Grid container spacing={6} justify="center">
-          <Cards
-            userFollowings={userFollowings}
-          />
-        </Grid>
-      </TabPanel>
-
-      {/* See Next */}
-      <TabPanel value={value} index={2}>
-        <Grid container spacing={6} justify="center">
-          <Cards
-            userFollowings={userFollowings}
-          />
-        </Grid>
-      </TabPanel>
-
-      {/* Upcoming */}
-      <TabPanel value={value} index={3}>
-        <Grid container spacing={6} justify="center">
-          <Cards
-            userFollowings={userFollowings}
-          />
-        </Grid>
-      </TabPanel>
-
-      {/* Stopped */}
-      <TabPanel value={value} index={4}>
-        <Grid container spacing={6} justify="center">
-          <Cards
-            userFollowings={userFollowings}
-          />
-        </Grid>
-      </TabPanel>
-
+      {status.map((statut) => (
+        <TabPanel value={value} index={statut}>
+          {userFollowings.length > 1 ? (
+            userFollowings.map((show) => (
+              show.status === statut && (
+                <Grid container spacing={6} justify="center">
+                  <Cards
+                    userFollowings={userFollowings}
+                  />
+                </Grid>
+              )))
+          ) : (
+            <Loader />
+          )}
+        </TabPanel>
+      ))}
     </>
   );
 };

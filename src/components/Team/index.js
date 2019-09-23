@@ -70,7 +70,7 @@ function a11yProps(index) {
 export default function TabsTest() {
   const [value, setValue] = React.useState(0);
 
-  function handleChange(event, newValue) {
+  function handleChangeEditShow(event, newValue) {
     setValue(newValue);
   }
 
@@ -81,7 +81,7 @@ export default function TabsTest() {
           centered
           variant="fullWidth"
           value={value}
-          onChange={handleChange}
+          onChange={handleChangeEditShow}
           aria-label="simple tabs example"
         >
           <DashboardTab label="Product Owner" {...a11yProps(0)} />

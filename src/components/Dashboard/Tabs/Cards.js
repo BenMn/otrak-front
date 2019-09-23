@@ -1,6 +1,6 @@
 /* eslint-disable no-plusplus */
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 // Local Import
@@ -31,8 +31,8 @@ const Cards = ({ userFollowings }) => (
     justify="center"
   >
     {userFollowings.map((show) => (
-      <Grid item key={show.tvShow.name} xl={2} lg={3} md={4} sm={6} xs={12}>
-        <HomePageCard key={show.tvShow.name} id="currentCard">
+      <Grid item key={`${Math.random(99999)} ${show.tvShow.name} ${new Date().getTime()}`} xl={2} lg={3} md={4} sm={6} xs={12}>
+        <HomePageCard id="currentCard">
           <CardActionArea>
             <HomePageCardMedia
               image={show.tvShow.poster}
@@ -56,10 +56,10 @@ const Cards = ({ userFollowings }) => (
                 {show.tvShow.genre.length}
                 <AiredSubtitleSeasonEpisode>
                   {show.tvShow.genre.map((genre) => (
-                    <>
+                    <Fragment key={genre.name}>
                       {genre.name}
                       &nbsp;
-                    </>
+                    </Fragment>
                   ))}
                 </AiredSubtitleSeasonEpisode>
               </AiredTitleCardAndSubtitle>

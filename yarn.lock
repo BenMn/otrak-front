@@ -739,6 +739,11 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
+"@date-io/core@^1.3.6":
+  version "1.3.11"
+  resolved "https://registry.yarnpkg.com/@date-io/core/-/core-1.3.11.tgz#98e3c366794dfff571e39227e5d718ac7f26b729"
+  integrity sha512-Yxf2ei0vjU38Fizswr/Uwub5QeRiLOHiTRiHUuTdg+biVB+1EUk+h5szas9SEWA2pZDlSo73F5TPuu+zKqOIBQ==
+
 "@emotion/hash@^0.7.1":
   version "0.7.2"
   resolved "https://registry.yarnpkg.com/@emotion/hash/-/hash-0.7.2.tgz#53211e564604beb9befa7a4400ebf8147473eeef"
@@ -2573,6 +2578,11 @@ dashdash@^1.12.0:
   integrity sha1-hTz6D3y+L+1d4gMmuN1YEDX24vA=
   dependencies:
     assert-plus "^1.0.0"
+
+date-fns@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.1.0.tgz#0d7e806c3cefe14a943532dbf968995ccfd46bd9"
+  integrity sha512-eKeLk3sLCnxB/0PN4t1+zqDtSs4jb4mXRSTZ2okmx/myfWyDqeO4r5nnmA5LClJiCwpuTMeK2v5UQPuE4uMaxA==
 
 date-now@^0.1.4:
   version "0.1.4"
@@ -5711,6 +5721,11 @@ mocha@*:
     yargs "13.2.2"
     yargs-parser "13.0.0"
     yargs-unparser "1.5.0"
+
+moment@^2.24.0:
+  version "2.24.0"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
+  integrity sha512-bV7f+6l2QigeBBZSM/6yTNq4P2fNpSWj/0e7jQcy87A8e7o2nAfP/34/2ky5Vw4B9S446EtIhodAzkFCcR4dQg==
 
 moo@^0.4.3:
   version "0.4.3"

@@ -19,6 +19,15 @@ const initialState = {
   showDetail: {},
   userFollowings: [],
   userSingleFollowing: {},
+  updatedUserSingleFollowing: {
+    status: 'Following',
+    rating: undefined,
+    startDate: undefined,
+    endDate: 'jj/mm/aaaa',
+    episode: undefined,
+    rewatches: undefined,
+    notes: undefined,
+  },
   // Search
   searchInputValue: '',
   storeSearchInputResult: [],
@@ -81,6 +90,9 @@ export const GET_USER_SINGLE_FOLLOWING = 'GET_USER_SINGLE_FOLLOWING';
 const STORE_USER_SINGLE_FOLLOWING = 'STORE_USER_SINGLE_FOLLOWING';
 
 const EMPTY_SEARCH_RESULTS = 'EMPTY_SEARCH_RESULTS';
+
+const HANDLE_CHANGE_EDIT_SHOW = 'HANDLE_CHANGE_EDIT_SHOW';
+export const UPDATE_CURRENT_FOLLOWING_SHOW = 'UPDATE_CURRENT_FOLLOWING_SHOW';
 
 const UPDATE_AUTH_INPUT = 'UPDATE_AUTH_INPUT';
 const UPDATE_USERNAME_INPUT = 'UPDATE_USERNAME_INPUT';
@@ -239,11 +251,11 @@ const reducer = (state = initialState, action = {}) => {
       return Object.keys(state.updatedHistoryList).length === 0 ? ({
         ...state,
         updatedHistoryList:
-          state.trendingList.filter((show) => show.id_tvmaze !== action.showId),
+          state.trendingList.filter((show) => show.id !== action.showId),
       }) : ({
         ...state,
         updatedHistoryList:
-          state.updatedHistoryList.filter((show) => show.id_tvmaze !== action.showId),
+          state.updatedHistoryList.filter((show) => show.id !== action.showId),
       });
 
     case EMPTY_SEARCH_RESULTS:
@@ -262,6 +274,16 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         userSingleFollowing: action.show,
+      };
+
+    case HANDLE_CHANGE_EDIT_SHOW:
+
+      return {
+        ...state,
+        updatedUserSingleFollowing: {
+          ...state.updatedUserSingleFollowing,
+          [action.name]: action.value,
+        },
       };
 
     case STORE_SORTED_ARRAY:
@@ -490,6 +512,35 @@ export const DeleteFollowingShow = (idShow, token) => ({
   type: DELETE_FOLLOWING_SHOW,
   idShow,
   token,
+});
+
+export const handleChangeEditShow = (name, value) => ({
+  type: HANDLE_CHANGE_EDIT_SHOW,
+  name,
+  value,
+});
+
+export const updateCurrentFollowingShow = (
+  status,
+  rating,
+  startDate,
+  endDate,
+  episodeProgress,
+  rewatches,
+  personalNotes,
+  followId,
+  userAuthToken,
+) => ({
+  type: UPDATE_CURRENT_FOLLOWING_SHOW,
+  status,
+  rating,
+  startDate,
+  endDate,
+  episodeProgress,
+  rewatches,
+  personalNotes,
+  followId,
+  userAuthToken,
 });
 // == Selectors
 

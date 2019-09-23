@@ -5,6 +5,7 @@ import {
   Paper,
   Button,
   Typography,
+  TextField,
 } from '@material-ui/core';
 import theme from 'src/styles/materialUi/materialUiTheme/theme';
 
@@ -35,10 +36,25 @@ export const LogFormModalSubtitle = styled(Typography)({
   color: theme.palette.text.disabled,
 });
 
+
+// Edit Show modal
+
 export const LogFormModalEditPaper = styled(Paper)({
   backgroundColor: theme.palette.background.paper,
   boxShadow: '0 0 15px 0px rgba(200, 200, 200, 0.55)',
-  maxHeight: '90vh',
+  maxHeight: '75vh',
   maxWidth: '90vw',
   padding: 0,
+});
+
+export const EditShowField = styled(TextField)({
+  width: '15vw',
+});
+
+export const EditShowLargeField = styled(TextField)({
+  width: '31vw',
+});
+
+export const EditShowButtons = styled(Button)({
+  width: '15vw',
 });
