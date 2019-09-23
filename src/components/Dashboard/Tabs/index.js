@@ -96,11 +96,11 @@ const AllTabs = ({ userFollowings }) => {
       {status.map((statut) => (
         <TabPanel value={value} index={statut}>
           {userFollowings.length > 1 ? (
-            userFollowings.map((show) => (
-              show.status === statut && (
+            userFollowingsShowsSortedByStatus.map((filtredArray, index) => (
+              index === statut && (
                 <Grid container spacing={6} justify="center">
                   <Cards
-                    userFollowingsShowsSortedByStatus={userFollowingsShowsSortedByStatus}
+                    filtredArray={filtredArray}
                   />
                 </Grid>
               )))

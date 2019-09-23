@@ -25,12 +25,12 @@ import {
   AiredTitleCardAndSubtitle,
 } from 'src/styles/materialUi/materialUiStyles/HomePage';
 
-const Cards = ({ userFollowings }) => (
+const Cards = ({ filtredArray }) => (
   <Grid
     container
     justify="center"
   >
-    {userFollowings.map((show) => (
+    {filtredArray.map((show) => (
       <Grid item key={`${Math.random(99999)} ${show.tvShow.name} ${new Date().getTime()}`} xl={2} lg={3} md={4} sm={6} xs={12}>
         <HomePageCard id="currentCard">
           <CardActionArea>
@@ -73,11 +73,11 @@ const Cards = ({ userFollowings }) => (
 
 
 Cards.propTypes = {
-  userFollowings: PropTypes.array,
+  filtredArray: PropTypes.array,
 };
 
 Cards.defaultProps = {
-  userFollowings: [],
+  filtredArray: [],
 };
 
 
