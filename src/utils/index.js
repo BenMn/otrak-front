@@ -78,7 +78,9 @@ export function compareRatingForAiredList(a, b) {
 // For LandingPage--Aired: Pour filtrer le nombre de résultat d'un tableau par langue et par note.
 // Avoir que 8 resultats, 4 langues US et 4 langue JP avec les meilleures notes.
 export function FilteredAiredLandingPage(airedArray) {
-  const arrayWithoutRatingNull = airedArray.filter((currentShow) => currentShow.show_rating !== null);
+  const arrayWithoutRatingNull = airedArray.filter((
+    currentShow,
+  ) => currentShow.show_rating !== null);
 
   const jpShow = arrayWithoutRatingNull.filter((currentShow) => currentShow.Show_type === 'Animation').sort(compareRatingForAiredList).splice(0, 4);
 
@@ -134,7 +136,13 @@ export function SortShowFollowedByStatus(allShows) {
   const arrayUpcomming = allShows.filter((currentShow) => currentShow.status === 3);
   const arrayStopped = allShows.filter((currentShow) => currentShow.status === 4);
 
-  const allShowsSorted = [arrayWatching, arrayCompleted, arraySeeNext, arrayUpcomming, arrayStopped];
+  const allShowsSorted = [
+    arrayWatching,
+    arrayCompleted,
+    arraySeeNext,
+    arrayUpcomming,
+    arrayStopped,
+  ];
   return allShowsSorted;
 }
 

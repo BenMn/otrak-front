@@ -66,7 +66,7 @@ const HeadScreen = ({
                     <ListItemText primary="•" />
                   </Grid>
                   <Grid item>
-                    <ListItemText primary={`${showDetail.nbEpisodes} épisodes`} />
+                    <ListItemText primary={`${showDetail.nbEpisodes} Episodes`} />
                   </Grid>
                 </Grid>
               </Grid>

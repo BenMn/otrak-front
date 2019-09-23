@@ -6,7 +6,6 @@ import Icons from 'src/components/Icons';
 
 // Import Action Creators
 import {
-  startFollowingShow,
   openModal,
   emptySearchResults,
   fetchDetailShow,

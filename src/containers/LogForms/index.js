@@ -17,6 +17,8 @@ import {
   getUserFollowings,
   emptySearchResults,
   fetchDetailShow,
+  handleChangeEditShow,
+  updateCurrentFollowingShow,
 } from 'src/store/reducer';
 
 const mapStateToProps = (state) => ({
@@ -33,6 +35,7 @@ const mapStateToProps = (state) => ({
   userSingleFollowing: state.userSingleFollowing,
   userFollowings: state.userFollowings,
   showDetail: state.showDetail,
+  updatedUserSingleFollowing: state.updatedUserSingleFollowing,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -82,6 +85,34 @@ const mapDispatchToProps = (dispatch) => ({
   getDetailShow: (showId) => {
     dispatch(emptySearchResults());
     dispatch(fetchDetailShow(showId));
+  },
+
+  handleChangeEditShow: (event) => {
+    const { name, value } = event.target;
+    dispatch(handleChangeEditShow(name, value));
+  },
+
+  handleSubmitEditShow: (event, followId, userAuthToken) => {
+    event.persist();
+    const status = event.target[0].value;
+    const rating = event.target[2].value;
+    const startDate = event.target[4].value;
+    const endDate = event.target[5].value;
+    const episodeProgress = event.target[6].value;
+    const rewatches = event.target[8].value;
+    const personalNotes = event.target[10].value;
+    dispatch(updateCurrentFollowingShow(
+      status,
+      rating,
+      startDate,
+      endDate,
+      episodeProgress,
+      rewatches,
+      personalNotes,
+      followId,
+      userAuthToken,
+    ));
+    event.preventDefault();
   },
 });
 

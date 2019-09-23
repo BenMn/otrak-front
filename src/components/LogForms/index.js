@@ -27,7 +27,6 @@ const LogFormsModal = ({
   handleAuthInput,
   handleAuthInputSubmit,
   userAuthInfos,
-  trendingList,
   handleDeleteHistoryShow,
   updatedHistoryList,
   loading,
@@ -39,6 +38,9 @@ const LogFormsModal = ({
   userFollowings,
   getUserSingleFollowing,
   getUserFollowings,
+  handleChangeEditShow,
+  updatedUserSingleFollowing,
+  handleSubmitEditShow,
 }) => (
   <div>
     <Modal
@@ -85,7 +87,7 @@ const LogFormsModal = ({
         )}
         {modalName === 'history' && (
           <History
-            trendingList={trendingList}
+            userFollowings={userFollowings}
             handleDeleteHistoryShow={handleDeleteHistoryShow}
             updatedHistoryList={updatedHistoryList}
             loading={loading}
@@ -111,6 +113,9 @@ const LogFormsModal = ({
             userFollowings={userFollowings}
             getUserSingleFollowing={getUserSingleFollowing}
             getUserFollowings={getUserFollowings}
+            handleChangeEditShow={handleChangeEditShow}
+            updatedUserSingleFollowing={updatedUserSingleFollowing}
+            handleSubmitEditShow={handleSubmitEditShow}
           />
         )}
       </Fade>
@@ -125,7 +130,6 @@ LogFormsModal.propTypes = {
   modalName: PropTypes.node,
   handleAuthInput: PropTypes.func.isRequired,
   handleAuthInputSubmit: PropTypes.func.isRequired,
-  trendingList: PropTypes.array.isRequired,
   handleDeleteHistoryShow: PropTypes.func,
   updatedHistoryList: PropTypes.array.isRequired,
   loading: PropTypes.bool.isRequired,
@@ -137,12 +141,17 @@ LogFormsModal.propTypes = {
   getUserSingleFollowing: PropTypes.func.isRequired,
   getUserFollowings: PropTypes.func.isRequired,
   userFollowings: PropTypes.array,
+  handleChangeEditShow: PropTypes.func,
+  handleSubmitEditShow: PropTypes.func,
+  updatedUserSingleFollowing: PropTypes.object,
 };
 
 LogFormsModal.defaultProps = {
   open: false,
   handleClose: () => { },
   handleOpen: () => { },
+  handleChangeEditShow: () => { },
+  handleSubmitEditShow: () => { },
   modalName: null,
   handleDeleteHistoryShow: () => { },
   getDetailShow: () => { },
@@ -151,6 +160,7 @@ LogFormsModal.defaultProps = {
   showDetail: {},
   userSingleFollowing: {},
   userFollowings: [],
+  updatedUserSingleFollowing: {},
 };
 
 export default LogFormsModal;

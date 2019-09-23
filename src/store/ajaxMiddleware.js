@@ -14,6 +14,8 @@ import {
   getUserFollowings,
   storeUserFollowings,
 
+  UPDATE_CURRENT_FOLLOWING_SHOW,
+
   GET_USER_SINGLE_FOLLOWING,
   storeUserSingleFollowing,
 
@@ -246,6 +248,39 @@ const ajaxMiddleware = (store) => (next) => (action) => {
           Authorization: `Bearer ${action.userAuthToken}`,
         },
       })
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+      break;
+
+    case UPDATE_CURRENT_FOLLOWING_SHOW:
+
+      // status,
+      // rating,
+      // startDate,
+      // endDate,
+      // episodeProgress,
+      // rewatches,
+      // personalNotes,
+
+      const updatedFollowedShowDatas = {
+        status: action.status,
+        endDate: action.endDate,
+        episode: {
+          number: action.number,
+        },
+      };
+
+      axios.put(`http://localhost:8001/api/followings/${action.followId}`,
+        JSON.stringify(updatedFollowedShowDatas), {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${action.userAuthToken}`,
+          },
+        })
         .then((response) => {
           console.log(response);
         })

@@ -2,6 +2,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// Local Import
+import Loader from 'src/components/Loader/PrimaryLoader';
 import {
   SortShowFollowedByStatus,
 } from 'src/utils';
@@ -70,6 +72,8 @@ const AllTabs = ({ userFollowings }) => {
     setValue(newValue);
   }
 
+  const status = [0, 1, 2, 3, 4];
+
   return (
     <>
 
@@ -89,56 +93,22 @@ const AllTabs = ({ userFollowings }) => {
         </Tabs>
       </AppBar>
 
-      {/* Watching */}
-      <TabPanel value={value} index={0}>
-        <Grid container spacing={6} justify="center">
-          <Cards
-            userFollowingsShowsSortedByStatus={userFollowingsShowsSortedByStatus[0]}
-            userFollowings={userFollowings}
-          />
-        </Grid>
-      </TabPanel>
-
-      {/* Completed */}
-      <TabPanel value={value} index={1}>
-        <Grid container spacing={6} justify="center">
-          <Cards
-            userFollowingsShowsSortedByStatus={userFollowingsShowsSortedByStatus[1]}
-            userFollowings={userFollowings}
-          />
-        </Grid>
-      </TabPanel>
-
-      {/* See Next */}
-      <TabPanel value={value} index={2}>
-        <Grid container spacing={6} justify="center">
-          <Cards
-            userFollowingsShowsSortedByStatus={userFollowingsShowsSortedByStatus[2]}
-            userFollowings={userFollowings}
-          />
-        </Grid>
-      </TabPanel>
-
-      {/* Upcoming */}
-      <TabPanel value={value} index={3}>
-        <Grid container spacing={6} justify="center">
-          <Cards
-            userFollowingsShowsSortedByStatus={userFollowingsShowsSortedByStatus[3]}
-            userFollowings={userFollowings}
-          />
-        </Grid>
-      </TabPanel>
-
-      {/* Stopped */}
-      <TabPanel value={value} index={4}>
-        <Grid container spacing={6} justify="center">
-          <Cards
-            userFollowingsShowsSortedByStatus={userFollowingsShowsSortedByStatus[4]}
-            userFollowings={userFollowings}
-          />
-        </Grid>
-      </TabPanel>
-
+      {status.map((statut) => (
+        <TabPanel value={value} index={statut}>
+          {userFollowings.length > 1 ? (
+            userFollowingsShowsSortedByStatus.map((filtredArray, index) => (
+              index === statut && (
+                <Grid container spacing={6} justify="center">
+                  <Cards
+                    filtredArray={filtredArray}
+                  />
+                </Grid>
+              )))
+          ) : (
+            <Loader />
+          )}
+        </TabPanel>
+      ))}
     </>
   );
 };
