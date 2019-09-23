@@ -46,7 +46,6 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(storeNewUsername(newUsername, name, userId));
   },
 
-
   handleOpen: (modalName) => {
     dispatch(openModal(modalName));
   },
