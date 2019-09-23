@@ -45,13 +45,28 @@ import {
   DELETE_FOLLOWING_SHOW,
 } from 'src/store/reducer';
 
+import {
+  transformToInt,
+} from 'src/utils';
+
 
 const ajaxMiddleware = (store) => (next) => (action) => {
+
+  const urlServer = 'http://82.243.9.13';
+  const urlLocal = 'http://localhost:8001';
+  const url = urlLocal;
+
+
   console.log('Je suis le middleware, et je laisse passer cette action: ', action);
 
   switch (action.type) {
     case FETCH_TRENDING:
-      axios.get('http://localhost:8001/api/shows/aired')
+      axios.get(`${url}/api/shows/aired`, {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${action.userAuthToken}`,
+        },
+      })
         .then((response) => {
           const { data } = response;
           store.dispatch(storeTrending(data));
@@ -60,7 +75,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       break;
 
     case FETCH_NEXT:
-      axios.get('http://localhost:8001/api/shows/next', {
+      axios.get(`${url}/api/shows/next`, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${action.userAuthToken}`,
@@ -74,7 +89,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       break;
 
     case FETCH_SEARCH_INPUT_RESULT:
-      axios.get(`http://localhost:8001/api/shows/search/${action.searchInputValue}`)
+      axios.get(`${url}/api/shows/search/${action.searchInputValue}`)
         .then((response) => {
           const { data } = response;
           store.dispatch(storeSearchInputResult(data));
@@ -88,7 +103,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
         email: action.email,
         password: action.password,
       };
-      axios.post('http://localhost:8001/api/login_check',
+      axios.post(`${url}/api/login_check`,
         JSON.stringify(payload), {
           headers: {
             'Content-Type': 'application/json',
@@ -105,7 +120,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       break;
 
     case GET_USER_INFOS:
-      axios.get('http://localhost:8001/api/users/profile', {
+      axios.get(`${url}/api/users/profile`, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${action.userAuthToken}`,
@@ -122,7 +137,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
 
 
     case GET_USER_FOLLOWINGS:
-      axios.get(`http://localhost:8001/api/users/${action.userId}/followings`, {
+      axios.get(`${url}/api/users/${action.userId}/followings`, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${action.userAuthToken}`,
@@ -137,7 +152,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       break;
 
     case GET_USER_SINGLE_FOLLOWING:
-      axios.get(`http://localhost:8001/api/followings/${action.followId}`, {
+      axios.get(`${url}/api/followings/${action.followId}`, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${action.userAuthToken}`,
@@ -154,7 +169,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       break;
 
     case FETCH_REGISTER_AUTH_INFOS:
-      axios.post('http://localhost:8001/api/users/new', {
+      axios.post(`${url}/api/users/new`, {
         username: action.username,
         email: action.email,
         password: action.password,
@@ -173,7 +188,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
         username: action.newUsername,
       };
 
-      axios.put(`http://localhost:8001/api/users/${action.userId}`,
+      axios.put(`${url}/api/users/${action.userId}`,
         JSON.stringify(username), {
           headers: {
             'Content-Type': 'application/json',
@@ -190,7 +205,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       // case AVATAR_UPLOAD_HANDLER:
       //   const formData = new FormData();
       //   formData.append('image', action.newAvatar, action.newAvatar.name);
-      //   axios.post('http://localhost:8001/api/users/avatar', formData)
+      //   axios.post('${url}/api/users/avatar', formData)
       //     .then((response) => {
       //       console.log(response);
       //     })
@@ -200,7 +215,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       //   break;
 
     case FETCH_DETAIL_SHOW:
-      axios.get(`http://localhost:8001/api/shows/${action.idShow}`)
+      axios.get(`${url}/api/shows/${action.idShow}`)
         .then((response) => {
           console.log(response);
           const { data } = response;
@@ -212,7 +227,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       break;
 
     case START_FOLLOWING_SHOW_AT_THIS_EPISODE:
-      axios.post(`http://localhost:8001/api/followings/new/${action.userId}/0/${action.showId}/${action.showSeason}/${action.showEpisode}`, {}, {
+      axios.post(`${url}/api/followings/new/${action.userId}/0/${action.showId}/${action.showSeason}/${action.showEpisode}`, {}, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${action.userAuthToken}`,
@@ -227,7 +242,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       break;
 
     case START_FOLLOWING_SHOW_FROM_THE_BEGINNING:
-      axios.post(`http://localhost:8001/api/followings/new/${action.userId}/0/${action.showId}/0/0`, {}, {
+      axios.post(`${url}/api/followings/new/${action.userId}/0/${action.showId}/1/1`, {}, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${action.userAuthToken}`,
@@ -242,7 +257,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       break;
 
     case PLANNING_WATCH_SHOW:
-      axios.post(`http://localhost:8001/api/followings/new/${action.userId}/2/${action.showId}/0/0`, {}, {
+      axios.post(`${url}/api/followings/new/${action.userId}/2/${action.showId}/0/0`, {}, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${action.userAuthToken}`,
@@ -265,19 +280,18 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       // episodeProgress,
       // rewatches,
       // personalNotes,
+      const statusInInt = transformToInt(action.status);
 
       const updatedFollowedShowDatas = {
-        status: action.status,
+        status: statusInInt,
         endDate: action.endDate,
-        episode: {
-          number: action.number,
-        },
+        episode: action.number,
       };
 
-      axios.put(`http://localhost:8001/api/followings/${action.followId}`,
+      axios.patch(`${url}/api/followings/${action.followId}`,
         JSON.stringify(updatedFollowedShowDatas), {
           headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/vnd.api+json',
             Authorization: `Bearer ${action.userAuthToken}`,
           },
         })
@@ -290,7 +304,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       break;
 
     case DELETE_FOLLOWING_SHOW:
-      axios.delete(`http://localhost:8001/api/followings/${action.showIdBdd}`, {
+      axios.delete(`${url}/api/followings/${action.showIdBdd}`, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${action.userAuthToken}`,

@@ -35,6 +35,8 @@ import {
   AiredSubtitleSeasonEpisode,
   AiredTitleCardAndSubtitle,
   HomePageGridOfOnCard,
+  SearchResultContainerWithoutSlider,
+  SearchResultGridWithoutSlider,
 } from 'src/styles/materialUi/materialUiStyles/HomePage';
 
 // Micro component managing arrow's style
@@ -83,6 +85,86 @@ const Aired = ({ trendingList, getDetailShow, userFollowings }) => {
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
   };
+
+  // If Condition who manage the display or not of slider when we have less than 3 result
+  if (trendingList.length <= 3) {
+    return (
+      <>
+        <AiredBlockTitleSeeAll
+          container
+          direction="row"
+          justify="space-around"
+          alignItems="center"
+        >
+          <Typography variant="h3" component="p" className="title-icon-next-aired"><AiredIconTitle /> Just Aired</Typography>
+          <Typography variant="h6"><a href="." className="see-all-next-aired"> See all<AiredSeeAllIcon /></a></Typography>
+        </AiredBlockTitleSeeAll>
+
+        <Container>
+
+          {trendingList.length !== 0 ? (
+            <SearchResultContainerWithoutSlider>
+
+              {trendingList.map((currentShow) => (
+
+                <SearchResultGridWithoutSlider item key={currentShow.id_tvmaze}>
+
+                  <HomePageCard id="currentCard">
+
+                    <HomePageCardMedia
+                      image={currentShow.poster}
+                    >
+
+                      <Grid
+                        container
+                        justify="flex-end"
+                        id={currentShow.id_tvmaze}
+                      >
+                        <Icons
+                          showId={currentShow.show_id_tvmaze}
+                          showIdBdd={currentShow.show_id}
+                          showName={currentShow.show_name}
+                          showSeason={currentShow.season}
+                          showEpisode={currentShow.number}
+                          userFollowings={userFollowings}
+                          categorie="aired"
+                        />
+                      </Grid>
+
+                      <CardActionArea>
+                        <AiredTitleCardAndSubtitle
+                          container
+                          direction="row"
+                          justify="center"
+                          onClick={() => getDetailShow(currentShow.show_id_tvmaze)}
+                        >
+                          <NavLink exact to={`/show/${currentShow.show_name}`}>
+                            <HomePageCardTitle variant="h5" component="h2">
+                              {currentShow.show_name}
+                            </HomePageCardTitle>
+
+                            <AiredSubtitleSeasonEpisode>
+                              {currentShow.season.toString().length > 2 ? currentShow.season : `S${currentShow.season}`} {currentShow.number === null ? '' : `E${currentShow.number}`}
+                            </AiredSubtitleSeasonEpisode>
+                          </NavLink>
+                        </AiredTitleCardAndSubtitle>
+                      </CardActionArea>
+
+                    </HomePageCardMedia>
+
+
+                  </HomePageCard>
+
+                </SearchResultGridWithoutSlider>
+              ))}
+            </SearchResultContainerWithoutSlider>
+          ) : (
+            <Loader />
+          )}
+        </Container>
+      </>
+    );
+  }
 
   return (
     <>
