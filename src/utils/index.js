@@ -1,6 +1,7 @@
 /* eslint-disable no-plusplus */
 /* eslint-disable import/prefer-default-export */
 // Import
+import axios from 'axios';
 
 // Trie SearchInputResult.
 export function compareTitle(a, b) {
@@ -151,3 +152,13 @@ export function SortShowFollowedByStatus(allShows) {
 //     const currentFollowId = Object.keys(currentFollow).map((key) => currentFollow[key].id);
 //   return currentFollow;
 // }
+
+
+export default function setAuthorizationToken(token) {
+  if (token) {
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  }
+  else {
+    delete axios.defaults.headers.common.Authorization;
+  }
+}

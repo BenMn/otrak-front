@@ -19,6 +19,7 @@ import {
   fetchDetailShow,
   handleChangeEditShow,
   updateCurrentFollowingShow,
+  setCurrentUser,
 } from 'src/store/reducer';
 
 const mapStateToProps = (state) => ({
@@ -113,6 +114,10 @@ const mapDispatchToProps = (dispatch) => ({
       userAuthToken,
     ));
     event.preventDefault();
+  },
+
+  setCurrentUser: (user) => {
+    dispatch(setCurrentUser(user));
   },
 });
 

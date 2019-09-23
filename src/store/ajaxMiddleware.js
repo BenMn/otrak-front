@@ -1,6 +1,11 @@
 /* eslint-disable no-case-declarations */
 /* eslint-disable no-console */
+
+import setAuthorizationToken from 'src/utils';
 import axios from 'axios';
+import jwt from 'jsonwebtoken';
+
+
 import {
   FETCH_LOGIN_AUTH_INFOS,
   fetchLoginAuthInfos,
@@ -13,6 +18,8 @@ import {
   GET_USER_FOLLOWINGS,
   getUserFollowings,
   storeUserFollowings,
+
+  setCurrentUser,
 
   UPDATE_CURRENT_FOLLOWING_SHOW,
 
@@ -51,7 +58,11 @@ const ajaxMiddleware = (store) => (next) => (action) => {
 
   switch (action.type) {
     case FETCH_TRENDING:
-      axios.get('http://localhost:8001/api/shows/aired')
+      axios.get('http://localhost:8001/api/shows/aired', {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
         .then((response) => {
           const { data } = response;
           store.dispatch(storeTrending(data));
@@ -63,7 +74,6 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       axios.get('http://localhost:8001/api/shows/next', {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${action.userAuthToken}`,
         },
       })
         .then((response) => {
@@ -74,7 +84,11 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       break;
 
     case FETCH_SEARCH_INPUT_RESULT:
-      axios.get(`http://localhost:8001/api/shows/search/${action.searchInputValue}`)
+      axios.get(`http://localhost:8001/api/shows/search/${action.searchInputValue}`, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
         .then((response) => {
           const { data } = response;
           store.dispatch(storeSearchInputResult(data));
@@ -95,8 +109,13 @@ const ajaxMiddleware = (store) => (next) => (action) => {
           },
         })
         .then((response) => {
-          store.dispatch(getUserInfos(response.data.token));
-          store.dispatch(storeUserAuthInfos(response.data.token));
+          const { token } = response.data;
+          localStorage.setItem('token', token);
+          setAuthorizationToken(token);
+          const actionSetCurrentUser = setCurrentUser(jwt.decode(token));
+          store.dispatch(actionSetCurrentUser);
+          store.dispatch(getUserInfos());
+          store.dispatch(storeUserAuthInfos());
           store.dispatch(closeModal());
         })
         .catch((error) => {
@@ -108,12 +127,11 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       axios.get('http://localhost:8001/api/users/profile', {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${action.userAuthToken}`,
         },
       })
         .then((response) => {
           store.dispatch(storeUserInfos(response.data));
-          store.dispatch(getUserFollowings(response.data.id, action.userAuthToken));
+          store.dispatch(getUserFollowings(response.data.id));
         })
         .catch((error) => {
           console.error(error);
@@ -125,7 +143,6 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       axios.get(`http://localhost:8001/api/users/${action.userId}/followings`, {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${action.userAuthToken}`,
         },
       })
         .then((response) => {
@@ -140,7 +157,6 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       axios.get(`http://localhost:8001/api/followings/${action.followId}`, {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${action.userAuthToken}`,
         },
       })
         .then((response) => {
@@ -200,7 +216,11 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       //   break;
 
     case FETCH_DETAIL_SHOW:
-      axios.get(`http://localhost:8001/api/shows/${action.idShow}`)
+      axios.get(`http://localhost:8001/api/shows/${action.idShow}`, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
         .then((response) => {
           console.log(response);
           const { data } = response;
@@ -215,7 +235,6 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       axios.post(`http://localhost:8001/api/followings/new/${action.userId}/0/${action.showId}/${action.showSeason}/${action.showEpisode}`, {}, {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${action.userAuthToken}`,
         },
       })
         .then((response) => {
@@ -230,7 +249,6 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       axios.post(`http://localhost:8001/api/followings/new/${action.userId}/0/${action.showId}/0/0`, {}, {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${action.userAuthToken}`,
         },
       })
         .then((response) => {
@@ -245,7 +263,6 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       axios.post(`http://localhost:8001/api/followings/new/${action.userId}/2/${action.showId}/0/0`, {}, {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${action.userAuthToken}`,
         },
       })
         .then((response) => {
@@ -278,7 +295,6 @@ const ajaxMiddleware = (store) => (next) => (action) => {
         JSON.stringify(updatedFollowedShowDatas), {
           headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${action.userAuthToken}`,
           },
         })
         .then((response) => {
@@ -293,7 +309,6 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       axios.delete(`http://localhost:8001/api/followings/${action.showIdBdd}`, {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${action.userAuthToken}`,
         },
       })
         .then((response) => {
