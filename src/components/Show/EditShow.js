@@ -54,26 +54,22 @@ class EditShow extends React.Component {
     const status = [
       {
         value: 0,
-        label: 'Not Followed',
+        label: 'Watching',
       },
       {
         value: 1,
-        label: 'Following',
-      },
-      {
-        value: 2,
         label: 'Completed',
       },
       {
-        value: 3,
-        label: 'See Next',
+        value: 2,
+        label: 'See next',
       },
       {
-        value: 4,
+        value: 3,
         label: 'Upcoming',
       },
       {
-        value: 5,
+        value: 4,
         label: 'Stopped',
       },
     ];
@@ -206,7 +202,7 @@ class EditShow extends React.Component {
                           id="episodeProgress"
                           label="Episode progress"
                           type="number"
-                          defaultValue={currentFollow[0].episode.number}
+                          defaultValue={(currentFollow[0].episode || currentFollow[0].season) ? currentFollow[0].episode.number : '1'}
                           value={updatedUserSingleFollowing.episode}
                           margin="normal"
                           onChange={(event) => handleChangeEditShow(event)}
@@ -312,12 +308,3 @@ EditShow.defaultProps = {
 };
 
 export default EditShow;
-
-// <div>Id : {currentFollow[key].id}</div>
-// <div>Type : {currentFollow[key]['@type']}</div>
-// <div>Status : {currentFollow[key].status}</div>
-// <div>StartDate : {currentFollow[key].startDate}</div>
-// <div>Name : {currentFollow[key].tvShow.name}</div>
-// <div>Genre : {currentFollow[key].tvShow.genre.map((genre) => genre.name)}</div>
-// <div>Rating : {currentFollow[key].tvShow.rating}</div>
-// <div>poster : {currentFollow[key].tvShow.poster}</div>
