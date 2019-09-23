@@ -14,6 +14,7 @@ export const FooterButton = styled(Button)({
 export const FooterAppBar = styled(AppBar)({
   display: 'flex',
   justifyContent: 'space-evenly',
+  marginTop: '150px',
 });
 
 export const FooterIcon = styled(Icon)({

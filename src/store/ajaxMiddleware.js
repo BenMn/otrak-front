@@ -23,6 +23,9 @@ import {
   FETCH_TRENDING,
   storeTrending,
 
+  FETCH_NEXT,
+  storeNext,
+
   FETCH_SEARCH_INPUT_RESULT,
   storeSearchInputResult,
 
@@ -50,6 +53,20 @@ const ajaxMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           const { data } = response;
           store.dispatch(storeTrending(data));
+        })
+        .catch();
+      break;
+
+    case FETCH_NEXT:
+      axios.get('http://localhost:8001/api/shows/next', {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${action.userAuthToken}`,
+        },
+      })
+        .then((response) => {
+          const { data } = response;
+          store.dispatch(storeNext(data));
         })
         .catch();
       break;
