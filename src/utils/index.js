@@ -19,14 +19,14 @@ export function compareTitle(a, b) {
 
 
 export function compareRating(a, b) {
-  const ratingA = a.rating.toUpperCase();
-  const ratingB = b.rating.toUpperCase();
+  const ratingA = a.rating;
+  const ratingB = b.rating;
 
   let comparison = 0;
-  if (ratingA > ratingB) {
+  if (ratingA < ratingB) {
     comparison = 1;
   }
-  else if (ratingA < ratingB) {
+  else if (ratingA > ratingB) {
     comparison = -1;
   }
   return comparison;
@@ -60,14 +60,31 @@ export function compareLanguage(a, b) {
   return comparison;
 }
 
+
+export function compareRatingForAiredList(a, b) {
+  const ratingA = a.show_rating;
+  const ratingB = b.show_rating;
+
+  let comparison = 0;
+  if (ratingA < ratingB) {
+    comparison = 1;
+  }
+  else if (ratingA > ratingB) {
+    comparison = -1;
+  }
+  return comparison;
+}
+
 // For LandingPage--Aired: Pour filtrer le nombre de résultat d'un tableau par langue et par note.
 // Avoir que 8 resultats, 4 langues US et 4 langue JP avec les meilleures notes.
 export function FilteredAiredLandingPage(airedArray) {
-  const jpShow = airedArray.filter((currentShow) => currentShow.Show_type === 'Animation').splice(0, 4);
-  // .sort(compareRating);
+  const arrayWithoutRatingNull = airedArray.filter((
+    currentShow,
+  ) => currentShow.show_rating !== null);
 
-  const usShow = airedArray.filter((currentShow) => currentShow.Show_type === 'Scripted').splice(0, 4);
-  // .sort(compareRating);
+  const jpShow = arrayWithoutRatingNull.filter((currentShow) => currentShow.Show_type === 'Animation').sort(compareRatingForAiredList).splice(0, 4);
+
+  const usShow = arrayWithoutRatingNull.filter((currentShow) => currentShow.Show_type === 'Scripted' || currentShow.Show_type === 'Reality').sort(compareRatingForAiredList).splice(0, 4);
 
   const newArray = [jpShow, usShow];
 
@@ -109,6 +126,24 @@ export function displayCardActionButtons(event) {
       }
     });
   }
+}
+
+// Sort all the shows followed by the user.
+export function SortShowFollowedByStatus(allShows) {
+  const arrayWatching = allShows.filter((currentShow) => currentShow.status === 0);
+  const arrayCompleted = allShows.filter((currentShow) => currentShow.status === 1);
+  const arraySeeNext = allShows.filter((currentShow) => currentShow.status === 2);
+  const arrayUpcomming = allShows.filter((currentShow) => currentShow.status === 3);
+  const arrayStopped = allShows.filter((currentShow) => currentShow.status === 4);
+
+  const allShowsSorted = [
+    arrayWatching,
+    arrayCompleted,
+    arraySeeNext,
+    arrayUpcomming,
+    arrayStopped,
+  ];
+  return allShowsSorted;
 }
 
 // export function CheckIfUserFollowThisShow(allShowFollowed, nameCurrentShow) {

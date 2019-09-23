@@ -7,8 +7,8 @@ import Show from 'src/components/Show';
 
 // Action Creators
 import {
-  startFollowingShow,
   openModal,
+  startFollowingShowFromTheBeginning,
 } from 'src/store/reducer';
 
 
@@ -20,8 +20,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  addToWatchList: (idShow, token, userId) => {
-    dispatch(startFollowingShow(idShow, token, userId));
+  startFollowingShow: (showId, userId, userAuthToken) => {
+    dispatch(startFollowingShowFromTheBeginning(showId, userId, userAuthToken));
   },
 
   handleOpen: (modalName) => {

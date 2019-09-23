@@ -76,7 +76,7 @@ const History = ({ userFollowings, handleDeleteHistoryShow, updatedHistoryList }
 
               {/* single show */}
               {updatedHistoryList.map((currentShow) => (
-                currentShow.season || currentShow.episode && (
+                (currentShow.season || currentShow.episode) && (
                 <Grid item key={currentShow.id} id={currentShow.id}>
                   <Grid
                     container

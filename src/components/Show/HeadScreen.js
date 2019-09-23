@@ -23,7 +23,7 @@ import './show.scss';
 
 const HeadScreen = ({
   showDetail,
-  addToWatchList,
+  startFollowingShow,
   userAuthToken,
   userInfos,
   isLogged,
@@ -75,7 +75,7 @@ const HeadScreen = ({
                 {isLogged === false ? (
                   <Button variant="contained" color="secondary" onClick={() => handleOpen('up')}>JOIN US TO ADD THIS SHOW</Button>
                 ) : (
-                  <Button variant="contained" color="secondary" onClick={() => addToWatchList(showDetail.id_tvmaze, userAuthToken, userInfos.id)}>ADD TO MY WATCH LIST</Button>
+                  <Button variant="contained" color="secondary" onClick={() => startFollowingShow(showDetail.id_tvmaze, userInfos.id, userAuthToken)}>ADD TO MY WATCH LIST</Button>
                 )}
               </Grid>
 
@@ -131,7 +131,7 @@ const HeadScreen = ({
 };
 HeadScreen.propTypes = {
   showDetail: PropTypes.object.isRequired,
-  addToWatchList: PropTypes.func.isRequired,
+  startFollowingShow: PropTypes.func.isRequired,
   handleOpen: PropTypes.func.isRequired,
   userAuthToken: PropTypes.string.isRequired,
   isLogged: PropTypes.bool.isRequired,

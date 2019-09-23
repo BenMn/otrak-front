@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 
 // Local Import
 import Loader from 'src/components/Loader/PrimaryLoader';
+import {
+  SortShowFollowedByStatus,
+} from 'src/utils';
 
 import {
   Grid,
@@ -62,7 +65,10 @@ function a11yProps(index) {
 const AllTabs = ({ userFollowings }) => {
   const [value, setValue] = React.useState(0);
 
-  function handleChangeEditShow(event, newValue) {
+  // Appel pour fonction utilitaire qui permet de trier la liste de tout les shows de l'utilisateur
+  const userFollowingsShowsSortedByStatus = SortShowFollowedByStatus(userFollowings);
+
+  function handleChange(event, newValue) {
     setValue(newValue);
   }
 
@@ -76,7 +82,7 @@ const AllTabs = ({ userFollowings }) => {
           centered
           variant="fullWidth"
           value={value}
-          onChange={handleChangeEditShow}
+          onChange={handleChange}
           aria-label="simple tabs example"
         >
           <DashboardTab label="Watching" {...a11yProps(0)} />
@@ -94,7 +100,7 @@ const AllTabs = ({ userFollowings }) => {
               show.status === statut && (
                 <Grid container spacing={6} justify="center">
                   <Cards
-                    userFollowings={userFollowings}
+                    userFollowingsShowsSortedByStatus={userFollowingsShowsSortedByStatus}
                   />
                 </Grid>
               )))

@@ -27,7 +27,7 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 const Show = ({
   showDetail,
-  addToWatchList,
+  startFollowingShow,
   userAuthToken,
   // eslint-disable-next-line react/prop-types
   userInfos,
@@ -49,7 +49,7 @@ const Show = ({
             <>
               <HeadScreen
                 showDetail={showDetail}
-                addToWatchList={addToWatchList}
+                startFollowingShow={startFollowingShow}
                 userAuthToken={userAuthToken}
                 userInfos={userInfos}
                 isLogged={isLogged}
@@ -69,7 +69,7 @@ const Show = ({
 
 Show.propTypes = {
   showDetail: PropTypes.object.isRequired,
-  addToWatchList: PropTypes.func.isRequired,
+  startFollowingShow: PropTypes.func.isRequired,
   userAuthToken: PropTypes.string.isRequired,
   isLogged: PropTypes.bool.isRequired,
   handleOpen: PropTypes.func.isRequired,
