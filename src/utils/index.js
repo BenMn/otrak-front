@@ -152,6 +152,18 @@ export function SortShowFollowedByStatus(allShows) {
   return allShowsSorted;
 }
 
+
+export function transformToInt(StatusInLetter) {
+  switch (StatusInLetter) {
+    case 'Watching': return 0;
+    case 'Completed': return 1;
+    case 'See next': return 2;
+    case 'Upcoming': return 3;
+    case 'Stopped': return 4;
+    default: return '';
+  }
+}
+
 // export function CheckIfUserFollowThisShow(allShowFollowed, nameCurrentShow) {
 //   const currentFollow = userFollowings.filter((show) => show.tvShow.name === showDetail.name);
 //     const currentFollowId = Object.keys(currentFollow).map((key) => currentFollow[key].id);

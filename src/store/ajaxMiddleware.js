@@ -45,6 +45,10 @@ import {
   DELETE_FOLLOWING_SHOW,
 } from 'src/store/reducer';
 
+import {
+  transformToInt,
+} from 'src/utils';
+
 
 const ajaxMiddleware = (store) => (next) => (action) => {
 
@@ -276,19 +280,18 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       // episodeProgress,
       // rewatches,
       // personalNotes,
+      const statusInInt = transformToInt(action.status);
 
       const updatedFollowedShowDatas = {
-        status: action.status,
+        status: statusInInt,
         endDate: action.endDate,
-        episode: {
-          number: action.number,
-        },
+        episode: action.number,
       };
 
-      axios.put(`${url}/api/followings/${action.followId}`,
+      axios.patch(`${url}/api/followings/${action.followId}`,
         JSON.stringify(updatedFollowedShowDatas), {
           headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/vnd.api+json',
             Authorization: `Bearer ${action.userAuthToken}`,
           },
         })
