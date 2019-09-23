@@ -29,7 +29,7 @@ import {
   HomePageCard,
   HomePageCardMedia,
   AiredBlockTitleSeeAll,
-  AiredSeeAllIcon,
+  // AiredSeeAllIcon,
   SearchResultIconTitle,
   SearchResultContainerWithoutSlider,
   SearchResultGridWithoutSlider,
@@ -102,7 +102,11 @@ const SearchResult = ({
           <Typography variant="h3" component="p" className="title-icon-next-aired">
             <SearchResultIconTitle />{`Search for ${searchInputValue}` }
           </Typography>
-          <Typography variant="h6"><a href="." className="see-all-next-aired"> See all<AiredSeeAllIcon /></a></Typography>
+          {/* <Typography variant="h6">
+            <a href="." className="see-all-next-aired">
+              See all<AiredSeeAllIcon />
+            </a>
+          </Typography> */}
         </AiredBlockTitleSeeAll>
 
         <SearchResultContainerWithoutSlider>
@@ -148,7 +152,11 @@ const SearchResult = ({
         <Typography variant="h3" component="p" className="title-icon-next-aired">
           <SearchResultIconTitle />{`Search for ${searchInputValue}` }
         </Typography>
-        <Typography variant="h6"><a href="." className="see-all-next-aired"> See all<AiredSeeAllIcon /></a></Typography>
+        {/* <Typography variant="h6">
+          <a href="." className="see-all-next-aired">
+            See all<AiredSeeAllIcon />
+          </a>
+        </Typography> */}
       </AiredBlockTitleSeeAll>
 
       <Container>

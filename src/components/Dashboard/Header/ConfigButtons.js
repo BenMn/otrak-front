@@ -1,24 +1,25 @@
+// Import NPM
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// Material UI Components
 import {
   Box,
 } from '@material-ui/core';
 
+// Material UI Custom Components
 import {
   DashboardHeaderButtons,
   DashboardHeaderButtonsHistoryIcon,
   DashboardHeaderButtonsSettingsIcon,
 } from 'src/styles/materialUi/materialUiStyles/Dashboard';
 
-import LogFormsModal from 'src/containers/LogForms';
 
 const ConfigButtons = ({
-  open,
-  modalName,
   handleOpen,
 }) => (
   <>
+    {/* History */}
     <Box componenent="div" disabled mt={5}>
       <DashboardHeaderButtons
         variant="contained"
@@ -30,6 +31,7 @@ const ConfigButtons = ({
       </DashboardHeaderButtons>
     </Box>
 
+    {/* Account settings */}
     <Box componenent="div" disabled my={5}>
       <DashboardHeaderButtons
         variant="contained"
@@ -41,25 +43,11 @@ const ConfigButtons = ({
       </DashboardHeaderButtons>
     </Box>
 
-    {/* eslint-disable-next-line max-len */}
-    {open === true && (
-      <LogFormsModal
-        modalName={modalName}
-        handleOpen={handleOpen}
-      />
-    )}
   </>
 );
 
 ConfigButtons.propTypes = {
-  open: PropTypes.bool,
   handleOpen: PropTypes.func.isRequired,
-  modalName: PropTypes.string,
-};
-
-ConfigButtons.defaultProps = {
-  open: false,
-  modalName: '',
 };
 
 export default ConfigButtons;

@@ -24,8 +24,6 @@ const mapStateToProps = (state) => ({
   open: state.open,
   modalName: state.modalName,
   loading: state.loading,
-
-  userAuthToken: state.userAuthToken,
 });
 
 

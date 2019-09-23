@@ -30,10 +30,9 @@ class EditShow extends React.Component {
       showId,
       getUserFollowings,
       userInfos,
-      userAuthToken,
     } = this.props;
     getDetailShow(showId);
-    getUserFollowings(userInfos.id, userAuthToken);
+    getUserFollowings(userInfos.id);
   }
 
   render() {
@@ -41,7 +40,6 @@ class EditShow extends React.Component {
       showDetail,
       userFollowings,
       userSingleFollowing,
-      userAuthToken,
       getUserSingleFollowing,
       handleChangeEditShow,
       updatedUserSingleFollowing,
@@ -75,7 +73,7 @@ class EditShow extends React.Component {
     ];
 
     if (Object.keys(userSingleFollowing).length < 1) {
-      getUserSingleFollowing(currentFollowId[0], userAuthToken);
+      getUserSingleFollowing(currentFollowId[0]);
     }
 
     if (Object.keys(userSingleFollowing).length > 1) {
@@ -95,7 +93,6 @@ class EditShow extends React.Component {
                 onSubmit={(event) => handleSubmitEditShow(
                   event,
                   currentFollowId[0],
-                  userAuthToken,
                 )}
               >
 
@@ -288,7 +285,6 @@ EditShow.propTypes = {
   getDetailShow: PropTypes.func.isRequired,
   userInfos: PropTypes.object,
   showDetail: PropTypes.object,
-  userAuthToken: PropTypes.string,
   userFollowings: PropTypes.array,
   userSingleFollowing: PropTypes.object,
   getUserFollowings: PropTypes.func.isRequired,
@@ -303,7 +299,6 @@ EditShow.defaultProps = {
   showDetail: {},
   userSingleFollowing: {},
   userFollowings: [],
-  userAuthToken: '',
   updatedUserSingleFollowing: {},
 };
 

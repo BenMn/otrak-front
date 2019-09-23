@@ -1,30 +1,38 @@
 /* eslint-disable react/prop-types */
 
+// Import NPM
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// Material UI Components
 import {
   Grid,
 } from '@material-ui/core';
 
+// Material UI Custom Components
 import {
   DashboardHeaderConainer,
 } from 'src/styles/materialUi/materialUiStyles/Dashboard';
 
+// Local imports
 import UserParams from './UserParams';
 import UserInfos from './UserInfos';
 import ConfigButtons from './ConfigButtons';
 
+// CSS Local Styling
 import '../Dashboard.scss';
 
 const Header = ({
-  avatarUploadHandler,
+  // User infos
+  userAuthInfos,
+  userInfos,
+  // Change username handlers
   handleUsernameInput,
   handleUsernameInputSubmit,
-  userAuthInfos,
   handleNewUsername,
+  // Modals
   handleOpen,
-  userInfos,
+  // avatarUploadHandler,
 }) => (
   <div id="Header">
 
@@ -32,13 +40,15 @@ const Header = ({
 
       <Grid container align="center" spacing={5}>
 
+        {/* [LEFT SIDE] User Personal stats */}
         <Grid item lg={4} md={4} xs={12} align="start">
           <UserParams />
         </Grid>
 
+        {/* [MIDDLE] User Infos */}
         <Grid item lg={4} md={4} xs={12}>
           <UserInfos
-            avatarUploadHandler={avatarUploadHandler}
+            // avatarUploadHandler={avatarUploadHandler}
             handleUsernameInput={handleUsernameInput}
             handleUsernameInputSubmit={handleUsernameInputSubmit}
             userAuthInfos={userAuthInfos}
@@ -47,6 +57,7 @@ const Header = ({
           />
         </Grid>
 
+        {/* [RIGHT SIDE] History and Account Settings Modals */}
         <Grid item lg={4} md={4} xs={12} align="end">
           <ConfigButtons handleOpen={handleOpen} />
         </Grid>
@@ -59,7 +70,7 @@ const Header = ({
 );
 
 Header.propTypes = {
-  avatarUploadHandler: PropTypes.func.isRequired,
+  // avatarUploadHandler: PropTypes.func.isRequired,
   handleUsernameInput: PropTypes.func.isRequired,
   handleUsernameInputSubmit: PropTypes.func.isRequired,
   handleOpen: PropTypes.func.isRequired,

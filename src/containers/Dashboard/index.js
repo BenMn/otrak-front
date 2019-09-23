@@ -17,7 +17,6 @@ import {
 const mapStateToProps = (state) => ({
   userAvatar: state.userAvatar,
   userAuthInfos: state.userAuthInfos,
-  userAuthToken: state.userAuthToken,
   userInfos: state.userInfos,
 
   userFollowings: state.userFollowings,
@@ -50,12 +49,12 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(openModal(modalName));
   },
 
-  fetchUserProfileInfos: (userAuthToken) => {
-    dispatch(getUserInfos(userAuthToken));
+  fetchUserProfileInfos: () => {
+    dispatch(getUserInfos());
   },
 
-  getUserFollowings: (userId, userAuthToken) => {
-    dispatch(getUserFollowings(userId, userAuthToken));
+  getUserFollowings: (userId) => {
+    dispatch(getUserFollowings(userId));
   },
 
 });

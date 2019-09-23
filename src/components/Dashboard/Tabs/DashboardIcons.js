@@ -1,6 +1,6 @@
+// Import NPM
 import React from 'react';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
 
 // import Material UI custom components
 import {
@@ -13,24 +13,20 @@ import AddCircleIcon from '@material-ui/icons/AddCircle';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import CreateIcon from '@material-ui/icons/Create';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import StarIcon from '@material-ui/icons/Star';
+// import StarIcon from '@material-ui/icons/Star';
 
 // Utils funtions
 import { displayCardActionButtons } from 'src/utils';
 
 const Icons = ({
   addToWatchList,
-  userAuthToken,
   userInfos,
-  isLogged,
-  handleOpen,
   showId,
-  showName,
   getDetailShow,
 }) => (
   <>
     <HomePageIconContainer className="hiddenCardIcon">
-      <AddCircleIcon onClick={() => addToWatchList(showId, userAuthToken, userInfos.id)} />
+      <AddCircleIcon onClick={() => addToWatchList(showId, userInfos.id)} />
     </HomePageIconContainer>
 
     <HomePageIconContainer className="hiddenCardIcon">
@@ -55,20 +51,14 @@ const Icons = ({
 
 Icons.propTypes = {
   addToWatchList: PropTypes.func.isRequired,
-  handleOpen: PropTypes.func.isRequired,
   getDetailShow: PropTypes.func.isRequired,
-  userAuthToken: PropTypes.string,
   userInfos: PropTypes.object,
-  isLogged: PropTypes.bool.isRequired,
   showId: PropTypes.number,
-  showName: PropTypes.string,
 };
 
 Icons.defaultProps = {
-  userAuthToken: '',
   userInfos: {},
   showId: null,
-  showName: '',
 };
 
 export default Icons;

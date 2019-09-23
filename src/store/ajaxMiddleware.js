@@ -295,7 +295,6 @@ const ajaxMiddleware = (store) => (next) => (action) => {
         JSON.stringify(updatedFollowedShowDatas), {
           headers: {
             'Content-Type': 'application/vnd.api+json',
-            Authorization: `Bearer ${action.userAuthToken}`,
           },
         })
         .then((response) => {

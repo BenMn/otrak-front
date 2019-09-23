@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 
 /* eslint-disable no-plusplus */
 /* eslint-disable react/jsx-props-no-spreading */
@@ -16,9 +17,6 @@ import {
   Container,
 } from '@material-ui/core';
 
-// Data provisoire
-import shows from 'src/data/shows';
-
 // Slider library
 import Slider from 'react-slick';
 
@@ -28,7 +26,7 @@ import {
   HomePageCard,
   HomePageCardMedia,
   NextBlockTitleSeeAll,
-  NextSeeAllIcon,
+  // NextSeeAllIcon,
   HomePageGridOfOnCard,
   SearchResultGridWithoutSlider,
   SearchResultTitle,
@@ -91,7 +89,11 @@ const Next = ({ nextList, getDetailShow }) => {
           alignItems="center"
         >
           <Typography variant="h3" className="title-icon-next-aired"><NextIconTitle /> Next To Watch</Typography>
-          <Typography variant="h6"><a href="." className="see-all-next-aired"> See all<NextSeeAllIcon /></a></Typography>
+          {/* <Typography variant="h6">
+            <a href="." className="see-all-next-aired">
+              See all<NextSeeAllIcon />
+            </a>
+          </Typography> */}
         </NextBlockTitleSeeAll>
 
         <Container>
@@ -141,7 +143,11 @@ const Next = ({ nextList, getDetailShow }) => {
         alignItems="center"
       >
         <Typography variant="h3" className="title-icon-next-aired"><NextIconTitle /> Next To Watch</Typography>
-        <Typography variant="h6"><a href="." className="see-all-next-aired"> See all<NextSeeAllIcon /></a></Typography>
+        {/* <Typography variant="h6">
+          <a href="." className="see-all-next-aired">
+            See all<NextSeeAllIcon />
+          </a>
+        </Typography> */}
       </NextBlockTitleSeeAll>
 
       <Container>

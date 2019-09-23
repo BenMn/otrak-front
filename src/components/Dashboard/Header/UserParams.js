@@ -1,13 +1,17 @@
+// Import NPM
 import React from 'react';
 
+// Material UI Components
 import {
   Box,
 } from '@material-ui/core';
 
+// Material UI Custom Components
 import {
   DashboardProgressBar,
   DashboardTitleProgressBar,
 } from 'src/styles/materialUi/materialUiStyles/Dashboard';
+
 
 const UserParams = () => (
   <>

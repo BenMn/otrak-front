@@ -13,9 +13,9 @@ import Next from 'src/components/Homepage/Next';
 
 class Homepage extends React.Component {
   componentDidMount() {
-    const { getTrending, getNext, userAuthToken } = this.props;
-    getTrending(userAuthToken);
-    getNext(userAuthToken);
+    const { getTrending, getNext } = this.props;
+    getTrending();
+    getNext();
   }
 
   render() {
@@ -61,7 +61,6 @@ Homepage.propTypes = {
   getDetailShow: PropTypes.func.isRequired,
   sortBy: PropTypes.func.isRequired,
   getNext: PropTypes.func.isRequired,
-  userAuthToken: PropTypes.string.isRequired,
 };
 
 Homepage.defaultProps = {

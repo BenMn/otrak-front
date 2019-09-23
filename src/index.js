@@ -15,7 +15,7 @@ import {
 import App from 'src/containers/App';
 import store from 'src/store';
 
-import setAuthorizationToken from 'src/utils';
+import { setAuthorizationToken } from 'src/utils';
 
 if (localStorage.token) {
   setAuthorizationToken(localStorage.token);

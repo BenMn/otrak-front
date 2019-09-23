@@ -14,14 +14,13 @@ import {
 
 const mapStateToProps = (state) => ({
   showDetail: state.showDetail,
-  userAuthToken: state.userAuthToken,
   userInfos: state.userInfos,
   isLogged: state.isLogged,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  startFollowingShow: (showId, userId, userAuthToken) => {
-    dispatch(startFollowingShowFromTheBeginning(showId, userId, userAuthToken));
+  startFollowingShow: (showId, userId) => {
+    dispatch(startFollowingShowFromTheBeginning(showId, userId));
   },
 
   handleOpen: (modalName) => {

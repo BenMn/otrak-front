@@ -19,12 +19,11 @@ const mapStateToProps = (state) => ({
   searchInputValue: state.searchInputValue,
   trendingList: state.trendingList,
   nextList: state.nextList,
-  userAuthToken: state.userAuthToken,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getTrending: (userAuthToken) => {
-    dispatch(fetchTrending(userAuthToken));
+  getTrending: () => {
+    dispatch(fetchTrending());
   },
   getDetailShow: (showId) => {
     dispatch(emptySearchResults());
@@ -33,8 +32,8 @@ const mapDispatchToProps = (dispatch) => ({
   sortBy: (typeSort) => {
     dispatch(storeSortedArray(typeSort));
   },
-  getNext: (userAuthToken) => {
-    dispatch(fetchNext(userAuthToken));
+  getNext: () => {
+    dispatch(fetchNext());
   },
 });
 

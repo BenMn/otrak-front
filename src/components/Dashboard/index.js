@@ -1,18 +1,22 @@
 /* eslint-disable react/prop-types */
 
+// Import NPM
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// Local imports
 import Header from './Header';
 import Tabs from './Tabs';
 
-
+// CSS Local Styling
 import './Dashboard.scss';
+
 
 class Dashboard extends React.Component {
   componentDidMount() {
-    const { getUserFollowings, userInfos, userAuthToken } = this.props;
-    getUserFollowings(userInfos.id, userAuthToken);
+    // On load, get all current user infos
+    const { getUserFollowings, userInfos } = this.props;
+    getUserFollowings(userInfos.id);
   }
 
   render() {
@@ -53,13 +57,11 @@ Dashboard.propTypes = {
   handleOpen: PropTypes.func.isRequired,
   userInfos: PropTypes.object,
   userFollowings: PropTypes.array,
-  userAuthToken: PropTypes.string,
 };
 
 Dashboard.defaultProps = {
   userInfos: {},
   userFollowings: [],
-  userAuthToken: '',
 };
 
 export default Dashboard;

@@ -32,7 +32,6 @@ const LogFormsModal = ({
   loading,
   getDetailShow,
   userInfos,
-  userAuthToken,
   showDetail,
   userSingleFollowing,
   userFollowings,
@@ -107,7 +106,6 @@ const LogFormsModal = ({
             showId={modalName}
             getDetailShow={getDetailShow}
             userInfos={userInfos}
-            userAuthToken={userAuthToken}
             showDetail={showDetail}
             userSingleFollowing={userSingleFollowing}
             userFollowings={userFollowings}
@@ -135,7 +133,6 @@ LogFormsModal.propTypes = {
   loading: PropTypes.bool.isRequired,
   getDetailShow: PropTypes.func,
   userInfos: PropTypes.object,
-  userAuthToken: PropTypes.string,
   showDetail: PropTypes.object,
   userSingleFollowing: PropTypes.object,
   getUserSingleFollowing: PropTypes.func.isRequired,
@@ -156,7 +153,6 @@ LogFormsModal.defaultProps = {
   handleDeleteHistoryShow: () => { },
   getDetailShow: () => { },
   userInfos: {},
-  userAuthToken: '',
   showDetail: {},
   userSingleFollowing: {},
   userFollowings: [],

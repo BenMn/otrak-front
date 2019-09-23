@@ -32,7 +32,6 @@ const mapStateToProps = (state) => ({
   updatedHistoryList: state.updatedHistoryList,
   loading: state.loading,
   userInfos: state.userInfos,
-  userAuthToken: state.userAuthToken,
   userSingleFollowing: state.userSingleFollowing,
   userFollowings: state.userFollowings,
   showDetail: state.showDetail,
@@ -75,12 +74,12 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(removeShowHistoryList(showId));
   },
 
-  getUserFollowings: (userId, userAuthToken) => {
-    dispatch(getUserFollowings(userId, userAuthToken));
+  getUserFollowings: (userId) => {
+    dispatch(getUserFollowings(userId));
   },
 
-  getUserSingleFollowing: (followId, userAuthToken) => {
-    dispatch(getUserSingleFollowing(followId, userAuthToken));
+  getUserSingleFollowing: (followId) => {
+    dispatch(getUserSingleFollowing(followId));
   },
 
   getDetailShow: (showId) => {
@@ -93,7 +92,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(handleChangeEditShow(name, value));
   },
 
-  handleSubmitEditShow: (event, followId, userAuthToken) => {
+  handleSubmitEditShow: (event, followId) => {
     event.persist();
     console.log(event.target[0]);
     const status = event.target[0].value;
@@ -112,7 +111,6 @@ const mapDispatchToProps = (dispatch) => ({
       rewatches,
       personalNotes,
       followId,
-      userAuthToken,
     ));
     event.preventDefault();
   },

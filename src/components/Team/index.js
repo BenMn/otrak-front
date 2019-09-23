@@ -31,8 +31,6 @@ import cedric from './images/cedric.jpg';
 import ben from './images/ben.jpg';
 // import lea from './images/lea.jpg';
 
-import 'src/components/Dashboard/Tabs/Tabs.scss';
-
 function TabPanel(props) {
   const {
     children,

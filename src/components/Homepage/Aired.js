@@ -31,7 +31,7 @@ import {
   HomePageCardMedia,
   HomePageCardTitle,
   AiredBlockTitleSeeAll,
-  AiredSeeAllIcon,
+  // AiredSeeAllIcon,
   AiredSubtitleSeasonEpisode,
   AiredTitleCardAndSubtitle,
   HomePageGridOfOnCard,
@@ -97,7 +97,11 @@ const Aired = ({ trendingList, getDetailShow, userFollowings }) => {
           alignItems="center"
         >
           <Typography variant="h3" component="p" className="title-icon-next-aired"><AiredIconTitle /> Just Aired</Typography>
-          <Typography variant="h6"><a href="." className="see-all-next-aired"> See all<AiredSeeAllIcon /></a></Typography>
+          {/* <Typography variant="h6">
+            <a href="." className="see-all-next-aired">
+              See all<AiredSeeAllIcon />
+            </a>
+          </Typography> */}
         </AiredBlockTitleSeeAll>
 
         <Container>
@@ -175,7 +179,11 @@ const Aired = ({ trendingList, getDetailShow, userFollowings }) => {
         alignItems="center"
       >
         <Typography variant="h3" component="p" className="title-icon-next-aired"><AiredIconTitle /> Just Aired</Typography>
-        <Typography variant="h6"><a href="." className="see-all-next-aired"> See all<AiredSeeAllIcon /></a></Typography>
+        {/* <Typography variant="h6">
+          <a href="." className="see-all-next-aired">
+            See all<AiredSeeAllIcon />
+          </a>
+        </Typography> */}
       </AiredBlockTitleSeeAll>
 
       <Container>

@@ -41,7 +41,6 @@ const initialState = {
   loading: false,
   // Authentification
   isLogged: false,
-  userAuthToken: '',
   storeAuthInputResult: {},
   userAuthInfos: {
     username: {
@@ -187,7 +186,6 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isLogged: false,
-        userAuthToken: '',
         userInfos: {},
         storeUserAuthInfos: {},
         userAvatar: '',
@@ -203,7 +201,6 @@ const reducer = (state = initialState, action = {}) => {
     case STORE_USER_AUTH_INFOS:
       return {
         ...state,
-        userAuthToken: action.token,
         isLogged: true,
         loading: false,
       };
@@ -387,15 +384,13 @@ export const storeUserAuthInfos = (token) => ({
   token,
 });
 
-export const getUserInfos = (userAuthToken) => ({
+export const getUserInfos = () => ({
   type: GET_USER_INFOS,
-  userAuthToken,
 });
 
-export const getUserFollowings = (userId, userAuthToken) => ({
+export const getUserFollowings = (userId) => ({
   type: GET_USER_FOLLOWINGS,
   userId,
-  userAuthToken,
 });
 
 export const storeUserSingleFollowing = (show) => ({
@@ -403,10 +398,9 @@ export const storeUserSingleFollowing = (show) => ({
   show,
 });
 
-export const getUserSingleFollowing = (followId, userAuthToken) => ({
+export const getUserSingleFollowing = (followId) => ({
   type: GET_USER_SINGLE_FOLLOWING,
   followId,
-  userAuthToken,
 });
 
 export const storeUserInfos = (userInfos) => ({
@@ -414,9 +408,8 @@ export const storeUserInfos = (userInfos) => ({
   userInfos,
 });
 
-export const fetchTrending = (userAuthToken) => ({
+export const fetchTrending = () => ({
   type: FETCH_TRENDING,
-  userAuthToken,
 });
 
 export const storeTrending = (data) => ({
@@ -424,9 +417,8 @@ export const storeTrending = (data) => ({
   data,
 });
 
-export const fetchNext = (userAuthToken) => ({
+export const fetchNext = () => ({
   type: FETCH_NEXT,
-  userAuthToken,
 });
 
 export const storeNext = (data) => ({
@@ -513,35 +505,30 @@ export const startFollowingShowAtThisEpisode = (
   showId,
   showSeason,
   showEpisode,
-  userAuthToken,
   userId,
 ) => ({
   type: START_FOLLOWING_SHOW_AT_THIS_EPISODE,
   showId,
   showSeason,
   showEpisode,
-  userAuthToken,
   userId,
 });
 
-export const planningWatchShow = (showId, userId, userAuthToken) => ({
+export const planningWatchShow = (showId, userId) => ({
   type: PLANNING_WATCH_SHOW,
   showId,
   userId,
-  userAuthToken,
 });
 
-export const DeleteFollowingShow = (showIdBdd, userAuthToken) => ({
+export const DeleteFollowingShow = (showIdBdd) => ({
   type: DELETE_FOLLOWING_SHOW,
   showIdBdd,
-  userAuthToken,
 });
 
-export const startFollowingShowFromTheBeginning = (showId, userId, userAuthToken) => ({
+export const startFollowingShowFromTheBeginning = (showId, userId) => ({
   type: START_FOLLOWING_SHOW_FROM_THE_BEGINNING,
   showId,
   userId,
-  userAuthToken,
 });
 
 export const handleChangeEditShow = (name, value) => ({
@@ -559,7 +546,6 @@ export const updateCurrentFollowingShow = (
   rewatches,
   personalNotes,
   followId,
-  userAuthToken,
 ) => ({
   type: UPDATE_CURRENT_FOLLOWING_SHOW,
   status,
@@ -570,7 +556,6 @@ export const updateCurrentFollowingShow = (
   rewatches,
   personalNotes,
   followId,
-  userAuthToken,
 });
 
 export function setCurrentUser(user) {

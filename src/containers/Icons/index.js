@@ -17,7 +17,6 @@ import {
 } from 'src/store/reducer';
 
 const mapStateToProps = (state) => ({
-  userAuthToken: state.userAuthToken,
   isLogged: state.isLogged,
   open: state.open,
   userInfos: state.userInfos,
@@ -35,26 +34,23 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(fetchDetailShow(showId));
   },
 
-  getUserFollowings: (userId, userAuthToken) => {
-    dispatch(getUserFollowings(userId, userAuthToken));
+  getUserFollowings: (userId) => {
+    dispatch(getUserFollowings(userId));
   },
 
   addShowByCategorie: (
     categorie,
     showId,
-    userAuthToken,
     userId,
     showSeason,
     showEpisode,
   ) => {
-    console.log('on a cliqué sur cette catégorie', categorie);
     switch (categorie) {
       case 'aired' || 'next':
         dispatch(startFollowingShowAtThisEpisode(
           showId,
           showSeason,
           showEpisode,
-          userAuthToken,
           userId,
         ));
         break;
@@ -63,19 +59,19 @@ const mapDispatchToProps = (dispatch) => ({
         dispatch(startFollowingShowFromTheBeginning(
           showId,
           userId,
-          userAuthToken,
         ));
         break;
 
+      // eslint-disable-next-line no-console
       default: console.log('default case');
     }
   },
-  addToPlanningWatchShow: (showId, userId, userAuthToken) => {
-    dispatch(planningWatchShow(showId, userId, userAuthToken));
+  addToPlanningWatchShow: (showId, userId) => {
+    dispatch(planningWatchShow(showId, userId));
   },
 
-  stopFollowingShow: (showIdBdd, userAuthToken) => {
-    dispatch(DeleteFollowingShow(showIdBdd, userAuthToken));
+  stopFollowingShow: (showIdBdd) => {
+    dispatch(DeleteFollowingShow(showIdBdd));
   },
 
 });

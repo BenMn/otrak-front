@@ -26,7 +26,6 @@ import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import { displayCardActionButtons, tooltipTitleByCategory } from 'src/utils';
 
 const Icons = ({
-  userAuthToken,
   userInfos,
   isLogged,
   handleOpen,
@@ -47,7 +46,6 @@ const Icons = ({
           <AddCircleIcon onClick={() => addShowByCategorie(
             categorie,
             showId,
-            userAuthToken,
             userInfos.id,
             showSeason,
             showEpisode,
@@ -71,7 +69,6 @@ const Icons = ({
             <VisibilityIcon onClick={() => addToPlanningWatchShow(
               showId,
               userInfos.id,
-              userAuthToken,
             )}
             />
           </HomePageIconContainer>
@@ -83,7 +80,6 @@ const Icons = ({
           <VisibilityIcon onClick={() => addToPlanningWatchShow(
             showId,
             userInfos.id,
-            userAuthToken,
           )}
           />
         </HomePageIconContainer>
@@ -115,7 +111,7 @@ const Icons = ({
     {isLogged === true && showIdBdd !== null ? (
       <Tooltip title="Unfollow this show" placement="top">
         <HomePageIconContainer className="hiddenCardIcon">
-          <DeleteForeverIcon onClick={() => stopFollowingShow(showIdBdd, userAuthToken)} />
+          <DeleteForeverIcon onClick={() => stopFollowingShow(showIdBdd)} />
         </HomePageIconContainer>
       </Tooltip>
     ) : (
@@ -151,15 +147,11 @@ Icons.propTypes = {
   showId: PropTypes.number,
   showIdBdd: PropTypes.number,
 
-  // String not required
-  userAuthToken: PropTypes.string,
-
   // Object not required
   userInfos: PropTypes.object,
 };
 
 Icons.defaultProps = {
-  userAuthToken: '',
   categorie: '',
   userInfos: {},
   showId: null,
