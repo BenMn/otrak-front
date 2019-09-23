@@ -414,8 +414,9 @@ export const storeUserInfos = (userInfos) => ({
   userInfos,
 });
 
-export const fetchTrending = () => ({
+export const fetchTrending = (userAuthToken) => ({
   type: FETCH_TRENDING,
+  userAuthToken,
 });
 
 export const storeTrending = (data) => ({
@@ -423,8 +424,9 @@ export const storeTrending = (data) => ({
   data,
 });
 
-export const fetchNext = () => ({
+export const fetchNext = (userAuthToken) => ({
   type: FETCH_NEXT,
+  userAuthToken,
 });
 
 export const storeNext = (data) => ({

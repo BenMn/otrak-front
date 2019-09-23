@@ -95,6 +95,7 @@ const mapDispatchToProps = (dispatch) => ({
 
   handleSubmitEditShow: (event, followId, userAuthToken) => {
     event.persist();
+    console.log(event.target[0]);
     const status = event.target[0].value;
     const rating = event.target[2].value;
     const startDate = event.target[4].value;

@@ -29,29 +29,22 @@ const Icons = ({
   getDetailShow,
 }) => (
   <>
-    {isLogged === true ? (
-      <HomePageIconContainer className="hiddenCardIcon">
-        <AddCircleIcon onClick={() => addToWatchList(showId, userAuthToken, userInfos.id)} />
-      </HomePageIconContainer>
-    ) : (
-      <HomePageIconContainer className="hiddenCardIcon">
-        <AddCircleIcon onClick={() => handleOpen('up')} />
-      </HomePageIconContainer>
-    )}
     <HomePageIconContainer className="hiddenCardIcon">
-      <NavLink exact to={`/show/${showName}`}>
-        <VisibilityIcon onClick={() => getDetailShow(showId)} />
-      </NavLink>
+      <AddCircleIcon onClick={() => addToWatchList(showId, userAuthToken, userInfos.id)} />
     </HomePageIconContainer>
+
+    <HomePageIconContainer className="hiddenCardIcon">
+      <VisibilityIcon onClick={() => getDetailShow(showId)} />
+    </HomePageIconContainer>
+
     <HomePageIconContainer className="hiddenCardIcon">
       <CreateIcon />
     </HomePageIconContainer>
-    <HomePageIconContainer className="hiddenCardIcon">
-      <StarIcon />
-    </HomePageIconContainer>
+
     <HomePageIconContainer className="hiddenCardIcon">
       <DeleteForeverIcon />
     </HomePageIconContainer>
+
     <HomePageIconContainer
       onMouseOver={(event) => displayCardActionButtons(event)}
     >

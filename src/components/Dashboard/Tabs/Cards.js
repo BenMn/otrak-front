@@ -4,7 +4,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 // Local Import
-import Icons from 'src/containers/Icons';
+import Icons from 'src/components/Dashboard/Tabs/DashboardIcons';
 
 // scss
 import 'react-id-swiper/lib/styles/scss/swiper.scss';
@@ -53,7 +53,6 @@ const Cards = ({ filtredArray }) => (
                 <HomePageCardTitle variant="h5" component="h2">
                   {show.tvShow.name}
                 </HomePageCardTitle>
-                {show.tvShow.genre.length}
                 <AiredSubtitleSeasonEpisode>
                   {show.tvShow.genre.map((genre) => (
                     <Fragment key={genre.name}>

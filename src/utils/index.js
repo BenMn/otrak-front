@@ -131,11 +131,13 @@ export function displayCardActionButtons(event) {
 
 // Sort all the shows followed by the user.
 export function SortShowFollowedByStatus(allShows) {
-  const arrayWatching = allShows.filter((currentShow) => currentShow.status === 0);
-  const arrayCompleted = allShows.filter((currentShow) => currentShow.status === 1);
-  const arraySeeNext = allShows.filter((currentShow) => currentShow.status === 2);
-  const arrayUpcomming = allShows.filter((currentShow) => currentShow.status === 3);
-  const arrayStopped = allShows.filter((currentShow) => currentShow.status === 4);
+  const arrayWithoutEpisodes = allShows.filter((currentShow) => currentShow.season === null);
+
+  const arrayWatching = arrayWithoutEpisodes.filter((currentShow) => currentShow.status === 0);
+  const arrayCompleted = arrayWithoutEpisodes.filter((currentShow) => currentShow.status === 1);
+  const arraySeeNext = arrayWithoutEpisodes.filter((currentShow) => currentShow.status === 2);
+  const arrayUpcomming = arrayWithoutEpisodes.filter((currentShow) => currentShow.status === 3);
+  const arrayStopped = arrayWithoutEpisodes.filter((currentShow) => currentShow.status === 4);
 
   const allShowsSorted = [
     arrayWatching,
@@ -144,7 +146,20 @@ export function SortShowFollowedByStatus(allShows) {
     arrayUpcomming,
     arrayStopped,
   ];
+
   return allShowsSorted;
+}
+
+
+export function transformToInt(StatusInLetter) {
+  switch (StatusInLetter) {
+    case 'Watching': return 0;
+    case 'Completed': return 1;
+    case 'See next': return 2;
+    case 'Upcoming': return 3;
+    case 'Stopped': return 4;
+    default: return '';
+  }
 }
 
 // export function CheckIfUserFollowThisShow(allShowFollowed, nameCurrentShow) {
@@ -154,7 +169,7 @@ export function SortShowFollowedByStatus(allShows) {
 // }
 
 
-export default function setAuthorizationToken(token) {
+export function setAuthorizationToken(token) {
   if (token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
   }
