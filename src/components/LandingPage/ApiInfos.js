@@ -35,7 +35,7 @@ const ApiInfos = ({
 
     {/* screenshot */}
     <Grid item lg={5}>
-      <img src={screendemo1} alt="ballekkkkk" className="ScreenDemo ScreenDemo--left" />
+      <img src={screendemo1} alt="Démo" className="ScreenDemo ScreenDemo--left" />
     </Grid>
 
     <Grid item lg={7}>

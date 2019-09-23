@@ -18,13 +18,18 @@ import {
   TeamBoxOfCards,
 } from 'src/styles/materialUi/materialUiStyles/Team';
 
-
 import {
   HomePageCard,
   HomePageCardTitle,
   AiredSubtitleSeasonEpisode,
   AiredTitleCardAndSubtitle,
 } from 'src/styles/materialUi/materialUiStyles/HomePage';
+
+// Images
+import remi from './images/remi.jpg';
+import cedric from './images/cedric.jpg';
+import ben from './images/ben.jpg';
+// import lea from './images/lea.jpg';
 
 import 'src/components/Dashboard/Tabs/Tabs.scss';
 
@@ -101,37 +106,7 @@ export default function TabsTest() {
             <Grid item xl={2} lg={3} md={4} sm={6} xs={12}>
               <HomePageCard>
                 <CardActionArea>
-                  <TeamCardMedia image="/src/styles/assets/images/avatars/avatar.jpg">
-
-                    <AiredTitleCardAndSubtitle
-                      container
-                      alignItems="flex-end"
-                    >
-                      <Grid />
-                      <HomePageCardTitle variant="h5" component="h2">
-                        CÉDRIC
-                      </HomePageCardTitle>
-                      <AiredSubtitleSeasonEpisode>SYMFONY</AiredSubtitleSeasonEpisode>
-                    </AiredTitleCardAndSubtitle>
-                  </TeamCardMedia>
-                </CardActionArea>
-              </HomePageCard>
-            </Grid>
-          </Grid>
-        </Grid>
-      </TabPanel>
-
-      {/* Produc Manager */}
-      <TabPanel value={value} index={1}>
-        <Grid container spacing={2} justify="center">
-          <Grid
-            container
-            justify="center"
-          >
-            <Grid item xl={2} lg={3} md={4} sm={6} xs={12}>
-              <HomePageCard>
-                <CardActionArea>
-                  <TeamCardMedia image="/src/styles/assets/images/avatars/avatar.jpg">
+                  <TeamCardMedia image={remi}>
 
                     <AiredTitleCardAndSubtitle
                       container
@@ -151,6 +126,36 @@ export default function TabsTest() {
         </Grid>
       </TabPanel>
 
+      {/* Produc Manager */}
+      <TabPanel value={value} index={1}>
+        <Grid container spacing={2} justify="center">
+          <Grid
+            container
+            justify="center"
+          >
+            <Grid item xl={2} lg={3} md={4} sm={6} xs={12}>
+              <HomePageCard>
+                <CardActionArea>
+                  <TeamCardMedia image={cedric}>
+
+                    <AiredTitleCardAndSubtitle
+                      container
+                      alignItems="flex-end"
+                    >
+                      <Grid />
+                      <HomePageCardTitle variant="h5" component="h2">
+                        CÉDRIC
+                      </HomePageCardTitle>
+                      <AiredSubtitleSeasonEpisode>SYMFONY</AiredSubtitleSeasonEpisode>
+                    </AiredTitleCardAndSubtitle>
+                  </TeamCardMedia>
+                </CardActionArea>
+              </HomePageCard>
+            </Grid>
+          </Grid>
+        </Grid>
+      </TabPanel>
+
       {/* Lead Back */}
       <TabPanel value={value} index={2}>
         <Grid container spacing={2} justify="center">
@@ -161,7 +166,7 @@ export default function TabsTest() {
             <Grid item xl={2} lg={3} md={4} sm={6} xs={12}>
               <HomePageCard>
                 <CardActionArea>
-                  <TeamCardMedia image="/src/styles/assets/images/avatars/avatar.jpg">
+                  <TeamCardMedia image={ben}>
 
                     <AiredTitleCardAndSubtitle
                       container

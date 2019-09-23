@@ -9,6 +9,9 @@ import {
 
 import {
   Tooltip,
+  Snackbar,
+  Button,
+  IconButton,
 } from '@material-ui/core';
 
 // import Material UI Icons
@@ -16,6 +19,7 @@ import AddCircleIcon from '@material-ui/icons/AddCircle';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import CreateIcon from '@material-ui/icons/Create';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import CloseIcon from '@material-ui/icons/Close';
 // import StarIcon from '@material-ui/icons/Star';
 
 // Utils funtions
@@ -35,77 +39,91 @@ const Icons = ({
   addShowByCategorie,
   addToPlanningWatchShow,
   stopFollowingShow,
-}) => (
-  <>
-    {/* Add to list */}
-    {isLogged === true ? (
-      <Tooltip title={tooltipTitleByCategory(categorie)} placement="top">
-        <HomePageIconContainer className="hiddenCardIcon">
-          <AddCircleIcon onClick={() => addShowByCategorie(
-            categorie,
-            showId,
-            userAuthToken,
-            userInfos.id,
-            showSeason,
-            showEpisode,
-          )}
-          />
-        </HomePageIconContainer>
-      </Tooltip>
-    ) : (
-      <Tooltip title="Sign in to add this show" placement="top">
-        <HomePageIconContainer className="hiddenCardIcon">
-          <AddCircleIcon onClick={() => handleOpen('in')} />
-        </HomePageIconContainer>
-      </Tooltip>
-    )}
+}) => {
+  return (
+    <>
+      {/* Add to list */}
+      {isLogged === true ? (
+        <Tooltip title={tooltipTitleByCategory(categorie)} placement="top">
+          <HomePageIconContainer className="hiddenCardIcon">
+            <AddCircleIcon onClick={() => addShowByCategorie(
+              categorie,
+              showId,
+              userAuthToken,
+              userInfos.id,
+              showSeason,
+              showEpisode,
+            )}
+            />
+          </HomePageIconContainer>
+        </Tooltip>
+      ) : (
+        <Tooltip title="Sign in to add this show" placement="top">
+          <HomePageIconContainer className="hiddenCardIcon">
+            <AddCircleIcon onClick={() => handleOpen('in')} />
+          </HomePageIconContainer>
+        </Tooltip>
+      )}
 
-    {/* Add to next to watch */}
-    <Tooltip title="Plan to See" placement="top">
-      <HomePageIconContainer className="hiddenCardIcon">
-        <VisibilityIcon onClick={() => addToPlanningWatchShow(showId, userInfos.id, userAuthToken)} />
+      {/* Add to next to watch */}
+      {isLogged === true ? (
+        <>
+          <Tooltip title="Plan to See" placement="top">
+            <HomePageIconContainer className="hiddenCardIcon">
+              <VisibilityIcon onClick={() => addToPlanningWatchShow(showId, userInfos.id, userAuthToken)} />
+            </HomePageIconContainer>
+          </Tooltip>
+        </>
+      ) : (
+        <Tooltip title="Sign in to add this show in your planning list" placement="top">
+          <HomePageIconContainer className="hiddenCardIcon">
+            <VisibilityIcon onClick={() => addToPlanningWatchShow(showId, userInfos.id, userAuthToken)} />
+          </HomePageIconContainer>
+        </Tooltip>
+      )}
+
+      {/* Edit show */}
+      {isLogged === true ? (
+        <Tooltip title="Edit Show" placement="top">
+          <HomePageIconContainer className="hiddenCardIcon">
+            <CreateIcon onClick={() => handleOpen(showId)} />
+          </HomePageIconContainer>
+        </Tooltip>
+      ) : (
+        <Tooltip title="Sign in to edit this show" placement="top">
+          <HomePageIconContainer className="hiddenCardIcon">
+            <CreateIcon onClick={() => handleOpen('in')} />
+          </HomePageIconContainer>
+        </Tooltip>
+      )}
+
+      {/* Add to favorites */}
+      {/* uniquement display quand la catégorie existera */}
+      {/* <HomePageIconContainer className="hiddenCardIcon">
+        <StarIcon />
+      </HomePageIconContainer> */}
+
+      {/* Remove from list */}
+      {isLogged === true && showIdBdd !== null ? (
+        <Tooltip title="Unfollow this show" placement="top">
+          <HomePageIconContainer className="hiddenCardIcon">
+            <DeleteForeverIcon onClick={() => stopFollowingShow(showIdBdd, userAuthToken)} />
+          </HomePageIconContainer>
+        </Tooltip>
+      ) : (
+        ''
+      )}
+
+      {/* Display buttons */}
+      <HomePageIconContainer
+        onMouseOver={(event) => displayCardActionButtons(event)}
+      >
+        <HomePageCardIcon />
       </HomePageIconContainer>
-    </Tooltip>
+    </>
+  );
+};
 
-    {/* Edit show */}
-    {isLogged === true ? (
-      <Tooltip title="Edit Show" placement="top">
-        <HomePageIconContainer className="hiddenCardIcon">
-          <CreateIcon onClick={() => handleOpen(showId)} />
-        </HomePageIconContainer>
-      </Tooltip>
-    ) : (
-      <Tooltip title="Sign in to edit this show" placement="top">
-        <HomePageIconContainer className="hiddenCardIcon">
-          <CreateIcon onClick={() => handleOpen('in')} />
-        </HomePageIconContainer>
-      </Tooltip>
-    )}
-
-    {/* Add to favorites */}
-    {/* uniquement display quand la catégorie existera */}
-    {/* <HomePageIconContainer className="hiddenCardIcon">
-      <StarIcon />
-    </HomePageIconContainer> */}
-
-    {/* Remove from list
-    uniquement display si l'id du show est contenu dans le tableau userFollings */}
-
-    <Tooltip title="Unfollow this show" placement="top">
-      <HomePageIconContainer className="hiddenCardIcon">
-        <DeleteForeverIcon onClick={() => stopFollowingShow(showIdBdd, userAuthToken)} />
-      </HomePageIconContainer>
-    </Tooltip>
-
-
-    {/* Display buttons */}
-    <HomePageIconContainer
-      onMouseOver={(event) => displayCardActionButtons(event)}
-    >
-      <HomePageCardIcon />
-    </HomePageIconContainer>
-  </>
-);
 
 Icons.propTypes = {
   // Function required

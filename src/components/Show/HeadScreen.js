@@ -84,7 +84,7 @@ const HeadScreen = ({
 
                   <Grid container justify="space-between" className="HeadScreen-infos-border">
                     <ListItemText primary="Genre" />
-                    <ListItemText align="right" primary={showDetail.genre.length < 1 ? 'Not specified' : `${showDetail.genre.name}`} />
+                    <ListItemText align="right" primary={showDetail.genre.length < 1 ? 'Not specified' : `${showDetail.genre.map((currentGenre) => currentGenre.name)}`} />
                   </Grid>
 
                   <Grid container justify="space-between" className="HeadScreen-infos-border">
@@ -97,10 +97,17 @@ const HeadScreen = ({
                     <ListItemText align="right" primary={showStatusSwitch(showDetail.status)} />
                   </Grid>
 
-                  <Grid container justify="space-between" className="HeadScreen-infos-border">
-                    <ListItemText primary="Network" />
-                    <ListItemText align="right" primary={showDetail.network === (null || undefined) ? 'Not specified' : `${showDetail.network}`} />
-                  </Grid>
+                  { showDetail.createdAt === undefined ? (
+                    <Grid container justify="space-between" className="HeadScreen-infos-border">
+                      <ListItemText primary="Network" />
+                      <ListItemText align="right" primary={showDetail.network === (null || undefined) ? 'Not specified' : `${showDetail.network}`} />
+                    </Grid>
+                  ) : (
+                    <Grid container justify="space-between" className="HeadScreen-infos-border">
+                      <ListItemText primary="Network" />
+                      <ListItemText align="right" primary={showDetail.network.name === null ? 'Not specified' : `${showDetail.network.name}`} />
+                    </Grid>
+                  )}
 
                   <Grid container justify="space-between" className="HeadScreen-infos-border">
                     <ListItemText primary="Original language" />

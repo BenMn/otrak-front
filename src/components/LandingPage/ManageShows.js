@@ -43,7 +43,7 @@ const ManageShows = () => (
 
     {/* Screenshot */}
     <Grid item lg={5}>
-      <img src={screendemo2} alt="ballekkkkk" className="ScreenDemo ScreenDemo--right" />
+      <img src={screendemo2} alt="Démo" className="ScreenDemo ScreenDemo--right" />
     </Grid>
 
   </Grid>
