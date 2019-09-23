@@ -251,7 +251,7 @@ const reducer = (state = initialState, action = {}) => {
       return Object.keys(state.updatedHistoryList).length === 0 ? ({
         ...state,
         updatedHistoryList:
-          state.trendingList.filter((show) => show.id !== action.showId),
+          state.userFollowings.filter((show) => show.id !== action.showId),
       }) : ({
         ...state,
         updatedHistoryList:

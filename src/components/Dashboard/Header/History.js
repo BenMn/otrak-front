@@ -76,6 +76,7 @@ const History = ({ userFollowings, handleDeleteHistoryShow, updatedHistoryList }
 
               {/* single show */}
               {updatedHistoryList.map((currentShow) => (
+                currentShow.season || currentShow.episode && (
                 <Grid item key={currentShow.id} id={currentShow.id}>
                   <Grid
                     container
@@ -90,16 +91,11 @@ const History = ({ userFollowings, handleDeleteHistoryShow, updatedHistoryList }
                       <DashboardHistoryDeleteIcon color="secondary" />
                     </Grid>
                   </Grid>
-                  {currentShow.season || currentShow.episode ? (
-                    <DashboardHistoryShowSubtitle color="primary" variant="subtitle1">
-                      Season {currentShow.season.number} - Episode {currentShow.episode.number}
-                    </DashboardHistoryShowSubtitle>
-                  ) : (
-                    <DashboardHistoryShowSubtitle color="primary" variant="subtitle1">
-                      No season or episode specified
-                    </DashboardHistoryShowSubtitle>
-                  )}
+                  <DashboardHistoryShowSubtitle color="primary" variant="subtitle1">
+                    Season {currentShow.season.number} - Episode {currentShow.episode.number}
+                  </DashboardHistoryShowSubtitle>
                 </Grid>
+                )
               ))}
 
             </DashboardHistoryListContainer>
