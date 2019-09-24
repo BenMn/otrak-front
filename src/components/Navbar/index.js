@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
+import jwt from 'jsonwebtoken';
 
 // Import material UI components
 import {
@@ -77,7 +78,7 @@ const Navbar = ({
             <Grid item lg={3} md={3} sm={5} xs={6}>
 
               <NavbarLogButton variant="text" color="inherit">
-                <NavLink exact to="/" color="inherit" onClick={handleLogOut}>
+                <NavLink exact to="/" color="inherit" onClick={() => handleLogOut(jwt.decode(localStorage.token))}>
                   Log Out
                 </NavLink>
               </NavbarLogButton>

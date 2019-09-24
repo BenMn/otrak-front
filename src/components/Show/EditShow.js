@@ -92,8 +92,19 @@ class EditShow extends React.Component {
 
     if (Object.keys(userSingleFollowing).length > 1) {
       const startDateFormatted = currentFollow[0].startDate.slice(0, 10);
+
+      const endFollowDate = new Date(currentFollow[0].startDate);
+      const endFollowDateBeforeStart = new Date();
+      endFollowDateBeforeStart.setDate(endFollowDate.getDate() - 1);
+
+      const endFollowDateBeforeStartFormatted = (endFollowDateBeforeStart
+        .toISOString())
+        .slice(0, 10);
+
       return (
         <LogFormModalEditPaper>
+
+          {console.log(userFollowings)}
 
           <Grid container>
 
@@ -111,6 +122,7 @@ class EditShow extends React.Component {
                 - Start date
                 - End date
                 - Episode progress
+                - Season progress
                 - Total rewatches
                 - Personal notes
               */}
@@ -204,7 +216,7 @@ class EditShow extends React.Component {
                           id="endDate"
                           label="End date"
                           type="date"
-                          defaultValue={updatedUserSingleFollowing.endDate}
+                          defaultValue={endFollowDateBeforeStartFormatted}
                           onChange={(event) => handleChangeEditShow(event)}
                         />
                       </Grid>
@@ -212,10 +224,29 @@ class EditShow extends React.Component {
                     </Grid>
                   </Grid>
 
-                  {/* Episode progress */}
                   <Grid item>
                     <Grid container spacing={2} justify="space-around">
 
+                      {/* Season Progress */}
+                      <Grid item>
+                        <EditShowField
+                          name="season"
+                          fullWidth
+                          variant="outlined"
+                          id="season"
+                          label="Season progress"
+                          type="number"
+                          defaultValue={(currentFollow[0].episode || currentFollow[0].season) ? currentFollow[0].season.number : '1'}
+                          value={updatedUserSingleFollowing.season}
+                          margin="normal"
+                          onChange={(event) => handleChangeEditShow(event)}
+                          InputProps={{
+                            inputProps: { min: 1, max: currentFollow[0].tvShow.nbSeasons },
+                          }}
+                        />
+                      </Grid>
+
+                      {/* Episode progress */}
                       <Grid item>
                         <EditShowField
                           name="episode"
@@ -235,7 +266,7 @@ class EditShow extends React.Component {
                       </Grid>
 
                       {/* Total rewatches */}
-                      <Grid item>
+                      {/* <Grid item>
                         <EditShowField
                           name="rewatches"
                           fullWidth
@@ -248,7 +279,7 @@ class EditShow extends React.Component {
                           margin="normal"
                           onChange={(event) => handleChangeEditShow(event)}
                         />
-                      </Grid>
+                      </Grid> */}
 
                     </Grid>
                   </Grid>

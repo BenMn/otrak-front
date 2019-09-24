@@ -125,7 +125,8 @@ const mapDispatchToProps = (dispatch) => ({
     const startDate = event.target[4].value;
     const endDate = event.target[5].value;
     const episodeProgress = event.target[6].value;
-    const rewatches = event.target[8].value;
+    const seasonProgress = event.target[8].value;
+    // const rewatches = event.target[8].value;
     const personalNotes = event.target[10].value;
     dispatch(updateCurrentFollowingShow(
       status,
@@ -133,7 +134,8 @@ const mapDispatchToProps = (dispatch) => ({
       startDate,
       endDate,
       episodeProgress,
-      rewatches,
+      seasonProgress,
+      // rewatches,
       personalNotes,
       followId,
     ));
