@@ -1,3 +1,5 @@
+/* eslint-disable no-nested-ternary */
+
 // Import NPM
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -46,42 +48,41 @@ const Icons = ({
 }) => (
   <>
     {/* Add to list */}
-    {console.log(tracked)};
     {isLogged === true ? (
       tracked === true ? (
-        <Tooltip title='Episode watched' placement="top">      
-        <HomePageIconContainer className="hiddenCardIcon">
-          <AddCircleIcon onClick={() => addShowByCategorie(
-            categorie,
-            showId,
-            userInfos.id,
-            showSeason,
-            showEpisode,
-          )}
-          />
-        </HomePageIconContainer>
-      </Tooltip>
+        <Tooltip title="Episode watched" placement="top">
+          <HomePageIconContainer className="hiddenCardIcon">
+            <AddCircleIcon onClick={() => addShowByCategorie(
+              categorie,
+              showId,
+              userInfos.id,
+              showSeason,
+              showEpisode,
+            )}
+            />
+          </HomePageIconContainer>
+        </Tooltip>
       ) : (
-        <Tooltip title={tooltipTitleByCategory(categorie)} placement="top">      
-        <HomePageIconContainer className="hiddenCardIcon">
-          <AddCircleIcon onClick={() => addShowByCategorie(
-            categorie,
-            showId,
-            userInfos.id,
-            showSeason,
-            showEpisode,
-          )}
-          />
-        </HomePageIconContainer>
-      </Tooltip>
-    )) : (
-      <Tooltip title="Sign in to add this show" placement="top">
-        <HomePageIconContainer className="hiddenCardIcon">
-          <AddCircleIcon onClick={() => handleOpen('in')} />
-        </HomePageIconContainer>
-      </Tooltip>
+        <Tooltip title={tooltipTitleByCategory(categorie)} placement="top">
+          <HomePageIconContainer className="hiddenCardIcon">
+            <AddCircleIcon onClick={() => addShowByCategorie(
+              categorie,
+              showId,
+              userInfos.id,
+              showSeason,
+              showEpisode,
+            )}
+            />
+          </HomePageIconContainer>
+        </Tooltip>
+      )) : (
+        <Tooltip title="Sign in to add this show" placement="top">
+          <HomePageIconContainer className="hiddenCardIcon">
+            <AddCircleIcon onClick={() => handleOpen('in')} />
+          </HomePageIconContainer>
+        </Tooltip>
     )}
-      
+
 
     {/* Add to next to watch */}
     {categorie === 'next' || categorie === 'aired' ? '' : (
@@ -170,6 +171,9 @@ Icons.propTypes = {
 
   // Object not required
   userInfos: PropTypes.object,
+
+  // Boolean not required
+  tracked: PropTypes.bool,
 };
 
 Icons.defaultProps = {
@@ -179,6 +183,7 @@ Icons.defaultProps = {
   showIdBdd: null,
   showSeason: null,
   showEpisode: null,
+  tracked: false,
 };
 
 export default Icons;

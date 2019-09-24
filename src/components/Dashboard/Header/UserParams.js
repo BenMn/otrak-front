@@ -1,47 +1,78 @@
-// Import NPM
 import React from 'react';
 
-// Material UI Components
 import {
-  Box,
-  Typography,
-} from '@material-ui/core';
+  AreaChart, Area,
+} from 'recharts';
 
-// Material UI Custom Components
-import {
-  DashboardProgressBar,
-  DashboardTitleProgressBar,
-} from 'src/styles/materialUi/materialUiStyles/Dashboard';
+function randomChartValue() {
+  return Math.floor((Math.random() * 1000) + 100);
+}
 
+const data = [
+  {
+    uv: randomChartValue(), pv: randomChartValue(), amt: randomChartValue(),
+  },
+  {
+    uv: randomChartValue(), pv: randomChartValue(), amt: randomChartValue(),
+  },
+  {
+    uv: randomChartValue(), pv: randomChartValue(), amt: randomChartValue(),
+  },
+  {
+    uv: randomChartValue(), pv: randomChartValue(), amt: randomChartValue(),
+  },
+  {
+    uv: randomChartValue(), pv: randomChartValue(), amt: randomChartValue(),
+  },
+  {
+    uv: randomChartValue(), pv: randomChartValue(), amt: randomChartValue(),
+  },
+  {
+    uv: randomChartValue(), pv: randomChartValue(), amt: randomChartValue(),
+  },
+];
 
-const UserParams = () => (
+const Charts = () => (
   <>
-    <Box componenent="div" mt={3}>
-      <DashboardTitleProgressBar variant='h5' align="center">Total time spent watching your favorites shows</DashboardTitleProgressBar>
-      <Typography variant='h6' align="center">3 Days 8 Hours 35 Minutes </Typography>
-      {/* <DashboardProgressBar
-        variant="determinate"
-        color="secondary"
-        value={20}
-      /> */}
-    </Box>
-    <Box componenent="div" mt={3}>
-      <DashboardTitleProgressBar variant='h5' align="center">Most watched genre: Science-Fiction</DashboardTitleProgressBar>
-      {/*<DashboardProgressBar
-        variant="determinate"
-        color="secondary"
-        value={70}
-      /> */}
-    </Box>
-    <Box componenent="div" mt={3}>
-      {/* <DashboardTitleProgressBar>Stat perso marrant</DashboardTitleProgressBar>
-      <DashboardProgressBar
-        variant="determinate"
-        color="secondary"
-        value={50}
-      /> */}
-    </Box>
+    <AreaChart
+      style={{ margin: '-4vh 0 1vh -3vw' }}
+      width={700}
+      height={65}
+      data={data}
+      margin={{
+        top: 10, right: 0, left: 0, bottom: 0,
+      }}
+    >
+      <Area type="monotone" dataKey="uv" stroke="#fff" fill="#c54949" />
+    </AreaChart>
+    Total watchtime per day
+
+    <AreaChart
+      style={{ margin: '0 0 1vh -3vw' }}
+      width={700}
+      height={65}
+      data={data}
+      margin={{
+        top: 10, right: 0, left: 0, bottom: 0,
+      }}
+    >
+      <Area type="monotone" dataKey="pv" stroke="#fff" fill="#b71c1c" />
+    </AreaChart>
+    Total episodes watched per week
+
+    <AreaChart
+      style={{ margin: '0 0 1vh -3vw' }}
+      width={700}
+      height={65}
+      data={data}
+      margin={{
+        top: 10, right: 0, left: 0, bottom: 0,
+      }}
+    >
+      <Area type="monotone" dataKey="amt" stroke="#fff" fill="#801313" />
+    </AreaChart>
+    Total seasons finished per month
   </>
 );
 
-export default UserParams;
+export default Charts;

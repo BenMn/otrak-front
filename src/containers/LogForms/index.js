@@ -22,8 +22,6 @@ import {
   getUserSingleFollowing,
   getUserFollowings,
   updateCurrentFollowingShow,
-  // Search
-  emptySearchResults,
   // Show infos
   fetchDetailShow,
   // Edit show
@@ -108,7 +106,6 @@ const mapDispatchToProps = (dispatch) => ({
 
   // Show infos
   getDetailShow: (showId) => {
-    dispatch(emptySearchResults());
     dispatch(fetchDetailShow(showId));
   },
 

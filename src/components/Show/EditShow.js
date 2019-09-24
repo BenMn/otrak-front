@@ -104,7 +104,7 @@ class EditShow extends React.Component {
       return (
         <LogFormModalEditPaper>
 
-          {console.log(userFollowings)}
+          {console.log(showDetail)}
 
           <Grid container>
 
@@ -161,6 +161,7 @@ class EditShow extends React.Component {
                           label="Status"
                           margin="normal"
                           variant="outlined"
+                          defaultValue={status[showDetail.status].label}
                           value={updatedUserSingleFollowing.status}
                           onChange={(event) => handleChangeEditShow(event)}
                         >
@@ -182,7 +183,7 @@ class EditShow extends React.Component {
                           label="Rating"
                           type="number"
                           margin="normal"
-                          defaultValue="7"
+                          defaultValue={showDetail.rating === null ? 'Not rated yet' : showDetail.rating}
                           value={updatedUserSingleFollowing.rating}
                           onChange={(event) => handleChangeEditShow(event)}
                           InputProps={{ inputProps: { min: 0, max: 10 } }}
@@ -230,39 +231,53 @@ class EditShow extends React.Component {
                       {/* Season Progress */}
                       <Grid item>
                         <EditShowField
+                          select
                           name="season"
                           fullWidth
                           variant="outlined"
                           id="season"
                           label="Season progress"
                           type="number"
-                          defaultValue={(currentFollow[0].episode || currentFollow[0].season) ? currentFollow[0].season.number : '1'}
+                          defaultValue={showDetail.seasons.length}
                           value={updatedUserSingleFollowing.season}
                           margin="normal"
                           onChange={(event) => handleChangeEditShow(event)}
                           InputProps={{
-                            inputProps: { min: 1, max: currentFollow[0].tvShow.nbSeasons },
+                            inputProps: { min: 1, max: showDetail.seasons.length },
                           }}
-                        />
+                        >
+                          {showDetail.seasons.map((season) => (
+                            <MenuItem key={season['@id']} value={season.number}>
+                              {season.number}
+                            </MenuItem>
+                          ))}
+                        </EditShowField>
                       </Grid>
 
                       {/* Episode progress */}
                       <Grid item>
                         <EditShowField
+                          select
                           name="episode"
                           fullWidth
                           variant="outlined"
                           id="episodeProgress"
                           label="Episode progress"
                           type="number"
-                          defaultValue={(currentFollow[0].episode || currentFollow[0].season) ? currentFollow[0].episode.number : '1'}
+                          defaultValue={showDetail.seasons[0].length}
                           value={updatedUserSingleFollowing.episode}
                           margin="normal"
                           onChange={(event) => handleChangeEditShow(event)}
                           InputProps={{
-                            inputProps: { min: 1, max: currentFollow[0].tvShow.nbEpisodes },
+                            inputProps: { min: 1, max: showDetail.seasons[0].length },
                           }}
-                        />
+                        >
+                          {showDetail.seasons[0].episodes.map((episode) => (
+                            <MenuItem key={episode['@id']} value={episode.number}>
+                              {episode.number}
+                            </MenuItem>
+                          ))}
+                        </EditShowField>
                       </Grid>
 
                       {/* Total rewatches */}

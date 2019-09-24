@@ -42,7 +42,7 @@ class Homepage extends React.Component {
       sortBy,
     } = this.props;
     return (
-      <>
+      <div id="HomePage-container">
         {/* Search + Drawer filter */}
         <Filter sortBy={sortBy} />
         {(storeSearchInputResult.length > 0) === true && (
@@ -67,7 +67,7 @@ class Homepage extends React.Component {
           trendingList={trendingList}
           getDetailShow={getDetailShow}
         />
-      </>
+      </div>
     );
   }
 }
