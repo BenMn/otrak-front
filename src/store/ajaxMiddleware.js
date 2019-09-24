@@ -251,7 +251,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       axios.patch(`${url}/api/followings/${action.followId}`,
         JSON.stringify(updatedFollowedShowDatas), {
           headers: {
-            'Content-Type': 'application/vnd.api+json',
+            'Content-Type': 'application/json',
           },
         })
         .then((response) => {

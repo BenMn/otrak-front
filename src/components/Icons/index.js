@@ -38,6 +38,7 @@ const Icons = ({
   showSeason,
   showEpisode,
   categorie,
+  tracked,
   // Fast nav icons functions
   addShowByCategorie,
   addToPlanningWatchShow,
@@ -45,8 +46,10 @@ const Icons = ({
 }) => (
   <>
     {/* Add to list */}
+    {console.log(tracked)};
     {isLogged === true ? (
-      <Tooltip title={tooltipTitleByCategory(categorie)} placement="top">
+      tracked === true ? (
+        <Tooltip title='Episode watched' placement="top">      
         <HomePageIconContainer className="hiddenCardIcon">
           <AddCircleIcon onClick={() => addShowByCategorie(
             categorie,
@@ -58,18 +61,44 @@ const Icons = ({
           />
         </HomePageIconContainer>
       </Tooltip>
-    ) : (
+      ) : (
+        <Tooltip title={tooltipTitleByCategory(categorie)} placement="top">      
+        <HomePageIconContainer className="hiddenCardIcon">
+          <AddCircleIcon onClick={() => addShowByCategorie(
+            categorie,
+            showId,
+            userInfos.id,
+            showSeason,
+            showEpisode,
+          )}
+          />
+        </HomePageIconContainer>
+      </Tooltip>
+    )) : (
       <Tooltip title="Sign in to add this show" placement="top">
         <HomePageIconContainer className="hiddenCardIcon">
           <AddCircleIcon onClick={() => handleOpen('in')} />
         </HomePageIconContainer>
       </Tooltip>
     )}
+      
 
     {/* Add to next to watch */}
-    {isLogged === true ? (
-      <>
-        <Tooltip title="Plan to See" placement="top">
+    {categorie === 'next' || categorie === 'aired' ? '' : (
+      isLogged === true ? (
+        <>
+          <Tooltip title="Plan to See" placement="top">
+            <HomePageIconContainer className="hiddenCardIcon">
+              <VisibilityIcon onClick={() => addToPlanningWatchShow(
+                showId,
+                userInfos.id,
+              )}
+              />
+            </HomePageIconContainer>
+          </Tooltip>
+        </>
+      ) : (
+        <Tooltip title="Sign in to add this show in your planning list" placement="top">
           <HomePageIconContainer className="hiddenCardIcon">
             <VisibilityIcon onClick={() => addToPlanningWatchShow(
               showId,
@@ -78,17 +107,7 @@ const Icons = ({
             />
           </HomePageIconContainer>
         </Tooltip>
-      </>
-    ) : (
-      <Tooltip title="Sign in to add this show in your planning list" placement="top">
-        <HomePageIconContainer className="hiddenCardIcon">
-          <VisibilityIcon onClick={() => addToPlanningWatchShow(
-            showId,
-            userInfos.id,
-          )}
-          />
-        </HomePageIconContainer>
-      </Tooltip>
+      )
     )}
 
     {/* Edit show */}
@@ -107,15 +126,18 @@ const Icons = ({
     )}
 
     {/* Remove from list */}
-    {isLogged === true && showIdBdd !== null ? (
-      <Tooltip title="Unfollow this show" placement="top">
-        <HomePageIconContainer className="hiddenCardIcon">
-          <DeleteForeverIcon onClick={() => stopFollowingShow(showIdBdd)} />
-        </HomePageIconContainer>
-      </Tooltip>
-    ) : (
-      ''
+    {categorie === 'next' || categorie === 'aired' ? '' : (
+      (isLogged === true && showIdBdd !== null) ? (
+        <Tooltip title="Unfollow this show" placement="top">
+          <HomePageIconContainer className="hiddenCardIcon">
+            <DeleteForeverIcon onClick={() => stopFollowingShow(showIdBdd)} />
+          </HomePageIconContainer>
+        </Tooltip>
+      ) : (
+        ''
+      )
     )}
+
 
     {/* Display button */}
     <HomePageIconContainer
