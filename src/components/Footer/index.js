@@ -53,13 +53,13 @@ const Footer = ({ handleOpen, isLogged, emptySearchResults }) => (
       <Grid item xl={5} lg={5} md={4} sm={4} xs={10}>
         <Grid
           container
-          justify="center"
-          alignItems="center"
+          justify="flex-end"
+          alignItems="flex-end"
         >
           {isLogged === true ? (
             <NavLink exact to="/dashboard" color="inherit" onClick={() => emptySearchResults()}>
               <FooterButton variant="outlined" color="inherit">
-                  Dashboard
+                Dashboard
               </FooterButton>
             </NavLink>
           ) : (
@@ -82,6 +82,16 @@ const Footer = ({ handleOpen, isLogged, emptySearchResults }) => (
 
         </Grid>
       </Grid>
+
+      {/* GitHub icon  */}
+      <Grid item xl={1} lg={2} md={2} sm={2} xs={2}>
+        <Link href="https://www.youtube.com/watch?v=MKrpadhcC8g">
+          <FooterIcon>
+            <FontAwesomeIcon icon={faGithub} size="lg" />
+          </FooterIcon>
+        </Link>
+      </Grid>
+
 
       {/* GitHub icon  */}
       <Grid item xl={1} lg={2} md={2} sm={2} xs={2}>

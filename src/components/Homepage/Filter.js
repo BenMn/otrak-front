@@ -17,6 +17,8 @@ import {
   IconButton,
   ListItem,
   ListItemText,
+  Radio,
+  Box,
 } from '@material-ui/core';
 
 import MuiToolbar from '@material-ui/core/Toolbar';
@@ -110,6 +112,7 @@ const useStyles = makeStyles(() => ({
 const Filter = ({ sortBy }) => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const [selectedValue, setSelectedValue] = React.useState('');
 
   function handleDrawerOpen() {
     setOpen(true);
@@ -118,27 +121,10 @@ const Filter = ({ sortBy }) => {
   function handleDrawerClose() {
     setOpen(false);
   }
-
-  // // Sort by: title => order(resultArray)
-  // const sortBy = (filterName) => {
-  //   switch (filterName) {
-  //     case 'Title':
-  //       return storeSearchInputResult.map((show) => show.name).sort();
-
-  //     case 'Release date':
-  //       return (console.log("c'est le Release !"));
-
-  //     case 'Rating':
-  //       return (console.log("c'est le Rating !"));
-
-  //     case 'Language':
-  //       return (console.log("c'est le Language !"));
-
-  //     default:
-  //       return 'ça marche pas';
-  //   }
-  // };
-
+  const handleChange = (event) => {
+    setSelectedValue(event.target.value);
+    console.log(event.target.value);
+  };
 
   return (
     <div className={classes.root}>
@@ -180,11 +166,49 @@ const Filter = ({ sortBy }) => {
         </div>
         <Divider />
         <List>
-          {['Title', 'Release date', 'Rating', 'Language'].map((text) => (
-            <ListItem button key={text} onClick={() => sortBy(text)}>
-              <ListItemText primary={text} />
+          <Box>
+            <ListItem button key="Title" onClick={() => sortBy('Title')} onChange={handleChange}>
+              <Radio
+                checked={selectedValue === 'Title'}
+                value="Title"
+                color="default"
+              />
+              <ListItemText primary="Title" onChange={handleChange} />
             </ListItem>
-          ))}
+          </Box>
+
+          <Box onClick={() => sortBy('Release date')} onChange={handleChange}>
+            <ListItem button key="Release date">
+              <Radio
+                checked={selectedValue === 'Release date'}
+                value="Release date"
+                color="default"
+              />
+              <ListItemText primary="Release date" onChange={handleChange} />
+            </ListItem>
+          </Box>
+
+          <Box onClick={() => sortBy('Rating')} onChange={handleChange}>
+            <ListItem button key="Rating">
+              <Radio
+                checked={selectedValue === 'Rating'}
+                value="Rating"
+                color="default"
+              />
+              <ListItemText primary="Rating" onChange={handleChange} />
+            </ListItem>
+          </Box>
+
+          <Box onClick={() => sortBy('Language')} onChange={handleChange}>
+            <ListItem button key="Language">
+              <Radio
+                checked={selectedValue === 'Language'}
+                value="Language"
+                color="default"
+              />
+              <ListItemText primary="Language" onChange={handleChange} />
+            </ListItem>
+          </Box>
         </List>
       </Drawer>
     </div>
