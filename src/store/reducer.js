@@ -189,9 +189,15 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isLogged: false,
+        user: {},
         userInfos: {},
         storeUserAuthInfos: {},
         userAvatar: '',
+        showDetail: {},
+        trendingList: [],
+        nextList: [],
+        userFollowings: [],
+        userSingleFollowing: {},
       };
 
     case STORE_AUTH_INPUT_RESULT:

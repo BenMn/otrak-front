@@ -37,8 +37,10 @@ const mapDispatchToProps = (dispatch) => ({
   },
 
   // Authentification
-  handleLogOut: () => {
-    dispatch(logOut());
+  handleLogOut: (user) => {
+    dispatch(logOut(user));
+    localStorage.clear();
+    document.location.reload();
   },
 
   // Search

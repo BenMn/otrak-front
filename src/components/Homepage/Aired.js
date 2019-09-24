@@ -134,9 +134,11 @@ const Aired = ({ trendingList, getDetailShow, userFollowings }) => {
                           showSeason={currentShow.season}
                           showEpisode={currentShow.number}
                           userFollowings={userFollowings}
+                          tracked={currentShow.tracked}
                           categorie="aired"
                         />
                       </Grid>
+                      {/* { console.log(currentShow.tracked, 'aaaaaaaaaaaaaaaaaaaaaaaaaaa')} */}
 
                       <CardActionArea>
                         <AiredTitleCardAndSubtitle
@@ -216,6 +218,7 @@ const Aired = ({ trendingList, getDetailShow, userFollowings }) => {
                         showSeason={currentShow.season}
                         showEpisode={currentShow.number}
                         userFollowings={userFollowings}
+                        tracked={currentShow.tracked}
                         categorie="aired"
                       />
                     </Grid>

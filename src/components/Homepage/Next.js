@@ -25,6 +25,9 @@ import {
   HomePageGridOfOnCard,
   SearchResultGridWithoutSlider,
   SearchResultTitle,
+  AiredSubtitleSeasonEpisode,
+  AiredTitleCardAndSubtitle,
+  HomePageCardTitle,
 } from 'src/styles/materialUi/materialUiStyles/HomePage';
 
 // Local Import
@@ -111,8 +114,8 @@ const Next = ({ nextList, getDetailShow }) => {
           >
             {/* Single Card Show */}
             {nextList.map((currentShow) => (
-              <SearchResultGridWithoutSlider item key={currentShow.id_tvmaze}>
-                <HomePageCard key={currentShow.id_tvmaze} id="currentCard">
+              <SearchResultGridWithoutSlider item key={currentShow.show_id_tvmaze}>
+                <HomePageCard key={currentShow.show_id_tvmaze} id="currentCard">
 
                   {/* Show Poster */}
                   <HomePageCardMedia
@@ -121,9 +124,8 @@ const Next = ({ nextList, getDetailShow }) => {
 
                     {/* Fast Navigation icons */}
                     <Grid container justify="flex-end">
-                      <Icons showId={currentShow.id_tvmaze} categorie="search" />
+                      <Icons showId={currentShow.show_id_tvmaze} showIdBdd={currentShow.show_id} categorie="next" />
                     </Grid>
-
                     {/* Show Title */}
                     <NavLink exact to={`/show/${currentShow.name}`}>
                       <CardActionArea onClick={() => getDetailShow(currentShow.id_tvmaze)}>
@@ -179,17 +181,28 @@ const Next = ({ nextList, getDetailShow }) => {
                     container
                     justify="flex-end"
                   >
-                    <Icons showId={currentShow.id_tvmaze} categorie="search" />
+                    <Icons showId={currentShow.id_tvmaze} showIdBdd={currentShow.show_id} categorie="next" />
                   </Grid>
 
                   {/* Show Title */}
-                  <NavLink exact to={`/show/${currentShow.show_name}`}>
-                    <CardActionArea onClick={() => getDetailShow(currentShow.id_tvmaze)}>
-                      <SearchResultTitle variant="h5" component="h2">
-                        {currentShow.show_name}
-                      </SearchResultTitle>
-                    </CardActionArea>
-                  </NavLink>
+                  <CardActionArea>
+                    <AiredTitleCardAndSubtitle
+                      container
+                      direction="row"
+                      justify="center"
+                      onClick={() => getDetailShow(currentShow.show_id_tvmaze)}
+                    >
+                      <NavLink exact to={`/show/${currentShow.show_name}`}>
+                        <HomePageCardTitle variant="h5" component="h2">
+                          {currentShow.show_name}
+                        </HomePageCardTitle>
+
+                        <AiredSubtitleSeasonEpisode>
+                          {currentShow.season.toString().length > 2 ? currentShow.season : `S${currentShow.season}`} {currentShow.number === null ? '' : `E${currentShow.number}`}
+                        </AiredSubtitleSeasonEpisode>
+                      </NavLink>
+                    </AiredTitleCardAndSubtitle>
+                  </CardActionArea>
 
                 </HomePageCardMedia>
               </HomePageCard>
