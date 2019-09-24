@@ -1,7 +1,10 @@
+/* eslint-disable padded-blocks */
 /* eslint-disable no-case-declarations */
-import { isEmpty } from 'lodash';
 
-// Utils functions
+// Import NPM
+import { isEmpty } from 'lodash'; // Used for Local Storage (setCurrentUser action)
+
+// Local imports : Utils functions
 import {
   compareTitle,
   compareRating,
@@ -9,39 +12,12 @@ import {
   compareLanguage,
 } from 'src/utils/index';
 
-// == Initial State
+
+// ======================= Initial State =======================
+
 const initialState = {
-  // Get trending infos
-  trendingList: [],
-  updatedHistoryList: [],
-  // Get NextToSee List for HomePage
-  nextList: [],
-  // Single show details
-  showDetail: {},
-  userFollowings: [],
-  userSingleFollowing: {},
-  updatedUserSingleFollowing: {
-    status: 'Following',
-    rating: undefined,
-    startDate: undefined,
-    endDate: 'jj/mm/aaaa',
-    episode: undefined,
-    rewatches: undefined,
-    notes: undefined,
-  },
-  // Search
-  searchInputValue: '',
-  storeSearchInputResult: [],
-  // Views & Modals
-  view: '',
-  viewModal: '',
-  open: false,
-  setOpen: false,
-  modalName: '',
-  loading: false,
-  // Authentification
+  // ....................AUTHENTIFICATION....................
   isLogged: false,
-  userAuthToken: '',
   storeAuthInputResult: {},
   userAuthInfos: {
     username: {
@@ -75,92 +51,113 @@ const initialState = {
       type: 'password',
     },
   },
-  userAvatar: '',
+
+  // ....................USER GENERAL INFOS....................
   userInfos: {},
+  userAvatar: '',
+
+  // ....................USER FOLLOWINGS....................
+  userFollowings: [],
+  userSingleFollowing: {},
+  updatedUserSingleFollowing: {
+    status: 'Following',
+    rating: undefined,
+    startDate: undefined,
+    endDate: 'jj/mm/aaaa',
+    episode: undefined,
+    rewatches: undefined,
+    notes: undefined,
+  },
+  updatedHistoryList: [],
+
+  // ....................SHOWS....................
+  showDetail: {},
+  trendingList: [],
+  nextList: [],
+
+  // ....................SEARCH....................
+  searchInputValue: '',
+  storeSearchInputResult: [],
+
+  // ....................VIEWS, LOADERS & MODALS....................
+  view: '',
+  viewModal: '',
+  open: false,
+  setOpen: false,
+  modalName: '',
+  loading: false,
+
 };
 
-// ==  Action Types
-const SET_CURRENT_USER = 'SET_CURRENT_USER';
+// =======================  Action Types =======================
 
-const UPDATE_SEARCH_INPUT = 'UPDATE_SEARCH_INPUT';
-export const FETCH_SEARCH_INPUT_RESULT = 'FETCH_SEARCH_INPUT_RESULT';
-export const STORE_SEARCH_INPUT_RESULT = 'STORE_SEARCH_INPUT_RESULT';
-const STORE_USER_AUTH_INFOS = 'STORE_USER_AUTH_INFOS';
-export const GET_USER_INFOS = 'GET_USER_INFOS';
-const STORE_USER_INFOS = 'STORE_USER_INFOS';
-export const GET_USER_FOLLOWINGS = 'GET_USER_FOLLOWINGS';
-export const GET_USER_SINGLE_FOLLOWING = 'GET_USER_SINGLE_FOLLOWING';
-const STORE_USER_SINGLE_FOLLOWING = 'STORE_USER_SINGLE_FOLLOWING';
-
-const EMPTY_SEARCH_RESULTS = 'EMPTY_SEARCH_RESULTS';
-
-const HANDLE_CHANGE_EDIT_SHOW = 'HANDLE_CHANGE_EDIT_SHOW';
-export const UPDATE_CURRENT_FOLLOWING_SHOW = 'UPDATE_CURRENT_FOLLOWING_SHOW';
-
-const UPDATE_AUTH_INPUT = 'UPDATE_AUTH_INPUT';
-const UPDATE_USERNAME_INPUT = 'UPDATE_USERNAME_INPUT';
-const STORE_NEW_USERNAME_INPUT = 'STORE_NEW_USERNAME_INPUT';
-
-export const STORE_AUTH_INPUT_RESULT = 'STORE_AUTH_INPUT_RESULT';
+// ....................AUTHENTIFICATION....................
 export const FETCH_LOGIN_AUTH_INFOS = 'FETCH_LOGIN_AUTH_INFOS';
 export const FETCH_REGISTER_AUTH_INFOS = 'FETCH_REGISTER_AUTH_INFOS';
+export const STORE_AUTH_INPUT_RESULT = 'STORE_AUTH_INPUT_RESULT';
+const UPDATE_AUTH_INPUT = 'UPDATE_AUTH_INPUT';
+const SET_CURRENT_USER = 'SET_CURRENT_USER';
+const STORE_USER_AUTH_INFOS = 'STORE_USER_AUTH_INFOS';
 const LOG_OUT = 'LOG_OUT';
 
-const STORE_TRENDING = 'STORE_TRENDING';
+
+// ....................USER GENERAL INFOS....................
+export const GET_USER_INFOS = 'GET_USER_INFOS';
+export const STORE_NEW_USERNAME = 'STORE_NEW_USERNAME';
+const STORE_USER_INFOS = 'STORE_USER_INFOS';
+const UPDATE_USERNAME_INPUT = 'UPDATE_USERNAME_INPUT';
+const STORE_NEW_USERNAME_INPUT = 'STORE_NEW_USERNAME_INPUT';
+// export const AVATAR_UPLOAD_HANDLER = 'AVATAR_UPLOAD_HANDLER';
+
+
+// ....................USER FOLLOWINGS....................
+export const GET_USER_FOLLOWINGS = 'GET_USER_FOLLOWINGS';
+export const GET_USER_SINGLE_FOLLOWING = 'GET_USER_SINGLE_FOLLOWING';
+export const UPDATE_CURRENT_FOLLOWING_SHOW = 'UPDATE_CURRENT_FOLLOWING_SHOW';
+const HANDLE_CHANGE_EDIT_SHOW = 'HANDLE_CHANGE_EDIT_SHOW';
+const STORE_USER_FOLLOWINGS = 'STORE_USER_FOLLOWINGS';
+const STORE_USER_SINGLE_FOLLOWING = 'STORE_USER_SINGLE_FOLLOWING';
+const REMOVE_SHOW_HISTORY_LIST = 'REMOVE_SHOW_HISTORY_LIST';
+
+
+// ....................ACTIONS ON FOLLOWED SHOW (ICONS)....................
+export const START_FOLLOWING_SHOW_AT_THIS_EPISODE = 'START_FOLLOWING_SHOW_AT_THIS_EPISODE';
+export const START_FOLLOWING_SHOW_FROM_THE_BEGINNING = 'START_FOLLOWING_SHOW_FROM_THE_BEGINNING';
+export const PLANNING_WATCH_SHOW = 'PLANNING_WATCH_SHOW';
+export const DELETE_FOLLOWING_SHOW = 'DELETE_FOLLOWING_SHOW';
+const STORE_SORTED_ARRAY = 'STORE_SORTED_ARRAY';
+
+
+// ....................ALL SHOWS : LAST UPDATES....................
 export const FETCH_TRENDING = 'FETCH_TRENDING';
-
-const STORE_NEXT = 'STORE_NEXT';
 export const FETCH_NEXT = 'FETCH_NEXT';
+const STORE_TRENDING = 'STORE_TRENDING';
+const STORE_NEXT = 'STORE_NEXT';
 
+
+// ....................SHOW INFOS....................
+export const FETCH_DETAIL_SHOW = 'FETCH_DETAIL_SHOW';
+const STORE_DETAIL_SHOW = 'STORE_DETAIL_SHOW';
+
+
+// ....................SEARCH....................
+export const FETCH_SEARCH_INPUT_RESULT = 'FETCH_SEARCH_INPUT_RESULT';
+export const STORE_SEARCH_INPUT_RESULT = 'STORE_SEARCH_INPUT_RESULT';
+const UPDATE_SEARCH_INPUT = 'UPDATE_SEARCH_INPUT';
+const EMPTY_SEARCH_RESULTS = 'EMPTY_SEARCH_RESULTS';
+
+
+// ....................VIEWS, LOADERS & MODALS....................
 const OPEN_MODAL = 'OPEN_MODAL';
 const CLOSE_MODAL = 'CLOSE_MODAL';
 const ACTIVE_LOADING = 'ACTIVE_LOADING';
 
-export const AVATAR_UPLOAD_HANDLER = 'AVATAR_UPLOAD_HANDLER';
-export const STORE_NEW_USERNAME = 'STORE_NEW_USERNAME';
 
-const REMOVE_SHOW_HISTORY_LIST = 'REMOVE_SHOW_HISTORY_LIST';
-export const FETCH_DETAIL_SHOW = 'FETCH_DETAIL_SHOW';
-const STORE_DETAIL_SHOW = 'STORE_DETAIL_SHOW';
-const STORE_USER_FOLLOWINGS = 'STORE_USER_FOLLOWINGS';
-
-const STORE_SORTED_ARRAY = 'STORE_SORTED_ARRAY';
-
-export const START_FOLLOWING_SHOW_AT_THIS_EPISODE = 'START_FOLLOWING_SHOW_AT_THIS_EPISODE';
-
-export const PLANNING_WATCH_SHOW = 'PLANNING_WATCH_SHOW';
-
-export const DELETE_FOLLOWING_SHOW = 'DELETE_FOLLOWING_SHOW';
-
-export const START_FOLLOWING_SHOW_FROM_THE_BEGINNING = 'START_FOLLOWING_SHOW_FROM_THE_BEGINNING';
-
-// == Reducer
+// ======================= Reducer =======================
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case STORE_TRENDING:
-      return {
-        ...state,
-        trendingList: action.data,
-      };
 
-    case STORE_NEXT:
-      return {
-        ...state,
-        nextList: action.data,
-      };
-
-    case UPDATE_SEARCH_INPUT:
-      return {
-        ...state,
-        searchInputValue: action.searchInputValue,
-      };
-
-    case STORE_SEARCH_INPUT_RESULT:
-      return {
-        ...state,
-        storeSearchInputResult: action.data,
-        loading: false,
-      };
+    // ....................AUTHENTIFICATION....................
 
     case UPDATE_AUTH_INPUT:
       return {
@@ -174,20 +171,24 @@ const reducer = (state = initialState, action = {}) => {
         },
       };
 
-    case UPDATE_USERNAME_INPUT:
+    case SET_CURRENT_USER:
       return {
         ...state,
-        userInfos: {
-          ...state.userInfos,
-          username: action.value,
-        },
+        isLogged: !isEmpty(action.user),
+        user: action.user,
+      };
+
+    case STORE_USER_AUTH_INFOS:
+      return {
+        ...state,
+        isLogged: true,
+        loading: false,
       };
 
     case LOG_OUT:
       return {
         ...state,
         isLogged: false,
-        userAuthToken: '',
         userInfos: {},
         storeUserAuthInfos: {},
         userAvatar: '',
@@ -200,13 +201,8 @@ const reducer = (state = initialState, action = {}) => {
         loading: false,
       };
 
-    case STORE_USER_AUTH_INFOS:
-      return {
-        ...state,
-        userAuthToken: action.token,
-        isLogged: true,
-        loading: false,
-      };
+
+      // ....................USER GENERAL INFOS....................
 
     case STORE_USER_INFOS:
       return {
@@ -214,6 +210,15 @@ const reducer = (state = initialState, action = {}) => {
         userInfos: action.userInfos,
         isLogged: true,
         loading: false,
+      };
+
+    case UPDATE_USERNAME_INPUT:
+      return {
+        ...state,
+        userInfos: {
+          ...state.userInfos,
+          username: action.value,
+        },
       };
 
     case STORE_NEW_USERNAME_INPUT:
@@ -225,56 +230,14 @@ const reducer = (state = initialState, action = {}) => {
         },
       };
 
-    case OPEN_MODAL:
-      return {
-        ...state,
-        setOpen: true,
-        open: true,
-        modalName: action.modalName,
-      };
+      // case AVATAR_UPLOAD_HANDLER:
+      //   return {
+      //     ...state,
+      //     userAvatar: action.newAvatar,
+      //   };
 
-    case CLOSE_MODAL:
-      return {
-        ...state,
-        setOpen: false,
-        open: false,
-        modalName: action.modalName,
-      };
 
-    case ACTIVE_LOADING:
-      return {
-        ...state,
-        loading: true,
-      };
-
-    case STORE_DETAIL_SHOW:
-      return {
-        ...state,
-        showDetail: action.data,
-      };
-
-    case AVATAR_UPLOAD_HANDLER:
-      return {
-        ...state,
-        userAvatar: action.newAvatar,
-      };
-
-    case REMOVE_SHOW_HISTORY_LIST:
-      return Object.keys(state.updatedHistoryList).length === 0 ? ({
-        ...state,
-        updatedHistoryList:
-          state.userFollowings.filter((show) => show.id !== action.showId),
-      }) : ({
-        ...state,
-        updatedHistoryList:
-          state.updatedHistoryList.filter((show) => show.id !== action.showId),
-      });
-
-    case EMPTY_SEARCH_RESULTS:
-      return {
-        ...state,
-        storeSearchInputResult: [],
-      };
+      // ....................USER FOLLOWINGS....................
 
     case STORE_USER_FOLLOWINGS:
       return {
@@ -288,6 +251,20 @@ const reducer = (state = initialState, action = {}) => {
         userSingleFollowing: action.show,
       };
 
+    case REMOVE_SHOW_HISTORY_LIST:
+      return Object.keys(state.updatedHistoryList).length === 0 ? ({
+        ...state,
+        updatedHistoryList:
+          state.userFollowings.filter((show) => show.id !== action.showId),
+      }) : ({
+        ...state,
+        updatedHistoryList:
+          state.updatedHistoryList.filter((show) => show.id !== action.showId),
+      });
+
+
+      // ....................ACTIONS ON FOLLOWED SHOW (ICONS)....................
+
     case HANDLE_CHANGE_EDIT_SHOW:
 
       return {
@@ -296,13 +273,6 @@ const reducer = (state = initialState, action = {}) => {
           ...state.updatedUserSingleFollowing,
           [action.name]: action.value,
         },
-      };
-
-    case SET_CURRENT_USER:
-      return {
-        ...state,
-        isLogged: !isEmpty(action.user),
-        user: action.user,
       };
 
     case STORE_SORTED_ARRAY:
@@ -340,29 +310,83 @@ const reducer = (state = initialState, action = {}) => {
           return state;
       }
 
+
+      // ....................ALL SHOWS : LAST UPDATES....................
+
+    case STORE_TRENDING:
+      return {
+        ...state,
+        trendingList: action.data,
+      };
+
+    case STORE_NEXT:
+      return {
+        ...state,
+        nextList: action.data,
+      };
+
+      // ....................SHOW INFOS....................
+
+    case STORE_DETAIL_SHOW:
+      return {
+        ...state,
+        showDetail: action.data,
+      };
+
+      // ....................SEARCH....................
+
+    case UPDATE_SEARCH_INPUT:
+      return {
+        ...state,
+        searchInputValue: action.searchInputValue,
+      };
+
+    case STORE_SEARCH_INPUT_RESULT:
+      return {
+        ...state,
+        storeSearchInputResult: action.data,
+        loading: false,
+      };
+
+    case EMPTY_SEARCH_RESULTS:
+      return {
+        ...state,
+        storeSearchInputResult: [],
+      };
+
+
+      // ....................VIEWS, LOADERS & MODALS....................
+
+    case OPEN_MODAL:
+      return {
+        ...state,
+        setOpen: true,
+        open: true,
+        modalName: action.modalName,
+      };
+
+    case CLOSE_MODAL:
+      return {
+        ...state,
+        setOpen: false,
+        open: false,
+        modalName: action.modalName,
+      };
+
+    case ACTIVE_LOADING:
+      return {
+        ...state,
+        loading: true,
+      };
+
     default:
       return state;
   }
 };
 
-// == Action Creators
-export const updateSearchInput = (searchInputValue) => ({
-  type: UPDATE_SEARCH_INPUT,
-  searchInputValue,
-});
+// ======================= Action Creators =======================
 
-export const updateAuthInput = (value, name, index) => ({
-  type: UPDATE_AUTH_INPUT,
-  value,
-  name,
-  index,
-});
-
-export const updateUsernameInput = (value, name) => ({
-  type: UPDATE_USERNAME_INPUT,
-  value,
-  name,
-});
+// ....................AUTHENTIFICATION....................
 
 export const fetchLoginAuthInfos = (email, password) => ({
   type: FETCH_LOGIN_AUTH_INFOS,
@@ -378,35 +402,34 @@ export const fetchRegisterAuthInfos = (username, email, password, passwordConfir
   passwordConfirm,
 });
 
-export const logOut = () => ({
-  type: LOG_OUT,
+export const updateAuthInput = (value, name, index) => ({
+  type: UPDATE_AUTH_INPUT,
+  value,
+  name,
+  index,
 });
+
+export function setCurrentUser(user) {
+  return {
+    type: SET_CURRENT_USER,
+    user,
+  };
+}
 
 export const storeUserAuthInfos = (token) => ({
   type: STORE_USER_AUTH_INFOS,
   token,
 });
 
-export const getUserInfos = (userAuthToken) => ({
+export const logOut = () => ({
+  type: LOG_OUT,
+});
+
+
+// ....................USER GENERAL INFOS....................
+
+export const getUserInfos = () => ({
   type: GET_USER_INFOS,
-  userAuthToken,
-});
-
-export const getUserFollowings = (userId, userAuthToken) => ({
-  type: GET_USER_FOLLOWINGS,
-  userId,
-  userAuthToken,
-});
-
-export const storeUserSingleFollowing = (show) => ({
-  type: STORE_USER_SINGLE_FOLLOWING,
-  show,
-});
-
-export const getUserSingleFollowing = (followId, userAuthToken) => ({
-  type: GET_USER_SINGLE_FOLLOWING,
-  followId,
-  userAuthToken,
 });
 
 export const storeUserInfos = (userInfos) => ({
@@ -414,63 +437,10 @@ export const storeUserInfos = (userInfos) => ({
   userInfos,
 });
 
-export const fetchTrending = (userAuthToken) => ({
-  type: FETCH_TRENDING,
-  userAuthToken,
-});
-
-export const storeTrending = (data) => ({
-  type: STORE_TRENDING,
-  data,
-});
-
-export const fetchNext = (userAuthToken) => ({
-  type: FETCH_NEXT,
-  userAuthToken,
-});
-
-export const storeNext = (data) => ({
-  type: STORE_NEXT,
-  data,
-});
-
-export const fetchSearchInputResult = (searchInputValue) => ({
-  type: FETCH_SEARCH_INPUT_RESULT,
-  searchInputValue,
-});
-
-export const storeSearchInputResult = (data) => ({
-  type: STORE_SEARCH_INPUT_RESULT,
-  data,
-});
-
-export const openModal = (modalName) => ({
-  type: OPEN_MODAL,
-  setOpen: true,
-  open: true,
-  modalName,
-});
-
-export const closeModal = (modalName) => ({
-  type: CLOSE_MODAL,
-  setOpen: false,
-  open: false,
-  modalName,
-});
-
-export const fetchDetailShow = (idShow) => ({
-  type: FETCH_DETAIL_SHOW,
-  idShow,
-});
-
-export const storeDetailShow = (data) => ({
-  type: STORE_DETAIL_SHOW,
-  data,
-});
-
-export const avatarUploadHandler = (newAvatar) => ({
-  type: AVATAR_UPLOAD_HANDLER,
-  newAvatar,
+export const updateUsernameInput = (value, name) => ({
+  type: UPDATE_USERNAME_INPUT,
+  value,
+  name,
 });
 
 export const storeNewUsername = (newUsername, name, userId) => ({
@@ -485,63 +455,32 @@ export const storeNewUsernameInput = (newUsername) => ({
   newUsername,
 });
 
-export const removeShowHistoryList = (showId) => ({
-  type: REMOVE_SHOW_HISTORY_LIST,
-  showId,
-});
+// export const avatarUploadHandler = (newAvatar) => ({
+//   type: AVATAR_UPLOAD_HANDLER,
+//   newAvatar,
+// });
 
-export const emptySearchResults = () => ({
-  type: EMPTY_SEARCH_RESULTS,
-});
 
+// ....................USER FOLLOWINGS....................
+
+export const getUserFollowings = (userId) => ({
+  type: GET_USER_FOLLOWINGS,
+  userId,
+});
 
 export const storeUserFollowings = (userFollowings) => ({
   type: STORE_USER_FOLLOWINGS,
   userFollowings,
 });
 
-export const storeSortedArray = (typeSort) => ({
-  type: STORE_SORTED_ARRAY,
-  typeSort,
+export const getUserSingleFollowing = (followId) => ({
+  type: GET_USER_SINGLE_FOLLOWING,
+  followId,
 });
 
-export const activeLoading = () => ({
-  type: ACTIVE_LOADING,
-});
-
-export const startFollowingShowAtThisEpisode = (
-  showId,
-  showSeason,
-  showEpisode,
-  userAuthToken,
-  userId,
-) => ({
-  type: START_FOLLOWING_SHOW_AT_THIS_EPISODE,
-  showId,
-  showSeason,
-  showEpisode,
-  userAuthToken,
-  userId,
-});
-
-export const planningWatchShow = (showId, userId, userAuthToken) => ({
-  type: PLANNING_WATCH_SHOW,
-  showId,
-  userId,
-  userAuthToken,
-});
-
-export const DeleteFollowingShow = (showIdBdd, userAuthToken) => ({
-  type: DELETE_FOLLOWING_SHOW,
-  showIdBdd,
-  userAuthToken,
-});
-
-export const startFollowingShowFromTheBeginning = (showId, userId, userAuthToken) => ({
-  type: START_FOLLOWING_SHOW_FROM_THE_BEGINNING,
-  showId,
-  userId,
-  userAuthToken,
+export const storeUserSingleFollowing = (show) => ({
+  type: STORE_USER_SINGLE_FOLLOWING,
+  show,
 });
 
 export const handleChangeEditShow = (name, value) => ({
@@ -559,7 +498,6 @@ export const updateCurrentFollowingShow = (
   rewatches,
   personalNotes,
   followId,
-  userAuthToken,
 ) => ({
   type: UPDATE_CURRENT_FOLLOWING_SHOW,
   status,
@@ -570,17 +508,128 @@ export const updateCurrentFollowingShow = (
   rewatches,
   personalNotes,
   followId,
-  userAuthToken,
 });
 
-export function setCurrentUser(user) {
-  return {
-    type: SET_CURRENT_USER,
-    user,
-  };
-}
-// == Selectors
+export const removeShowHistoryList = (showId) => ({
+  type: REMOVE_SHOW_HISTORY_LIST,
+  showId,
+});
 
 
-// == Export
+// ....................ACTIONS ON FOLLOWED SHOW (ICONS)....................
+
+export const storeSortedArray = (typeSort) => ({
+  type: STORE_SORTED_ARRAY,
+  typeSort,
+});
+
+export const startFollowingShowAtThisEpisode = (
+  showId,
+  showSeason,
+  showEpisode,
+  userId,
+) => ({
+  type: START_FOLLOWING_SHOW_AT_THIS_EPISODE,
+  showId,
+  showSeason,
+  showEpisode,
+  userId,
+});
+
+export const planningWatchShow = (showId, userId) => ({
+  type: PLANNING_WATCH_SHOW,
+  showId,
+  userId,
+});
+
+export const DeleteFollowingShow = (showIdBdd) => ({
+  type: DELETE_FOLLOWING_SHOW,
+  showIdBdd,
+});
+
+export const startFollowingShowFromTheBeginning = (showId, userId) => ({
+  type: START_FOLLOWING_SHOW_FROM_THE_BEGINNING,
+  showId,
+  userId,
+});
+
+
+// ....................ALL SHOWS : LAST UPDATES....................
+
+export const fetchTrending = () => ({
+  type: FETCH_TRENDING,
+});
+
+export const storeTrending = (data) => ({
+  type: STORE_TRENDING,
+  data,
+});
+
+export const fetchNext = () => ({
+  type: FETCH_NEXT,
+});
+
+export const storeNext = (data) => ({
+  type: STORE_NEXT,
+  data,
+});
+
+
+// ....................SHOW INFOS....................
+
+export const fetchDetailShow = (idShow) => ({
+  type: FETCH_DETAIL_SHOW,
+  idShow,
+});
+
+export const storeDetailShow = (data) => ({
+  type: STORE_DETAIL_SHOW,
+  data,
+});
+
+
+// ....................SEARCH....................
+
+export const updateSearchInput = (searchInputValue) => ({
+  type: UPDATE_SEARCH_INPUT,
+  searchInputValue,
+});
+
+export const fetchSearchInputResult = (searchInputValue) => ({
+  type: FETCH_SEARCH_INPUT_RESULT,
+  searchInputValue,
+});
+
+export const storeSearchInputResult = (data) => ({
+  type: STORE_SEARCH_INPUT_RESULT,
+  data,
+});
+
+export const emptySearchResults = () => ({
+  type: EMPTY_SEARCH_RESULTS,
+});
+
+
+// ....................VIEWS, LOADERS & MODALS....................
+
+export const openModal = (modalName) => ({
+  type: OPEN_MODAL,
+  setOpen: true,
+  open: true,
+  modalName,
+});
+
+export const closeModal = (modalName) => ({
+  type: CLOSE_MODAL,
+  setOpen: false,
+  open: false,
+  modalName,
+});
+
+export const activeLoading = () => ({
+  type: ACTIVE_LOADING,
+});
+
+
+// ========================= Export =======================
 export default reducer;

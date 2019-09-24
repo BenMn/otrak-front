@@ -1,9 +1,12 @@
+// Import NPM
 import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 
+// Material UI Styling Methods
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 
+// Material UI Components
 import {
   Drawer,
   CssBaseline,
@@ -18,7 +21,7 @@ import {
 
 import MuiToolbar from '@material-ui/core/Toolbar';
 
-// icons
+//  Material UI Icons
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import MenuIcon from '@material-ui/icons/Menu';

@@ -20,8 +20,10 @@ import {
   LogFormModalSubtitle,
 } from 'src/styles/materialUi/materialUiStyles/LogForms';
 
+// Local imports
 import Field from 'src/components/LogForms/Field';
 
+// CSS Local Styling
 import './LogForms.scss';
 
 // Images

@@ -2,12 +2,10 @@
 /* eslint-disable no-plusplus */
 /* eslint-disable react/jsx-props-no-spreading */
 
+// Import NPM
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
-
-// Local import
-import Icons from 'src/containers/Icons';
 
 // import Material UI components
 import {
@@ -17,19 +15,12 @@ import {
   Container,
 } from '@material-ui/core';
 
-// Slider library
-import Slider from 'react-slick';
-
-// Slider css styles
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-
 // import Material UI custom components
 import {
   HomePageCard,
   HomePageCardMedia,
   AiredBlockTitleSeeAll,
-  AiredSeeAllIcon,
+  // AiredSeeAllIcon,
   SearchResultIconTitle,
   SearchResultContainerWithoutSlider,
   SearchResultGridWithoutSlider,
@@ -37,7 +28,17 @@ import {
   SearchResultTitle,
 } from 'src/styles/materialUi/materialUiStyles/HomePage';
 
+// Local import
+import Icons from 'src/containers/Icons';
 
+// Slider library
+import Slider from 'react-slick';
+// Slider css styles
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
+
+// Slider Arrow navigation
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
   return (
@@ -70,6 +71,7 @@ function SamplePrevArrow(props) {
   );
 }
 
+
 const SearchResult = ({
   searchInputValue,
   storeSearchInputResult,
@@ -88,7 +90,8 @@ const SearchResult = ({
     prevArrow: <SamplePrevArrow />,
   };
 
-  // If Condition who manage the display or not of slider when we have less than 3 result
+  // If Condition who manage the display or not of slider
+  // when we have less than 3 result
   if (storeSearchInputResult.length <= 3) {
     return (
       <>
@@ -102,22 +105,31 @@ const SearchResult = ({
           <Typography variant="h3" component="p" className="title-icon-next-aired">
             <SearchResultIconTitle />{`Search for ${searchInputValue}` }
           </Typography>
-          <Typography variant="h6"><a href="." className="see-all-next-aired"> See all<AiredSeeAllIcon /></a></Typography>
+          {/* See All Link */}
+          {/* <Typography variant="h6">
+            <a href="." className="see-all-next-aired">
+              See all<AiredSeeAllIcon />
+            </a>
+          </Typography> */}
         </AiredBlockTitleSeeAll>
 
         <SearchResultContainerWithoutSlider>
           {storeSearchInputResult.map((currentShow) => (
             <SearchResultGridWithoutSlider item key={currentShow.id_tvmaze}>
               <HomePageCard key={currentShow.id_tvmaze} id="currentCard">
+
+                {/* Show Poster */}
                 <HomePageCardMedia
                   image={currentShow.poster === '' ? '../../src/styles/assets/images/notAvailable/no-image.jpeg' : currentShow.poster}
                 >
+                  {/* Fast Navigation icons */}
                   <Grid
                     container
                     justify="flex-end"
                   >
                     <Icons showId={currentShow.id_tvmaze} categorie="search" />
                   </Grid>
+
                   {/* Show Title */}
                   <NavLink exact to={`/show/${currentShow.name}`}>
                     <CardActionArea onClick={() => getDetailShow(currentShow.id_tvmaze)}>
@@ -126,6 +138,7 @@ const SearchResult = ({
                       </SearchResultTitle>
                     </CardActionArea>
                   </NavLink>
+
                 </HomePageCardMedia>
               </HomePageCard>
             </SearchResultGridWithoutSlider>
@@ -135,7 +148,7 @@ const SearchResult = ({
     );
   }
 
-  // Else of If condition
+  // Else of If condition (Search whith Slider)
   return (
     <>
       {/* Title */}
@@ -148,7 +161,12 @@ const SearchResult = ({
         <Typography variant="h3" component="p" className="title-icon-next-aired">
           <SearchResultIconTitle />{`Search for ${searchInputValue}` }
         </Typography>
-        <Typography variant="h6"><a href="." className="see-all-next-aired"> See all<AiredSeeAllIcon /></a></Typography>
+        {/* See All Link */}
+        {/* <Typography variant="h6">
+          <a href="." className="see-all-next-aired">
+            See all<AiredSeeAllIcon />
+          </a>
+        </Typography> */}
       </AiredBlockTitleSeeAll>
 
       <Container>
@@ -157,9 +175,12 @@ const SearchResult = ({
           {storeSearchInputResult.map((currentShow) => (
             <HomePageGridOfOnCard item key={currentShow.id_tvmaze}>
               <HomePageCard key={currentShow.id_tvmaze} id="currentCard">
+
+                {/* Show Poster */}
                 <HomePageCardMedia
                   image={currentShow.poster}
                 >
+                  {/* Fast Navigation icons */}
                   <Grid
                     container
                     justify="flex-end"
@@ -175,6 +196,7 @@ const SearchResult = ({
                       </SearchResultTitle>
                     </CardActionArea>
                   </NavLink>
+
                 </HomePageCardMedia>
               </HomePageCard>
             </HomePageGridOfOnCard>

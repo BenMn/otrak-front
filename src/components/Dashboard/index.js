@@ -1,35 +1,42 @@
 /* eslint-disable react/prop-types */
 
+// Import NPM
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// Local imports
 import Header from './Header';
 import Tabs from './Tabs';
 
-
+// CSS Local Styling
 import './Dashboard.scss';
+
 
 class Dashboard extends React.Component {
   componentDidMount() {
-    const { getUserFollowings, userInfos, userAuthToken } = this.props;
-    getUserFollowings(userInfos.id, userAuthToken);
+    // On load, get all current user infos
+    const { getUserFollowings, userInfos } = this.props;
+    getUserFollowings(userInfos.id);
   }
 
   render() {
     const {
-      avatarUploadHandler,
+      // User infos
+      userInfos,
+      userAuthInfos,
+      userFollowings,
+      // Username change handler
       handleUsernameInput,
       handleUsernameInputSubmit,
-      userAuthInfos,
       handleNewUsername,
+      // Modal
       handleOpen,
-      userInfos,
-      userFollowings,
+      // avatarUploadHandler,
     } = this.props;
     return (
       <div id="Dashboard">
         <Header
-          avatarUploadHandler={avatarUploadHandler}
+          // avatarUploadHandler={avatarUploadHandler}
           handleUsernameInput={handleUsernameInput}
           handleUsernameInputSubmit={handleUsernameInputSubmit}
           userAuthInfos={userAuthInfos}
@@ -47,19 +54,20 @@ class Dashboard extends React.Component {
 
 
 Dashboard.propTypes = {
-  avatarUploadHandler: PropTypes.func.isRequired,
-  handleUsernameInput: PropTypes.func.isRequired,
-  handleUsernameInputSubmit: PropTypes.func.isRequired,
-  handleOpen: PropTypes.func.isRequired,
+  // User infos
   userInfos: PropTypes.object,
   userFollowings: PropTypes.array,
-  userAuthToken: PropTypes.string,
+  // Username change handler
+  handleUsernameInput: PropTypes.func.isRequired,
+  handleUsernameInputSubmit: PropTypes.func.isRequired,
+  // Modal
+  handleOpen: PropTypes.func.isRequired,
+  // avatarUploadHandler: PropTypes.func.isRequired,
 };
 
 Dashboard.defaultProps = {
   userInfos: {},
   userFollowings: [],
-  userAuthToken: '',
 };
 
 export default Dashboard;

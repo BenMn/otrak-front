@@ -1,3 +1,4 @@
+// Default user avatar...
 #user-avatar {
   background-image: url(/src/styles/assets/images/avatars/avatar-default.png);
   background-position: center;
@@ -5,6 +6,7 @@
   box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.55);
   }
 
+// ...with gradient
 #user-avatar-gradient {
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.589) 100%);
   width: 100%;

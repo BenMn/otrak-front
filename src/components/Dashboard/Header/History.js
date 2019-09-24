@@ -24,8 +24,7 @@ import {
   DashboardHistoryDeleteIcon,
 } from 'src/styles/materialUi/materialUiStyles/Dashboard';
 
-// Icons
-
+// CSS Local Styling
 import 'src/components/LogForms/LogForms.scss';
 
 const History = ({ userFollowings, handleDeleteHistoryShow, updatedHistoryList }) => {
@@ -33,10 +32,6 @@ const History = ({ userFollowings, handleDeleteHistoryShow, updatedHistoryList }
     // eslint-disable-next-line no-param-reassign
     updatedHistoryList = userFollowings;
   }
-
-  console.log('°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°');
-  console.log(updatedHistoryList);
-  console.log('°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°');
 
   if (Object.keys(updatedHistoryList).length > 1) {
     return (

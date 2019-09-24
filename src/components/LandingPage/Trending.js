@@ -3,16 +3,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
-
-// Import locaux
-import { FilteredAiredLandingPage } from 'src/utils';
-
 // Import material UI components
 import {
   CardActionArea,
 } from '@material-ui/core';
 
 // Import material UI custom components
+// From LandingPage.js
 import {
   TrendingTitleTranding,
   TrendingGridSeries,
@@ -20,7 +17,7 @@ import {
   TrendingIcon,
   TrendingCardMedia,
 } from 'src/styles/materialUi/materialUiStyles/LandingPage';
-
+// From HomePage.js
 import {
   HomePageCard,
   HomePageCardTitle,
@@ -29,6 +26,10 @@ import {
   HomePageGridOfOnCard,
 } from 'src/styles/materialUi/materialUiStyles/HomePage';
 
+// Local imports
+import { FilteredAiredLandingPage } from 'src/utils';
+
+// CSS Local Styling
 import './LandingPage.scss';
 
 const Trending = ({ trendingList, getDetailShow }) => {
@@ -54,6 +55,8 @@ const Trending = ({ trendingList, getDetailShow }) => {
 
                 <NavLink exact to={`/show/${currentShow.show_name}`}>
                   <CardActionArea onClick={() => getDetailShow(currentShow.show_id_tvmaze)}>
+
+                    {/* Show Poster */}
                     <TrendingCardMedia
                       image={currentShow.poster}
                       title={currentShow.show_name}
@@ -63,13 +66,17 @@ const Trending = ({ trendingList, getDetailShow }) => {
                         direction="row"
                         justify="center"
                       >
+
+                        {/* Show Title */}
                         <HomePageCardTitle variant="h5" component="h2">
                           {currentShow.show_name}
                         </HomePageCardTitle>
 
+                        {/* Show Season + Episode */}
                         <AiredSubtitleSeasonEpisode>
                           {currentShow.season.toString().length > 2 ? currentShow.season : `S${currentShow.season}`} {currentShow.number === null ? '' : `E${currentShow.number}`}
                         </AiredSubtitleSeasonEpisode>
+
                       </AiredTitleCardAndSubtitle>
                     </TrendingCardMedia>
                   </CardActionArea>
@@ -94,6 +101,8 @@ const Trending = ({ trendingList, getDetailShow }) => {
 
                 <NavLink exact to={`/show/${currentShow.show_name}`}>
                   <CardActionArea onClick={() => getDetailShow(currentShow.show_id_tvmaze)}>
+
+                    {/* Show Poster */}
                     <TrendingCardMedia
                       image={currentShow.poster}
                       title={currentShow.show_name}
@@ -103,13 +112,16 @@ const Trending = ({ trendingList, getDetailShow }) => {
                         direction="row"
                         justify="center"
                       >
+                        {/* Show Title */}
                         <HomePageCardTitle variant="h5" component="h2">
                           {currentShow.show_name}
                         </HomePageCardTitle>
 
+                        {/* Show Season + Episode */}
                         <AiredSubtitleSeasonEpisode>
                           {currentShow.season.toString().length > 2 ? currentShow.season : `S${currentShow.season}`} {currentShow.number === null ? '' : `E${currentShow.number}`}
                         </AiredSubtitleSeasonEpisode>
+
                       </AiredTitleCardAndSubtitle>
                     </TrendingCardMedia>
                   </CardActionArea>

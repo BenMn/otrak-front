@@ -1,6 +1,10 @@
 /* eslint-disable react/jsx-props-no-spreading */
+
+// Import NPM
 import React from 'react';
 import PropTypes from 'prop-types';
+
+// Material UI Components
 import {
   Grid,
   AppBar,
@@ -9,15 +13,17 @@ import {
   CardActionArea,
 } from '@material-ui/core';
 
+// Material UI Custom Components
+// From Dashboard
 import {
   DashboardTab,
 } from 'src/styles/materialUi/materialUiStyles/Dashboard';
-
+// From Team
 import {
   TeamCardMedia,
   TeamBoxOfCards,
 } from 'src/styles/materialUi/materialUiStyles/Team';
-
+// From HomePage
 import {
   HomePageCard,
   HomePageCardTitle,
@@ -30,8 +36,6 @@ import remi from './images/remi.jpg';
 import cedric from './images/cedric.jpg';
 import ben from './images/ben.jpg';
 // import lea from './images/lea.jpg';
-
-import 'src/components/Dashboard/Tabs/Tabs.scss';
 
 function TabPanel(props) {
   const {

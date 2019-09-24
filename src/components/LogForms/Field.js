@@ -5,23 +5,31 @@ import PropTypes from 'prop-types';
 // Material UI Component
 import { TextField } from '@material-ui/core';
 
+// Single Authentification Field
 const Field = ({
+  // user input field
+  value,
+  // dynamic handler values
   name,
   label,
   autoComplete,
   type,
-  handleAuthInput,
-  value,
   index,
+  // handle change function
+  handleAuthInput,
 }) => (
   <TextField
+    // user input field
+    authinputvalue={value}
+    // dynamic handler values
     name={name}
     label={label}
     autoComplete={autoComplete}
-    authinputvalue={value}
     type={type}
     index={index}
+    // handle change function
     onChange={(event) => handleAuthInput(event, index)}
+    // style
     variant="outlined"
     margin="normal"
     required
@@ -30,13 +38,16 @@ const Field = ({
 );
 
 Field.propTypes = {
+  // user input field
+  value: PropTypes.string,
+  // dynamic handler values
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   autoComplete: PropTypes.string.isRequired,
-  value: PropTypes.string,
   type: PropTypes.string,
-  handleAuthInput: PropTypes.func.isRequired,
   index: PropTypes.number.isRequired,
+  // handle change function
+  handleAuthInput: PropTypes.func.isRequired,
 };
 
 Field.defaultProps = {

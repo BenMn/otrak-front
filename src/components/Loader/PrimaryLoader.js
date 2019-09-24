@@ -1,5 +1,10 @@
+// Import NPM
 import React from 'react';
+
+// Material UI Styling Method
 import { makeStyles } from '@material-ui/core/styles';
+
+// Material UI Components
 import { CircularProgress, Grid } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
@@ -8,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+// Dark Loader
 const PrimaryLoader = () => {
   const classes = useStyles();
   const [progress, setProgress] = React.useState(0);

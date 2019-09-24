@@ -6,18 +6,23 @@ import Icons from 'src/components/Icons';
 
 // Import Action Creators
 import {
+  // Modal
   openModal,
+  // Search
   emptySearchResults,
+  // Show Infos
   fetchDetailShow,
+  // User followings
+  getUserFollowings,
+  // Fast menu icons card functions
+  startFollowingShowFromTheBeginning,
   startFollowingShowAtThisEpisode,
   planningWatchShow,
-  getUserFollowings,
   DeleteFollowingShow,
-  startFollowingShowFromTheBeginning,
 } from 'src/store/reducer';
 
 const mapStateToProps = (state) => ({
-  userAuthToken: state.userAuthToken,
+  // Modal
   isLogged: state.isLogged,
   open: state.open,
   userInfos: state.userInfos,
@@ -26,35 +31,36 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
 
+  // Modal
   handleOpen: (modalName) => {
     dispatch(openModal(modalName));
   },
 
+  // Show Infos
   getDetailShow: (showId) => {
     dispatch(emptySearchResults());
     dispatch(fetchDetailShow(showId));
   },
 
-  getUserFollowings: (userId, userAuthToken) => {
-    dispatch(getUserFollowings(userId, userAuthToken));
+  // User followings
+  getUserFollowings: (userId) => {
+    dispatch(getUserFollowings(userId));
   },
 
+  // Fast menu icons card functions
   addShowByCategorie: (
     categorie,
     showId,
-    userAuthToken,
     userId,
     showSeason,
     showEpisode,
   ) => {
-    console.log('on a cliqué sur cette catégorie', categorie);
     switch (categorie) {
       case 'aired' || 'next':
         dispatch(startFollowingShowAtThisEpisode(
           showId,
           showSeason,
           showEpisode,
-          userAuthToken,
           userId,
         ));
         break;
@@ -63,19 +69,19 @@ const mapDispatchToProps = (dispatch) => ({
         dispatch(startFollowingShowFromTheBeginning(
           showId,
           userId,
-          userAuthToken,
         ));
         break;
-
+      // eslint-disable-next-line no-console
       default: console.log('default case');
     }
   },
-  addToPlanningWatchShow: (showId, userId, userAuthToken) => {
-    dispatch(planningWatchShow(showId, userId, userAuthToken));
+
+  addToPlanningWatchShow: (showId, userId) => {
+    dispatch(planningWatchShow(showId, userId));
   },
 
-  stopFollowingShow: (showIdBdd, userAuthToken) => {
-    dispatch(DeleteFollowingShow(showIdBdd, userAuthToken));
+  stopFollowingShow: (showIdBdd) => {
+    dispatch(DeleteFollowingShow(showIdBdd));
   },
 
 });

@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 
+// Import NPM
 import React from 'react';
 
 // Import the spring library (fade in modal entry effect)

@@ -1,13 +1,10 @@
 /* eslint-disable react/jsx-props-no-spreading */
+
+// Import NPM
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// Local Import
-import Loader from 'src/components/Loader/PrimaryLoader';
-import {
-  SortShowFollowedByStatus,
-} from 'src/utils';
-
+// Material UI Components
 import {
   Grid,
   AppBar,
@@ -15,13 +12,17 @@ import {
   Typography,
 } from '@material-ui/core';
 
+// Material UI Custom Components
 import {
   DashboardTab,
   DashboardBoxOfCards,
 } from 'src/styles/materialUi/materialUiStyles/Dashboard';
 
-import './Tabs.scss';
+// Local Import
+import Loader from 'src/components/Loader/PrimaryLoader';
+import { SortShowFollowedByStatus } from 'src/utils';
 import Cards from './Cards';
+
 
 function TabPanel(props) {
   const {
@@ -32,6 +33,7 @@ function TabPanel(props) {
   } = props;
 
   return (
+    // Switch tab function
     <Typography
       component="div"
       role="tabpanel"
@@ -65,9 +67,13 @@ function a11yProps(index) {
 const AllTabs = ({ userFollowings }) => {
   const [value, setValue] = React.useState(0);
 
-  // Appel pour fonction utilitaire qui permet de trier la liste de tout les shows de l'utilisateur
+  // Filter function > All shows by status
+  // Returns 5 arrays; the order (index) is the same as :
+  // > the Tabs title
+  // > the const status
   const userFollowingsShowsSortedByStatus = SortShowFollowedByStatus(userFollowings);
 
+  // Change tab handler
   function handleChange(event, newValue) {
     setValue(newValue);
   }
@@ -85,6 +91,7 @@ const AllTabs = ({ userFollowings }) => {
           onChange={handleChange}
           aria-label="simple tabs example"
         >
+          {/* Tabs Title */}
           <DashboardTab label="Watching" {...a11yProps(0)} />
           <DashboardTab label="Completed" {...a11yProps(1)} />
           <DashboardTab label="See Next" {...a11yProps(2)} />
@@ -93,11 +100,20 @@ const AllTabs = ({ userFollowings }) => {
         </Tabs>
       </AppBar>
 
-      {status.map((statut) => (
+      {/*
+        1. Map on the status array #[0, 1, 2, 3, 4]
+        2. Check if the current user has followings (no matter the status)
+        3. Map on the filtred array 'Following by Status'
+        4. Check if the index of the current array
+          (corresponding of the categorie of status)
+          is the same as the current status mapped
+      */}
+
+      {status.map((statut) => ( // Step 1
         <TabPanel value={value} index={statut}>
-          {userFollowings.length > 1 ? (
-            userFollowingsShowsSortedByStatus.map((filtredArray, index) => (
-              index === statut && (
+          {userFollowings.length > 1 ? ( // Step 2
+            userFollowingsShowsSortedByStatus.map((filtredArray, index) => ( // Step 3
+              index === statut && ( // Step 4
                 <Grid container spacing={6} justify="center">
                   <Cards
                     filtredArray={filtredArray}

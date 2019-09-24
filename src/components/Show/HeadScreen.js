@@ -1,5 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-this-in-sfc */
+
+// Import NPM
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -17,17 +19,18 @@ import {
   DetailShowGroupList,
 } from 'src/styles/materialUi/materialUiStyles/Show';
 
+// Local imports : utils function
 import { showStatusSwitch } from 'src/utils';
 
+// CSS Local Styling
 import './show.scss';
 
 const HeadScreen = ({
+  handleOpen,
+  isLogged,
+  userInfos,
   showDetail,
   startFollowingShow,
-  userAuthToken,
-  userInfos,
-  isLogged,
-  handleOpen,
 }) => {
   if (Object.keys(showDetail).length > 0) {
     return (
@@ -57,46 +60,59 @@ const HeadScreen = ({
               wrap="nowrap"
             >
               <Grid item>
+
+                {/* Show Title */}
                 <ShowHeadTitle variant="h3">{showDetail.name}</ShowHeadTitle>
                 <Grid container spacing={2}>
+
+                  {/* Seasons */}
                   <Grid item>
                     <ListItemText primary={`${showDetail.nbSeasons} seasons`} />
                   </Grid>
+
                   <Grid item>
                     <ListItemText primary="•" />
                   </Grid>
+
+                  {/* Episodes */}
                   <Grid item>
                     <ListItemText primary={`${showDetail.nbEpisodes} Episodes`} />
                   </Grid>
                 </Grid>
               </Grid>
 
+              {/* Add to list button (Register if not logged) */}
               <Grid item>
                 {isLogged === false ? (
                   <Button variant="contained" color="secondary" onClick={() => handleOpen('up')}>JOIN US TO ADD THIS SHOW</Button>
                 ) : (
-                  <Button variant="contained" color="secondary" onClick={() => startFollowingShow(showDetail.id_tvmaze, userInfos.id, userAuthToken)}>ADD TO MY WATCH LIST</Button>
+                  <Button variant="contained" color="secondary" onClick={() => startFollowingShow(showDetail.id_tvmaze, userInfos.id)}>ADD TO MY WATCH LIST</Button>
                 )}
               </Grid>
 
+              {/* Show details */}
               <Grid item>
                 <DetailShowGroupList component="nav" aria-label="secondary mailbox folders">
 
+                  {/* Genre */}
                   <Grid container justify="space-between" className="HeadScreen-infos-border">
                     <ListItemText primary="Genre" />
                     <ListItemText align="right" primary={showDetail.genre.length < 1 ? 'Not specified' : `${showDetail.genre.map((currentGenre) => currentGenre.name)}`} />
                   </Grid>
 
+                  {/* Rating */}
                   <Grid container justify="space-between" className="HeadScreen-infos-border">
                     <ListItemText primary="Rating" />
                     <ListItemText align="right" primary={showDetail.rating === null ? 'Not rated yet' : `${showDetail.rating}/10`} />
                   </Grid>
 
+                  {/* Status */}
                   <Grid container justify="space-between" className="HeadScreen-infos-border">
                     <ListItemText primary="Status" />
                     <ListItemText align="right" primary={showStatusSwitch(showDetail.status)} />
                   </Grid>
 
+                  {/* Network */}
                   { showDetail.createdAt === undefined ? (
                     <Grid container justify="space-between" className="HeadScreen-infos-border">
                       <ListItemText primary="Network" />
@@ -109,16 +125,19 @@ const HeadScreen = ({
                     </Grid>
                   )}
 
+                  {/* Language */}
                   <Grid container justify="space-between" className="HeadScreen-infos-border">
                     <ListItemText primary="Original language" />
                     <ListItemText align="right" primary={showDetail.language} />
                   </Grid>
 
+                  {/* Premiered */}
                   <Grid container justify="space-between" className="HeadScreen-infos-border">
                     <ListItemText primary="Premiered" />
                     <ListItemText align="right" primary={showDetail.premiered === null ? 'Not specified' : `${showDetail.premiered}`} />
                   </Grid>
 
+                  {/* Episode duration */}
                   <Grid container justify="space-between" className="HeadScreen-infos-border">
                     <ListItemText primary="Episode duration" />
                     <ListItemText align="right" primary={`${showDetail.runtime} min`} />
@@ -140,7 +159,6 @@ HeadScreen.propTypes = {
   showDetail: PropTypes.object.isRequired,
   startFollowingShow: PropTypes.func.isRequired,
   handleOpen: PropTypes.func.isRequired,
-  userAuthToken: PropTypes.string.isRequired,
   isLogged: PropTypes.bool.isRequired,
 };
 

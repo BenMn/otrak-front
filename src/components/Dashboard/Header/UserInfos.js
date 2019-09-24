@@ -1,13 +1,16 @@
 /* eslint-disable react/prop-types */
 
+// Import NPM
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// Material UI Components
 import {
   Grid,
   Box,
 } from '@material-ui/core';
 
+// Material UI Custom Components
 import {
   DashboardHeaderAvatar,
   DashboardHeaderUsername,
@@ -15,7 +18,7 @@ import {
   DashboardUsernameInput,
 } from 'src/styles/materialUi/materialUiStyles/Dashboard';
 
-// eslint-disable-next-line react/prop-types
+
 const UserInfos = ({
   handleUsernameInput,
   handleUsernameInputSubmit,
@@ -28,14 +31,17 @@ const UserInfos = ({
     direction="column"
   >
 
+    {/* User avatar */}
     <Grid item>
       <DashboardHeaderAvatar alt="User Avatar" id="user-avatar">
         <Box component="div" id="user-avatar-gradient" />
       </DashboardHeaderAvatar>
     </Grid>
 
+    {/* Avatar input handler */}
     {/* <input type="file" onChange={(event) => avatarUploadHandler(event)} /> */}
 
+    {/* Username */}
     <Grid item>
       <Box component="div" mb={3}>
         <Grid container justify="center" align="center" spacing={1}>
@@ -47,6 +53,7 @@ const UserInfos = ({
                   <DashboardUsernameIcon />
                 </Grid>
                 <Grid item>
+                  {/* Change username handler */}
                   <DashboardUsernameInput
                     id="input-with-icon-grid"
                     value={userInfos.username}

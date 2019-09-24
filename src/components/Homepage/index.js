@@ -1,46 +1,61 @@
 /* eslint-disable react/prefer-stateless-function */
+
+// Import NPM
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './homepage.scss';
-
-// Imports locaux
+// Local imports
 import Filter from 'src/components/Homepage/Filter';
 import SearchResult from 'src/components/Homepage/SearchResult';
 import Aired from 'src/components/Homepage/Aired';
 import Next from 'src/components/Homepage/Next';
 
+// CSS Local Styling
+import './homepage.scss';
+
 
 class Homepage extends React.Component {
   componentDidMount() {
-    const { getTrending, getNext, userAuthToken } = this.props;
-    getTrending(userAuthToken);
-    getNext(userAuthToken);
+    // On load, get the last trendings
+    // if the user is logged and has followings shows,
+    // Get the next episodes to watch
+    const { getTrending, getNext } = this.props;
+    getTrending();
+    getNext();
   }
 
   render() {
     const {
-      storeSearchInputResult,
+      // Search handlers
       searchInputValue,
+      storeSearchInputResult,
+      // Shows infos
       trendingList,
       getDetailShow,
-      sortBy,
       nextList,
+      // Filters
+      sortBy,
     } = this.props;
     return (
       <>
+        {/* Search + Drawer filter */}
         <Filter sortBy={sortBy} />
         {(storeSearchInputResult.length > 0) === true && (
+
         <SearchResult
           storeSearchInputResult={storeSearchInputResult}
           searchInputValue={searchInputValue}
           getDetailShow={getDetailShow}
         />
         )}
+
+        {/* Just Aired */}
         <Aired
           trendingList={trendingList}
           getDetailShow={getDetailShow}
         />
+
+        {/* Next to Watch */}
         {(nextList.length > 0) === true && (
           <Next
             nextList={nextList}
@@ -53,18 +68,23 @@ class Homepage extends React.Component {
 }
 
 Homepage.propTypes = {
+  // Search
   storeSearchInputResult: PropTypes.array,
   searchInputValue: PropTypes.string.isRequired,
-  trendingList: PropTypes.array.isRequired,
-  nextList: PropTypes.array.isRequired,
+  // Trending
   getTrending: PropTypes.func.isRequired,
-  getDetailShow: PropTypes.func.isRequired,
-  sortBy: PropTypes.func.isRequired,
+  trendingList: PropTypes.array.isRequired,
+  // Next
   getNext: PropTypes.func.isRequired,
-  userAuthToken: PropTypes.string.isRequired,
+  nextList: PropTypes.array.isRequired,
+  // Show details
+  getDetailShow: PropTypes.func.isRequired,
+  // Sort By
+  sortBy: PropTypes.func.isRequired,
 };
 
 Homepage.defaultProps = {
   storeSearchInputResult: [],
 };
+
 export default Homepage;

@@ -7,35 +7,47 @@ import Homepage from 'src/components/Homepage';
 
 // Action Creators
 import {
+  // Last show updates
   fetchTrending,
-  fetchDetailShow,
-  emptySearchResults,
-  storeSortedArray,
   fetchNext,
+  // Show Infos
+  fetchDetailShow,
+  // Search
+  emptySearchResults,
+  // Sort
+  storeSortedArray,
 } from 'src/store/reducer';
 
 const mapStateToProps = (state) => ({
-  storeSearchInputResult: state.storeSearchInputResult,
-  searchInputValue: state.searchInputValue,
+  // Last show updates
   trendingList: state.trendingList,
   nextList: state.nextList,
-  userAuthToken: state.userAuthToken,
+  // Search
+  searchInputValue: state.searchInputValue,
+  storeSearchInputResult: state.storeSearchInputResult,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getTrending: (userAuthToken) => {
-    dispatch(fetchTrending(userAuthToken));
+  // Last show updates
+  getTrending: () => {
+    dispatch(fetchTrending());
   },
+
+  getNext: () => {
+    dispatch(fetchNext());
+  },
+
+  // Show Infos
   getDetailShow: (showId) => {
     dispatch(emptySearchResults());
     dispatch(fetchDetailShow(showId));
   },
+
+  // Sort
   sortBy: (typeSort) => {
     dispatch(storeSortedArray(typeSort));
   },
-  getNext: (userAuthToken) => {
-    dispatch(fetchNext(userAuthToken));
-  },
+
 });
 
 // Container

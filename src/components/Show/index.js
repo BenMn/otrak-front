@@ -1,10 +1,8 @@
-// import npm
+/* eslint-disable react/prop-types */
+// Import NPM
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
-
-import {
-} from '@material-ui/core';
 
 // Material UI custom Components
 import {
@@ -19,6 +17,7 @@ import ResumeShow from 'src/components/Show/ResumeShow';
 import Casting from 'src/components/Show/Casting';
 import Loader from 'src/components/Loader';
 
+// CSS Local Styling
 import './show.scss';
 
 // Icons
@@ -28,8 +27,6 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 const Show = ({
   showDetail,
   startFollowingShow,
-  userAuthToken,
-  // eslint-disable-next-line react/prop-types
   userInfos,
   isLogged,
   handleOpen,
@@ -41,22 +38,29 @@ const Show = ({
 
         <IndexContainer maxWidth="md">
 
+          {/* Return link */}
           <NavLink exact to="/search">
             <IndexButtonReturn color="secondary"><ArrowBackIcon />Return</IndexButtonReturn>
           </NavLink>
 
           {Object.keys(showDetail).length !== 0 ? (
             <>
+
+              {/* General show infos + Poster */}
               <HeadScreen
                 showDetail={showDetail}
                 startFollowingShow={startFollowingShow}
-                userAuthToken={userAuthToken}
                 userInfos={userInfos}
                 isLogged={isLogged}
                 handleOpen={handleOpen}
               />
+
+              {/* Synopsis */}
               <ResumeShow showDetail={showDetail} />
+
+              {/* Casting */}
               <Casting showDetail={showDetail} />
+
             </>
           ) : (
             <Loader />
@@ -70,7 +74,6 @@ const Show = ({
 Show.propTypes = {
   showDetail: PropTypes.object.isRequired,
   startFollowingShow: PropTypes.func.isRequired,
-  userAuthToken: PropTypes.string.isRequired,
   isLogged: PropTypes.bool.isRequired,
   handleOpen: PropTypes.func.isRequired,
 };

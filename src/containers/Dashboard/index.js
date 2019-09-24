@@ -6,34 +6,34 @@ import Dashboard from 'src/components/Dashboard';
 
 // Action Creators
 import {
-  avatarUploadHandler,
+  // Username handlers
   updateUsernameInput,
   storeNewUsername,
+  // Modal
   openModal,
+  // User infos
   getUserInfos,
+  // User followings
   getUserFollowings,
+  // avatarUploadHandler,
 } from 'src/store/reducer';
 
 const mapStateToProps = (state) => ({
-  userAvatar: state.userAvatar,
+  // User infos
   userAuthInfos: state.userAuthInfos,
-  userAuthToken: state.userAuthToken,
   userInfos: state.userInfos,
-
+  // User followings
   userFollowings: state.userFollowings,
-
+  // Modal
   setOpen: state.setOpen,
   open: state.open,
   modalName: state.modalName,
+  // userAvatar: state.userAvatar,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  avatarUploadHandler: (event) => {
-    event.persist();
-    const newAvatar = event.target.files[0];
-    dispatch(avatarUploadHandler(newAvatar));
-  },
 
+  // Username handlers
   handleUsernameInput: (event) => {
     const { value, name } = event.target;
     dispatch(updateUsernameInput(value, name));
@@ -46,17 +46,26 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(storeNewUsername(newUsername, name, userId));
   },
 
+  // Modal
   handleOpen: (modalName) => {
     dispatch(openModal(modalName));
   },
 
-  fetchUserProfileInfos: (userAuthToken) => {
-    dispatch(getUserInfos(userAuthToken));
+  // User infos
+  fetchUserProfileInfos: () => {
+    dispatch(getUserInfos());
   },
 
-  getUserFollowings: (userId, userAuthToken) => {
-    dispatch(getUserFollowings(userId, userAuthToken));
+  // User followings
+  getUserFollowings: (userId) => {
+    dispatch(getUserFollowings(userId));
   },
+
+  // avatarUploadHandler: (event) => {
+  //   event.persist();
+  //   const newAvatar = event.target.files[0];
+  //   dispatch(avatarUploadHandler(newAvatar));
+  // },
 
 });
 

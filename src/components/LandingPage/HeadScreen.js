@@ -18,9 +18,7 @@ import {
   HeadScreenSlogan,
 } from 'src/styles/materialUi/materialUiStyles/LandingPage';
 
-// Authentification form modal
-import LogFormsModal from 'src/containers/LogForms';
-
+// CSS Local Styling
 import './LandingPage.scss';
 
 // Images
@@ -38,12 +36,13 @@ class HeadScreen extends React.Component {
 
   render() {
     const {
-      open,
-      modalName,
+      // Modal
       handleOpen,
+      // Search Handlers
       searchInputValue,
       handleSearchInput,
       handleSearchInputSubmit,
+      // Loader
       loading,
     } = this.props;
     return (
@@ -88,13 +87,6 @@ class HeadScreen extends React.Component {
                 Sign up
               </HeadScreenSignUpButton>
 
-              {/* eslint-disable-next-line max-len */}
-              {open === true && (
-                <LogFormsModal
-                  modalName={modalName}
-                  handleOpen={handleOpen}
-                />
-              )}
             </Grid>
           </Grid>
 
@@ -109,18 +101,14 @@ class HeadScreen extends React.Component {
 }
 
 HeadScreen.propTypes = {
-  open: PropTypes.bool,
+  // Modal
   handleOpen: PropTypes.func.isRequired,
-  modalName: PropTypes.string,
+  // Search handlers
   searchInputValue: PropTypes.string.isRequired,
   handleSearchInput: PropTypes.func.isRequired,
   handleSearchInputSubmit: PropTypes.func.isRequired,
+  // Loader
   loading: PropTypes.bool.isRequired,
-};
-
-HeadScreen.defaultProps = {
-  open: false,
-  modalName: '',
 };
 
 export default HeadScreen;
