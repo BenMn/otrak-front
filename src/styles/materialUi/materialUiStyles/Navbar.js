@@ -33,7 +33,7 @@ export const NavbarSearchIcon = styled(SearchIcon)({
 });
 
 export const NavbarSearchInput = styled(InputBase)({
-  width: '100%',
+  width: '200%',
   color: theme.palette.common.white,
   marginLeft: 10,
 });

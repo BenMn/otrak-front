@@ -57,8 +57,8 @@ const Footer = ({ handleOpen, isLogged, emptySearchResults }) => (
           <Grid item xl={5} lg={5} md={4} sm={4} xs={10}>
             <Grid
               container
-              justify="center"
-              alignItems="center"
+              justify="flex-end"
+              alignItems="flex-end"
             >
               {isLogged === true ? (
                 <NavLink exact to="/dashboard" color="inherit" onClick={() => emptySearchResults()}>

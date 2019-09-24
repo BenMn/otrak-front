@@ -23,7 +23,6 @@ import Loader from 'src/components/Loader/PrimaryLoader';
 import { SortShowFollowedByStatus } from 'src/utils';
 import Cards from './Cards';
 
-
 function TabPanel(props) {
   const {
     children,
@@ -65,6 +64,10 @@ function a11yProps(index) {
 }
 
 const AllTabs = ({ userFollowings }) => {
+  function scroolToTop() {
+    window.scrollTo(0, 0);
+  }
+  scroolToTop();
   const [value, setValue] = React.useState(0);
 
   // Filter function > All shows by status

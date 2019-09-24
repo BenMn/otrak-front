@@ -13,6 +13,10 @@ import Next from 'src/components/Homepage/Next';
 // CSS Local Styling
 import './homepage.scss';
 
+function scroolToTop() {
+  window.scrollTo(0, 0);
+}
+
 
 class Homepage extends React.Component {
   componentDidMount() {
@@ -22,6 +26,7 @@ class Homepage extends React.Component {
     const { getTrending, getNext } = this.props;
     getTrending();
     getNext();
+    scroolToTop();
   }
 
   render() {
@@ -49,12 +54,6 @@ class Homepage extends React.Component {
         />
         )}
 
-        {/* Just Aired */}
-        <Aired
-          trendingList={trendingList}
-          getDetailShow={getDetailShow}
-        />
-
         {/* Next to Watch */}
         {(nextList.length > 0) === true && (
           <Next
@@ -62,6 +61,12 @@ class Homepage extends React.Component {
             getDetailShow={getDetailShow}
           />
         )}
+
+        {/* Just Aired */}
+        <Aired
+          trendingList={trendingList}
+          getDetailShow={getDetailShow}
+        />
       </>
     );
   }
