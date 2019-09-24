@@ -30,47 +30,54 @@ const Show = ({
   userInfos,
   isLogged,
   handleOpen,
-}) => (
-  <>
-    <IndexScreenPicture image={showDetail.poster}>
+  searchInputValue,
+  callBackSearchInputResult,
+}) => {
+  function scroolToTop() {
+    window.scrollTo(0, 0);
+  }
+  scroolToTop();
+  return (
+    <>
+      <IndexScreenPicture image={showDetail.poster}>
 
-      <div className="fond-img">
+        <div className="fond-img">
 
-        <IndexContainer maxWidth="md">
+          <IndexContainer maxWidth="md">
 
-          {/* Return link */}
-          <NavLink exact to="/search">
-            <IndexButtonReturn color="secondary"><ArrowBackIcon />Return</IndexButtonReturn>
-          </NavLink>
+            {/* Return link */}
+            <NavLink exact to="/search">
+              <IndexButtonReturn color="secondary" onClick={() => callBackSearchInputResult(searchInputValue)}><ArrowBackIcon />Return</IndexButtonReturn>
+            </NavLink>
 
-          {Object.keys(showDetail).length !== 0 ? (
-            <>
+            {Object.keys(showDetail).length !== 0 ? (
+              <>
 
-              {/* General show infos + Poster */}
-              <HeadScreen
-                showDetail={showDetail}
-                startFollowingShow={startFollowingShow}
-                userInfos={userInfos}
-                isLogged={isLogged}
-                handleOpen={handleOpen}
-              />
+                {/* General show infos + Poster */}
+                <HeadScreen
+                  showDetail={showDetail}
+                  startFollowingShow={startFollowingShow}
+                  userInfos={userInfos}
+                  isLogged={isLogged}
+                  handleOpen={handleOpen}
+                />
 
-              {/* Synopsis */}
-              <ResumeShow showDetail={showDetail} />
+                {/* Synopsis */}
+                <ResumeShow showDetail={showDetail} />
 
-              {/* Casting */}
-              <Casting showDetail={showDetail} />
+                {/* Casting */}
+                <Casting showDetail={showDetail} />
 
-            </>
-          ) : (
-            <Loader />
-          )}
-        </IndexContainer>
-      </div>
-    </IndexScreenPicture>
-  </>
-);
-
+              </>
+            ) : (
+              <Loader />
+            )}
+          </IndexContainer>
+        </div>
+      </IndexScreenPicture>
+    </>
+  );
+}
 Show.propTypes = {
   showDetail: PropTypes.object.isRequired,
   startFollowingShow: PropTypes.func.isRequired,

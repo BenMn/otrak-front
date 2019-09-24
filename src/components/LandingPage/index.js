@@ -12,12 +12,17 @@ import StartToday from 'src/components/LandingPage/StartToday';
 // CSS Local Styling
 import './LandingPage.scss';
 
+function scroolToTop() {
+  window.scrollTo(0, 0);
+}
+
 
 class LandingPage extends React.Component {
   // Fetch all the trendings shows when page load
   componentDidMount() {
     const { getTrending } = this.props;
     getTrending();
+    scroolToTop();
   }
 
   render() {
