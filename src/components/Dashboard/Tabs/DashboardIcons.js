@@ -50,13 +50,15 @@ const Icons = ({
 );
 
 Icons.propTypes = {
-  addToWatchList: PropTypes.func.isRequired,
-  getDetailShow: PropTypes.func.isRequired,
+  addToWatchList: PropTypes.func,
+  getDetailShow: PropTypes.func,
   userInfos: PropTypes.object,
   showId: PropTypes.number,
 };
 
 Icons.defaultProps = {
+  addToWatchList: () => {},
+  getDetailShow: () => {},
   userInfos: {},
   showId: null,
 };

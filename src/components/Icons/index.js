@@ -162,7 +162,6 @@ Icons.propTypes = {
 
   // Boolean required
   isLogged: PropTypes.bool.isRequired,
-  tracked: PropTypes.bool.isRequired,
 
   // Number not required
   showSeason: PropTypes.number,
@@ -172,6 +171,9 @@ Icons.propTypes = {
 
   // Object not required
   userInfos: PropTypes.object,
+
+  // Boolean not required
+  tracked: PropTypes.bool,
 };
 
 Icons.defaultProps = {
@@ -181,6 +183,7 @@ Icons.defaultProps = {
   showIdBdd: null,
   showSeason: null,
   showEpisode: null,
+  tracked: false,
 };
 
 export default Icons;

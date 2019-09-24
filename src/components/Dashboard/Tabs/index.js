@@ -113,11 +113,11 @@ const AllTabs = ({ userFollowings }) => {
       */}
 
       {status.map((statut) => ( // Step 1
-        <TabPanel value={value} index={statut}>
+        <TabPanel value={value} index={statut} key={`${value}${statut}`}>
           {userFollowings.length > 1 ? ( // Step 2
             userFollowingsShowsSortedByStatus.map((filtredArray, index) => ( // Step 3
               index === statut && ( // Step 4
-                <Grid container spacing={6} justify="center">
+                <Grid container spacing={6} justify="center" key={`${value}${statut}`}>
                   <Cards
                     filtredArray={filtredArray}
                   />

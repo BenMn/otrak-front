@@ -92,16 +92,6 @@ const Footer = ({ handleOpen, isLogged, emptySearchResults }) => (
         </Link>
       </Grid>
 
-
-      {/* GitHub icon  */}
-      <Grid item xl={1} lg={2} md={2} sm={2} xs={2}>
-        <Link href="https://www.youtube.com/watch?v=MKrpadhcC8g">
-          <FooterIcon>
-            <FontAwesomeIcon icon={faGithub} size="lg" />
-          </FooterIcon>
-        </Link>
-      </Grid>
-
     </Grid>
   </div>
 );
