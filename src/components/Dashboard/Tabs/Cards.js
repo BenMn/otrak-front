@@ -4,6 +4,7 @@
 // Import NPM
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 
 // Material UI Components
 import {
@@ -45,43 +46,47 @@ const Cards = ({ filtredArray }) => (
         xs={12}
       >
         <HomePageCard id="currentCard">
-          <CardActionArea>
-            {/* Show Poster */}
-            <HomePageCardMedia
-              image={show.tvShow.poster}
-              title={show.tvShow.name}
-            >
-              <Grid
-                container
-                justify="flex-end"
-              >
-                {/* fast Navigation icons */}
-                <Icons showId={show.tvShow.id} />
-              </Grid>
 
+          {/* Show Poster */}
+          <HomePageCardMedia
+            image={show.tvShow.poster}
+            title={show.tvShow.name}
+          >
+            <Grid
+              container
+              justify="flex-end"
+            >
+              {/* fast Navigation icons */}
+              <Icons showId={show.tvShow.id} />
+            </Grid>
+
+            <CardActionArea>
               <AiredTitleCardAndSubtitle
                 container
                 direction="row"
-                justify="flex-end"
+                justify="center"
               >
                 {/* Show Title */}
-                <HomePageCardTitle variant="h5" component="h2">
-                  {show.tvShow.name}
-                </HomePageCardTitle>
+                <NavLink exact to={`/show/${show.tvShow.name}`}>
+                  <HomePageCardTitle variant="h5" component="h2">
+                    {show.tvShow.name}
+                  </HomePageCardTitle>
 
-                {/* Show Genre */}
-                <AiredSubtitleSeasonEpisode>
-                  {show.tvShow.genre.map((genre) => (
-                    <Fragment key={genre.name}>
-                      {genre.name}
-                      &nbsp;
-                    </Fragment>
-                  ))}
-                </AiredSubtitleSeasonEpisode>
+                  {/* Show Genre */}
+                  <AiredSubtitleSeasonEpisode>
+                    {show.tvShow.genre.map((genre) => (
+                      <Fragment key={genre.name}>
+                        {genre.name}
+                        &nbsp;
+                      </Fragment>
+                    ))}
+                  </AiredSubtitleSeasonEpisode>
+                </NavLink>
+
               </AiredTitleCardAndSubtitle>
+            </CardActionArea>
 
-            </HomePageCardMedia>
-          </CardActionArea>
+          </HomePageCardMedia>
         </HomePageCard>
       </Grid>
     ))}

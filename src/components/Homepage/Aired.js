@@ -159,7 +159,6 @@ const Aired = ({ trendingList, getDetailShow, userFollowings }) => {
 
                     </HomePageCardMedia>
 
-
                   </HomePageCard>
 
                 </SearchResultGridWithoutSlider>
