@@ -32,6 +32,7 @@ export const DashboardTitleProgressBar = styled(Typography)({
 });
 
 export const DashboardHeaderConainer = styled(Container)({
+  padding: '3vh 3vh 1vh 3vh',
   minHeight: '30vh',
   maxWidth: '3000vw',
   display: 'flex',
@@ -150,6 +151,7 @@ export const DashboardSettignsIcon = styled(SettingsInputCompositeIcon)({
 
 export const DashboardTab = styled(Tab)({
   fontSize: '1em',
+  backgroundColor: theme.palette.primary.dark,
 });
 
 export const DashboardBoxOfCards = styled(Box)({

@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 // == Import : npm
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -64,7 +65,11 @@ const App = ({
           )}
         />
       ) : (
-        <Redirect to="/dashboard" />
+        window.location.pathname === ('/' || '/dashboard') ? (
+          <Redirect to="/dashboard" />
+        ) : (
+          <Redirect to={window.location.pathname} />
+        )
       )}
 
       {/* 'open' authorize all Modals to show */}

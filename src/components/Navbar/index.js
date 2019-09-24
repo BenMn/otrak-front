@@ -1,3 +1,6 @@
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable no-undef */
+
 // Import NPM
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -27,6 +30,7 @@ import './Navbar.scss';
 // Images
 import logoOwl from './logo-owl.png';
 
+
 const Navbar = ({
   // Modal
   handleOpen,
@@ -42,7 +46,7 @@ const Navbar = ({
   loading,
 }) => (
   <div id="Navbar">
-    <AppBar position="static">
+    <AppBar position="fixed">
       <Toolbar>
         <Grid container spacing={2} justify="center">
 

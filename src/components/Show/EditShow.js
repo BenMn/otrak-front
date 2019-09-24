@@ -230,6 +230,7 @@ class EditShow extends React.Component {
                       {/* Season Progress */}
                       <Grid item>
                         <EditShowField
+                          select
                           name="season"
                           fullWidth
                           variant="outlined"
@@ -243,12 +244,21 @@ class EditShow extends React.Component {
                           InputProps={{
                             inputProps: { min: 1, max: currentFollow[0].tvShow.nbSeasons },
                           }}
-                        />
+                        >
+                          {[...Array(currentFollow[0].tvShow.nbSeasons)
+                            .keys()]
+                            .map((seasonNumber) => (
+                              <MenuItem key={seasonNumber} value={seasonNumber}>
+                                {seasonNumber}
+                              </MenuItem>
+                            ))}
+                        </EditShowField>
                       </Grid>
 
                       {/* Episode progress */}
                       <Grid item>
                         <EditShowField
+                          select
                           name="episode"
                           fullWidth
                           variant="outlined"
@@ -262,7 +272,15 @@ class EditShow extends React.Component {
                           InputProps={{
                             inputProps: { min: 1, max: currentFollow[0].tvShow.nbEpisodes },
                           }}
-                        />
+                        >
+                          {[...Array(currentFollow[0].tvShow.nbEpisodes)
+                            .keys()]
+                            .map((episodeNumber) => (
+                              <MenuItem key={episodeNumber} value={episodeNumber}>
+                                {episodeNumber}
+                              </MenuItem>
+                            ))}
+                        </EditShowField>
                       </Grid>
 
                       {/* Total rewatches */}
