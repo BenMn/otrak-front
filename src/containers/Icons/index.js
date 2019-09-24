@@ -6,17 +6,23 @@ import Icons from 'src/components/Icons';
 
 // Import Action Creators
 import {
+  // Modal
   openModal,
+  // Search
   emptySearchResults,
+  // Show Infos
   fetchDetailShow,
+  // User followings
+  getUserFollowings,
+  // Fast menu icons card functions
+  startFollowingShowFromTheBeginning,
   startFollowingShowAtThisEpisode,
   planningWatchShow,
-  getUserFollowings,
   DeleteFollowingShow,
-  startFollowingShowFromTheBeginning,
 } from 'src/store/reducer';
 
 const mapStateToProps = (state) => ({
+  // Modal
   isLogged: state.isLogged,
   open: state.open,
   userInfos: state.userInfos,
@@ -25,19 +31,23 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
 
+  // Modal
   handleOpen: (modalName) => {
     dispatch(openModal(modalName));
   },
 
+  // Show Infos
   getDetailShow: (showId) => {
     dispatch(emptySearchResults());
     dispatch(fetchDetailShow(showId));
   },
 
+  // User followings
   getUserFollowings: (userId) => {
     dispatch(getUserFollowings(userId));
   },
 
+  // Fast menu icons card functions
   addShowByCategorie: (
     categorie,
     showId,
@@ -61,11 +71,11 @@ const mapDispatchToProps = (dispatch) => ({
           userId,
         ));
         break;
-
       // eslint-disable-next-line no-console
       default: console.log('default case');
     }
   },
+
   addToPlanningWatchShow: (showId, userId) => {
     dispatch(planningWatchShow(showId, userId));
   },

@@ -1,15 +1,9 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-props-no-spreading */
+
 // Import NPM
 import React from 'react';
 import PropTypes from 'prop-types';
-
-// Slider library
-import Slider from 'react-slick';
-
-// Slider css style
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
 
 // Import material UI components
 import {
@@ -18,6 +12,7 @@ import {
 } from '@material-ui/core';
 
 //  Material UI custom Components
+// From HomePage
 import {
   HomePageCard,
   HomePageCardMedia,
@@ -26,12 +21,21 @@ import {
   HomePageCardTitle,
 } from 'src/styles/materialUi/materialUiStyles/HomePage';
 
+// From Show
 import {
   CastingTitleCasting,
   CastingTitleNotAvailable,
   CastingGridWithoutSlider,
   CastingContainerWithoutSlider,
 } from 'src/styles/materialUi/materialUiStyles/Show';
+
+// Slider library
+// Import
+import Slider from 'react-slick';
+// Slider css style
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
 
 // Micro component managing arrow's style
 function SampleNextArrow(props) {
@@ -93,6 +97,8 @@ const Casting = ({ showDetail }) => {
                   <CastingGridWithoutSlider item key={currentActor.person.name}>
                     <HomePageCard>
                       <CardActionArea>
+
+                        {/* Actor Picture */}
                         <HomePageCardMedia
                           image={currentActor.person.image === null ? '../../src/styles/assets/images/notAvailable/notAvailable.jpg' : currentActor.person.image.original}
                           title={currentActor.person.name}
@@ -106,10 +112,13 @@ const Casting = ({ showDetail }) => {
                             direction="row"
                             justify="flex-end"
                           >
+
+                            {/* Actor Name */}
                             <HomePageCardTitle variant="h5" component="h2">
                               {currentActor.person.name}
                             </HomePageCardTitle>
 
+                            {/* Character Name */}
                             <AiredSubtitleSeasonEpisode>
                               {currentActor.character.name}
                             </AiredSubtitleSeasonEpisode>
@@ -130,7 +139,7 @@ const Casting = ({ showDetail }) => {
       );
     }
 
-    // Else of If condition who manage the display of slider.
+    // Else of "If condition" who manage the display of slider.
     return (
       <>
         {showDetail.cast.length > 0 ? (
@@ -143,6 +152,8 @@ const Casting = ({ showDetail }) => {
                 <Grid item key={currentActor.person.name}>
                   <HomePageCard>
                     <CardActionArea>
+
+                      {/* Actor picture */}
                       <HomePageCardMedia
                         image={currentActor.person.image === null ? '../../src/styles/assets/images/notAvailable/notAvailable.jpg' : currentActor.person.image.original}
                         title={currentActor.person.name}
@@ -156,10 +167,12 @@ const Casting = ({ showDetail }) => {
                           direction="row"
                           justify="flex-end"
                         >
+                          {/* Actor Name */}
                           <HomePageCardTitle variant="h5" component="h2">
                             {currentActor.person.name}
                           </HomePageCardTitle>
 
+                          {/* Character Name */}
                           <AiredSubtitleSeasonEpisode>
                             {currentActor.character.name}
                           </AiredSubtitleSeasonEpisode>

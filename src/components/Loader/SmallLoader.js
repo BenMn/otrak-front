@@ -1,6 +1,10 @@
+// Import NPM
 import React from 'react';
+
+// Material UI Components
 import { CircularProgress } from '@material-ui/core';
 
+// Small secondary Loader (red)
 const Loader = () => {
   const [progress, setProgress] = React.useState(0);
 

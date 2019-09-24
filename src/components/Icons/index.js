@@ -1,12 +1,8 @@
+// Import NPM
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// import Material UI custom components
-import {
-  HomePageIconContainer,
-  HomePageCardIcon,
-} from 'src/styles/materialUi/materialUiStyles/HomePage';
-
+// Material UI Components
 import {
   Tooltip,
   // Snackbar,
@@ -14,26 +10,35 @@ import {
   // IconButton,
 } from '@material-ui/core';
 
+// import Material UI custom components
+import {
+  HomePageIconContainer,
+  HomePageCardIcon,
+} from 'src/styles/materialUi/materialUiStyles/HomePage';
+
 // import Material UI Icons
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import CreateIcon from '@material-ui/icons/Create';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-// import CloseIcon from '@material-ui/icons/Close';
-// import StarIcon from '@material-ui/icons/Star';
 
 // Utils funtions
 import { displayCardActionButtons, tooltipTitleByCategory } from 'src/utils';
 
 const Icons = ({
+  // User infos
   userInfos,
+  // Authentification
   isLogged,
+  // Modal
   handleOpen,
+  // Show infos
   showId,
   showIdBdd,
   showSeason,
   showEpisode,
   categorie,
+  // Fast nav icons functions
   addShowByCategorie,
   addToPlanningWatchShow,
   stopFollowingShow,
@@ -101,12 +106,6 @@ const Icons = ({
       </Tooltip>
     )}
 
-    {/* Add to favorites */}
-    {/* uniquement display quand la catégorie existera */}
-    {/* <HomePageIconContainer className="hiddenCardIcon">
-      <StarIcon />
-    </HomePageIconContainer> */}
-
     {/* Remove from list */}
     {isLogged === true && showIdBdd !== null ? (
       <Tooltip title="Unfollow this show" placement="top">
@@ -118,7 +117,7 @@ const Icons = ({
       ''
     )}
 
-    {/* Display buttons */}
+    {/* Display button */}
     <HomePageIconContainer
       onMouseOver={(event) => displayCardActionButtons(event)}
     >

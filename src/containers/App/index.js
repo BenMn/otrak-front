@@ -4,14 +4,11 @@ import { connect } from 'react-redux';
 // == Import : local
 import App from 'src/components/App';
 
-// Import Action Creators
-import { } from 'src/store/reducer';
-
 const mapStateToProps = (state) => ({
   view: state.view,
-  storeSearchInputResult: state.storeSearchInputResult,
-  isLogged: state.isLogged,
   open: state.open,
+  isLogged: state.isLogged,
+  storeSearchInputResult: state.storeSearchInputResult,
 });
 
 const mapDispatchToProps = () => ({});

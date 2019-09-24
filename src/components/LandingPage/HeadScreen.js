@@ -18,6 +18,7 @@ import {
   HeadScreenSlogan,
 } from 'src/styles/materialUi/materialUiStyles/LandingPage';
 
+// CSS Local Styling
 import './LandingPage.scss';
 
 // Images
@@ -35,10 +36,13 @@ class HeadScreen extends React.Component {
 
   render() {
     const {
+      // Modal
       handleOpen,
+      // Search Handlers
       searchInputValue,
       handleSearchInput,
       handleSearchInputSubmit,
+      // Loader
       loading,
     } = this.props;
     return (
@@ -97,10 +101,13 @@ class HeadScreen extends React.Component {
 }
 
 HeadScreen.propTypes = {
+  // Modal
   handleOpen: PropTypes.func.isRequired,
+  // Search handlers
   searchInputValue: PropTypes.string.isRequired,
   handleSearchInput: PropTypes.func.isRequired,
   handleSearchInputSubmit: PropTypes.func.isRequired,
+  // Loader
   loading: PropTypes.bool.isRequired,
 };
 

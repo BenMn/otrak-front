@@ -1,4 +1,4 @@
-// *Import npm
+// Import npm
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -20,9 +20,10 @@ import {
   LogFormModalSubtitle,
 } from 'src/styles/materialUi/materialUiStyles/LogForms';
 
-// import locaux
+// Local imports
 import Field from 'src/components/LogForms/Field';
 
+// CSS Local Styling
 import './LogForms.scss';
 
 // Images

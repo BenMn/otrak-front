@@ -12,6 +12,30 @@
 
 // CSS Local Styling
 
-{/* fast Navigation icons */}
+{/* Fast Navigation icons */}
 
 {/* Show Title */}
+
+{/* Show Poster */}
+
+{/* Show Season + Episode */}
+
+// User infos
+
+// User followings
+
+// Username handlers
+
+// Modal
+
+// Trending
+
+// Show Infos
+
+// Last show updates
+
+// Search
+
+// Sort
+
+// Fast menu icons card functions

@@ -13,19 +13,21 @@ import {
 
 
 const mapStateToProps = (state) => ({
+  isLogged: state.isLogged,
   showDetail: state.showDetail,
   userInfos: state.userInfos,
-  isLogged: state.isLogged,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  startFollowingShow: (showId, userId) => {
-    dispatch(startFollowingShowFromTheBeginning(showId, userId));
-  },
 
   handleOpen: (modalName) => {
     dispatch(openModal(modalName));
   },
+
+  startFollowingShow: (showId, userId) => {
+    dispatch(startFollowingShowFromTheBeginning(showId, userId));
+  },
+
 });
 
 // Container

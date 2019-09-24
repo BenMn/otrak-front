@@ -21,19 +21,22 @@ class Dashboard extends React.Component {
 
   render() {
     const {
-      avatarUploadHandler,
+      // User infos
+      userInfos,
+      userAuthInfos,
+      userFollowings,
+      // Username change handler
       handleUsernameInput,
       handleUsernameInputSubmit,
-      userAuthInfos,
       handleNewUsername,
+      // Modal
       handleOpen,
-      userInfos,
-      userFollowings,
+      // avatarUploadHandler,
     } = this.props;
     return (
       <div id="Dashboard">
         <Header
-          avatarUploadHandler={avatarUploadHandler}
+          // avatarUploadHandler={avatarUploadHandler}
           handleUsernameInput={handleUsernameInput}
           handleUsernameInputSubmit={handleUsernameInputSubmit}
           userAuthInfos={userAuthInfos}
@@ -51,12 +54,15 @@ class Dashboard extends React.Component {
 
 
 Dashboard.propTypes = {
-  avatarUploadHandler: PropTypes.func.isRequired,
-  handleUsernameInput: PropTypes.func.isRequired,
-  handleUsernameInputSubmit: PropTypes.func.isRequired,
-  handleOpen: PropTypes.func.isRequired,
+  // User infos
   userInfos: PropTypes.object,
   userFollowings: PropTypes.array,
+  // Username change handler
+  handleUsernameInput: PropTypes.func.isRequired,
+  handleUsernameInputSubmit: PropTypes.func.isRequired,
+  // Modal
+  handleOpen: PropTypes.func.isRequired,
+  // avatarUploadHandler: PropTypes.func.isRequired,
 };
 
 Dashboard.defaultProps = {

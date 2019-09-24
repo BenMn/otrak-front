@@ -2,9 +2,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// Local Import
-import SmallLoader from 'src/components/Loader/SmallLoader';
-
 // import material UI components
 import {
   Grid,
@@ -20,6 +17,9 @@ import {
   ApiInfosSearchDarkInput,
   ApiInfosSearchDarkIcon,
 } from 'src/styles/materialUi/materialUiStyles/LandingPage';
+
+// Local Import
+import SmallLoader from 'src/components/Loader/SmallLoader';
 
 // Images
 import screendemo1 from './images/screendemo1.png';

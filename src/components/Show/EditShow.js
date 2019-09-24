@@ -1,4 +1,5 @@
 /* eslint-disable no-lone-blocks */
+
 // import NPM
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -20,10 +21,13 @@ import {
   EditShowButtons,
 } from 'src/styles/materialUi/materialUiStyles/LogForms';
 
+// CSS Local Styling
 import 'src/components/LogForms/LogForms.scss';
 import './show.scss';
 
 class EditShow extends React.Component {
+  // On load, get the details of the selected show
+  // and a list of all current user's followings
   componentDidMount() {
     const {
       getDetailShow,
@@ -37,18 +41,26 @@ class EditShow extends React.Component {
 
   render() {
     const {
+      // Show infos
       showDetail,
+      // User followings
       userFollowings,
-      userSingleFollowing,
       getUserSingleFollowing,
-      handleChangeEditShow,
       updatedUserSingleFollowing,
+      userSingleFollowing,
+      // edit show handlers
+      handleChangeEditShow,
       handleSubmitEditShow,
     } = this.props;
 
+    // To get the right show information displayed on the edition modal
+    // we need to compare if the current show name is in the user's following shows
     const currentFollow = userFollowings.filter((show) => show.tvShow.name === showDetail.name);
+    // Then, we need to extract his id
+    // who'll be used in the 'getUserSingleFollowing' function below
     const currentFollowId = Object.keys(currentFollow).map((key) => currentFollow[key].id);
 
+    // Local array needed for status dropdown (Select)
     const status = [
       {
         value: 0,
@@ -72,6 +84,8 @@ class EditShow extends React.Component {
       },
     ];
 
+    // If the object userSingleFollowing is empty, then launch getUserSingleFollowing method
+    // with the select followed show id in params
     if (Object.keys(userSingleFollowing).length < 1) {
       getUserSingleFollowing(currentFollowId[0]);
     }
@@ -83,12 +97,23 @@ class EditShow extends React.Component {
 
           <Grid container>
 
+            {/* Show Poster */}
             <Grid item>
               <img src={currentFollow[0].tvShow.poster} alt={currentFollow[0].tvShow.name} id="edit-modal-image" />
             </Grid>
 
             <Grid item style={{ padding: '3vh 4vw' }}>
 
+              {/*
+                Edit show form - inputs list :
+                - Status
+                - Rating
+                - Start date
+                - End date
+                - Episode progress
+                - Total rewatches
+                - Personal notes
+              */}
               <form
                 onSubmit={(event) => handleSubmitEditShow(
                   event,
@@ -281,24 +306,31 @@ class EditShow extends React.Component {
 }
 
 EditShow.propTypes = {
+  // Show infos
   showId: PropTypes.number.isRequired,
   getDetailShow: PropTypes.func.isRequired,
-  userInfos: PropTypes.object,
   showDetail: PropTypes.object,
-  userFollowings: PropTypes.array,
-  userSingleFollowing: PropTypes.object,
+  // User infos
+  userInfos: PropTypes.object,
+  // User followings
   getUserFollowings: PropTypes.func.isRequired,
+  userFollowings: PropTypes.array,
   getUserSingleFollowing: PropTypes.func.isRequired,
+  userSingleFollowing: PropTypes.object,
+  // edit show handlers
   handleChangeEditShow: PropTypes.func.isRequired,
-  handleSubmitEditShow: PropTypes.func.isRequired,
   updatedUserSingleFollowing: PropTypes.object,
+  handleSubmitEditShow: PropTypes.func.isRequired,
 };
 
 EditShow.defaultProps = {
+  // User infos
   userInfos: {},
+  // Show infos
   showDetail: {},
-  userSingleFollowing: {},
+  // User followings
   userFollowings: [],
+  userSingleFollowing: {},
   updatedUserSingleFollowing: {},
 };
 

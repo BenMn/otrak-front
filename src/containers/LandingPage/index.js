@@ -6,32 +6,42 @@ import LandingPage from 'src/components/LandingPage';
 
 // Action Creators
 import {
+  // Last show updates
   fetchTrending,
+  // Search
   updateSearchInput,
   fetchSearchInputResult,
-  openModal,
-  activeLoading,
   emptySearchResults,
+  // Modal
+  openModal,
+  // Loader
+  activeLoading,
+  // Show infos
   fetchDetailShow,
 } from 'src/store/reducer';
 
 const mapStateToProps = (state) => ({
+  // Last show updates
   trendingList: state.trendingList,
-
+  // Search
   searchInputValue: state.searchInputValue,
-
-  setOpen: state.setOpen,
-  open: state.open,
+  // Modal
   modalName: state.modalName,
+  open: state.open,
+  setOpen: state.setOpen,
+  // Loader
   loading: state.loading,
 });
 
 
 const mapDispatchToProps = (dispatch) => ({
+
+  // Last show updates
   getTrending: () => {
     dispatch(fetchTrending());
   },
 
+  // Search
   handleSearchInput: (newValue) => {
     dispatch(updateSearchInput(newValue));
   },
@@ -42,10 +52,12 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(fetchSearchInputResult(searchInputValue));
   },
 
+  // Modal
   handleOpen: (modalName) => {
     dispatch(openModal(modalName));
   },
 
+  // Show infos
   getDetailShow: (showId) => {
     dispatch(emptySearchResults());
     dispatch(fetchDetailShow(showId));

@@ -6,47 +6,65 @@ import LogForms from 'src/components/LogForms';
 
 // Action Creators
 import {
+  // Modal
   closeModal,
   openModal,
+  // Authentification
   updateAuthInput,
   fetchLoginAuthInfos,
   fetchRegisterAuthInfos,
+  setCurrentUser,
+  // History (dashboard)
   removeShowHistoryList,
+  // Loader
   activeLoading,
+  // User followings
   getUserSingleFollowing,
   getUserFollowings,
-  emptySearchResults,
-  fetchDetailShow,
-  handleChangeEditShow,
   updateCurrentFollowingShow,
-  setCurrentUser,
+  // Search
+  emptySearchResults,
+  // Show infos
+  fetchDetailShow,
+  // Edit show
+  handleChangeEditShow,
 } from 'src/store/reducer';
 
 const mapStateToProps = (state) => ({
+  // Modal
   setOpen: state.setOpen,
   open: state.open,
   modalName: state.modalName,
+  // Authentification
   authInputValue: state.authInputValue,
   userAuthInfos: state.userAuthInfos,
+  // Last show updates
   trendingList: state.trendingList,
+  // History (dashboard)
   updatedHistoryList: state.updatedHistoryList,
+  // Loader
   loading: state.loading,
+  // user infos
   userInfos: state.userInfos,
-  userSingleFollowing: state.userSingleFollowing,
+  // User followings
   userFollowings: state.userFollowings,
-  showDetail: state.showDetail,
+  userSingleFollowing: state.userSingleFollowing,
   updatedUserSingleFollowing: state.updatedUserSingleFollowing,
+  // Show infos
+  showDetail: state.showDetail,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  handleClose: () => {
-    dispatch(closeModal());
-  },
-
+  // Modal
   handleOpen: (modalName) => {
     dispatch(openModal(modalName));
   },
 
+  handleClose: () => {
+    dispatch(closeModal());
+  },
+
+  // Authentification
   handleAuthInput: (event, index) => {
     const { value, name } = event.target;
     dispatch(updateAuthInput(value, name, index));
@@ -70,10 +88,16 @@ const mapDispatchToProps = (dispatch) => ({
     event.preventDefault();
   },
 
+  setCurrentUser: (user) => {
+    dispatch(setCurrentUser(user));
+  },
+
+  // History
   handleDeleteHistoryShow: (showId) => {
     dispatch(removeShowHistoryList(showId));
   },
 
+  // User followings
   getUserFollowings: (userId) => {
     dispatch(getUserFollowings(userId));
   },
@@ -82,11 +106,13 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(getUserSingleFollowing(followId));
   },
 
+  // Show infos
   getDetailShow: (showId) => {
     dispatch(emptySearchResults());
     dispatch(fetchDetailShow(showId));
   },
 
+  // Edit show
   handleChangeEditShow: (event) => {
     const { name, value } = event.target;
     dispatch(handleChangeEditShow(name, value));
@@ -94,7 +120,6 @@ const mapDispatchToProps = (dispatch) => ({
 
   handleSubmitEditShow: (event, followId) => {
     event.persist();
-    console.log(event.target[0]);
     const status = event.target[0].value;
     const rating = event.target[2].value;
     const startDate = event.target[4].value;
@@ -113,10 +138,6 @@ const mapDispatchToProps = (dispatch) => ({
       followId,
     ));
     event.preventDefault();
-  },
-
-  setCurrentUser: (user) => {
-    dispatch(setCurrentUser(user));
   },
 });
 

@@ -70,11 +70,14 @@ const Header = ({
 );
 
 Header.propTypes = {
-  // avatarUploadHandler: PropTypes.func.isRequired,
+  // User infos
+  userInfos: PropTypes.object,
+  // Change username handlers
   handleUsernameInput: PropTypes.func.isRequired,
   handleUsernameInputSubmit: PropTypes.func.isRequired,
+  // Modals
   handleOpen: PropTypes.func.isRequired,
-  userInfos: PropTypes.object,
+  // avatarUploadHandler: PropTypes.func.isRequired,
 };
 
 Header.defaultProps = {

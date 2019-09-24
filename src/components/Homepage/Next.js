@@ -1,24 +1,19 @@
 /* eslint-disable react/prop-types */
-
 /* eslint-disable no-plusplus */
 /* eslint-disable react/jsx-props-no-spreading */
+
+// Import NPM
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import { NavLink } from 'react-router-dom';
 
-// Local Import
-import Icons from 'src/containers/Icons';
-
+// Material UI Components
 import {
   Typography,
   Grid,
   CardActionArea,
   Container,
 } from '@material-ui/core';
-
-// Slider library
-import Slider from 'react-slick';
 
 // import Material UI custom components
 import {
@@ -32,6 +27,13 @@ import {
   SearchResultTitle,
 } from 'src/styles/materialUi/materialUiStyles/HomePage';
 
+// Local Import
+import Icons from 'src/containers/Icons';
+
+// Slider library
+import Slider from 'react-slick';
+
+// Slider Arrow navigation
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
   return (
@@ -88,7 +90,11 @@ const Next = ({ nextList, getDetailShow }) => {
           justify="space-around"
           alignItems="center"
         >
-          <Typography variant="h3" className="title-icon-next-aired"><NextIconTitle /> Next To Watch</Typography>
+          <Typography variant="h3" className="title-icon-next-aired">
+            <NextIconTitle />
+            Next To Watch
+          </Typography>
+          {/* See All button */}
           {/* <Typography variant="h6">
             <a href="." className="see-all-next-aired">
               See all<NextSeeAllIcon />
@@ -107,15 +113,17 @@ const Next = ({ nextList, getDetailShow }) => {
             {nextList.map((currentShow) => (
               <SearchResultGridWithoutSlider item key={currentShow.id_tvmaze}>
                 <HomePageCard key={currentShow.id_tvmaze} id="currentCard">
+
+                  {/* Show Poster */}
                   <HomePageCardMedia
                     image={currentShow.poster === '' ? '../../src/styles/assets/images/notAvailable/no-image.jpeg' : currentShow.poster}
                   >
-                    <Grid
-                      container
-                      justify="flex-end"
-                    >
+
+                    {/* Fast Navigation icons */}
+                    <Grid container justify="flex-end">
                       <Icons showId={currentShow.id_tvmaze} categorie="search" />
                     </Grid>
+
                     {/* Show Title */}
                     <NavLink exact to={`/show/${currentShow.name}`}>
                       <CardActionArea onClick={() => getDetailShow(currentShow.id_tvmaze)}>
@@ -124,6 +132,7 @@ const Next = ({ nextList, getDetailShow }) => {
                         </SearchResultTitle>
                       </CardActionArea>
                     </NavLink>
+
                   </HomePageCardMedia>
                 </HomePageCard>
               </SearchResultGridWithoutSlider>
@@ -142,7 +151,11 @@ const Next = ({ nextList, getDetailShow }) => {
         justify="space-around"
         alignItems="center"
       >
-        <Typography variant="h3" className="title-icon-next-aired"><NextIconTitle /> Next To Watch</Typography>
+        <Typography variant="h3" className="title-icon-next-aired">
+          <NextIconTitle />
+          Next To Watch
+        </Typography>
+        {/* See All button */}
         {/* <Typography variant="h6">
           <a href="." className="see-all-next-aired">
             See all<NextSeeAllIcon />
@@ -156,9 +169,12 @@ const Next = ({ nextList, getDetailShow }) => {
           {nextList.map((currentShow) => (
             <HomePageGridOfOnCard item key={currentShow.id_tvmaze}>
               <HomePageCard key={currentShow.id_tvmaze} id="currentCard">
+
+                {/* Show Poster */}
                 <HomePageCardMedia
                   image={currentShow.poster}
                 >
+                  {/* Fast Navigation icons */}
                   <Grid
                     container
                     justify="flex-end"
@@ -174,6 +190,7 @@ const Next = ({ nextList, getDetailShow }) => {
                       </SearchResultTitle>
                     </CardActionArea>
                   </NavLink>
+
                 </HomePageCardMedia>
               </HomePageCard>
             </HomePageGridOfOnCard>

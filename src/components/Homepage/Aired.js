@@ -1,20 +1,11 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-plusplus */
 /* eslint-disable react/jsx-props-no-spreading */
+
+// Import NPM
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
-
-// Local import
-import Loader from 'src/components/Loader';
-import Icons from 'src/containers/Icons';
-
-// Slider library
-import Slider from 'react-slick';
-
-// Slider css style
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
 
 // import Material UI components
 import {
@@ -31,13 +22,25 @@ import {
   HomePageCardMedia,
   HomePageCardTitle,
   AiredBlockTitleSeeAll,
-  // AiredSeeAllIcon,
   AiredSubtitleSeasonEpisode,
   AiredTitleCardAndSubtitle,
   HomePageGridOfOnCard,
   SearchResultContainerWithoutSlider,
   SearchResultGridWithoutSlider,
+  // AiredSeeAllIcon,
 } from 'src/styles/materialUi/materialUiStyles/HomePage';
+
+// Local import
+import Loader from 'src/components/Loader';
+import Icons from 'src/containers/Icons';
+
+// Slider library
+import Slider from 'react-slick';
+
+// Slider css style
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
 
 // Micro component managing arrow's style
 function SampleNextArrow(props) {

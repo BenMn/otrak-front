@@ -210,23 +210,29 @@ const App = ({
 
 
 App.propTypes = {
+  // Modal
   handleOpen: PropTypes.func,
+  open: PropTypes.bool,
+  // Search
   handleSearchInput: PropTypes.func,
   handleSearchInputSubmit: PropTypes.func,
   storeSearchInputResult: PropTypes.array,
+  // Authentification
   handleLogOut: PropTypes.func,
   isLogged: PropTypes.bool,
-  open: PropTypes.bool,
 };
 
 App.defaultProps = {
+  // Modal
   handleOpen: () => { },
+  open: false,
+  // Search
   handleSearchInput: () => { },
   handleSearchInputSubmit: () => { },
-  handleLogOut: () => { },
   storeSearchInputResult: [],
+  // Authentification
+  handleLogOut: () => { },
   isLogged: false,
-  open: false,
 };
 
 // == Export

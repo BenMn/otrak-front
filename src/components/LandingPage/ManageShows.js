@@ -1,5 +1,7 @@
 // Import NPM
 import React from 'react';
+
+// Material UI Components
 import {
   Typography,
   Grid,
@@ -28,9 +30,11 @@ const ManageShows = () => (
           <Typography variant="h3" component="h3" align="left">Manage easley your shows</Typography>
         </span>
 
+        {/* Description */}
         <Typography align="left">List the shows you've seen, the ones you wanna see</Typography>
         <Typography align="left">Filter by tag, season, episodes</Typography>
 
+        {/* Favs */}
         <span className="title-icon--left">
           <ManageShowsIconStar />
           <Typography>
@@ -43,7 +47,7 @@ const ManageShows = () => (
 
     {/* Screenshot */}
     <Grid item lg={5}>
-      <img src={screendemo2} alt="Démo" className="ScreenDemo ScreenDemo--right" />
+      <img src={screendemo2} alt="Demo" className="ScreenDemo ScreenDemo--right" />
     </Grid>
 
   </Grid>

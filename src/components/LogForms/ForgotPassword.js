@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+
 // Import NPM
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -17,18 +19,20 @@ import {
   LogFormModalPaper,
 } from 'src/styles/materialUi/materialUiStyles/LogForms';
 
+// Local imports
 import Field from 'src/components/LogForms/Field';
 
+// CSS Local Styling
 import './LogForms.scss';
 
 // Images
 import logoOwl from './logo-owl.png';
 
+
 const ForgotPassword = ({
   handleOpen,
   handleAuthInput,
   handleAuthInputSubmit,
-  // eslint-disable-next-line react/prop-types
   userAuthInfos,
 }) => {
   // Filter for second object of userAuthInfos = Email field
@@ -36,7 +40,6 @@ const ForgotPassword = ({
 
   // Returns the email filed only
   const userAuthInfosFiltred = Object.keys(userAuthInfos)
-    // eslint-disable-next-line react/prop-types
     .filter((fieldName) => allowed.includes(userAuthInfos[fieldName].index))
     .reduce((newObject, key) => {
       newObject[key] = userAuthInfos[key];

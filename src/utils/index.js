@@ -1,6 +1,7 @@
 /* eslint-disable no-plusplus */
 /* eslint-disable import/prefer-default-export */
-// Import
+
+// Import NPM
 import axios from 'axios';
 
 // Trie SearchInputResult.

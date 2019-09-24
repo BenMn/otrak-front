@@ -1,4 +1,4 @@
-// import npm
+// Import NPM
 import React from 'react';
 import PropTypes from 'prop-types';
 

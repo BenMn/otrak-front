@@ -15,6 +15,7 @@ import {
   StartNowTitle,
 } from 'src/styles/materialUi/materialUiStyles/LandingPage';
 
+
 const StartToday = ({ handleOpen }) => (
   <>
     <StartNowGrid
@@ -23,12 +24,19 @@ const StartToday = ({ handleOpen }) => (
       justify="center"
       alignItems="center"
     >
+      {/* Icon */}
       <StartNowIcon />
+
+      {/* Title */}
       <StartNowTitle variant="h3">Start Today</StartNowTitle>
+
+      {/* Sign UP Button */}
       <Button variant="contained" color="primary" onClick={() => handleOpen('up')}>
         Create your account
       </Button>
+
       <Typography>Don't be afraid, it's free !</Typography>
+
     </StartNowGrid>
   </>
 );
