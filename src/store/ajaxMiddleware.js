@@ -1,3 +1,4 @@
+/* eslint-disable radix */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-case-declarations */
 /* eslint-disable no-console */
@@ -221,7 +222,6 @@ const ajaxMiddleware = (store) => (next) => (action) => {
         },
       })
         .then((response) => {
-          console.log(response, '<<<<<<<<<<<<< SINGLE SHOW USER FOLLOWING');
           store.dispatch(storeUserSingleFollowing(response.data));
           // store.dispatch(storeUserFollowings(response.data['hydra:member']));
         })
@@ -233,12 +233,19 @@ const ajaxMiddleware = (store) => (next) => (action) => {
 
     case UPDATE_CURRENT_FOLLOWING_SHOW:
 
+      console.log('°°°°°°°°°°°°°°°°°°°°°°°°°°°)');
+      console.log(action);
+      console.log('°°°°°°°°°°°°°°°°°°°°°°°°°°°)');
+
       const statusInInt = transformToInt(action.status);
+      const episodeInInt = parseInt(action.episodeProgress);
+      const seasonInInt = parseInt(action.seasonProgress);
 
       const updatedFollowedShowDatas = {
         status: statusInInt,
         endDate: action.endDate,
-        episode: action.number,
+        episode: episodeInInt,
+        season: seasonInInt,
       };
 
       axios.patch(`${url}/api/followings/${action.followId}`,

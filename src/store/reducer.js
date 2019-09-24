@@ -65,7 +65,8 @@ const initialState = {
     startDate: undefined,
     endDate: 'jj/mm/aaaa',
     episode: undefined,
-    rewatches: undefined,
+    season: undefined,
+    // rewatches: undefined,
     notes: undefined,
   },
   updatedHistoryList: [],
@@ -189,9 +190,12 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isLogged: false,
+        user: {},
         userInfos: {},
         storeUserAuthInfos: {},
         userAvatar: '',
+        userFollowings: [],
+        userSingleFollowing: {},
       };
 
     case STORE_AUTH_INPUT_RESULT:
@@ -421,8 +425,9 @@ export const storeUserAuthInfos = (token) => ({
   token,
 });
 
-export const logOut = () => ({
+export const logOut = (user) => ({
   type: LOG_OUT,
+  user,
 });
 
 
@@ -495,7 +500,8 @@ export const updateCurrentFollowingShow = (
   startDate,
   endDate,
   episodeProgress,
-  rewatches,
+  seasonProgress,
+  // rewatches,
   personalNotes,
   followId,
 ) => ({
@@ -505,7 +511,8 @@ export const updateCurrentFollowingShow = (
   startDate,
   endDate,
   episodeProgress,
-  rewatches,
+  seasonProgress,
+  // rewatches,
   personalNotes,
   followId,
 });

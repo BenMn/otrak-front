@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-plusplus */
 /* eslint-disable import/prefer-default-export */
 
@@ -178,3 +179,24 @@ export function setAuthorizationToken(token) {
     delete axios.defaults.headers.common.Authorization;
   }
 }
+
+// export function compareIdByEpisode(a, b) {
+//   const ratingA = a.show_rating;
+//   const ratingB = b.show_rating;
+
+//   let comparison = 0;
+//   if (ratingA < ratingB) {
+//     comparison = 1;
+//   }
+//   else if (ratingA > ratingB) {
+//     comparison = -1;
+//   }
+//   return comparison;
+// }
+
+// export function sortWatchingShowsByEpisodes(userFollowings) {
+//   const arrayWithoutEpisodes = userFollowings.filter((currentShow) => currentShow.season === null);
+//   const arrayWithEpisodes = userFollowings.filter((currentShow) => currentShow.season !== null);
+//   console.log(arrayWithEpisodes);
+//   const filterByShowName = arrayWithEpisodes.filter((show) => show.tvShow.id);
+// }
