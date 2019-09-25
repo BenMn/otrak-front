@@ -504,6 +504,8 @@ export const updateCurrentFollowingShow = (
   // rewatches,
   personalNotes,
   followId,
+  userId,
+  showId,
 ) => ({
   type: UPDATE_CURRENT_FOLLOWING_SHOW,
   status,
@@ -515,6 +517,8 @@ export const updateCurrentFollowingShow = (
   // rewatches,
   personalNotes,
   followId,
+  userId,
+  showId,
 });
 
 export const removeShowHistoryList = (showId) => ({

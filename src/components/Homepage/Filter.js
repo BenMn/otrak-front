@@ -167,46 +167,50 @@ const Filter = ({ sortBy }) => {
         <Divider />
         <List>
           <Box>
-            <ListItem button key="Title" onClick={() => sortBy('Title')} onChange={handleChange}>
+            <ListItem button key="Title">
               <Radio
                 checked={selectedValue === 'Title'}
                 value="Title"
                 color="default"
+                onChange={handleChange}
               />
-              <ListItemText primary="Title" onChange={handleChange} />
+              <ListItemText primary="Title" onClick={() => sortBy('Title')} />
             </ListItem>
           </Box>
 
-          <Box onClick={() => sortBy('Release date')} onChange={handleChange}>
+          <Box>
             <ListItem button key="Release date">
               <Radio
                 checked={selectedValue === 'Release date'}
                 value="Release date"
                 color="default"
+                onChange={handleChange}
               />
-              <ListItemText primary="Release date" onChange={handleChange} />
+              <ListItemText primary="Release date" onClick={() => sortBy('Release date')} />
             </ListItem>
           </Box>
 
-          <Box onClick={() => sortBy('Rating')} onChange={handleChange}>
+          <Box>
             <ListItem button key="Rating">
               <Radio
                 checked={selectedValue === 'Rating'}
                 value="Rating"
                 color="default"
+                onChange={handleChange}
               />
-              <ListItemText primary="Rating" onChange={handleChange} />
+              <ListItemText primary="Rating" onClick={() => sortBy('Rating')} />
             </ListItem>
           </Box>
 
-          <Box onClick={() => sortBy('Language')} onChange={handleChange}>
+          <Box>
             <ListItem button key="Language">
               <Radio
                 checked={selectedValue === 'Language'}
                 value="Language"
                 color="default"
+                onChange={handleChange}
               />
-              <ListItemText primary="Language" onChange={handleChange} />
+              <ListItemText primary="Language" onClick={() => sortBy('Language')} />
             </ListItem>
           </Box>
         </List>
