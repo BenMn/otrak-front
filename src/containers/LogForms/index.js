@@ -115,14 +115,14 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(handleChangeEditShow(name, value));
   },
 
-  handleSubmitEditShow: (event, followId) => {
+  handleSubmitEditShow: (event, followId, userId, showId) => {
     event.persist();
     const status = event.target[0].value;
     const rating = event.target[2].value;
     const startDate = event.target[4].value;
     const endDate = event.target[5].value;
-    const episodeProgress = event.target[6].value;
-    const seasonProgress = event.target[8].value;
+    const seasonProgress = event.target[6].value;
+    const episodeProgress = event.target[8].value;
     // const rewatches = event.target[8].value;
     const personalNotes = event.target[10].value;
     dispatch(updateCurrentFollowingShow(
@@ -135,6 +135,8 @@ const mapDispatchToProps = (dispatch) => ({
       // rewatches,
       personalNotes,
       followId,
+      userId,
+      showId,
     ));
     event.preventDefault();
   },
