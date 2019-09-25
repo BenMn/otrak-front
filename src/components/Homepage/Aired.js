@@ -76,7 +76,7 @@ function SamplePrevArrow(props) {
 }
 
 const Aired = ({ trendingList, getDetailShow, userFollowings }) => {
-  // Setting of Slider component
+  // Setting of Slider co mponent
   const settings = {
     dots: true,
     infinite: true,
