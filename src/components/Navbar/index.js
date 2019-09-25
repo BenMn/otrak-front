@@ -46,7 +46,7 @@ const Navbar = ({
   loading,
 }) => (
   <div id="Navbar">
-    <AppBar position="fixed">
+    <AppBar position="fixed" style={{ marginTop: -2 }}>
       <Toolbar>
         <Grid container spacing={2} justify="center">
 

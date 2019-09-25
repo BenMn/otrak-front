@@ -201,13 +201,13 @@ const ajaxMiddleware = (store) => (next) => (action) => {
 
     case GET_USER_FOLLOWINGS:
 
-      axios.get(`${url}/api/users/${action.userId}/followings`, {
+      axios.get(`${url}/api/users/me/followings/shows`, {
         headers: {
           'Content-Type': 'application/json',
         },
       })
         .then((response) => {
-          store.dispatch(storeUserFollowings(response.data['hydra:member']));
+          store.dispatch(storeUserFollowings(response.data));
         })
         .catch((error) => {
           console.error(error);
