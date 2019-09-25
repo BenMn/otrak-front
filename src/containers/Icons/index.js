@@ -56,7 +56,16 @@ const mapDispatchToProps = (dispatch) => ({
     showEpisode,
   ) => {
     switch (categorie) {
-      case 'aired' || 'next':
+      case 'aired':
+        dispatch(startFollowingShowAtThisEpisode(
+          showId,
+          showSeason,
+          showEpisode,
+          userId,
+        ));
+        break;
+
+      case 'next':
         dispatch(startFollowingShowAtThisEpisode(
           showId,
           showSeason,
@@ -72,7 +81,7 @@ const mapDispatchToProps = (dispatch) => ({
         ));
         break;
       // eslint-disable-next-line no-console
-      default: console.log('default case');
+      default: console.log(categorie, 'default case');
     }
   },
 

@@ -29,7 +29,7 @@ import 'react-id-swiper/lib/styles/scss/swiper.scss'; // scss
 import 'react-id-swiper/lib/styles/css/swiper.css'; // css
 
 
-const Cards = ({ filtredArray }) => (
+const Cards = ({ filtredArray, getDetailShow, stopFollowingShow }) => (
   <Grid
     container
     justify="center"
@@ -50,17 +50,21 @@ const Cards = ({ filtredArray }) => (
           {/* Show Poster */}
           <HomePageCardMedia
             image={show.tvShow.poster}
-            title={show.tvShow.name}
           >
             <Grid
               container
               justify="flex-end"
             >
               {/* fast Navigation icons */}
-              <Icons showId={show.tvShow.id} />
+              <Icons
+                showId={show.tvShow.id}
+                showIdFollowings={show.id}
+                stopFollowingShow={stopFollowingShow}
+              />
             </Grid>
 
-            <CardActionArea>
+            {/* Manque l'id dans les data pour rediriger vers la bonne URL */}
+            <CardActionArea onClick={() => getDetailShow(show.tvShow.id)}>
               <AiredTitleCardAndSubtitle
                 container
                 direction="row"
@@ -96,6 +100,8 @@ const Cards = ({ filtredArray }) => (
 
 Cards.propTypes = {
   filtredArray: PropTypes.array,
+  getDetailShow: PropTypes.func.isRequired,
+  stopFollowingShow: PropTypes.func.isRequired,
 };
 
 Cards.defaultProps = {

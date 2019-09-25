@@ -124,7 +124,13 @@ const Next = ({ nextList, getDetailShow }) => {
 
                     {/* Fast Navigation icons */}
                     <Grid container justify="flex-end">
-                      <Icons showId={currentShow.show_id_tvmaze} showIdBdd={currentShow.show_id} categorie="next" />
+                      <Icons
+                        showSeason={currentShow.season}
+                        showEpisode={currentShow.number}
+                        showId={currentShow.show_id_tvmaze}
+                        showIdBdd={currentShow.show_id}
+                        categorie="next"
+                      />
                     </Grid>
                     {/* Show Title */}
                     <NavLink exact to={`/show/${currentShow.name}`}>
@@ -181,7 +187,13 @@ const Next = ({ nextList, getDetailShow }) => {
                     container
                     justify="flex-end"
                   >
-                    <Icons showId={currentShow.id_tvmaze} showIdBdd={currentShow.show_id} categorie="next" />
+                    <Icons
+                      showSeason={currentShow.season}
+                      showEpisode={currentShow.number}
+                      showId={currentShow.show_id_tvmaze}
+                      showIdBdd={currentShow.show_id}
+                      categorie="next"
+                    />
                   </Grid>
 
                   {/* Show Title */}

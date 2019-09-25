@@ -16,6 +16,10 @@ import {
   // User followings
   getUserFollowings,
   // avatarUploadHandler,
+
+  emptySearchResults,
+  fetchDetailShow,
+  DeleteFollowingShow,
 } from 'src/store/reducer';
 
 const mapStateToProps = (state) => ({
@@ -59,6 +63,16 @@ const mapDispatchToProps = (dispatch) => ({
   // User followings
   getUserFollowings: (userId) => {
     dispatch(getUserFollowings(userId));
+  },
+
+  // Show Infos
+  getDetailShow: (showId) => {
+    dispatch(emptySearchResults());
+    dispatch(fetchDetailShow(showId));
+  },
+
+  stopFollowingShow: (showIdBdd) => {
+    dispatch(DeleteFollowingShow(showIdBdd));
   },
 
   // avatarUploadHandler: (event) => {
