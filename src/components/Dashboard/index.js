@@ -21,6 +21,8 @@ class Dashboard extends React.Component {
 
   render() {
     const {
+      stopFollowingShow,
+      getDetailShow,
       // User infos
       userInfos,
       userAuthInfos,
@@ -46,6 +48,10 @@ class Dashboard extends React.Component {
         />
         <Tabs
           userFollowings={userFollowings}
+          getDetailShow={getDetailShow}
+          stopFollowingShow={stopFollowingShow}
+          handleOpen={handleOpen}
+          userInfos={userInfos}
         />
       </div>
     );
@@ -54,6 +60,7 @@ class Dashboard extends React.Component {
 
 
 Dashboard.propTypes = {
+  getDetailShow: PropTypes.func.isRequired,
   // User infos
   userInfos: PropTypes.object,
   userFollowings: PropTypes.array,

@@ -120,7 +120,7 @@ const SearchResult = ({
 
                 {/* Show Poster */}
                 <HomePageCardMedia
-                  image={currentShow.poster === '' ? '../../src/styles/assets/images/notAvailable/no-image.jpeg' : currentShow.poster}
+                  image={currentShow.poster === '' ? 'src/styles/assets/images/notAvailable/notAvailable.jpg' : currentShow.poster}
                 >
                   {/* Fast Navigation icons */}
                   <Grid
@@ -178,7 +178,7 @@ const SearchResult = ({
 
                 {/* Show Poster */}
                 <HomePageCardMedia
-                  image={currentShow.poster}
+                  image={currentShow.poster === '' ? 'src/styles/assets/images/notAvailable/no-image.jpeg' : currentShow.poster}
                 >
                   {/* Fast Navigation icons */}
                   <Grid

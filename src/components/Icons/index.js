@@ -23,6 +23,7 @@ import AddCircleIcon from '@material-ui/icons/AddCircle';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import CreateIcon from '@material-ui/icons/Create';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 
 // Utils funtions
 import { displayCardActionButtons, tooltipTitleByCategory } from 'src/utils';
@@ -47,34 +48,56 @@ const Icons = ({
   stopFollowingShow,
 }) => (
   <>
+    {isLogged === true ? (
+      categorie === 'aired' ? (
+        tracked === false ? (
+          <Tooltip title="Start this show from the begenning" placement="top">
+            <HomePageIconContainer className="hiddenCardIcon">
+              <PlayArrowIcon onClick={() => addShowByCategorie(
+                categorie = 'search',
+                showId,
+                userInfos.id,
+                showSeason,
+                showEpisode,
+              )}
+              />
+            </HomePageIconContainer>
+          </Tooltip>
+        ) : ''
+      ) : ''
+    ) : (
+      ''
+    )}
+
     {/* Add to list */}
     {isLogged === true ? (
       tracked === true ? (
-        <Tooltip title="Episode watched" placement="top">
-          <HomePageIconContainer className="hiddenCardIcon">
-            <AddCircleIcon onClick={() => addShowByCategorie(
-              categorie,
-              showId,
-              userInfos.id,
-              showSeason,
-              showEpisode,
-            )}
-            />
-          </HomePageIconContainer>
-        </Tooltip>
-      ) : (
-        <Tooltip title={tooltipTitleByCategory(categorie)} placement="top">
-          <HomePageIconContainer className="hiddenCardIcon">
-            <AddCircleIcon onClick={() => addShowByCategorie(
-              categorie,
-              showId,
-              userInfos.id,
-              showSeason,
-              showEpisode,
-            )}
-            />
-          </HomePageIconContainer>
-        </Tooltip>
+        categorie === 'aired' ? '' : (
+          <Tooltip title="Episode watched" placement="top">
+            <HomePageIconContainer className="hiddenCardIcon">
+              <AddCircleIcon onClick={() => addShowByCategorie(
+                categorie,
+                showId,
+                userInfos.id,
+                showSeason,
+                showEpisode,
+              )}
+              />
+            </HomePageIconContainer>
+          </Tooltip>
+        )) : (
+          <Tooltip title={tooltipTitleByCategory(categorie)} placement="top">
+            <HomePageIconContainer className="hiddenCardIcon">
+              <AddCircleIcon onClick={() => addShowByCategorie(
+                categorie,
+                showId,
+                userInfos.id,
+                showSeason,
+                showEpisode,
+              )}
+              />
+            </HomePageIconContainer>
+          </Tooltip>
       )) : (
         <Tooltip title="Sign in to add this show" placement="top">
           <HomePageIconContainer className="hiddenCardIcon">
@@ -82,8 +105,6 @@ const Icons = ({
           </HomePageIconContainer>
         </Tooltip>
     )}
-
-
     {/* Add to next to watch */}
     {categorie === 'next' || categorie === 'aired' ? '' : (
       isLogged === true ? (

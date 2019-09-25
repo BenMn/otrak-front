@@ -63,7 +63,13 @@ function a11yProps(index) {
   };
 }
 
-const AllTabs = ({ userFollowings }) => {
+const AllTabs = ({
+  userFollowings,
+  getDetailShow,
+  stopFollowingShow,
+  handleOpen,
+  userInfos,
+}) => {
   function scroolToTop() {
     window.scrollTo(0, 0);
   }
@@ -75,6 +81,7 @@ const AllTabs = ({ userFollowings }) => {
   // > the Tabs title
   // > the const status
   const userFollowingsShowsSortedByStatus = SortShowFollowedByStatus(userFollowings);
+  // console.log(userFollowingsShowsSortedByStatus, 'aaaaaaaaaaaaaaaaa');
 
   // Change tab handler
   function handleChange(event, newValue) {
@@ -120,6 +127,10 @@ const AllTabs = ({ userFollowings }) => {
                 <Grid container spacing={6} justify="center" key={`${value}${statut}`}>
                   <Cards
                     filtredArray={filtredArray}
+                    getDetailShow={getDetailShow}
+                    stopFollowingShow={stopFollowingShow}
+                    handleOpen={handleOpen}
+                    userInfos={userInfos}
                   />
                 </Grid>
               )))
@@ -134,6 +145,8 @@ const AllTabs = ({ userFollowings }) => {
 
 AllTabs.propTypes = {
   userFollowings: PropTypes.array,
+  getDetailShow: PropTypes.func.isRequired,
+  stopFollowingShow: PropTypes.func.isRequired,
 };
 
 AllTabs.defaultProps = {

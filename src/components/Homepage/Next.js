@@ -124,16 +124,33 @@ const Next = ({ nextList, getDetailShow }) => {
 
                     {/* Fast Navigation icons */}
                     <Grid container justify="flex-end">
-                      <Icons showId={currentShow.show_id_tvmaze} showIdBdd={currentShow.show_id} categorie="next" />
+                      <Icons
+                        showSeason={currentShow.season}
+                        showEpisode={currentShow.number}
+                        showId={currentShow.show_id_tvmaze}
+                        showIdBdd={currentShow.show_id}
+                        categorie="next"
+                      />
                     </Grid>
                     {/* Show Title */}
-                    <NavLink exact to={`/show/${currentShow.name}`}>
-                      <CardActionArea onClick={() => getDetailShow(currentShow.id_tvmaze)}>
-                        <SearchResultTitle variant="h5" component="h2">
-                          {currentShow.name}
-                        </SearchResultTitle>
-                      </CardActionArea>
-                    </NavLink>
+                    <CardActionArea>
+                      <AiredTitleCardAndSubtitle
+                        container
+                        direction="row"
+                        justify="center"
+                        onClick={() => getDetailShow(currentShow.show_id_tvmaze)}
+                      >
+                        <NavLink exact to={`/show/${currentShow.show_name}`}>
+                          <HomePageCardTitle variant="h5" component="h2">
+                            {currentShow.show_name}
+                          </HomePageCardTitle>
+
+                          <AiredSubtitleSeasonEpisode>
+                            {currentShow.season.toString().length > 2 ? currentShow.season : `S${currentShow.season}`} {currentShow.number === null ? '' : `E${currentShow.number}`}
+                          </AiredSubtitleSeasonEpisode>
+                        </NavLink>
+                      </AiredTitleCardAndSubtitle>
+                    </CardActionArea>
 
                   </HomePageCardMedia>
                 </HomePageCard>
@@ -181,7 +198,13 @@ const Next = ({ nextList, getDetailShow }) => {
                     container
                     justify="flex-end"
                   >
-                    <Icons showId={currentShow.id_tvmaze} showIdBdd={currentShow.show_id} categorie="next" />
+                    <Icons
+                      showSeason={currentShow.season}
+                      showEpisode={currentShow.number}
+                      showId={currentShow.show_id_tvmaze}
+                      showIdBdd={currentShow.show_id}
+                      categorie="next"
+                    />
                   </Grid>
 
                   {/* Show Title */}
