@@ -26,8 +26,10 @@ const Icons = ({
   addToWatchList,
   userInfos,
   showId,
+  showIdTvmaze,
   showIdFollowings,
   stopFollowingShow,
+  handleOpen,
 }) => (
   <>
     {/* <HomePageIconContainer className="hiddenCardIcon">
@@ -35,7 +37,7 @@ const Icons = ({
     </HomePageIconContainer> */}
 
     <Tooltip title="Edit Show" placement="top">
-      <HomePageIconContainer className="hiddenCardIcon">
+      <HomePageIconContainer className="hiddenCardIcon" onClick={() => handleOpen(showIdTvmaze)}>
         <CreateIcon />
       </HomePageIconContainer>
     </Tooltip>
@@ -59,6 +61,7 @@ Icons.propTypes = {
   userInfos: PropTypes.object,
   showId: PropTypes.number,
   showIdFollowings: PropTypes.number.isRequired,
+  handleOpen: PropTypes.func.isRequired,
 };
 
 Icons.defaultProps = {

@@ -63,7 +63,13 @@ function a11yProps(index) {
   };
 }
 
-const AllTabs = ({ userFollowings, getDetailShow, stopFollowingShow }) => {
+const AllTabs = ({
+  userFollowings,
+  getDetailShow,
+  stopFollowingShow,
+  handleOpen,
+  userInfos,
+}) => {
   function scroolToTop() {
     window.scrollTo(0, 0);
   }
@@ -75,7 +81,7 @@ const AllTabs = ({ userFollowings, getDetailShow, stopFollowingShow }) => {
   // > the Tabs title
   // > the const status
   const userFollowingsShowsSortedByStatus = SortShowFollowedByStatus(userFollowings);
-  console.log(userFollowingsShowsSortedByStatus, 'aaaaaaaaaaaaaaaaa');
+  // console.log(userFollowingsShowsSortedByStatus, 'aaaaaaaaaaaaaaaaa');
 
   // Change tab handler
   function handleChange(event, newValue) {
@@ -123,6 +129,8 @@ const AllTabs = ({ userFollowings, getDetailShow, stopFollowingShow }) => {
                     filtredArray={filtredArray}
                     getDetailShow={getDetailShow}
                     stopFollowingShow={stopFollowingShow}
+                    handleOpen={handleOpen}
+                    userInfos={userInfos}
                   />
                 </Grid>
               )))

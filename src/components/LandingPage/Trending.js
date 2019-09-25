@@ -40,7 +40,7 @@ const Trending = ({ trendingList, getDetailShow }) => {
         {/* ------------------ Anime Cards ----------------  */}
         <TrendingTitleTranding variant="h3" align="center" className="title-icon">
           <TrendingIcon />
-          Just Aired
+          In the next 24 hours !
         </TrendingTitleTranding>
         <TrendingGridAnime
           container
@@ -58,8 +58,7 @@ const Trending = ({ trendingList, getDetailShow }) => {
 
                     {/* Show Poster */}
                     <TrendingCardMedia
-                      image={currentShow.poster}
-                      title={currentShow.show_name}
+                      image={currentShow.poster === '' ? 'src/styles/assets/images/notAvailable/no-image.jpeg' : currentShow.poster}
                     >
                       <AiredTitleCardAndSubtitle
                         container
@@ -104,8 +103,7 @@ const Trending = ({ trendingList, getDetailShow }) => {
 
                     {/* Show Poster */}
                     <TrendingCardMedia
-                      image={currentShow.poster}
-                      title={currentShow.show_name}
+                      image={currentShow.poster === '' ? 'src/styles/assets/images/notAvailable/no-image.jpeg' : currentShow.poster}
                     >
                       <AiredTitleCardAndSubtitle
                         container

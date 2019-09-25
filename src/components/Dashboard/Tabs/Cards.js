@@ -29,7 +29,13 @@ import 'react-id-swiper/lib/styles/scss/swiper.scss'; // scss
 import 'react-id-swiper/lib/styles/css/swiper.css'; // css
 
 
-const Cards = ({ filtredArray, getDetailShow, stopFollowingShow }) => (
+const Cards = ({
+  filtredArray,
+  getDetailShow,
+  stopFollowingShow,
+  handleOpen,
+  userInfos,
+}) => (
   <Grid
     container
     justify="center"
@@ -58,13 +64,15 @@ const Cards = ({ filtredArray, getDetailShow, stopFollowingShow }) => (
               {/* fast Navigation icons */}
               <Icons
                 showId={show.tvShow.id}
+                showIdTvmaze={show.idTvmaze}
                 showIdFollowings={show.id}
                 stopFollowingShow={stopFollowingShow}
+                handleOpen={handleOpen}
+                userInfos={userInfos}
               />
             </Grid>
 
-            {/* Manque l'id dans les data pour rediriger vers la bonne URL */}
-            <CardActionArea onClick={() => getDetailShow(show.tvShow.id)}>
+            <CardActionArea onClick={() => getDetailShow(show.idTvmaze)}>
               <AiredTitleCardAndSubtitle
                 container
                 direction="row"
