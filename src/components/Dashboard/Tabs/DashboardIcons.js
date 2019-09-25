@@ -2,6 +2,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import {
+  Tooltip,
+} from '@material-ui/core';
+
 // import Material UI custom components
 import {
   HomePageIconContainer,
@@ -22,25 +26,25 @@ const Icons = ({
   addToWatchList,
   userInfos,
   showId,
-  getDetailShow,
+  showIdFollowings,
+  stopFollowingShow,
 }) => (
   <>
-    <HomePageIconContainer className="hiddenCardIcon">
+    {/* <HomePageIconContainer className="hiddenCardIcon">
       <AddCircleIcon onClick={() => addToWatchList(showId, userInfos.id)} />
-    </HomePageIconContainer>
+    </HomePageIconContainer> */}
 
-    <HomePageIconContainer className="hiddenCardIcon">
-      <VisibilityIcon onClick={() => getDetailShow(showId)} />
-    </HomePageIconContainer>
+    <Tooltip title="Edit Show" placement="top">
+      <HomePageIconContainer className="hiddenCardIcon">
+        <CreateIcon />
+      </HomePageIconContainer>
+    </Tooltip>
 
-    <HomePageIconContainer className="hiddenCardIcon">
-      <CreateIcon />
-    </HomePageIconContainer>
-
-    <HomePageIconContainer className="hiddenCardIcon">
-      <DeleteForeverIcon />
-    </HomePageIconContainer>
-
+    <Tooltip title="Unfollow this show" placement="top">
+      <HomePageIconContainer className="hiddenCardIcon" onClick={() => stopFollowingShow(showIdFollowings)}>
+        <DeleteForeverIcon />
+      </HomePageIconContainer>
+    </Tooltip>
     <HomePageIconContainer
       onMouseOver={(event) => displayCardActionButtons(event)}
     >
@@ -51,14 +55,15 @@ const Icons = ({
 
 Icons.propTypes = {
   addToWatchList: PropTypes.func,
-  getDetailShow: PropTypes.func,
+  stopFollowingShow: PropTypes.func,
   userInfos: PropTypes.object,
   showId: PropTypes.number,
+  showIdFollowings: PropTypes.number.isRequired,
 };
 
 Icons.defaultProps = {
   addToWatchList: () => {},
-  getDetailShow: () => {},
+  stopFollowingShow: () => {},
   userInfos: {},
   showId: null,
 };
