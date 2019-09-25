@@ -99,7 +99,7 @@ const Aired = ({ trendingList, getDetailShow, userFollowings }) => {
           justify="space-around"
           alignItems="center"
         >
-          <Typography variant="h3" component="p" className="title-icon-next-aired"><AiredIconTitle /> Just Aired</Typography>
+          <Typography variant="h3" component="p" className="title-icon-next-aired"><AiredIconTitle />{trendingList.length < 15 ? 'Your followed shows broadcasted in the next 24 hours' : 'Episodes broadcasted in the next 24 hours'}</Typography>
           {/* <Typography variant="h6">
             <a href="." className="see-all-next-aired">
               See all<AiredSeeAllIcon />
@@ -182,7 +182,7 @@ const Aired = ({ trendingList, getDetailShow, userFollowings }) => {
         justify="space-around"
         alignItems="center"
       >
-        <Typography variant="h3" component="p" className="title-icon-next-aired"><AiredIconTitle /> Just Aired</Typography>
+        <Typography variant="h3" component="p" className="title-icon-next-aired"><AiredIconTitle /> Episodes broadcasted in the next 24 hours</Typography>
         {/* <Typography variant="h6">
           <a href="." className="see-all-next-aired">
             See all<AiredSeeAllIcon />

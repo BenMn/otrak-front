@@ -50,6 +50,8 @@ class Dashboard extends React.Component {
           userFollowings={userFollowings}
           getDetailShow={getDetailShow}
           stopFollowingShow={stopFollowingShow}
+          handleOpen={handleOpen}
+          userInfos={userInfos}
         />
       </div>
     );
