@@ -553,9 +553,10 @@ export const planningWatchShow = (showId, userId) => ({
   userId,
 });
 
-export const DeleteFollowingShow = (showIdBdd) => ({
+export const DeleteFollowingShow = (showIdBdd, userId) => ({
   type: DELETE_FOLLOWING_SHOW,
   showIdBdd,
+  userId,
 });
 
 export const startFollowingShowFromTheBeginning = (showId, userId) => ({

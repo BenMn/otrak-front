@@ -43,7 +43,7 @@ const Icons = ({
     </Tooltip>
 
     <Tooltip title="Unfollow this show" placement="top">
-      <HomePageIconContainer className="hiddenCardIcon" onClick={() => stopFollowingShow(showIdFollowings)}>
+      <HomePageIconContainer className="hiddenCardIcon" onClick={() => stopFollowingShow(showIdFollowings, userInfos.id)}>
         <DeleteForeverIcon />
       </HomePageIconContainer>
     </Tooltip>

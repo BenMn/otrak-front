@@ -71,8 +71,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(fetchDetailShow(showId));
   },
 
-  stopFollowingShow: (showIdBdd) => {
-    dispatch(DeleteFollowingShow(showIdBdd));
+  stopFollowingShow: (showIdBdd, userId) => {
+    dispatch(DeleteFollowingShow(showIdBdd, userId));
   },
 
   // avatarUploadHandler: (event) => {
@@ -82,7 +82,6 @@ const mapDispatchToProps = (dispatch) => ({
   // },
 
 });
-
 // Container
 const DashboardContainer = connect(
   mapStateToProps,
