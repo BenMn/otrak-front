@@ -320,6 +320,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       })
         .then((response) => {
           console.log(response);
+          store.dispatch(getUserFollowings(action.userId));
         })
         .catch((error) => {
           console.error(error);
