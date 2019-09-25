@@ -53,6 +53,7 @@ export const EditShowField = styled(TextField)({
 
 export const EditShowLargeField = styled(TextField)({
   width: '31vw',
+  innerHeight: '21vh',
 });
 
 export const EditShowButtons = styled(Button)({

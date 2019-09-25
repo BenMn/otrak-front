@@ -159,7 +159,7 @@ const SearchResult = ({
         alignItems="center"
       >
         <Typography variant="h3" component="p" className="title-icon-next-aired">
-          <SearchResultIconTitle />{`Search for ${searchInputValue}` }
+          <SearchResultIconTitle />{`Search for '${searchInputValue}'` }
         </Typography>
         {/* See All Link */}
         {/* <Typography variant="h6">

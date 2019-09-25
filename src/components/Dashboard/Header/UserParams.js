@@ -4,11 +4,19 @@ import {
   AreaChart, Area,
 } from 'recharts';
 
+import '../Dashboard.scss';
+
 function randomChartValue() {
-  return Math.floor((Math.random() * 1000) + 100);
+  return Math.floor((Math.random() * 1000) + 300);
 }
 
 const data = [
+  {
+    uv: randomChartValue(), pv: randomChartValue(), amt: randomChartValue(),
+  },
+  {
+    uv: randomChartValue(), pv: randomChartValue(), amt: randomChartValue(),
+  },
   {
     uv: randomChartValue(), pv: randomChartValue(), amt: randomChartValue(),
   },
@@ -37,41 +45,71 @@ const Charts = () => (
     <AreaChart
       style={{ margin: '-4vh 0 1vh -3vw' }}
       width={700}
-      height={65}
+      height={80}
       data={data}
       margin={{
-        top: 10, right: 0, left: 0, bottom: 0,
+        top: 5, right: 0, left: 0, bottom: 0,
       }}
     >
-      <Area type="monotone" dataKey="uv" stroke="#fff" fill="#c54949" />
+      <defs>
+        <linearGradient id="stroke" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="20%" stopColor="#fff" stopOpacity={1} />
+          <stop offset="97%" stopColor="#fff" stopOpacity={0} />
+        </linearGradient>
+        <linearGradient id="fillLight" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="20%" stopColor="#c54949" stopOpacity={1} />
+          <stop offset="97%" stopColor="#c54949" stopOpacity={0} />
+        </linearGradient>
+      </defs>
+      <Area type="monotone" dataKey="uv" stroke="url(#stroke)" fillOpacity={1} fill="url(#fillLight)" />
     </AreaChart>
-    Total watchtime per day
+    <p className="stats-subText">Total watchtime per day</p>
 
     <AreaChart
       style={{ margin: '0 0 1vh -3vw' }}
       width={700}
-      height={65}
+      height={80}
       data={data}
       margin={{
-        top: 10, right: 0, left: 0, bottom: 0,
+        top: 5, right: 0, left: 0, bottom: 0,
       }}
     >
-      <Area type="monotone" dataKey="pv" stroke="#fff" fill="#b71c1c" />
+      <defs>
+        <linearGradient id="stroke" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="20%" stopColor="#fff" stopOpacity={1} />
+          <stop offset="97%" stopColor="#fff" stopOpacity={0} />
+        </linearGradient>
+        <linearGradient id="fillMain" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="20%" stopColor="#b71c1c" stopOpacity={1} />
+          <stop offset="97%" stopColor="#b71c1c" stopOpacity={0} />
+        </linearGradient>
+      </defs>
+      <Area type="monotone" dataKey="pv" stroke="url(#stroke)" fillOpacity={1} fill="url(#fillMain)" />
     </AreaChart>
-    Total episodes watched per week
+    <p className="stats-subText">Total episodes watched per week</p>
 
     <AreaChart
       style={{ margin: '0 0 1vh -3vw' }}
       width={700}
-      height={65}
+      height={80}
       data={data}
       margin={{
-        top: 10, right: 0, left: 0, bottom: 0,
+        top: 5, right: 0, left: 0, bottom: 0,
       }}
     >
-      <Area type="monotone" dataKey="amt" stroke="#fff" fill="#801313" />
+      <defs>
+        <linearGradient id="stroke" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="20%" stopColor="#fff" stopOpacity={1} />
+          <stop offset="97%" stopColor="#fff" stopOpacity={0} />
+        </linearGradient>
+        <linearGradient id="fillDark" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="20%" stopColor="#801313" stopOpacity={1} />
+          <stop offset="97%" stopColor="#801313" stopOpacity={0} />
+        </linearGradient>
+      </defs>
+      <Area type="monotone" dataKey="amt" stroke="url(#stroke)" fillOpacity={1} fill="url(#fillDark)" />
     </AreaChart>
-    Total seasons finished per month
+    <p className="stats-subText">Total seasons finished per month</p>
   </>
 );
 

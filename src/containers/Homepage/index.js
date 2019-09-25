@@ -25,6 +25,8 @@ const mapStateToProps = (state) => ({
   // Search
   searchInputValue: state.searchInputValue,
   storeSearchInputResult: state.storeSearchInputResult,
+  // Autentification
+  isLogged: state.isLogged,
 });
 
 const mapDispatchToProps = (dispatch) => ({

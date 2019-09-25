@@ -78,6 +78,10 @@ export const HomePageCardIcon = styled(TuneIcon)({
   alignItems: 'center',
 });
 
+export const HomepageScreenPicture = styled(CardMedia)({
+  width: '100vw',
+});
+
 
 // ------------------- Styles of SearchResult.js ------------------------//
 
@@ -137,7 +141,7 @@ export const AiredSubtitleSeasonEpisode = styled(Typography)({
 });
 
 export const AiredTitleCardAndSubtitle = styled(Grid)({
-  background: 'linear-gradient(0deg, rgba(21,21,21,1) 55%, rgba(21,21,21,0) 100%)',
+  background: 'linear-gradient(0deg, rgba(21,21,21,1) 65%, rgba(21,21,21,0) 100%)',
 });
 // ------------------- Styles of Next.js ------------------------//
 

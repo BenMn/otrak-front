@@ -12,6 +12,7 @@ import Loader from 'src/components/Loader';
 import {
   Grid,
   MenuItem,
+  Typography,
 } from '@material-ui/core';
 
 // Material UI custom Components
@@ -119,7 +120,7 @@ class EditShow extends React.Component {
           {console.log(showDetail)}
           {console.log(userSingleFollowing.id)}
 
-          <Grid container>
+          <Grid container alignItems="space-between">
 
             {/* Show Poster */}
             <Grid item>
@@ -128,7 +129,11 @@ class EditShow extends React.Component {
 
             <Grid item style={{ padding: '3vh 4vw' }}>
 
-              {/*
+              <Grid container justify="space-around" direction="column" spacing={5}>
+                <Grid item style={{ marginTop: '1vh' }}>
+                  <Typography component="h3" variant="h3">{showDetail.name}</Typography>
+                </Grid>
+                {/*
                 Edit show form - inputs list :
                 - Status
                 - Rating
@@ -139,174 +144,177 @@ class EditShow extends React.Component {
                 - Total rewatches
                 - Personal notes
               */}
-              <form
-                onSubmit={(event) => handleSubmitEditShow(
-                  event,
-                  userSingleFollowing.id,
-                  userInfos.id,
-                  showDetail.id,
-                )}
-              >
+                <Grid item>
 
-                <Grid
-                  container
-                  direction="column"
-                  spacing={2}
-                  style={{ height: '100%' }}
-                  justify="space-evenly"
-                  alignItems="center"
-                >
+                  <form
+                    onSubmit={(event) => handleSubmitEditShow(
+                      event,
+                      userSingleFollowing.id,
+                      userInfos.id,
+                      showDetail.id,
+                    )}
+                    style={{ height: '83%' }}
+                  >
 
-                  <Grid item>
                     <Grid
                       container
-                      spacing={2}
+                      direction="column"
+                      spacing={5}
                       style={{ height: '100%' }}
                       justify="space-evenly"
                       alignItems="center"
                     >
 
-                      {/* Status */}
                       <Grid item>
-                        <EditShowField
-                          name="status"
-                          id="status"
-                          fullWidth
-                          select
-                          label="Status"
-                          margin="normal"
-                          variant="outlined"
-                          defaultValue={status[showDetail.status].label}
-                          value={updatedUserSingleFollowing.status}
-                          onChange={(event) => handleChangeEditShow(event)}
+                        <Grid
+                          container
+                          spacing={2}
+                          style={{ height: '100%' }}
+                          justify="space-evenly"
+                          alignItems="center"
                         >
-                          {status.map((option) => (
-                            <MenuItem key={option.value} value={option.label}>
-                              {option.label}
-                            </MenuItem>
-                          ))}
-                        </EditShowField>
+
+                          {/* Status */}
+                          <Grid item>
+                            <EditShowField
+                              name="status"
+                              id="status"
+                              fullWidth
+                              select
+                              label="Status"
+                              margin="normal"
+                              variant="outlined"
+                              defaultValue={status[showDetail.status].label}
+                              value={updatedUserSingleFollowing.status}
+                              onChange={(event) => handleChangeEditShow(event)}
+                            >
+                              {status.map((option) => (
+                                <MenuItem key={option.value} value={option.label}>
+                                  {option.label}
+                                </MenuItem>
+                              ))}
+                            </EditShowField>
+                          </Grid>
+
+                          {/* Rating */}
+                          <Grid item>
+                            <EditShowField
+                              name="rating"
+                              fullWidth
+                              variant="outlined"
+                              id="rating"
+                              label="Rating"
+                              type="number"
+                              margin="normal"
+                              defaultValue={showDetail.rating === null ? 'Not rated yet' : showDetail.rating}
+                              value={updatedUserSingleFollowing.rating}
+                              onChange={(event) => handleChangeEditShow(event)}
+                              InputProps={{ inputProps: { min: 0, max: 10 } }}
+                            />
+                          </Grid>
+
+                        </Grid>
                       </Grid>
 
-                      {/* Rating */}
                       <Grid item>
-                        <EditShowField
-                          name="rating"
-                          fullWidth
-                          variant="outlined"
-                          id="rating"
-                          label="Rating"
-                          type="number"
-                          margin="normal"
-                          defaultValue={showDetail.rating === null ? 'Not rated yet' : showDetail.rating}
-                          value={updatedUserSingleFollowing.rating}
-                          onChange={(event) => handleChangeEditShow(event)}
-                          InputProps={{ inputProps: { min: 0, max: 10 } }}
-                        />
+                        <Grid container spacing={2} justify="space-around">
+
+                          {/* Start date */}
+                          <Grid item>
+                            <EditShowField
+                              name="startDate"
+                              fullWidth
+                              id="startDate"
+                              label="Start date"
+                              type="date"
+                              defaultValue={startDateFormatted}
+                              onChange={(event) => handleChangeEditShow(event)}
+                            />
+                          </Grid>
+
+                          {/* End date */}
+                          <Grid item>
+                            <EditShowField
+                              name="endDate"
+                              fullWidth
+                              id="endDate"
+                              label="End date"
+                              type="date"
+                              defaultValue={endFollowDateBeforeStartFormatted}
+                              onChange={(event) => handleChangeEditShow(event)}
+                            />
+                          </Grid>
+
+                        </Grid>
                       </Grid>
 
-                    </Grid>
-                  </Grid>
-
-                  <Grid item>
-                    <Grid container spacing={2} justify="space-around">
-
-                      {/* Start date */}
                       <Grid item>
-                        <EditShowField
-                          name="startDate"
-                          fullWidth
-                          id="startDate"
-                          label="Start date"
-                          type="date"
-                          defaultValue={startDateFormatted}
-                          onChange={(event) => handleChangeEditShow(event)}
-                        />
-                      </Grid>
+                        <Grid container spacing={2} justify="space-around">
 
-                      {/* End date */}
-                      <Grid item>
-                        <EditShowField
-                          name="endDate"
-                          fullWidth
-                          id="endDate"
-                          label="End date"
-                          type="date"
-                          defaultValue={endFollowDateBeforeStartFormatted}
-                          onChange={(event) => handleChangeEditShow(event)}
-                        />
-                      </Grid>
+                          {/* Season Progress */}
+                          <Grid item>
+                            <EditShowField
+                              select
+                              name="season"
+                              fullWidth
+                              variant="outlined"
+                              id="season"
+                              label="Season progress"
+                              type="number"
+                              defaultValue={showDetail.seasons.length}
+                              value={updatedUserSingleFollowing.season}
+                              margin="normal"
+                              onChange={(event) => handleChangeEditShow(event)}
+                              InputProps={{
+                                inputProps: { min: 1, max: showDetail.seasons.length },
+                              }}
+                            >
+                              {showDetail.seasons.map((season, index) => (
+                                <MenuItem key={season['@id']} value={showDetail.seasons[index].number}>
+                                  {showDetail.seasons[index].number}
+                                </MenuItem>
+                              ))}
+                            </EditShowField>
+                          </Grid>
 
-                    </Grid>
-                  </Grid>
+                          {/* Episode progress */}
+                          <Grid item>
+                            <EditShowField
+                              select
+                              name="episode"
+                              fullWidth
+                              variant="outlined"
+                              id="episodeProgress"
+                              label="Episode progress"
+                              type="number"
+                              // defaultValue={this.alerto}
+                              value={updatedUserSingleFollowing.episode}
+                              margin="normal"
+                              onChange={(event) => handleChangeEditShow(event)}
+                              InputProps={{
+                                inputProps: { min: 1, max: showDetail.seasons[0].length },
+                              }}
+                            >
+                              {updatedUserSingleFollowing.season === undefined ? (
+                                showDetail.seasons[0].episodes.map((episode) => (
+                                  <MenuItem key={episode['@id']} value={episode.number}>
+                                    {episode.number}
+                                  </MenuItem>
+                                ))
+                              ) : (
+                                showDetail.seasons[
+                                  updatedUserSingleFollowing.season - 1
+                                ].episodes.map((episode) => (
+                                  <MenuItem key={episode['@id']} value={episode.number}>
+                                    {episode.number}
+                                  </MenuItem>
+                                ))
+                              )}
+                            </EditShowField>
+                          </Grid>
 
-                  <Grid item>
-                    <Grid container spacing={2} justify="space-around">
-
-                      {/* Season Progress */}
-                      <Grid item>
-                        <EditShowField
-                          select
-                          name="season"
-                          fullWidth
-                          variant="outlined"
-                          id="season"
-                          label="Season progress"
-                          type="number"
-                          defaultValue={showDetail.seasons.length}
-                          value={updatedUserSingleFollowing.season}
-                          margin="normal"
-                          onChange={(event) => handleChangeEditShow(event)}
-                          InputProps={{
-                            inputProps: { min: 1, max: showDetail.seasons.length },
-                          }}
-                        >
-                          {showDetail.seasons.map((season, index) => (
-                            <MenuItem key={season['@id']} value={showDetail.seasons[index].number}>
-                              {showDetail.seasons[index].number}
-                            </MenuItem>
-                          ))}
-                        </EditShowField>
-                      </Grid>
-
-                      {/* Episode progress */}
-                      <Grid item>
-                        <EditShowField
-                          select
-                          name="episode"
-                          fullWidth
-                          variant="outlined"
-                          id="episodeProgress"
-                          label="Episode progress"
-                          type="number"
-                          // defaultValue={this.alerto}
-                          value={updatedUserSingleFollowing.episode}
-                          margin="normal"
-                          onChange={(event) => handleChangeEditShow(event)}
-                          InputProps={{
-                            inputProps: { min: 1, max: showDetail.seasons[0].length },
-                          }}
-                        >
-                          {updatedUserSingleFollowing.season === undefined ? (
-                            showDetail.seasons[0].episodes.map((episode) => (
-                              <MenuItem key={episode['@id']} value={episode.number}>
-                                {episode.number}
-                              </MenuItem>
-                            ))
-                          ) : (
-                            showDetail.seasons[
-                              updatedUserSingleFollowing.season - 1
-                            ].episodes.map((episode) => (
-                              <MenuItem key={episode['@id']} value={episode.number}>
-                                {episode.number}
-                              </MenuItem>
-                            ))
-                          )}
-                        </EditShowField>
-                      </Grid>
-
-                      {/* Total rewatches */}
-                      {/* <Grid item>
+                          {/* Total rewatches */}
+                          {/* <Grid item>
                         <EditShowField
                           name="rewatches"
                           fullWidth
@@ -321,49 +329,51 @@ class EditShow extends React.Component {
                         />
                       </Grid> */}
 
-                    </Grid>
-                  </Grid>
-
-                  {/* Personal notes */}
-                  <Grid item>
-                    <EditShowLargeField
-                      name="notes"
-                      fullWidth
-                      id="personalNotes"
-                      label="Notes"
-                      placeholder="Add your comment"
-                      margin="normal"
-                      value={updatedUserSingleFollowing.notes}
-                      variant="outlined"
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
-                      onChange={(event) => handleChangeEditShow(event)}
-                    />
-                  </Grid>
-
-                  <Grid item>
-                    <Grid
-                      container
-                      spacing={2}
-                      justify="space-around"
-                    >
-
-                      {/* Button : remove show */}
-                      <Grid item>
-                        <EditShowButtons fullWidth variant="contained" color="secondary">REMOVE THIS SHOW</EditShowButtons>
+                        </Grid>
                       </Grid>
 
-                      {/* Button : save changes */}
+                      {/* Personal notes */}
                       <Grid item>
-                        <EditShowButtons fullWidth variant="contained" color="primary" type="submit">SAVE CHANGES</EditShowButtons>
+                        <EditShowLargeField
+                          name="notes"
+                          fullWidth
+                          id="personalNotes"
+                          label="Notes"
+                          placeholder="Add your comment"
+                          margin="normal"
+                          value={updatedUserSingleFollowing.notes}
+                          variant="outlined"
+                          InputLabelProps={{
+                            shrink: true,
+                          }}
+                          onChange={(event) => handleChangeEditShow(event)}
+                        />
+                      </Grid>
+
+                      <Grid item>
+                        <Grid
+                          container
+                          spacing={2}
+                          justify="space-around"
+                        >
+
+                          {/* Button : remove show */}
+                          <Grid item>
+                            <EditShowButtons fullWidth variant="contained" color="secondary">REMOVE THIS SHOW</EditShowButtons>
+                          </Grid>
+
+                          {/* Button : save changes */}
+                          <Grid item>
+                            <EditShowButtons fullWidth variant="contained" color="primary" type="submit">SAVE CHANGES</EditShowButtons>
+                          </Grid>
+
+                        </Grid>
                       </Grid>
 
                     </Grid>
-                  </Grid>
-
+                  </form>
                 </Grid>
-              </form>
+              </Grid>
             </Grid>
           </Grid>
 

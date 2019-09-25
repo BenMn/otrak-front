@@ -10,8 +10,15 @@ import SearchResult from 'src/components/Homepage/SearchResult';
 import Aired from 'src/components/Homepage/Aired';
 import Next from 'src/components/Homepage/Next';
 
+// Material UI custom Components
+import {
+  HomepageScreenPicture,
+} from 'src/styles/materialUi/materialUiStyles/HomePage';
+
 // CSS Local Styling
 import './homepage.scss';
+// Image
+import homeBackgroundImage from './images/background-home-transp50.jpg';
 
 function scroolToTop() {
   window.scrollTo(0, 0);
@@ -23,9 +30,11 @@ class Homepage extends React.Component {
     // On load, get the last trendings
     // if the user is logged and has followings shows,
     // Get the next episodes to watch
-    const { getTrending, getNext } = this.props;
+    const { getTrending, getNext, isLogged } = this.props;
     getTrending();
-    getNext();
+    if (isLogged === true) {
+      getNext();
+    }
     scroolToTop();
   }
 
@@ -43,30 +52,36 @@ class Homepage extends React.Component {
     } = this.props;
     return (
       <div id="HomePage-container">
-        {/* Search + Drawer filter */}
-        <Filter sortBy={sortBy} />
-        {(storeSearchInputResult.length > 0) === true && (
 
-        <SearchResult
-          storeSearchInputResult={storeSearchInputResult}
-          searchInputValue={searchInputValue}
-          getDetailShow={getDetailShow}
-        />
-        )}
+        <HomepageScreenPicture image={homeBackgroundImage}>
 
-        {/* Next to Watch */}
-        {(nextList.length > 0) === true && (
-          <Next
-            nextList={nextList}
-            getDetailShow={getDetailShow}
-          />
-        )}
+          <div className="fond-img-home">
+            {/* Search + Drawer filter */}
+            <Filter sortBy={sortBy} />
+            {(storeSearchInputResult.length > 0) === true && (
 
-        {/* Just Aired */}
-        <Aired
-          trendingList={trendingList}
-          getDetailShow={getDetailShow}
-        />
+              <SearchResult
+                storeSearchInputResult={storeSearchInputResult}
+                searchInputValue={searchInputValue}
+                getDetailShow={getDetailShow}
+              />
+            )}
+
+            {/* Next to Watch */}
+            {(nextList.length > 0) === true && (
+              <Next
+                nextList={nextList}
+                getDetailShow={getDetailShow}
+              />
+            )}
+
+            {/* Just Aired */}
+            <Aired
+              trendingList={trendingList}
+              getDetailShow={getDetailShow}
+            />
+          </div>
+        </HomepageScreenPicture>
       </div>
     );
   }
@@ -86,6 +101,8 @@ Homepage.propTypes = {
   getDetailShow: PropTypes.func.isRequired,
   // Sort By
   sortBy: PropTypes.func.isRequired,
+  // Authentification
+  isLogged: PropTypes.bool.isRequired,
 };
 
 Homepage.defaultProps = {
