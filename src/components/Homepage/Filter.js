@@ -179,14 +179,14 @@ const Filter = ({ sortBy }) => {
           </Box>
 
           <Box>
-            <ListItem button key="Release date">
+            <ListItem button key="Release date" onClick={() => sortBy('Release date')}>
               <Radio
                 checked={selectedValue === 'Release date'}
                 value="Release date"
                 color="default"
                 onChange={handleChange}
               />
-              <ListItemText primary="Release date" onClick={() => sortBy('Release date')} />
+              <ListItemText primary="Release date"  />
             </ListItem>
           </Box>
 
