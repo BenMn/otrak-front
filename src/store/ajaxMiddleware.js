@@ -45,7 +45,8 @@ import {
   START_FOLLOWING_SHOW_FROM_THE_BEGINNING,
   PLANNING_WATCH_SHOW,
   DELETE_FOLLOWING_SHOW,
-
+  // Action CREATORS
+  startFollowingShowAtThisEpisode,
 
   // ....................ALL SHOWS : LAST UPDATES....................
   // Action TYPES
@@ -232,20 +233,11 @@ const ajaxMiddleware = (store) => (next) => (action) => {
 
 
     case UPDATE_CURRENT_FOLLOWING_SHOW:
-
-      console.log('°°°°°°°°°°°°°°°°°°°°°°°°°°°)');
-      console.log(action);
-      console.log('°°°°°°°°°°°°°°°°°°°°°°°°°°°)');
-
       const statusInInt = transformToInt(action.status);
-      const episodeInInt = parseInt(action.episodeProgress);
-      const seasonInInt = parseInt(action.seasonProgress);
 
       const updatedFollowedShowDatas = {
         status: statusInInt,
         endDate: action.endDate,
-        episode: episodeInInt,
-        season: seasonInInt,
       };
 
       axios.patch(`${url}/api/followings/${action.followId}`,
@@ -254,8 +246,15 @@ const ajaxMiddleware = (store) => (next) => (action) => {
             'Content-Type': 'application/json',
           },
         })
-        .then((response) => {
-          console.log(response);
+        .then(() => {
+          store.dispatch(startFollowingShowAtThisEpisode(
+            action.showId,
+            action.seasonProgress,
+            action.episodeProgress,
+            action.userId,
+          ));
+          alert('Changes saved !');
+          store.dispatch(closeModal());
         })
         .catch((error) => {
           console.error(error);

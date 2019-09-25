@@ -1,3 +1,4 @@
+/* eslint-disable radix */
 /* eslint-disable no-lone-blocks */
 
 // import NPM
@@ -39,6 +40,16 @@ class EditShow extends React.Component {
     getUserFollowings(userInfos.id);
   }
 
+  // alerto = () => {
+  //   const { showDetail, updatedUserSingleFollowing } = this.props;
+  //   if (updatedUserSingleFollowing.season !== undefined) {
+  //     updatedUserSingleFollowing.episode = showDetail.seasons[
+  // parseInt(updatedUserSingleFollowing.season)
+  // ].episodes;
+  //   }
+  //   updatedUserSingleFollowing.episode = showDetail.seasons[0].episodes;
+  // }
+
   render() {
     const {
       // Show infos
@@ -51,6 +62,7 @@ class EditShow extends React.Component {
       // edit show handlers
       handleChangeEditShow,
       handleSubmitEditShow,
+      userInfos,
     } = this.props;
 
     // To get the right show information displayed on the edition modal
@@ -105,12 +117,13 @@ class EditShow extends React.Component {
         <LogFormModalEditPaper>
 
           {console.log(showDetail)}
+          {console.log(userSingleFollowing.id)}
 
           <Grid container>
 
             {/* Show Poster */}
             <Grid item>
-              <img src={currentFollow[0].tvShow.poster} alt={currentFollow[0].tvShow.name} id="edit-modal-image" />
+              <img src={showDetail.poster} alt={showDetail.name} id="edit-modal-image" />
             </Grid>
 
             <Grid item style={{ padding: '3vh 4vw' }}>
@@ -129,7 +142,9 @@ class EditShow extends React.Component {
               <form
                 onSubmit={(event) => handleSubmitEditShow(
                   event,
-                  currentFollowId[0],
+                  userSingleFollowing.id,
+                  userInfos.id,
+                  showDetail.id,
                 )}
               >
 
@@ -246,9 +261,9 @@ class EditShow extends React.Component {
                             inputProps: { min: 1, max: showDetail.seasons.length },
                           }}
                         >
-                          {showDetail.seasons.map((season) => (
-                            <MenuItem key={season['@id']} value={season.number}>
-                              {season.number}
+                          {showDetail.seasons.map((season, index) => (
+                            <MenuItem key={season['@id']} value={showDetail.seasons[index].number}>
+                              {showDetail.seasons[index].number}
                             </MenuItem>
                           ))}
                         </EditShowField>
@@ -264,7 +279,7 @@ class EditShow extends React.Component {
                           id="episodeProgress"
                           label="Episode progress"
                           type="number"
-                          defaultValue={showDetail.seasons[0].length}
+                          // defaultValue={this.alerto}
                           value={updatedUserSingleFollowing.episode}
                           margin="normal"
                           onChange={(event) => handleChangeEditShow(event)}
@@ -272,11 +287,21 @@ class EditShow extends React.Component {
                             inputProps: { min: 1, max: showDetail.seasons[0].length },
                           }}
                         >
-                          {showDetail.seasons[0].episodes.map((episode) => (
-                            <MenuItem key={episode['@id']} value={episode.number}>
-                              {episode.number}
-                            </MenuItem>
-                          ))}
+                          {updatedUserSingleFollowing.season === undefined ? (
+                            showDetail.seasons[0].episodes.map((episode) => (
+                              <MenuItem key={episode['@id']} value={episode.number}>
+                                {episode.number}
+                              </MenuItem>
+                            ))
+                          ) : (
+                            showDetail.seasons[
+                              updatedUserSingleFollowing.season - 1
+                            ].episodes.map((episode) => (
+                              <MenuItem key={episode['@id']} value={episode.number}>
+                                {episode.number}
+                              </MenuItem>
+                            ))
+                          )}
                         </EditShowField>
                       </Grid>
 
