@@ -52,6 +52,7 @@ import {
   // Action TYPES
   FETCH_TRENDING,
   FETCH_NEXT,
+  fetchNext,
   // Action CREATORS
   storeTrending,
   storeNext,
@@ -272,6 +273,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       })
         .then((response) => {
           console.log(response);
+          store.dispatch(fetchNext());
         })
         .catch((error) => {
           console.error(error);
