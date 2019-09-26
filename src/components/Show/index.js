@@ -77,7 +77,8 @@ const Show = ({
       </IndexScreenPicture>
     </>
   );
-}
+};
+
 Show.propTypes = {
   showDetail: PropTypes.object.isRequired,
   startFollowingShow: PropTypes.func.isRequired,

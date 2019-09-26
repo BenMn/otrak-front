@@ -24,7 +24,6 @@ import {
   // NextSeeAllIcon,
   HomePageGridOfOnCard,
   SearchResultGridWithoutSlider,
-  SearchResultTitle,
   AiredSubtitleSeasonEpisode,
   AiredTitleCardAndSubtitle,
   HomePageCardTitle,

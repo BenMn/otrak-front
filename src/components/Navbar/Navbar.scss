@@ -1,11 +1,12 @@
 #Navbar {
-    margin-bottom: 9vh;
+    margin-bottom: 8vh;
+    margin-top: -1vh;
 }
 
 #Navbar img {
-    width: 6.5vw;
+    width: 4.5vw;
     position: absolute;
-    margin: -10px 0 0 10px;
+    margin: -15px 0 0 10px;
 }
 
 // Overrides the react-router-dom NavLink grey color (inherit)

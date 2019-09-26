@@ -46,6 +46,7 @@ const Toolbar = withStyles({
 const useStyles = makeStyles(() => ({
   root: {
     display: 'flex',
+    marginTop: '-2.7vh',
   },
   appBar: {
     transition: theme.transitions.create(['margin', 'width'], {
@@ -179,14 +180,14 @@ const Filter = ({ sortBy }) => {
           </Box>
 
           <Box>
-            <ListItem button key="Release date">
+            <ListItem button key="Release date" onClick={() => sortBy('Release date')}>
               <Radio
                 checked={selectedValue === 'Release date'}
                 value="Release date"
                 color="default"
                 onChange={handleChange}
               />
-              <ListItemText primary="Release date" onClick={() => sortBy('Release date')} />
+              <ListItemText primary="Release date" />
             </ListItem>
           </Box>
 

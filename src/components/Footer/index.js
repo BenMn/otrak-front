@@ -28,11 +28,11 @@ import logoOwl from './logo-owl.png';
 
 const Footer = ({ handleOpen, isLogged, emptySearchResults }) => (
   <div id="Footer">
-    <Grid container justify="center">
+    <Grid container justify="space-around">
 
       {/* Logo */}
-      <Grid item xl={2} lg={1} md={2} sm={2} xs={4}>
-        <Grid container justify="center">
+      <Grid item xl={1} lg={1} md={2} sm={2} xs={4}>
+        <Grid container justify="flex-start">
           <NavLink exact to="/search">
             <img src={logoOwl} alt="O’Track logo" id="FooterLogo" />
           </NavLink>

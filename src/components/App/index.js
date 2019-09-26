@@ -16,8 +16,9 @@ import theme from 'src/styles/materialUi/materialUiTheme/theme';
 import Navbar from 'src/containers/Navbar';
 import Footer from 'src/containers/Footer';
 
-// Modals
+// Modals & Alerts
 import LogFormsModal from 'src/containers/LogForms';
+// import Snackbar from 'src/components/Snackbar';
 
 // Main Dynamic Pages
 import LandingPage from 'src/containers/LandingPage';
@@ -38,6 +39,7 @@ const App = ({
   // Modal
   handleOpen,
   open,
+  // snackOn,
   // Search
   handleSearchInput,
   handleSearchInputSubmit,
@@ -48,6 +50,10 @@ const App = ({
 }) => (
   <MuiThemeProvider theme={theme}>
     <div id="app">
+
+
+      {/* Snackbar alert
+      {snackOn === true && <Snackbar />} */}
 
       {/* User connected :
         >> no more access to Landing Page
@@ -218,6 +224,7 @@ App.propTypes = {
   // Modal
   handleOpen: PropTypes.func,
   open: PropTypes.bool,
+  // snackOn: PropTypes.bool,
   // Search
   handleSearchInput: PropTypes.func,
   handleSearchInputSubmit: PropTypes.func,
@@ -231,6 +238,7 @@ App.defaultProps = {
   // Modal
   handleOpen: () => { },
   open: false,
+  // snackOn: false,
   // Search
   handleSearchInput: () => { },
   handleSearchInputSubmit: () => { },

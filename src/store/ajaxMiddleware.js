@@ -74,6 +74,7 @@ import {
 
   // ....................MODAL....................
   closeModal,
+  openSnackAlert,
 
 } from 'src/store/reducer';
 
@@ -179,6 +180,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
         })
         .then((response) => {
           store.dispatch(storeNewUsernameInput(response.data.username));
+          store.dispatch(openSnackAlert());
         })
         .catch((error) => {
           console.error(error);
@@ -202,13 +204,13 @@ const ajaxMiddleware = (store) => (next) => (action) => {
 
     case GET_USER_FOLLOWINGS:
 
-      axios.get(`${url}/api/users/${action.userId}/followings`, {
+      axios.get(`${url}/api/users/me/followings/shows`, {
         headers: {
           'Content-Type': 'application/json',
         },
       })
         .then((response) => {
-          store.dispatch(storeUserFollowings(response.data['hydra:member']));
+          store.dispatch(storeUserFollowings(response.data));
         })
         .catch((error) => {
           console.error(error);
@@ -254,7 +256,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
             action.episodeProgress,
             action.userId,
           ));
-          alert('Changes saved !');
+          store.dispatch(openSnackAlert());
           store.dispatch(closeModal());
         })
         .catch((error) => {
@@ -273,6 +275,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       })
         .then((response) => {
           console.log(response);
+          store.dispatch(openSnackAlert());
           store.dispatch(fetchNext());
         })
         .catch((error) => {
@@ -290,6 +293,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       })
         .then((response) => {
           console.log(response);
+          store.dispatch(openSnackAlert());
         })
         .catch((error) => {
           console.error(error);
@@ -306,6 +310,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       })
         .then((response) => {
           console.log(response);
+          store.dispatch(openSnackAlert());
         })
         .catch((error) => {
           console.error(error);

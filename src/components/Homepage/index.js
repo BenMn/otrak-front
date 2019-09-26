@@ -10,8 +10,18 @@ import SearchResult from 'src/components/Homepage/SearchResult';
 import Aired from 'src/components/Homepage/Aired';
 import Next from 'src/components/Homepage/Next';
 
+// Material UI Components
+import { Box } from '@material-ui/core';
+
+// Material UI custom Components
+import {
+  HomepageScreenPicture,
+} from 'src/styles/materialUi/materialUiStyles/HomePage';
+
 // CSS Local Styling
 import './homepage.scss';
+// Image
+import homeBackgroundImage from './images/background-home-transp50.jpg';
 
 function scroolToTop() {
   window.scrollTo(0, 0);
@@ -40,33 +50,59 @@ class Homepage extends React.Component {
       nextList,
       // Filters
       sortBy,
+      snackOn,
     } = this.props;
     return (
       <div id="HomePage-container">
-        {/* Search + Drawer filter */}
-        <Filter sortBy={sortBy} />
-        {(storeSearchInputResult.length > 0) === true && (
 
-        <SearchResult
-          storeSearchInputResult={storeSearchInputResult}
-          searchInputValue={searchInputValue}
-          getDetailShow={getDetailShow}
-        />
-        )}
+        <HomepageScreenPicture image={homeBackgroundImage}>
 
-        {/* Next to Watch */}
-        {(nextList.length > 0) === true && (
-          <Next
-            nextList={nextList}
-            getDetailShow={getDetailShow}
-          />
-        )}
+          <div className="fond-img-home">
 
-        {/* Just Aired */}
-        <Aired
-          trendingList={trendingList}
-          getDetailShow={getDetailShow}
-        />
+            {/* Search + Drawer filter */}
+            <Filter sortBy={sortBy} />
+
+            {snackOn === true && (
+              // <Snackbar
+              //   anchorOriginTopCenter
+              //   key="top,center"
+              //   open
+              //   autoHideDuration={5}
+              //   ContentProps={{
+              //     'aria-describedby': 'message-id',
+              //   }}
+              //   message={<span id="message-id">I love snacks</span>}
+              //   style={{ backgroundColor: '#25e4b4', color: '#fff' }}
+              // />
+              <Box className="alert-success" id="myelement">
+                Changes saved !
+              </Box>
+            )}
+
+            {(storeSearchInputResult.length > 0) === true && (
+
+              <SearchResult
+                storeSearchInputResult={storeSearchInputResult}
+                searchInputValue={searchInputValue}
+                getDetailShow={getDetailShow}
+              />
+            )}
+
+            {/* Next to Watch */}
+            {(nextList.length > 0) === true && (
+              <Next
+                nextList={nextList}
+                getDetailShow={getDetailShow}
+              />
+            )}
+
+            {/* Just Aired */}
+            <Aired
+              trendingList={trendingList}
+              getDetailShow={getDetailShow}
+            />
+          </div>
+        </HomepageScreenPicture>
       </div>
     );
   }
@@ -86,10 +122,13 @@ Homepage.propTypes = {
   getDetailShow: PropTypes.func.isRequired,
   // Sort By
   sortBy: PropTypes.func.isRequired,
+  // Alert
+  snackOn: PropTypes.bool,
 };
 
 Homepage.defaultProps = {
   storeSearchInputResult: [],
+  snackOn: false,
 };
 
 export default Homepage;

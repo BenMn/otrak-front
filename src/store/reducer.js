@@ -87,6 +87,7 @@ const initialState = {
   setOpen: false,
   modalName: '',
   loading: false,
+  snackOn: false,
 
 };
 
@@ -152,6 +153,7 @@ const EMPTY_SEARCH_RESULTS = 'EMPTY_SEARCH_RESULTS';
 const OPEN_MODAL = 'OPEN_MODAL';
 const CLOSE_MODAL = 'CLOSE_MODAL';
 const ACTIVE_LOADING = 'ACTIVE_LOADING';
+const OPEN_SNACK_ALERT = 'OPEN_SNACK_ALERT';
 
 
 // ======================= Reducer =======================
@@ -375,6 +377,12 @@ const reducer = (state = initialState, action = {}) => {
         setOpen: false,
         open: false,
         modalName: action.modalName,
+      };
+
+    case OPEN_SNACK_ALERT:
+      return {
+        ...state,
+        snackOn: true,
       };
 
     case ACTIVE_LOADING:
@@ -640,6 +648,10 @@ export const closeModal = (modalName) => ({
 
 export const activeLoading = () => ({
   type: ACTIVE_LOADING,
+});
+
+export const openSnackAlert = () => ({
+  type: OPEN_SNACK_ALERT,
 });
 
 
