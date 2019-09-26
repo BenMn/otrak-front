@@ -32,6 +32,8 @@ const mapStateToProps = (state) => ({
   setOpen: state.setOpen,
   open: state.open,
   modalName: state.modalName,
+  // Snackbar alert
+  snackOn: state.snackOn,
   // userAvatar: state.userAvatar,
 });
 

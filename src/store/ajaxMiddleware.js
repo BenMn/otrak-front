@@ -73,6 +73,7 @@ import {
 
   // ....................MODAL....................
   closeModal,
+  openSnackAlert,
 
 } from 'src/store/reducer';
 
@@ -178,6 +179,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
         })
         .then((response) => {
           store.dispatch(storeNewUsernameInput(response.data.username));
+          store.dispatch(openSnackAlert());
         })
         .catch((error) => {
           console.error(error);
@@ -253,7 +255,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
             action.episodeProgress,
             action.userId,
           ));
-          alert('Changes saved !');
+          store.dispatch(openSnackAlert());
           store.dispatch(closeModal());
         })
         .catch((error) => {
@@ -272,6 +274,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       })
         .then((response) => {
           console.log(response);
+          store.dispatch(openSnackAlert());
         })
         .catch((error) => {
           console.error(error);
@@ -288,6 +291,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       })
         .then((response) => {
           console.log(response);
+          store.dispatch(openSnackAlert());
         })
         .catch((error) => {
           console.error(error);
@@ -304,6 +308,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       })
         .then((response) => {
           console.log(response);
+          store.dispatch(openSnackAlert());
         })
         .catch((error) => {
           console.error(error);

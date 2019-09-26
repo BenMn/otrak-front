@@ -27,6 +27,8 @@ const mapStateToProps = (state) => ({
   storeSearchInputResult: state.storeSearchInputResult,
   // Autentification
   isLogged: state.isLogged,
+  // Snackbar alert
+  snackOn: state.snackOn,
 });
 
 const mapDispatchToProps = (dispatch) => ({

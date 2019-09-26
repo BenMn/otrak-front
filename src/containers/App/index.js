@@ -7,6 +7,7 @@ import App from 'src/components/App';
 const mapStateToProps = (state) => ({
   view: state.view,
   open: state.open,
+  snackOn: state.snackOn,
   isLogged: state.isLogged,
   storeSearchInputResult: state.storeSearchInputResult,
 });

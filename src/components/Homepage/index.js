@@ -10,6 +10,9 @@ import SearchResult from 'src/components/Homepage/SearchResult';
 import Aired from 'src/components/Homepage/Aired';
 import Next from 'src/components/Homepage/Next';
 
+// Material UI Components
+import { Box } from '@material-ui/core';
+
 // Material UI custom Components
 import {
   HomepageScreenPicture,
@@ -30,11 +33,9 @@ class Homepage extends React.Component {
     // On load, get the last trendings
     // if the user is logged and has followings shows,
     // Get the next episodes to watch
-    const { getTrending, getNext, isLogged } = this.props;
+    const { getTrending, getNext } = this.props;
     getTrending();
-    if (isLogged === true) {
-      getNext();
-    }
+    getNext();
     scroolToTop();
   }
 
@@ -49,6 +50,7 @@ class Homepage extends React.Component {
       nextList,
       // Filters
       sortBy,
+      snackOn,
     } = this.props;
     return (
       <div id="HomePage-container">
@@ -56,8 +58,27 @@ class Homepage extends React.Component {
         <HomepageScreenPicture image={homeBackgroundImage}>
 
           <div className="fond-img-home">
+
             {/* Search + Drawer filter */}
             <Filter sortBy={sortBy} />
+
+            {snackOn === true && (
+              // <Snackbar
+              //   anchorOriginTopCenter
+              //   key="top,center"
+              //   open
+              //   autoHideDuration={5}
+              //   ContentProps={{
+              //     'aria-describedby': 'message-id',
+              //   }}
+              //   message={<span id="message-id">I love snacks</span>}
+              //   style={{ backgroundColor: '#25e4b4', color: '#fff' }}
+              // />
+              <Box className="alert-success" id="myelement">
+                Changes saved !
+              </Box>
+            )}
+
             {(storeSearchInputResult.length > 0) === true && (
 
               <SearchResult
@@ -101,12 +122,13 @@ Homepage.propTypes = {
   getDetailShow: PropTypes.func.isRequired,
   // Sort By
   sortBy: PropTypes.func.isRequired,
-  // Authentification
-  isLogged: PropTypes.bool.isRequired,
+  // Alert
+  snackOn: PropTypes.bool,
 };
 
 Homepage.defaultProps = {
   storeSearchInputResult: [],
+  snackOn: false,
 };
 
 export default Homepage;
