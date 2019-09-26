@@ -106,7 +106,7 @@ const Icons = ({
         </Tooltip>
     )}
     {/* Add to next to watch */}
-    {categorie === 'next' || categorie === 'aired' ? '' : (
+    {categorie === 'next' ? '' : (
       isLogged === true ? (
         <>
           <Tooltip title="Plan to See" placement="top">
