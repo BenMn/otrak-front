@@ -51,7 +51,7 @@ const Icons = ({
     {isLogged === true ? (
       categorie === 'aired' ? (
         tracked === false ? (
-          <Tooltip title="Start this show from the begenning" placement="top">
+          <Tooltip title="Start this show from the begening" placement="top">
             <HomePageIconContainer className="hiddenCardIcon">
               <PlayArrowIcon onClick={() => addShowByCategorie(
                 categorie = 'search',
