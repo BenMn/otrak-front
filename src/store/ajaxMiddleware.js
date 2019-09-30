@@ -87,9 +87,9 @@ import {
 
 const ajaxMiddleware = (store) => (next) => (action) => {
   // Switch from development to production urls
-  const urlServer = 'http://82.243.9.13';
+  const urlServer = 'http://o-trak.com';
   const urlLocal = 'http://localhost:8001';
-  const url = urlLocal;
+  const url = urlServer;
 
 
   console.log('AJAX MIDDLEWARE - ACTION DETAILS >>> ', action);
@@ -256,7 +256,6 @@ const ajaxMiddleware = (store) => (next) => (action) => {
             action.episodeProgress,
             action.userId,
           ));
-          store.dispatch(openSnackAlert());
           store.dispatch(closeModal());
         })
         .catch((error) => {
