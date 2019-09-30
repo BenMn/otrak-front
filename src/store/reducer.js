@@ -154,6 +154,7 @@ const OPEN_MODAL = 'OPEN_MODAL';
 const CLOSE_MODAL = 'CLOSE_MODAL';
 const ACTIVE_LOADING = 'ACTIVE_LOADING';
 const OPEN_SNACK_ALERT = 'OPEN_SNACK_ALERT';
+const CLOSE_SNACK_ALERT = 'CLOSE_SNACK_ALERT';
 
 
 // ======================= Reducer =======================
@@ -383,6 +384,12 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         snackOn: true,
+      };
+
+    case CLOSE_SNACK_ALERT:
+      return {
+        ...state,
+        snackOn: false,
       };
 
     case ACTIVE_LOADING:
@@ -652,6 +659,10 @@ export const activeLoading = () => ({
 
 export const openSnackAlert = () => ({
   type: OPEN_SNACK_ALERT,
+});
+
+export const closeSnackAlert = () => ({
+  type: CLOSE_SNACK_ALERT,
 });
 
 

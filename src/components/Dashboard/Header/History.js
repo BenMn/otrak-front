@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 // import NPM
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -71,7 +72,7 @@ const History = ({ userFollowings, handleDeleteHistoryShow, updatedHistoryList }
 
               {/* single show */}
               {updatedHistoryList.map((currentShow) => (
-                (currentShow.season || currentShow.episode) && (
+                (currentShow.latestFollowSeason || currentShow.latestFollowEpisode) !== 0 && (
                 <Grid item key={currentShow.id} id={currentShow.id}>
                   <Grid
                     container
@@ -87,7 +88,7 @@ const History = ({ userFollowings, handleDeleteHistoryShow, updatedHistoryList }
                     </Grid>
                   </Grid>
                   <DashboardHistoryShowSubtitle color="primary" variant="subtitle1">
-                    Season {currentShow.season.number} - Episode {currentShow.episode.number}
+                    Season {currentShow.latestFollowSeason} - Episode {currentShow.latestFollowEpisode}
                   </DashboardHistoryShowSubtitle>
                 </Grid>
                 )
