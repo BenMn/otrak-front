@@ -43,9 +43,9 @@ const data = [
 const Charts = () => (
   <>
     <AreaChart
-      style={{ margin: '-4vh 0 1vh -3vw' }}
-      width={700}
-      height={80}
+      style={{ margin: '-2vh 0 1vh -3vw' }}
+      width={500}
+      height={70}
       data={data}
       margin={{
         top: 5, right: 0, left: 0, bottom: 0,
@@ -67,8 +67,8 @@ const Charts = () => (
 
     <AreaChart
       style={{ margin: '0 0 1vh -3vw' }}
-      width={700}
-      height={80}
+      width={500}
+      height={70}
       data={data}
       margin={{
         top: 5, right: 0, left: 0, bottom: 0,
@@ -90,8 +90,8 @@ const Charts = () => (
 
     <AreaChart
       style={{ margin: '0 0 1vh -3vw' }}
-      width={700}
-      height={80}
+      width={500}
+      height={70}
       data={data}
       margin={{
         top: 5, right: 0, left: 0, bottom: 0,
@@ -103,8 +103,8 @@ const Charts = () => (
           <stop offset="97%" stopColor="#fff" stopOpacity={0} />
         </linearGradient>
         <linearGradient id="fillDark" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="20%" stopColor="#801313" stopOpacity={1} />
-          <stop offset="97%" stopColor="#801313" stopOpacity={0} />
+          <stop offset="20%" stopColor="#701313" stopOpacity={1} />
+          <stop offset="97%" stopColor="#701313" stopOpacity={0} />
         </linearGradient>
       </defs>
       <Area type="monotone" dataKey="amt" stroke="url(#stroke)" fillOpacity={1} fill="url(#fillDark)" />

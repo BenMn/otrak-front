@@ -39,8 +39,8 @@ export const IndexButtonReturn = styled(Button)({
 export const ShowHeadPoster = styled(CardMedia)({
   minHeight: 410,
   minWidth: 260,
-  maxHeight: 500,
-  maxWidth: 340,
+  maxHeight: 700,
+  maxWidth: 540,
   borderRadius: 10,
   alignItems: 'center',
 });

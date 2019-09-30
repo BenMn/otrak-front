@@ -32,7 +32,7 @@ const Footer = ({ handleOpen, isLogged, emptySearchResults }) => (
 
       {/* Logo */}
       <Grid item xl={1} lg={1} md={2} sm={2} xs={4}>
-        <Grid container justify="flex-start">
+        <Grid container justify="flex-start" spacing={3}>
           <NavLink exact to="/search">
             <img src={logoOwl} alt="O’Track logo" id="FooterLogo" />
           </NavLink>

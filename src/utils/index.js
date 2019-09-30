@@ -85,9 +85,9 @@ export function FilteredAiredLandingPage(airedArray) {
     currentShow,
   ) => currentShow.show_rating !== null);
   
-  const jpShow = airedArray.filter((currentShow) => currentShow.Show_type === 'Animation').sort(compareRatingForAiredList).splice(0, 4);
+  const jpShow = airedArray.filter((currentShow) => currentShow.Show_type === 'Animation').sort(compareRatingForAiredList).splice(0, 3);
   console.log(jpShow);
-  const usShow = airedArray.filter((currentShow) => currentShow.Show_type === 'Scripted' || currentShow.Show_type === 'Reality').sort(compareRatingForAiredList).splice(0, 4);
+  const usShow = airedArray.filter((currentShow) => currentShow.Show_type === 'Scripted' || currentShow.Show_type === 'Reality').sort(compareRatingForAiredList).splice(0, 3);
 
   const newArray = [jpShow, usShow];
 

@@ -24,5 +24,5 @@ export const FooterIcon = styled(Icon)({
   width: 'auto',
   height: 'auto',
   float: 'right',
-  paddingTop: 15,
+  padding: '10px 10px 0 0',
 });

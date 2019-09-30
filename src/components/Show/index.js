@@ -21,7 +21,7 @@ import Loader from 'src/components/Loader';
 import './show.scss';
 
 // Icons
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import ArrowBackIos from '@material-ui/icons/ArrowBackIos';
 
 
 const Show = ({
@@ -47,7 +47,7 @@ const Show = ({
 
             {/* Return link */}
             <NavLink exact to="/search">
-              <IndexButtonReturn color="secondary" onClick={() => callBackSearchInputResult(searchInputValue)}><ArrowBackIcon />Return</IndexButtonReturn>
+              <IndexButtonReturn color="secondary" onClick={() => callBackSearchInputResult(searchInputValue)}><ArrowBackIos />Return</IndexButtonReturn>
             </NavLink>
 
             {Object.keys(showDetail).length !== 0 ? (

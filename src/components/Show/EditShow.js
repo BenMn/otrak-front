@@ -129,8 +129,13 @@ class EditShow extends React.Component {
 
             <Grid item style={{ padding: '3vh 4vw' }}>
 
-              <Grid container justify="space-around" direction="column" spacing={5}>
-                <Grid item style={{ marginTop: '1vh' }}>
+              <Grid
+                container
+                justify="space-around"
+                direction="column"
+                // spacing={5}
+              >
+                <Grid item style={{ margin: '1vh 0 4vh 0' }}>
                   <Typography component="h3" variant="h3">{showDetail.name}</Typography>
                 </Grid>
                 {/*
@@ -153,14 +158,14 @@ class EditShow extends React.Component {
                       userInfos.id,
                       showDetail.id,
                     )}
-                    style={{ height: '83%' }}
+                    // style={{ height: '83%' }}
                   >
 
                     <Grid
                       container
                       direction="column"
-                      spacing={5}
-                      style={{ height: '100%' }}
+                      spacing={3}
+                      // style={{ height: '100%' }}
                       justify="space-evenly"
                       alignItems="center"
                     >
@@ -169,7 +174,7 @@ class EditShow extends React.Component {
                         <Grid
                           container
                           spacing={2}
-                          style={{ height: '100%' }}
+                          // style={{ height: '100%' }}
                           justify="space-evenly"
                           alignItems="center"
                         >
@@ -240,7 +245,7 @@ class EditShow extends React.Component {
                               id="endDate"
                               label="End date"
                               type="date"
-                              defaultValue={endFollowDateBeforeStartFormatted}
+                              defaultValue="dd/mm/yyyy"
                               onChange={(event) => handleChangeEditShow(event)}
                             />
                           </Grid>

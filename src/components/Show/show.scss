@@ -14,14 +14,15 @@
 
 // edit modal poster
 #edit-modal-image {
-  min-width: 5vw;
-  max-width: 25vw;
+  // min-width: 5vw;
+  // max-width: 25vw;
+  width: 31vw;
   max-height: fit-content;
   display: table-header-group;
   border-radius: 5px;
   
 }
 
-@media (max-width: 1325px) {
-  #edit-modal-image{ display: none; }
-}
+// @media (max-width: 1325px) {
+//   #edit-modal-image{ display: none; }
+// }
