@@ -46,7 +46,10 @@ const Toolbar = withStyles({
 const useStyles = makeStyles(() => ({
   root: {
     display: 'flex',
-    marginTop: '-2.7vh',
+    position: 'fixed',
+    marginTop: '-1.8vh',
+    width: '100%',
+    zIndex: 1,
   },
   appBar: {
     transition: theme.transitions.create(['margin', 'width'], {
