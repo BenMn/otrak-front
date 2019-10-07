@@ -89,7 +89,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
   // Switch from development to production urls
   const urlServer = 'http://o-trak.com';
   const urlLocal = 'http://localhost:8001';
-  const url = urlServer;
+  const url = urlLocal;
 
 
   console.log('AJAX MIDDLEWARE - ACTION DETAILS >>> ', action);
