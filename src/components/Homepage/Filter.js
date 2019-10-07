@@ -125,9 +125,35 @@ const Filter = ({ sortBy }) => {
   function handleDrawerClose() {
     setOpen(false);
   }
-  const handleChange = (event) => {
-    setSelectedValue(event.target.value);
-    console.log(event.target.value);
+  const handleChange = (typeSort) => {
+    switch (typeSort) {
+      case 'Title':
+        setSelectedValue(typeSort);
+        sortBy(typeSort);
+        console.log(typeSort);
+        break;
+
+      case 'Rating':
+        setSelectedValue(typeSort);
+        sortBy(typeSort);
+        console.log(typeSort);
+        break;
+
+      case 'Release date':
+        setSelectedValue(typeSort);
+        sortBy(typeSort);
+        console.log(typeSort);
+        break;
+
+      case 'Language':
+        setSelectedValue(typeSort);
+        sortBy(typeSort);
+        console.log(typeSort);
+        break;
+
+      default:
+        return '';
+    }
   };
 
   return (
@@ -171,50 +197,46 @@ const Filter = ({ sortBy }) => {
         <Divider />
         <List>
           <Box>
-            <ListItem button key="Title">
+            <ListItem button key="Title" onClick={() => handleChange('Title')}>
               <Radio
                 checked={selectedValue === 'Title'}
                 value="Title"
                 color="default"
-                onChange={handleChange}
               />
-              <ListItemText primary="Title" onClick={() => sortBy('Title')} />
+              <ListItemText primary="Title" />
             </ListItem>
           </Box>
 
           <Box>
-            <ListItem button key="Release date" onClick={() => sortBy('Release date')}>
+            <ListItem button key="Release date" onClick={() => handleChange('Release date')}>
               <Radio
                 checked={selectedValue === 'Release date'}
                 value="Release date"
                 color="default"
-                onChange={handleChange}
               />
               <ListItemText primary="Release date" />
             </ListItem>
           </Box>
 
           <Box>
-            <ListItem button key="Rating">
+            <ListItem button key="Rating" onClick={() => handleChange('Rating')}>
               <Radio
                 checked={selectedValue === 'Rating'}
                 value="Rating"
                 color="default"
-                onChange={handleChange}
               />
-              <ListItemText primary="Rating" onClick={() => sortBy('Rating')} />
+              <ListItemText primary="Rating" />
             </ListItem>
           </Box>
 
           <Box>
-            <ListItem button key="Language">
+            <ListItem button key="Language" onClick={() => handleChange('Language')}>
               <Radio
                 checked={selectedValue === 'Language'}
                 value="Language"
                 color="default"
-                onChange={handleChange}
               />
-              <ListItemText primary="Language" onClick={() => sortBy('Language')} />
+              <ListItemText primary="Language" />
             </ListItem>
           </Box>
         </List>
