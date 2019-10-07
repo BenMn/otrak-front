@@ -1,0 +1,19 @@
+#Navbar {
+    margin-bottom: 8vh;
+    margin-top: -1vh;
+}
+
+#Navbar img {
+    width: 4.5vw;
+    position: absolute;
+    margin: -15px 0 0 10px;
+}
+
+// Overrides the react-router-dom NavLink grey color (inherit)
+#dashboard-nav-button {
+    color: #fff !important;
+}
+
+form#form-submit {
+    width: 100% !important;
+}

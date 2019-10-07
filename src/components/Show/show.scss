@@ -1,0 +1,27 @@
+// Full page Background image w/ gradient : show poster
+.fond-img{
+  height: 101%;
+  padding-top: 7%;
+  margin-top: -30px;
+  background-image:
+  linear-gradient(to bottom, rgba(255, 255, 255, 0) 10%,rgb(33, 33, 33) 97%),
+  linear-gradient(to top, rgba(255, 255, 255, 0) 10%,rgb(33, 33, 33) 97%);
+}
+
+.HeadScreen-infos-border {
+  border-bottom: 0.5px solid #333333;
+}
+
+// edit modal poster
+#edit-modal-image {
+  min-width: 5vw;
+  max-width: 25vw;
+  max-height: fit-content;
+  display: table-header-group;
+  border-radius: 5px;
+  
+}
+
+@media (max-width: 1325px) {
+  #edit-modal-image{ display: none; }
+}
