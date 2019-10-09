@@ -128,7 +128,7 @@ const HeadScreen = ({
                   {/* Language */}
                   <Grid container justify="space-between" className="HeadScreen-infos-border">
                     <ListItemText primary="Original language" />
-                    <ListItemText align="right" primary={showDetail.language} />
+                    <ListItemText align="right" primary={showDetail.language === '' ? 'Not specified' : `${showDetail.language}`} />
                   </Grid>
 
                   {/* Premiered */}
